@@ -1,0 +1,16 @@
+<!--pages/home/home.wxml-->
+<view class="b1">
+<view class="text1_view">
+<text>冠军国跳</text>
+</view>
+
+<view class="text2_view">
+<text>Draughts master</text>
+</view>
+
+<button bindtap="goto_page1" class="btn_start">
+开启旅程—>
+</button>
+
+</view>
+
