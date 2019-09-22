@@ -1,0 +1,120 @@
+/* pages/jingcaibisai1_1/jingcaibisai1_1.wxss */
+@import "../../weui.wxss";
+
+.swiper-tab{
+    position: flex;
+    margin-top: 20rpx;
+    width: 100%;
+    text-align: center;
+    height: 80rpx;
+    line-height: 80rpx;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    font-size: 35rpx;
+}
+
+page-section{
+  position: absolute;
+  top: 30rpx;
+  /* margin-top:200rpx;  */
+}
+
+
+.swiper-tab-item{
+    width: 30%; 
+    color:#686868;
+}
+.active{
+    color:#F4A9A3;
+    border-bottom: 4rpx solid #F4A9A3;
+}
+.swiper{
+  text-align: center;
+}
+
+.btn[plain]{
+  position: absolute;
+  background:no-repeat;
+  border: none;
+  width: 20%;
+  height: 5%;
+  top: 50rpx;
+}
+.arrow{
+  position: absolute;
+  width: 8%;
+  height: 4%;
+  left: 50rpx;
+  top: 60rpx;
+ }
+
+.serch{
+  width: 10%;
+  height: 5%;
+}
+
+.title{
+  width: 750rpx;
+  height: 120rpx;
+
+}
+
+.text1{
+  color: #65D0DD;
+  font-size: 35rpx;
+  text-align: center;
+
+}
+.swiper-tab1{
+    position: flex;
+    margin-top: 20rpx;
+    width: 100%;
+    text-align: center;
+    height: 80rpx;
+    line-height: 80rpx;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    font-size: 35rpx;
+}
+
+page-section1{
+  position: absolute;
+  top: 30rpx;
+  /* margin-top:200rpx;  */
+}
+.btn_diyilun{
+  width: 200rpx;
+height: 50rpx;
+line-height: 50rpx;
+right: 0rpx;
+
+float: left;
+border-radius: 10px;
+}
+.btn_paimingtongji1{
+ 
+  left: 0rpx;
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: none;
+  font-size: 35rpx;
+
+
+  
+}
+.btn_paimingtongji1::after{border: none;
+
+}
+.btn_renwu1{width: 200rpx;
+height: 50rpx;
+line-height: 50rpx;
+right: 0rpx;
+
+float: left;
+border-radius: 10px;
+
+}
+
