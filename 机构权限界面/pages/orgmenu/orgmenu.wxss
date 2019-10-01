@@ -51,7 +51,7 @@
 
 .org{
   position: relative;
-  top:300rpx;
+  top:320rpx;
   left: 110rpx;
   z-index: 999;
   width: 200rpx;
