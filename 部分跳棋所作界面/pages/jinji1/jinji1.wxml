@@ -1,0 +1,26 @@
+<!--pages/jinji1/jinji1.wxml-->
+<view>
+
+<view class="text_view"> 
+<text>
+冠军国跳
+</text>
+
+</view>
+<button bindtap="jinji1" class="btn_jinji1">晋级</button>
+
+    <view class="text_view1">
+    <text>
+       考级说明：
+       积分达到一定数目可以参与考级，等级将被国家认可，我们将为您发放证书。
+
+    【九级棋士】考试——1200积分
+    【八级棋士】考试——1400积分
+    【七级棋士】考试——1600积分
+
+    </text></view>
+
+
+
+
+</view>

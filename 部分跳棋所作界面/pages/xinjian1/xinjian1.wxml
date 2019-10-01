@@ -1,0 +1,6 @@
+<!--pages/xinjian1/xinjian1.wxml-->
+<view>
+<button bindtap="gotochuangjian1" class="xinjianroom">
+  新  建  房  间
+</button>
+</view>

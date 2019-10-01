@@ -1,0 +1,117 @@
+/* pages/chuangjian1/chuangjian1.wxss */
+.text_1{
+  color: #7EBFFF;
+   display: flex;
+  /*垂直方向 列方向 排布*/
+  flex-direction: column;
+  font-size: 35rpx;
+  text-align: center;
+  padding: 15rpx;
+}
+.line_1{
+  margin: 0 auto;
+width: 1000rpx;
+height: 1rpx;
+background-color: #D8D8D8;
+}
+.text_2{
+   display: flex;
+  /*垂直方向 列方向 排布*/
+  flex-direction: column;
+  font-size: 45rpx;
+  text-align: center;
+  padding: 5rpx;
+  
+
+  
+
+  
+}
+.line_2{
+  margin: 0 auto;
+width: 1000rpx;
+height: 1rpx;
+background-color: #D8D8D8;
+}
+.radio_1{
+  font-size: 35rpx;
+   position: relative;
+    left:90rpx;
+    width: 200rpx;
+    height: 40rpx;
+    
+}
+.radio_2{
+  font-size: 35rpx;
+   position: relative;
+    left:180rpx;
+    width: 200rpx;
+    height: 40rpx;
+    
+}
+.radio_3{
+  font-size: 35rpx;
+   position: relative;
+    left:270rpx;
+    width: 200rpx;
+    height: 40rpx;
+    
+}
+.line_3{
+  margin: 0 auto;
+width: 1000rpx;
+height: 1rpx;
+background-color: #D8D8D8;
+}
+.line_4{
+  margin: 0 auto;
+width: 1000rpx;
+height: 1rpx;
+background-color: #D8D8D8;
+}
+.radioChange{
+  height: 100rpx;
+  position: relative;
+  padding: 25rpx;
+
+}
+.switch1{
+  font-size:40rpx ;
+  padding: 15rpx;
+  
+}
+.switch2{
+  font-size:40rpx ;
+  padding: 15rpx;
+  
+  
+}
+.picker_1{
+  font-size:40rpx ;
+  padding: 15rpx;
+}
+.picker_2{
+  font-size:40rpx ;
+  padding: 15rpx;
+}
+.picker_3{
+  font-size:40rpx ;
+  padding: 15rpx;
+}
+.text_3{
+  font-size: 35rpx;
+  padding: 15rpx;
+  color: red;
+}
+.btn_chuangjian1{
+  position: absolute;
+  bottom: 50rpx;
+  left: 180rpx;
+  width: 400rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 15px;
+  background-color:#7EBFFF;
+  color: blue;
+
+}

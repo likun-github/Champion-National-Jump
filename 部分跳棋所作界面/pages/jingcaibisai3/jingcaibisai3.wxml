@@ -1,0 +1,5 @@
+<!--pages/jingcaibisai3/jingcaibisai3.wxml-->
+<view>
+<button bindtap="gotopaimingtongji1" class="btn_paimingtongji1">排名统计</button>
+<button bindtap="gotorenwu1" class="btn_renwu1">小明</button>
+</view>

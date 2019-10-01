@@ -1,0 +1,23 @@
+<!--pages/qimeng1/qimeng1.wxml-->
+
+
+<view>
+
+<view class="text_view"> 
+<text>
+冠军国跳
+</text>
+
+</view>
+<button bindtap="gotoqimeng1" class="btn_qimeng1">启蒙</button>
+<view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" maxlength="10" placeholder="                         请输入搜索关键词" />
+      </view>
+    </view>
+
+<button bintap="zongheorder" class="btn_zongheorder">综合排序</button>
+<button bindtap="timeorder" class="btn_timeorder">时间排序</button>
+
+
+</view>

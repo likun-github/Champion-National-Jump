@@ -1,0 +1,33 @@
+/* pages/jinji1/jinji1.wxss */
+.text_view{
+  color: rgba(0, 183, 255, 0.658);
+  display: flex;
+  /*垂直方向 列方向 排布*/
+  flex-direction: column;
+  font-size: 35rpx;
+  text-align: center;
+  top: -100rpx;
+
+
+}
+.btn_jinji1{
+ 
+  left: 250rpx;
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: none;
+  font-size: 35rpx;
+
+
+  
+}
+.btn_jinji1::after{border: none;
+
+}
+.text_view1{
+  
+  font-size: 40rpx;
+  color:gray;
+  left: -250rpx;
+}

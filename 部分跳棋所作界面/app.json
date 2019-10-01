@@ -1,0 +1,77 @@
+{
+  "pages": [
+
+    "pages/xuexi1/xuexi1",
+    "pages/xinjian1/xinjian1",
+
+
+    "pages/jinji1/jinji1",
+    "pages/jiaoxue1/jiaoxue1",
+   
+    "pages/qimeng1/qimeng1",
+
+
+    "pages/jingcaibisai3/jingcaibisai3",
+    "pages/jingcaibisai4/jingcaibisai4",
+
+
+    "pages/jingcaibisai2/jingcaibisai2",
+    "pages/jingcaibisai2_1/jingcaibisai2_1",
+
+    "pages/index/index",
+    "pages/home/home",
+    "pages/chuangjian1/chuangjian1",
+    "pages/jingcaibisai1/jingcaibisai1",
+
+
+    "pages/home1/page1",
+    "pages/logs/logs",
+    
+    
+    
+    "pages/qipan1/qipan1",
+    "pages/jinjiqipan1/jinjiqipan1",
+
+    "pages/xiaoming1/xiaoming1"
+    
+  ],
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home1/page1",
+        "text": "组件"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "接口"
+      }
+    ]
+  },
+  "tabBar1": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "组件"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "接口"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

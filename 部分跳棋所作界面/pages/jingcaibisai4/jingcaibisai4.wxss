@@ -1,0 +1,16 @@
+/* pages/jingcaibisai4/jingcaibisai4.wxss */
+.btn_bisaishuoming1{
+ 
+  left:250rpx;
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: none;
+  font-size: 35rpx;
+
+
+  
+}
+.btn_bisaishuoming1::after{border: none;
+
+}

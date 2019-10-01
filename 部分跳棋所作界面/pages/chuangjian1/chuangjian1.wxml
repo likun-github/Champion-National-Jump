@@ -1,0 +1,62 @@
+<!--pages/chuangjian1/chuangjian1.wxml-->
+<view>
+  <view class="text_1"><text>冠军国跳</text></view>
+  <view class="line_1"></view>
+  <view class="text_2"><text>\n100格</text></view>
+  <view class="line_2"></view>
+<view class="line_3"></view>
+  <view class="radioChange">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio_1">
+        
+        <radio value="" checked="    " color="#7EBFFF" />   猜先   
+      </label>
+      <label class="radio_2">
+        
+        <radio value="" checked="    " color="#7EBFFF" />    先手   
+      </label>
+      <label class="radio_3">
+        
+        <radio value="" checked="    " color="#7EBFFF" />    后手
+      </label>
+
+    </radio-group>
+    <view class="line_4"></view>
+
+  </view>
+  <view class="switch1">
+        允 许 悔 棋        <switch checked="{{switch1Checked}}" bindchange="switch1Change" color="#7EBFFF"/>
+  </view>
+  <view class="switch2">
+  是 否 公 开               <switch checked="{{switch2Checked}}" bindchange="switch2Change" color="#7EBFFF"/>
+
+  </view>
+<view class="section_1">
+  
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker_1">
+      积 分 限 定：           {{array[index]}}
+    </view>
+  </picker>
+</view>
+<view class="section_2">
+  
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array1}}">
+    <view class="picker_2">
+      时 间 限 定：           {{array1[index]}}
+    </view>
+  </picker>
+</view>
+<view class="section_3">
+  
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array2}}">
+    <view class="picker_3">
+        每 步 加 时：            {{array2[index]}}
+    </view>
+  </picker>
+</view>
+<view class="text_3">
+<text>最新规定：每步限时3分钟，如果超过3分钟没动棋，当待行棋的进度条走满就会被判负！</text>
+</view>
+<button bindtap="gotoqipan" class="btn_chuangjian1">创建开局</button>
+</view>

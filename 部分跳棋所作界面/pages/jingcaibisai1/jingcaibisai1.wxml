@@ -1,0 +1,18 @@
+<!--pages/jingcaibisai1/jingcaibisai1.wxml-->
+<view>
+
+
+<button bindtap="jingcaibisai1" class="btn_jingcaibisai1">精彩比赛</button>
+<view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" maxlength="10" placeholder="                         请输入搜索关键词" />
+      </view>
+    </view>
+
+
+<button bindtap="timeorder1" class="btn_timeorder1">时间排序</button>
+<button bindtap="gotojingcaibisai2" class="btn_bisai1">棋局1</button>
+
+</view>
+
+

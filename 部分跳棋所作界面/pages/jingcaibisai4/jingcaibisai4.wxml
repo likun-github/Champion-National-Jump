@@ -1,0 +1,5 @@
+<!--pages/jingcaibisai4/jingcaibisai4.wxml-->
+<view>
+<button bindtap="gotobisaishuoming1" class="btn_bisaishuoming1">比赛说明</button>
+<text class="bisaishuoming">本次跳棋比赛由云顶工坊举办</text>
+</view>

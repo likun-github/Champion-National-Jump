@@ -1,0 +1,26 @@
+/* pages/jingcaibisai3/jingcaibisai3.wxss */
+.btn_paimingtongji1{
+ 
+  left: 0rpx;
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: none;
+  font-size: 35rpx;
+
+
+  
+}
+.btn_paimingtongji1::after{border: none;
+
+}
+.btn_renwu1{width: 200rpx;
+height: 50rpx;
+line-height: 50rpx;
+right: 0rpx;
+
+float: left;
+border-radius: 10px;
+
+}
+

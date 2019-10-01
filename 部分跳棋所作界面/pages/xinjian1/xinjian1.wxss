@@ -1,0 +1,12 @@
+/* pages/xinjian1/xinjian1.wxss */
+.xinjianroom{
+  position: absolute;
+  bottom: 50rpx;
+  left: 180rpx;
+  width: 400rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 15px;
+  background-color:#7EBFFF;
+
+}

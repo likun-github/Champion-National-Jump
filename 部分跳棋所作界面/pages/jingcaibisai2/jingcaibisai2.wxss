@@ -1,0 +1,54 @@
+/* pages/jingcaibisai2/jingcaibisai2.wxss */
+page{ 
+ display: flex; 
+ flex-direction: column; 
+ height: 100%; 
+} 
+.navbar{ 
+ flex: none; 
+ display: flex; 
+ background:white; 
+} 
+.navbar .item{ 
+ position: relative; 
+ flex: auto; 
+ text-align: center; 
+ line-height: 80rpx; 
+} 
+.navbar .item.active{ 
+ color:aquamarine; 
+} 
+.navbar .item.active:after{ 
+ content: ""; 
+ display: block; 
+ position: absolute; 
+ bottom: 0; 
+ left: 0; 
+ right: 0; 
+ height: 4rpx; 
+ background:aquamarine; 
+} 
+.btn_diyilun{
+  width: 200rpx;
+height: 50rpx;
+line-height: 50rpx;
+right: 0rpx;
+
+float: left;
+border-radius: 10px;
+}
+.btn_bisailunci1{
+ 
+  left: -250rpx;
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: none;
+  font-size: 35rpx;
+
+
+  
+}
+.btn_bisailunci1::after{border: none;
+
+}

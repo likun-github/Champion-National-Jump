@@ -1,0 +1,22 @@
+<!--pages/jiaoxue1/jiaoxue1.wxml-->
+<view>
+
+<view class="text_view"> 
+<text>
+冠军国跳
+</text>
+
+</view>
+<button bindtap="jiaoxue1" class="btn_jiaoxue1">教学</button>
+<view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" maxlength="10" placeholder="                         请输入搜索关键词" />
+      </view>
+    </view>
+
+<button bintap="zongheorder1" class="btn_zongheorder1">综合排序</button>
+<button bindtap="timeorder1" class="btn_timeorder1">时间排序</button>
+
+
+</view>
+

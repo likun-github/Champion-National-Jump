@@ -1,0 +1,38 @@
+/* pages/jingcaibisai1/jingcaibisai1.wxss */
+
+.btn_jingcaibisai1{
+ 
+  left: 0rpx;
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: none;
+  font-size: 35rpx;
+
+
+  
+}
+.btn_jingcaibisai1::after{border: none;
+
+}
+
+.btn_timeorder1{font-size: 25rpx;
+width: 170rpx;
+height: 50rpx;
+line-height: 50rpx;
+right: 0rpx;
+
+float: center;
+border-radius: 10px;
+
+
+}
+.btn_bisai1{width: 200rpx;
+height: 50rpx;
+line-height: 50rpx;
+right: 0rpx;
+
+float: left;
+border-radius: 10px;
+
+}

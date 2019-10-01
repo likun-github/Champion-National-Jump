@@ -1,0 +1,48 @@
+/* pages/qimeng1/qimeng1.wxss */
+.text_view{
+  color: rgba(0, 183, 255, 0.658);
+  display: flex;
+  /*垂直方向 列方向 排布*/
+  flex-direction: column;
+  font-size: 35rpx;
+  text-align: center;
+  top: -100rpx;
+
+
+}
+.btn_qimeng1{
+ 
+  left: -250rpx;
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: none;
+  font-size: 35rpx;
+
+
+  
+}
+.btn_qimeng1::after{border: none;
+
+}
+.btn_zongheorder{font-size: 25rpx;
+width: 170rpx;
+height: 50rpx;
+line-height: 50rpx;
+left: 150rpx;
+float: left;
+border-radius: 10px;
+
+
+}
+.btn_timeorder{font-size: 25rpx;
+width: 170rpx;
+height: 50rpx;
+line-height: 50rpx;
+right: 150rpx;
+
+float: right;
+border-radius: 10px;
+
+
+}
