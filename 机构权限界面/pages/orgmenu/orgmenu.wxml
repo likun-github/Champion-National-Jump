@@ -1,0 +1,55 @@
+
+<image src="{{blue}}" class="blue" mode="widthFix"></image>
+
+<image src="{{org}}" class="org" mode="widthFix"></image>
+
+<view class="container1">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    </block>
+    </view>
+  <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <!-- <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+
+  <!--唤起身份认证弹窗-->
+  <image src="{{identityimg}}" class="p1" mode="widthFix"></image>
+
+  <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+    <view class="modals-cancel" bindtap="hideModal"></view>
+    <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+      
+      <view class="IDtext">已 认 证 为 :</view>
+      <image src="{{orgimg}}" class="orgimg" ></image>
+
+    </view>
+    
+  </view> 
+
+     
+
+  <button bindtap="showModal" style="color:#686868;position:absolute;top:485rpx;left:150rpx;border:none;font-size:45rpx;" plain="true">身份认证</button>
+
+<!--班级管理-->
+  <image src="{{classimg}}" class="p2" mode="widthFix"></image>
+   <button  style="color:#686868;position:absolute;top:630rpx;left:150rpx;border:none;font-size:45rpx ;" plain="true" bindtap="go2classmanage">班级管理</button>
+
+  <image src="{{coachimg}}" class="p3" mode="widthFix"></image>
+   <button  style="color:#686868;position:absolute;top:780rpx;left:150rpx;font-size:45rpx;border:none" plain="true">教练管理</button>
+
+  <image src="{{studentimg}}" class="p4" mode="widthFix"></image>
+  <button style="color:#686868;position:absolute;top:930rpx;left:150rpx;font-size:45rpx;border:none" plain="true" >学生管理</button>
+
+    <image src="{{messageimg}}" class="p5" mode="widthFix"></image>
+  <button style="color:#686868;position:absolute;top:1080rpx;left:150rpx;font-size:45rpx;border:none" plain="true" >发送信息</button>
+
+    <image src="{{gameimg}}" class="p6" mode="widthFix"></image>
+  <button style="color:#686868;position:absolute;top:1230rpx;left:150rpx;font-size:45rpx;border:none" plain="true" >举办比赛</button>
+
+</view>
+
+
+

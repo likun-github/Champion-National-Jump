@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/orgmenu/orgmenu",
+    "pages/classmanage/classmanage",
+    "pages/studentchange/studentchange",
+    "pages/register/register",
+    "pages/classinfo/classinfo",
+    "pages/coachchange/coachchange",
+    "pages/logs/logs",
+    "pages/studentinfo/studentinfo",
+    "pages/studentregister/studentregister"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+    
+  },
+  "sitemapLocation": "sitemap.json"
+}

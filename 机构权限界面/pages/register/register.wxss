@@ -1,0 +1,64 @@
+/* pages/register/register.wxss */
+@import "../../weui.wxss";
+
+.swiper-tab{
+    position: flex;
+    margin-top: 20rpx;
+    width: 100%;
+    text-align: center;
+    height: 80rpx;
+    line-height: 80rpx;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    font-size: 35rpx;
+}
+
+page-section{
+  position: absolute;
+  top: 30rpx;
+  /* margin-top:200rpx;  */
+}
+
+
+.swiper-tab-item{
+    width: 30%; 
+    color:#686868;
+}
+.active{
+    color:#F4A9A3;
+    border-bottom: 4rpx solid #F4A9A3;
+}
+.swiper{
+  text-align: center;
+}
+
+.btn[plain]{
+  position: absolute;
+  background:no-repeat;
+  border: none;
+  width: 20%;
+  height: 5%;
+  top: 50rpx;
+}
+.arrow{
+  position: absolute;
+  width: 8%;
+  height: 4%;
+  left: 50rpx;
+  top: 60rpx;
+ }
+
+.serch{
+  width: 10%;
+  height: 5%;
+}
+
+/******************班级名称和日期与时间******************/
+.text1{
+  margin-left: 40%;
+  font-size: 40rpx;
+}
+.text2{
+  margin-left: 35%;
+}

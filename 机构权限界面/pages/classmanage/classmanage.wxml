@@ -1,0 +1,13 @@
+<view class='text1'  >班 级 管 理</view>
+
+<view class="page-section">
+    <!-- <view class="weui-cells__title">可以自动聚焦的input</view> -->
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" auto-focus placeholder="输入班级进行搜索"/>
+        <icon class="search" size='20' type='search'></icon> 
+       </view>
+    </view>
+</view>
+
+<button class="btn1" bindtap="gotoclassinfo">初级一班</button>

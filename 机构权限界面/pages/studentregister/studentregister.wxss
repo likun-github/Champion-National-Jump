@@ -1,0 +1,61 @@
+/* pages/studentregister/studentregister.wxss */
+/***************学生头像*****************/
+.studentimg{
+  position: absolute;
+  left: 230rpx;
+  top: 100rpx;
+  width: 160rpx;
+  height: 160rpx;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+}
+
+/**************学生信息按钮**************/
+.btn1{
+  position: absolute;
+  left: 450rpx;
+  height: 120rpx;
+  top: 160rpx;
+  width: 40%;
+  background-color: white;
+  font-weight: bold;
+
+}
+/*************微信名***********/
+.text1{
+  position: absolute;
+  left: 450rpx;
+  top: 200rpx;
+}
+
+
+/**************第几次课 签到时间 是否签到****************/
+.text2{
+  position: absolute;
+  top: 300rpx;
+  left: 60rpx;
+  font-size: 40rpx;
+
+}
+
+.text3{
+  position: absolute;
+  top:300rpx;
+  left: 300rpx;
+  font-size: 40rpx;
+  
+}
+.text4{
+  position: absolute;
+  top: 305rpx;
+  left: 600rpx;
+  font-size: 30rpx;
+  color: #52A9FF;
+  border: 2rpx solid #52A9FF;
+
+  
+}

@@ -1,0 +1,129 @@
+/* pages/orgmenu/orgmenu.wxss */
+@import"/weui.wxss";
+
+.container1 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+/***************身份验证选择器属性******************/
+.picker{
+    padding: 13px;
+    background-color: #FFFFFF;
+}
+
+.userinfo {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 40rpx;
+  left: 80rpx;
+}
+
+.userinfo-avatar {
+  width: 220rpx;
+  height: 220rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  position: absolute;
+  color:rgba(15, 13, 13, 0.808);
+  right: 230rpx;
+  top: 180rpx;
+  font-size: 40rpx;
+}
+
+.blue{
+  position: absolute;
+  height: 20%;
+  width: 100%;
+  top: -50rpx;
+
+}
+
+.org{
+  position: relative;
+  top:300rpx;
+  left: 110rpx;
+  z-index: 999;
+  width: 200rpx;
+  height: 50rpx
+}
+
+.p1{
+  position: absolute;
+  top: 500rpx;
+  left: 50rpx;
+  width: 10%;
+  height: 5%;
+}
+
+.p2{
+  position: absolute;
+  top: 650rpx;
+  left: 55rpx;
+  width: 10%;
+  height: 5%;
+}
+
+.p3{
+  position: absolute;
+  top: 800rpx;
+  left: 55rpx;
+  width: 10%;
+  height: 5%;
+}
+
+.p4{
+  position: absolute;
+  top: 950rpx;
+  left: 55rpx;
+  width: 10%;
+  height: 5%;
+}
+
+.p5{
+  position: absolute;
+  top: 1100rpx;
+  left: 55rpx;
+  width: 10%;
+  height: 5%;
+}
+
+.p6{
+  position: absolute;
+  top: 1250rpx;
+  left: 55rpx;
+  width: 10%;
+  height: 5%;
+}
+
+/**********弹窗动画属性**********/
+.modals{position:fixed; z-index: 999; top:0; left: 0; right:0; bottom: 0;}
+.modals-cancel{position:absolute; z-index:1000; top:0; left: 0; right:0; bottom: 0; background-color: rgba(0,0,0,.5);}
+.bottom-dialog-body{position:absolute; z-index:10001; bottom:0; left:0; right:0; padding:30rpx; height:300rpx; background-color: #fff;}
+/*动画前初始位置*/
+.bottom-pos{-webkit-transform:translateY(100%);transform:translateY(100%);}
+
+/*************弹窗图片属性***********/
+.orgimg{
+  position: relative;
+  left: 225rpx;
+  top: 50rpx;
+  width: 40%;
+  height: 100rpx;
+
+}
+
+.IDtext{
+  text-align: center;
+  size: 100rpx;
+}
