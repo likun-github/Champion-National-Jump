@@ -660,5 +660,11 @@ class checkerMoveList {
 module.exports = {
   miniProgramBoardToBitBoard: miniProgramBoardToBitBoard,
   CheckerBitboard: CheckerBitboard,
-  CheckerMoveList: checkerMoveList
+  CheckerMoveList: checkerMoveList,
+  fill50: fill50,
+  Shift: Shift,
+  And: And,
+  Or: Or,
+  Not: Not,
+  findLowBit: findLowBit
 }

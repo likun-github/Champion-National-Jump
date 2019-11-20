@@ -48,7 +48,7 @@
 
 <view class="gameControlBtns">
     <text bindtap="giveUp">认输</text>
-    <text bindtap="showModal">悔棋</text>
+    <text bindtap="withdraw">悔棋</text>
 </view>
 
 

@@ -38,20 +38,47 @@ Page({
     // 当前选中棋子的可能终点
     currentAvailableDst: [],
 
+    // 悔棋数据
+    whiteWithdraw: [{ "W":movegen.fill50(1048575), "B":movegen.fill50(1125898833100800),"K":movegen.fill50(0)}],
+    blackWithdraw: [{ "W":movegen.fill50(1048575), "B":movegen.fill50(1125898833100800),"K":movegen.fill50(0)}],
+
+    // 小程序棋盘索引转换成bitboard棋盘索引
+    mini2Bit: [null, 45, null, 46, null, 47, null, 48, null, 49,
+                40, null, 41, null, 42, null, 43, null, 44, null,
+               null, 35, null, 36, null, 37, null, 38, null, 39,
+                30, null, 31, null, 32, null, 33, null, 34, null,
+               null, 25, null, 26, null, 27, null, 28, null, 29,
+                20, null, 21, null, 22, null, 23, null, 24, null,
+               null, 15, null, 16, null, 17, null, 18, null, 19,
+                10, null, 11, null, 12, null, 13, null, 14, null,
+               null,  5, null,  6, null,  7, null,  8,  null, 9,
+                 0, null,  1, null,  2, null,  3, null,  4, null],
+                
+    // bitboard棋盘索引转换成小程序棋盘索引
+    bit2Mini: [90, 92, 94, 96, 98, 
+                 81, 83, 85, 87, 89,
+               70, 72, 74, 76, 78,
+                 61, 63, 65, 67, 69,
+               50, 52, 54, 56, 58,
+                 41, 43, 45, 47, 49,
+               30, 32, 34, 36, 38,
+                 21, 23, 25, 27, 29,
+               10, 12, 14, 16, 18,
+                  1,  3,  5,  7,  9],
+
     // 转换成Scan的棋盘索引
-    toScanBoard: [null, 1, null, 2, null, 3, null, 4, null, 5, 6, null, 7, null, 8, null, 9, null, 10, null, null, 11, null, 12, null, 13, null, 14, null, 15, 16, null, 17, null, 18, null, 19, null, 20, null, null, 21, null, 22, null, 23, null, 24, null, 25, 26, null, 27, null, 28, null, 29, null, 30, null, null, 31, null, 32, null, 33, null, 34, null, 35, 36, null, 37, null, 38, null, 39, null, 40, null, null, 41, null, 42, null, 43, null, 44, null, 45, 46, null, 47, null, 48, null, 49, null, 50, null]
+    mini2Scan: [null,  1, null, 2,  null, 3,  null, 4,  null, 5,
+                  6, null,  7, null,  8, null,  9, null, 10, null,
+                null, 11, null, 12, null, 13, null, 14, null, 15,
+                 16, null, 17, null, 18, null, 19, null, 20, null, 
+                null, 21, null, 22, null, 23, null, 24, null, 25, 
+                 26, null, 27, null, 28, null, 29, null, 30, null, 
+                null, 31, null, 32, null, 33, null, 34, null, 35, 
+                 36, null, 37, null, 38, null, 39, null, 40, null, 
+                null, 41, null, 42, null, 43, null, 44, null, 45, 
+                 46, null, 47, null, 48, null, 49, null, 50, null]
   },
 
-
-
-
-
-
-
-
-
-
-  
 
   /**
    * 生命周期函数--监听页面加载
@@ -64,31 +91,34 @@ Page({
     context.draw(); 
   },
 
-  // 初始化棋盘数据
-  Inite: function () {
-    //this.data.context.clearRect(0, 0, this.data.width, this.data.height);
-
-    // 初始化棋盘数据
-    this.data.whiteChesses = [];
-    this.data.blackChesses = [];
-    this.data.kingChesses = [];
-
-    for (let i = 0; i < 100; i++) {
-      if (i <= 39 && (Math.floor(i / 10) + i) % 2 == 1) {
-        this.data.blackChesses.push(1);
-      } else {
-        this.data.blackChesses.push(0);
-      }
-
-      if (i >= 60 && (Math.floor(i / 10) + i) % 2 == 1) {
-        this.data.whiteChesses.push(1);
-      } else {
-        this.data.whiteChesses.push(0);
-      }
-
+  // 清空棋子
+  clearBoard: function() {
+    this.setData({ whiteChesses: [] });
+    this.setData({ blackChesses: [] });
+    this.setData({ kingChesses: [] });
+    
+    for(let i=0; i<100; i++) {
+      this.data.whiteChesses.push(0);
+      this.data.blackChesses.push(0);
       this.data.kingChesses.push(0);
     }
+  }, 
 
+  // 初始化棋盘
+  Inite: function () {
+    // 初始化棋盘-清空棋子
+    this.clearBoard();
+    // 初始化棋盘-填棋
+    for (let i = 0; i < 100; i++) {
+      // 黑棋
+      if (i <= 39 && (Math.floor(i / 10) + i) % 2 == 1) {
+        this.data.blackChesses[i] = 1;
+      }
+      // 白棋
+      if (i >= 60 && (Math.floor(i / 10) + i) % 2 == 1) {
+        this.data.whiteChesses[i] = 1;
+      }
+    }
     this.DrawBoard();
     this.DrawChesses();
   },
@@ -343,6 +373,28 @@ Page({
     return pass_filled;
   },
 
+  // 从小程序棋盘表示法转换成bitboard棋盘表示法
+  MiniBoard2Bitboard() {
+    let W = movegen.fill50(0);
+    let B = movegen.fill50(0);
+    let K = movegen.fill50(0);
+    for(let i=0; i<100; i++) {
+      if(this.data.mini2Bit[i] != null) { // 属于可摆棋位
+        if(this.data.whiteChesses[i] == 1) {
+          W = movegen.Or(W, movegen.Shift(movegen.fill50(1), this.data.mini2Bit[i], 'l'));
+        }
+        if (this.data.blackChesses[i] == 1) {
+          B = movegen.Or(B, movegen.Shift(movegen.fill50(1), this.data.mini2Bit[i], 'l'));
+        }
+        if (this.data.kingChesses[i] == 1) {
+          K = movegen.Or(K, movegen.Shift(movegen.fill50(1), this.data.mini2Bit[i], 'l'));
+        }
+      }
+    }
+    let currentBitboard = {"W":W, "B": B, "K": K};
+    return currentBitboard;
+  },
+
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 点击棋盘事件
   TapBoard: function (e) {
@@ -435,6 +487,8 @@ Page({
         this.setData({ currentUser: 1 });
         // 清空当前选中棋子信息
         this.setData({ currentTarget: null, availablePaths: null });
+        // 把当前棋盘转换成bitboard棋盘，存在whiteWithdraw中
+        this.data.whiteWithdraw.push(this.MiniBoard2Bitboard());
         // 把当前棋盘转换成Scan的棋盘，并上传服务器………………
       }
     }
@@ -449,7 +503,6 @@ Page({
     });
   },
 
-
   // 认输，回到上一个界面
   giveUp: function () {
     wx.navigateTo({
@@ -457,11 +510,53 @@ Page({
     });
   },
 
+  // 从bitboard棋盘表示法转换成小程序棋盘表示法
+  Bitboard2Miniboard(bitboard) {
+    this.clearBoard();
+    let W = bitboard["W"];
+    let B = bitboard["B"];
+    let K = bitboard["K"];
+    while(W != 0) {
+      let index = movegen.findLowBit(W);
+      W = movegen.And(W, movegen.Not(movegen.Shift(movegen.fill50(1), index, 'l')));
+      this.data.whiteChesses[this.data.bit2Mini[index]] = 1;
+    }
+    while (B != 0) {
+      let index = movegen.findLowBit(B);
+      B = movegen.And(B, movegen.Not(movegen.Shift(movegen.fill50(1), index, 'l')));
+      this.data.blackChesses[this.data.bit2Mini[index]] = 1;
+    }
+    while (K != 0) {
+      let index = movegen.findLowBit(K);
+      K = movegen.And(K, movegen.Not(movegen.Shift(movegen.fill50(1), index, 'l')));
+      this.data.kingChesses[this.data.bit2Mini[index]] = 1;
+    }
+  },
 
-
-
-
-
+  // 悔棋，白方退一步棋
+  withdraw:function() {
+    if(this.data.whiteWithdraw.length == 1) { // 刚刚开局，不能悔棋
+      console.log("不能悔棋！");
+    } else { // 可以悔棋
+      if (this.data.whiteWithdraw.length == this.data.blackWithdraw.length) { // 白棋走后黑棋已走，先悔黑棋，再悔白棋
+        this.data.blackWithdraw.pop();      
+      } else if (this.data.whiteWithdraw.length-1 == this.data.blackWithdraw.length) { // 白棋走后黑棋未走，只悔白棋，但要跟服务器发请求让别再走黑棋了
+        this.data.whiteWithdraw.pop();
+        // 给服务器发请求让别走黑棋………………
+      } else {
+        console.log("bug!");
+      }
+      let currentBitboard = this.data.whiteWithdraw.pop();
+      this.Bitboard2Miniboard(currentBitboard);
+      this.data.whiteWithdraw.push(currentBitboard);
+      // 重新绘制棋盘
+      this.DrawBoard();
+      this.DrawChesses();
+      this.data.context.draw(); 
+    }
+    // 悔棋后走白棋
+    this.setData({currentUser: 0});
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -25,7 +25,7 @@ Page({
     roles: ["student","constitution","coach"],
 
     registedInfo:{
-      role: "constitution",
+      role: "student",
       authenticated: true
     }
 
