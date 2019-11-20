@@ -1,0 +1,53 @@
+<!--pages/studentsmanage/studentinfo.wxml-->
+
+<view class="topInfo">
+  <image class="portrait" src="../../img/studentimg.png"></image>
+  <text>微信号: 跳棋小孩</text>
+</view>
+
+
+<view id="studentForm">
+  <view class="formCol">
+    <label>真实姓名:</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>联系方式</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="finishedClassCol">
+  
+    <view class="top">
+        <label>完成课时:</label><slider></slider>
+    </view>
+    <view class="bottom">
+        <view><text>4/9</text><image src="../../img/Comment.png"></image></view>
+    </view>
+    
+  </view>
+  <view class="formCol">
+    <label>段位等级:</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>所属班级:</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>剩余学费:</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+
+
+  <view class="viewSignIn" bindtap="goToStudentSignStatistics">查看该同学签到统计<text>>></text></view>
+
+  <view class="formBtnContainer">
+    <button>删除</button>
+    <button>完成</button>
+  </view>
+</view>

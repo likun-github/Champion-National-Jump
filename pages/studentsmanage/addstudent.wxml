@@ -1,0 +1,41 @@
+<view class="topInfo">
+  <image class="portrait" src="../../img/studentimg.png"></image>
+  <text>微信号: 跳棋小孩</text>
+</view>
+
+<view id="studentForm">
+  <view class="formCol">
+    <label>真实姓名:</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>联系方式</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>完成课时:</label><input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>段位等级:</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>所属班级:</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>剩余学费:</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+
+
+  <view class="formBtnContainer">
+    <button>确定</button>
+  </view>
+</view>

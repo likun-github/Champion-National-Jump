@@ -1,0 +1,130 @@
+<!--pages/chessmanual/chessmanualindex.wxml-->
+<view class="topNav">
+  <text data-route="train" bindtap="ChangeRoute" class="{{innerRoute=='train'?'choosed':''}}">练习</text>
+  <text data-route="tree" bindtap="ChangeRoute" class="{{innerRoute=='tree'?'choosed':''}}">爬树</text>
+   <text data-route="competition" bindtap="ChangeRoute" class="{{innerRoute=='competition'?'choosed':''}}">经典对局</text>
+</view>
+
+
+
+<view wx:if="{{innerRoute=='train'}}">
+
+<view class="searchCol">
+  <input placeholder="搜索信息"></input>
+  <image src="../../img/Search.png"></image>
+</view>
+
+<view class="sortMethodChoose">
+  <text data-method="all"  bindtap="changeSortMethod" class="{{sortMethod=='all'?'chosen':''}}">综合排序</text>
+  <text data-method="time" bindtap="changeSortMethod"  class="{{sortMethod=='time'?'chosen':''}}">时间排序</text>
+</view>
+<view class="trainPart" >
+
+  <view class="train" bindtap="GoToPractise" wx:for="{{[1,2,3]}}">
+    <view class="cover">
+      <image src="/img/checkerboard.png"></image>
+    </view>
+    <view class="name"><text>战术打击</text></view>
+    <view class="trainInfo">
+        <text>上传者:孙教练</text>
+        <view class="mediaInfo">
+          <view><image src="/img/competitionimages/阅读.png" mode='widthFix'></image><text>1.5k</text></view>
+          <view><image src="/img/competitionimages/点赞.png" mode="widthFix"></image><text>1.8k</text></view>
+        </view>
+    </view>
+  </view>
+
+</view>
+</view>
+
+
+
+
+<view class="treePart" wx:elif="{{innerRoute=='tree'}}">
+  <image class="treeImage" src="/img/mytree.png" mode="widthFix"></image>
+
+  <view class="levelContainer">
+  
+    <text>王者宗师</text>
+    <text>仁人名师</text>
+    <text>有志之士</text>
+  </view> 
+</view>
+
+
+<view wx:if="{{innerRoute=='competition'}}">
+
+<view class="searchCol">
+  <input placeholder="搜索信息"></input>
+  <image src="../../img/Search.png"></image>
+</view>
+  <view class="sortMethodChoose">
+  <text>综合排序</text>
+  <text>时间排序</text>
+</view>
+
+<view class="competitionsContainer" >
+  <view class="competition"  bindtap="GoToDetail">
+    <view class="left">
+      <image src="/img/checkerboard.png"></image>
+    </view>
+
+    <view class="right">
+      <text class="competitionName">棋谱名称</text>
+
+      <view class="players">
+        <text class="player1">选手123</text>
+        <text class="player2">选手457</text>
+      
+      </view>
+
+      <view class="rightBottom">
+        <text class="time">2019-06-18</text>
+        <view class="hot">
+          <view>
+            <image src="/img/competitionimages/阅读.png" mode="widthFix"></image>
+            <text>1.5W</text>
+          </view>
+          <view>
+            <image src="/img/competitionimages/点赞.png" mode="widthFix"></image>
+            <text>8K</text>
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+</view>
+
+</view>
+
+<view class="bottomNav">
+  
+  <image class="bottomBarImage" src="/img/bottomBar.png"></image>
+
+  <view data-route="learn" bindtap="redict">
+    <image src="/img/book.png" mode="widthFix"></image>
+    <text>学习</text>
+  </view>
+
+  <view  class="current"  data-route="chessmanual" bindtap="redict"> 
+    <image src="/img/chessBoard1.png"  mode="widthFix"></image>
+    <text>棋谱</text>
+  </view>
+  <view class="gameNav" data-route="game" bindtap="redict">
+    <image  mode="widthFix" src="/img/cup.png"></image>
+    <text>对战</text>
+  </view>
+
+    <view data-route="competition" bindtap="redict">
+    <image  mode="widthFix" src="/img/medal.png"></image>
+    <text>比赛</text>
+  </view>
+
+  <view data-route="me" bindtap="redict">
+    <image src="/img/me.png"></image>
+    <text>我的</text>
+  </view>
+
+
+</view>

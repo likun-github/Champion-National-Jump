@@ -1,0 +1,33 @@
+/* pages/classmanage/classmanage.wxss */
+@import "../../weui.wxss";
+/***标题字体属性****/
+.text1{
+  position: relative;
+  text-align: center;
+  font-size: 40rpx;
+  color: #65D0DD;
+  margin: 20rpx;
+}
+
+/*********搜索框*************/
+.search{
+  position: relative;
+  width: 10%;
+  height: 40rpx;
+  left: 680rpx;
+  
+}
+
+/*************班级按钮*****************/
+.btn1 {
+  position: relative;
+  margin-top: 40rpx;
+  width: 60%;
+  height: 120rpx;
+  background-color: #6BD5E2;
+  color: white;
+  border-radius: 98rpx; 
+  text-align: center;
+  line-height: 120rpx;
+  font-size: 40rpx;
+}

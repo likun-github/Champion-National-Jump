@@ -1,0 +1,49 @@
+<!--pages/mycollection/competitiondetail.wxml-->
+
+<view class="top mediaBtns">
+  <view>
+    <image src="/img/competitionimages/点赞.png"></image>
+    <text>点赞</text>
+  </view>
+
+  <view>
+    <image src="/img/competitionimages/Links.png"></image>
+    <text>分享</text>
+  </view>
+</view>
+
+
+<view class="player">
+  <view class="playerLeft">
+      <image src="/img/competitionimages/chessBoardCover.png"></image>
+      <text class="playerName">一代棋圣李士神</text>
+  </view>
+
+  <view class="playerRight">
+      <text>9'34''</text>
+      <text class="win">赢</text>
+  </view>
+</view>
+
+<view class="vedioContainer">
+    <image src="/img/competitionimages/chessBoardCover.png"></image>
+</view>
+
+<view class="player">
+  <view class="playerLeft">
+      <image src="/img/competitionimages/chessBoardCover.png"></image>
+      <text class="playerName">一代棋圣李士神</text>
+  </view>
+
+  <view class="playerRight">
+      <text>9'34''</text>
+      <text class="lose">输</text>
+  </view>
+</view>
+
+
+<view class="vedioControl">
+  <view>
+      <image ></image> 
+  </view>
+</view>

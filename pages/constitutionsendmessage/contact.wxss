@@ -1,0 +1,80 @@
+/* pages/contact/contact.wxss */
+
+@import "../../template/messageeditor.wxss";
+
+
+
+.messagesContainer{
+
+
+}
+
+
+.timeItem{
+  text-align: center;
+  margin-top: 10rpx;
+  color: gray;
+  font-size: 28rpx;
+}
+
+.messageItem{
+
+  display: flex;
+  align-items: center;
+  margin: 10rpx 30rpx 0 80rpx ;
+  min-height: 200rpx;
+}
+
+.messageMain{
+
+  flex: 1;
+  margin-right: 30rpx;
+  box-sizing: border-box;
+
+  position: relative;
+}
+.messageContent{
+  background-color: skyblue;
+  padding: 8rpx;
+  color: white;
+  min-height: 200rpx;
+  position: relative;
+}
+.messageTime{
+  font-size: 30rpx;
+  color: gray;
+  display: block;
+  text-align: right;
+}
+
+
+
+.messageContent::after{
+  display: block;
+  content: " ";
+  height: 30rpx;
+  width: 30rpx;
+  background-color: skyblue;
+  position: absolute;
+  right: 0;
+
+  transform-origin:  center center;
+  
+  transform:translateY(-50%) translateX(50%) rotate(45deg);
+  top: 50%;
+
+
+
+}
+
+.senderInfo{
+
+}
+
+.senderInfo image{
+  height: 120rpx;
+
+  width: 120rpx;
+  margin-bottom: 20rpx;
+
+}

@@ -1,0 +1,83 @@
+/* pages/mycollection/competitiondetail.wxss */
+
+.mediaBtns{
+
+  font-size: 30rpx;
+  display: flex;
+  justify-content: flex-end;
+  color: gray;
+  padding: 0 30rpx;
+}
+
+.mediaBtns view{
+  display: flex;
+  border: 1px solid gray;
+  padding: 4rpx 12rpx;
+  border-radius: 30rpx 30rpx;
+  margin-left: 30rpx;
+}
+
+.mediaBtns image{
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.player{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  position: relative;
+}
+
+.playerName{
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  position: absolute;
+  top: 0;
+}
+
+.playerLeft image{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50% 50%;
+  vertical-align: middle;
+}
+
+
+.playerRight{
+  font-size: 30rpx;
+  color: gray;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.win{
+  font-size: 32rpx;
+  padding: 0 12rpx;
+  border: 1rpx solid red;
+  color: red;
+  margin-left: 10rpx;
+}
+
+.lose{
+    font-size: 32rpx;
+  padding: 0 12rpx;
+  border: 1rpx solid green;
+  color: green;
+  margin-left: 10rpx;
+
+}
+
+
+.vedioContainer{
+    margin: 16rpx 0;
+    text-align: center;
+}
+
+.vedioContainer image{
+    height: 680rpx;
+    width: 680rpx;  
+}
+
+

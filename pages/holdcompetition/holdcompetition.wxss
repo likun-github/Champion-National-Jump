@@ -1,0 +1,52 @@
+/* pages/holdcompetition/holdcompetition.wxss */
+
+
+.topSpace{
+  height: 100rpx;
+}
+
+.formCol{
+  height: 70rpx;
+  padding: 0 10rpx;
+  border-bottom: 1rpx solid #dddddd;
+  line-height: 70rpx;
+  display: flex;
+}
+
+.formCol label{
+  letter-spacing: 10rpx;
+  color: gray;
+  flex: 5;
+}
+.formCol input{
+  flex: 6;
+  width: 50rpx;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+
+.formCol image{
+  height: 40rpx;
+  width: 40rpx;
+  display: inline;
+  vertical-align: center;
+  padding: 15rpx 0;
+}
+
+.info{
+
+  color: skyblue;
+  text-align: center;
+  padding: 100rpx 10%;
+
+  font-size: 30rpx;
+}
+
+.formBtnContainer{
+  padding: 0 15%;
+}
+
+.formBtnContainer button{
+  background-color: skyblue;
+  border-radius: 10rpx;
+}

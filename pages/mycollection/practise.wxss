@@ -1,0 +1,61 @@
+/* pages/mycollection/practise.wxss */
+
+
+.player{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  position: relative;
+}
+
+.playerName{
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  position: absolute;
+  top: 0;
+  
+}
+
+.playerLeft image{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50% 50%;
+  vertical-align: middle;
+}
+
+.vedioContainer{
+    margin: 16rpx 0;
+    text-align: center;
+}
+
+.vedioContainer image{
+    height: 680rpx;
+    width: 680rpx;  
+}
+
+
+.gameControlBtns{
+
+  display: flex;
+  justify-content: space-around;
+  font-size: 35rpx;
+  color: gray;
+  padding: 0 100rpx;
+  margin-top: 40rpx;
+}
+
+.gameControlBtns text{
+  border: 1rpx solid gray;
+  padding: 5rpx 15rpx;
+
+}
+
+.tips{
+  color: gray;
+  padding: 0 40rpx;
+  white-space: pre-wrap;
+}
+
+
+

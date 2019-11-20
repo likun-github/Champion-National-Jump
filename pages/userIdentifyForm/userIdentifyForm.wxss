@@ -1,0 +1,57 @@
+/* pages/userIdentifyForm/userIdentifyForm.wxss */
+
+.bottom-dialog-body{
+  transform:  none;
+
+}
+
+
+.topInfo{
+  text-align: center;
+  margin:50rpx 0 50rpx 0;
+  height: 100rpx;
+  color: gray;
+  font-size: 28rpx;
+}
+
+.userIdentifyFormContainer{
+  padding: 0 12%;
+
+}
+
+.userIdentifyForm{
+
+
+}
+
+.formCol{
+  margin-bottom: 40rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.formColLabel{
+  letter-spacing: 10rpx;
+  color: gray;
+
+}
+
+.textInput{
+  border-bottom: 2rpx solid gray;
+}
+
+
+
+.bottomContainer{
+
+}
+
+.centerOfContainer{
+
+  
+}
+
+.confirmBtn{
+  background-color: white;
+}
+

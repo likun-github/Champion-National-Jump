@@ -1,0 +1,61 @@
+<!--pages/mycollection/practise.wxml-->
+<view class="player">
+  <view class="playerLeft">
+      <image src="/img/competitionimages/chessBoardCover.png"></image>
+      <text class="playerName">一代棋圣李士神</text>
+  </view>
+
+</view>
+
+
+<view class="top mediaBtns">
+  <view>
+    <image src="/img/competitionimages/Reporting.png" mode="widthFix"></image>
+    <text>保存</text>
+  </view>
+
+  <view>
+    <image src="/img/competitionimages/点赞.png" mode="widthFix"></image>
+    <text>点赞</text>
+  </view>
+
+  <view>
+    <image src="/img/competitionimages/Links.png" mode="widthFix"></image>
+    <text>分享</text>
+  </view>
+</view>
+
+<view class="vedioContainer">
+    <image src="/img/competitionimages/chessBoardCover.png"></image>
+</view>
+
+
+<view class="gameControlBtns">
+    <text>重下</text>
+    <text>回退</text>
+    <text bindtap="showModal">试下</text>
+</view>
+
+<view class="tips">
+Tips:
+可以点击[试下],选择模式运行
+</view>
+
+
+
+ <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+    <view class="modals-cancel" bindtap="hideModal"></view>
+      <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+ 
+        <view>
+          <view class="dialog-body-top">
+            <text class="dialog-title">试下模式</text>
+            <image></image>
+          </view>
+          <view class="rolesContainer modalUl">
+              <view wx:for="{{mode}}" class="modalLi roleContainer" bindtap="goToIdentifyForm"><text class="roleName name {{item=='棋手黑棋'?'current':''}}">{{item}}</text></view>
+
+          </view>
+        </view>
+      </view>
+    </view> 

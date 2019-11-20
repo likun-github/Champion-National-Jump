@@ -1,0 +1,38 @@
+<!--pages/conpetition/competitioninfo.wxml-->
+<!-- //   CompetitionDesc: "ASDASD"
+// CompetitionId: "0"
+// CompetitionName: "AASDASD"
+// CompetitionSignUpFinished: false
+// CompetittionFinished: false
+// ConstitutionId: "1"
+// ConstitutionName: "云顶作坊"
+// gx_md5_hash: "6FB7B5591BF06268C74A03327B73F16F" -->
+
+<view class="competitionsContainer">
+  <view  class="competitionCard">
+    <view class="cardLeft">
+      <image class="competitionCover" src="/img/checkerboard.png"></image>
+    </view>
+    <view class="cardRight">
+      <view class="competitionName">{{competition.CompetitionName}}</view>
+      <view class="competitionConstitution">举办机构: {{competition.ConstitutionName}}</view>
+      <view class="competitionTags">
+        <text>线上</text>
+        <text> 公开赛</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="competitionIntro">
+
+<text class="introTitle">比赛详情:</text>
+<text class="introContent">
+  {{competition.CompetitionDesc}}
+</text>
+
+</view>
+
+<view class="btnsContainer">
+  <button bindtap="goToSignUp">报名比赛</button>
+</view>

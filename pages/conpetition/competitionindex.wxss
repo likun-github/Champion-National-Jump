@@ -1,0 +1,131 @@
+/* pages/conpetition/competitionindex.wxss */
+
+/* 搜索栏 */
+.searchCol{
+  border-top: 1px solid #F4A9A3;
+  border-bottom: 1px solid #F4A9A3;
+  height: 50rpx;
+  display: flex;
+  justify-content: center;
+
+}
+.searchCol{
+  text-align: center;
+}
+.searchCol input{
+
+  width: 40%;
+  height: 50rpx;
+  line-height: 50rpx;
+
+}
+
+.searchCol image{
+  padding: 5rpx 0;
+  height: 40rpx;
+  width: 40rpx;
+}
+
+
+.topSliderContainer{
+
+
+}
+
+.topSliderContainer image{
+
+  width: 100%;
+}
+
+.navigator{
+  display: flex;
+  margin: 15rpx 0;
+}
+
+.navigator text{
+  padding: 15rpx 0;
+  margin:0 60rpx;
+  flex: 1;
+  text-align: center;
+}
+
+.navigator text.current{
+  color: #F4A9A3;
+  border-bottom: 6rpx solid #F4A9A3;
+}
+
+
+
+.sortMethodChoose{
+  margin: 14rpx 0;
+  text-align: center;
+}
+
+.sortMethodChoose text{
+  color: gray;
+  display: inline-block;
+  padding: 3rpx 30rpx;
+  border: 1rpx solid #cccccc;
+  border-radius: 20rpx 20rpx;
+}
+
+
+
+
+
+/* 比赛列表 */
+
+.competitionsContainer{
+
+}
+
+.competitionCard{
+  display: flex;
+  padding: 0 40rpx;
+  margin: 30rpx 0;
+}
+
+.cardLeft{
+  height: 240rpx;
+  width: 240rpx;
+}
+
+.competitionCover{
+  height: 100%;
+  width: 100%;
+}
+
+.cardRight{
+  padding:  20rpx;
+  flex: 1;
+  display:  flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.competitionName{
+  font-weight: bold;
+  font-size: 40rpx;
+}
+
+.competitionConstitution{
+  color:gray;
+}
+
+
+.competitionTags{
+  color: gray;
+}
+
+.competitionTags text{
+  border:  1rpx solid #dddddd;
+  margin-right: 40rpx;
+  padding: 4rpx 10rpx;
+}
+
+.competitionTags text:last-child{
+  border:  1rpx solid red;
+  color: red;
+  
+}

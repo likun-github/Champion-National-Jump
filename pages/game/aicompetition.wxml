@@ -1,0 +1,59 @@
+<!--pages/game/aicompetition.wxml-->
+<!--pages/mycollection/practise.wxml-->
+
+
+<view class="top mediaBtns">
+  <view>
+    <image src="/img/competitionimages/Reporting.png" mode="widthFix"></image>
+    <text>保存</text>
+  </view>
+
+
+  <view>
+    <image src="/img/competitionimages/Links.png" mode="widthFix"></image>
+    <text>分享</text>
+  </view>
+</view>
+
+<view class="aiInfo"> <image class="aiImg" src="/img/ai.png" mode="widthFix"></image> <text>AI等级: 普通</text> </view>
+
+
+<view class="vedioContainer">
+    <image src="/img/competitionimages/chessBoardCover.png"></image>
+</view>
+
+<view class="player">
+      <image src="/img/competitionimages/chessBoardCover.png"></image>
+      <view>
+        <text class="playerName">一代棋圣李士神</text>   
+        <text class="score">积分: 1000</text>  
+      </view>
+</view>
+
+
+<view class="gameControlBtns">
+    <text>认输</text>
+    <text>求和</text>
+    <text bindtap="showModal">悔棋</text>
+</view>
+
+
+
+
+
+ <!-- <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+    <view class="modals-cancel" bindtap="hideModal"></view>
+      <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+ 
+        <view>
+          <view class="dialog-body-top">
+            <text class="dialog-title">试下模式</text>
+            <image></image>
+          </view>
+          <view class="rolesContainer modalUl">
+              <view wx:for="{{mode}}" class="modalLi roleContainer" bindtap="goToIdentifyForm"><text class="roleName name {{item=='棋手黑棋'?'current':''}}">{{item}}</text></view>
+
+          </view>
+        </view>
+      </view>
+    </view>  -->

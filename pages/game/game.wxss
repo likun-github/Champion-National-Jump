@@ -1,0 +1,138 @@
+/* pages/game/game.wxss */
+
+.competitionRecommand{
+  margin: 20rpx 40rpx;
+  display: flex;
+  border: 1rpx solid skyblue;
+}
+.left{
+  width: 150rpx;
+  height: 150rpx;
+  border-right: 1rpx solid skyblue;
+  position: relative; 
+}
+.left .centerText{
+  font-size: 32rpx;
+  width: 150rpx;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.left text{
+  letter-spacing: 10rpx;
+  display: block;
+  color: #F4A9A3;
+}
+.left text:first-child{
+  margin-bottom: 20rpx;
+
+}
+
+.right{
+  position: relative;
+}
+
+.right .name{
+  margin-top: 40rpx;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+  color: gray;
+}
+.go{
+  position: absolute;
+  right: 0;
+  bottom: 10rpx;
+  color: #F4A9A3;
+  font-size: 26rpx;
+}
+
+
+.gameNav view text{
+  display: block;
+  color: #5099DD;
+}
+
+.gameNav view{
+  text-align: center;
+  margin: 0 70rpx;
+  padding: 40rpx 0;
+  margin-bottom: 150rpx;
+  border-radius: 15rpx; 
+  box-shadow: 0 10px 10px rgb(210,233,255); 
+}
+
+.gameNav .name{
+  
+  font-size: 44rpx;
+  font-weight: bold;
+  letter-spacing: 5rpx;
+}
+
+.gameNav .intro{
+  font-size: 24rpx;
+}
+
+.scoreLink{
+  color: #F4A9A3;
+  text-align: center;
+  font-size: 40rpx;
+}
+
+
+.shelter{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.15);
+}
+
+.matching{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 75%;
+  background-color: white;
+  padding: 40rpx  50rpx 70rpx 50rpx;
+  border-radius: 40rpx;
+}
+
+.matching .title{
+  text-align: center;
+  color: skyblue;
+  font-size: 26rpx;
+}
+
+.matchingUsers{
+  color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.matchingUsers image{
+  height: 120rpx;
+  width: 120rpx;
+}
+
+.player text{
+  display: block;
+}
+.VS{
+  font-size: 50rpx;
+  color: #F4A9A3;
+}
+
+.cancel{
+  height: 70rpx;
+  width: 70rpx; 
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(-20rpx);
+}

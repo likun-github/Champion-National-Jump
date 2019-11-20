@@ -1,0 +1,40 @@
+/* pages/conpetition/signup.wxss */
+
+
+
+.userForm{
+  padding: 0 100rpx;
+  margin-top:  200rpx;
+}
+
+.formCol{
+  margin-bottom: 40rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.formColLabel{
+  letter-spacing: 10rpx;
+  color: gray;
+
+}
+
+.textInput{
+  border-bottom: 2rpx solid gray;
+}
+
+
+
+.bottomContainer{
+
+}
+
+.centerOfContainer{
+
+  
+}
+
+.confirmBtn{
+  background-color: white;
+}
+

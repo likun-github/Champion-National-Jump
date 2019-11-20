@@ -1,0 +1,165 @@
+/* pages/recipients/recipients.wxss */
+
+
+.studentsOrClasses{
+  padding: 0 40rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.studentsOrClasses text{
+
+  color: gray;
+  font-size: 34rpx;
+  margin: 16rpx 0;
+
+}
+
+.studentsOrClasses text.choosed{
+  color: #F4A9A3;
+  border-bottom: 1rpx solid #F4A9A3;
+
+}
+
+
+
+/* 搜索栏 */
+.searchCol{
+  border-top: 1px solid #F4A9A3;
+  border-bottom: 1px solid #F4A9A3;
+  height: 50rpx;
+  display: flex;
+  justify-content: center;
+
+}
+.searchCol{
+  text-align: center;
+}
+.searchCol input{
+
+  width: 40%;
+  height: 50rpx;
+  line-height: 50rpx;
+
+}
+
+.searchCol image{
+  padding: 5rpx 0;
+  height: 40rpx;
+  width: 40rpx;
+}
+
+
+
+
+
+/* 收件人列表 */
+
+.studentChooseContainer{
+  display: flex;
+  align-items: center;
+    border-bottom: 1rpx solid #dddddd;
+}
+
+
+
+.checkStatus{
+  height: 75rpx;
+  width: 75rpx;
+  margin: 0 50rpx;
+  border-radius: 50% 50%;
+  border: 1rpx solid #65D0DD;
+}
+
+.choosedStatus{
+
+  background-color: #65D0DD;
+
+}
+
+.checkStatus image{
+  margin: 25%;
+  height: 50%;
+  width: 50%;
+}
+
+
+
+
+.studentContainer{
+  display: flex;
+  padding: 30rpx 0;
+  flex: 1;
+
+  justify-content: space-between;
+  height: 110rpx;
+  margin-left: 100rpx;
+}
+
+.containerLeft{
+  margin-right: 70rpx;
+}
+.containerLeft image{
+  height: 120rpx;
+  width: 120rpx;
+
+}
+
+
+.containerRight{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+
+
+.targetName{
+  font-weight: bold;
+}
+
+.targetWechat{
+  font-size: 25rpx;
+  color: gray;
+}
+
+.signInCount text{
+  margin: 6rpx 0;
+  font-size: 25rpx;
+  color: gray;
+  border: 1px solid gray;
+  
+}
+
+.classesChooseContainer{
+  padding: 0 20rpx;
+
+}
+
+.classChoose{
+  height: 140rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  display: flex;
+  align-items: center;
+  
+  justify-content: space-between; 
+
+}
+
+.classChoose .className{
+  font-size: 40rpx;
+  margin-left: 40rpx;
+}
+
+.classChoose .checkStatus{
+
+  float: right;
+
+}
+
+
+
+
+

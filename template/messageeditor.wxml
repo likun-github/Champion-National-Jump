@@ -1,0 +1,7 @@
+<template name="messageEditor">
+  <view class="message_editor">
+    <textarea placeholder="编辑信息..."></textarea>
+    <button>发送</button>
+  </view>
+</template>
+

@@ -1,0 +1,253 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+
+.modals{position:fixed; z-index: 999; top:0; left: 0; right:0; bottom: 0;}
+
+
+.modals-cancel{
+    position:absolute;
+     z-index:1000;
+      top:0;
+      left: 0;
+      right:0;
+      bottom: 0;
+      background-color: rgba(0,0,0,.5);
+  }
+
+.dialog-body-top{
+  width: 100%;
+  text-align:  center;
+  height:100rpx;
+  border-bottom: 3rpx solid gray;
+}
+
+
+.dialog-title{
+  line-height: 100rpx;
+  
+  font-size: 50rpx;
+  letter-spacing: 10rpx;
+  color: #F6BDB8;
+
+}
+
+
+.bottom-dialog-body{
+  position:absolute;
+  z-index:10001;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color: #fff;
+  transform: translateY(100%);
+}
+
+
+.modalUl{
+  height: 400rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40rpx 30% 0rpx;
+}
+
+.modalLi{
+  text-align:  center;
+  width: 100%;
+  border-bottom: 2rpx solid #F6BDB8;
+  height: 70rpx; 
+}
+
+.modalLi:last-of-type{
+
+  border: none;
+}
+
+
+.modalLi .name{
+  letter-spacing: 15rpx;
+  line-height: 70rpx;
+  color: gray;
+ 
+}
+
+.modalLi .current{
+
+  color: black;
+}
+
+
+/* 搜索栏 */
+.searchCol{
+  border-top: 1px solid #F4A9A3;
+  border-bottom: 1px solid #F4A9A3;
+  height: 50rpx;
+  display: flex;
+  justify-content: center;
+
+}
+.searchCol{
+  text-align: center;
+}
+.searchCol input{
+
+  width: 40%;
+  height: 50rpx;
+  line-height: 50rpx;
+
+}
+
+.searchCol image{
+  padding: 5rpx 0;
+  height: 40rpx;
+  width: 40rpx;
+}
+
+
+
+/* 媒体标签 */
+
+.mediaBtns{
+
+  font-size: 30rpx;
+  display: flex;
+  justify-content: flex-end;
+  color: gray;
+  padding: 0 30rpx;
+}
+
+.mediaBtns view{
+  display: flex;
+  border: 1px solid gray;
+  padding: 4rpx 12rpx;
+  border-radius: 30rpx 30rpx;
+  margin-left: 30rpx;
+}
+
+.mediaBtns image{
+  width: 40rpx;
+  vertical-align: middle;
+}
+
+
+
+
+.sortMethodChoose{
+  margin: 14rpx 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.sortMethodChoose text{
+  color: gray;
+  display: inline-block;
+  padding: 3rpx 30rpx;
+  border: 1rpx solid #cccccc;
+  border-radius: 20rpx 20rpx;
+}
+
+.sortMethodChoose text.chosen{
+  background-color: skyblue;
+  color: white;
+}
+
+
+
+
+.topNav{
+  padding: 0 40rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.topNav text{
+
+  color: gray;
+  font-size: 34rpx;
+  margin: 16rpx 0;
+
+}
+
+.topNav text.choosed{
+  color: #F4A9A3;
+  border-bottom: 1rpx solid #F4A9A3;
+
+}
+
+
+.promotePart{
+
+
+
+}
+
+.testIntro{
+  padding: 10rpx 36rpx;
+  color: gray;
+  font-size: 40rpx;
+}
+
+
+
+.bottomNav{
+
+  height: 130rpx;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #52A9FF;
+}
+
+
+.bottomNav image{
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.bottomNav view{
+  border-radius: 50% 50%;
+  
+  height: 120rpx;
+  width: 120rpx;
+  margin: 5rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottomNav .current{
+  background-color: #52A9FF;
+  color: white;
+}
+
+.bottomNav .bottomBarImage{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  height: 130rpx;
+  bottom: 0;
+  z-index: -1;
+  
+}
+
+.bottomNav .gameNav{
+  height: 120rpx;
+  width:  120rpx;
+  border-radius: 50% 50%;
+  border:  1rpx solid skyblue;
+  transform: translateY(-110rpx);
+}

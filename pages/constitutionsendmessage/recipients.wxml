@@ -1,0 +1,52 @@
+<!--pages/recipients/recipients.wxml-->
+<view class="studentsOrClasses">
+  <text data-route="students" bindtap="ChangeRoute" class="{{innerRoute=='students'?'choosed':''}}">全部学生</text>
+  <text data-route="classes" bindtap="ChangeRoute" class="{{innerRoute=='classes'?'choosed':''}}">全部班级</text>
+</view>
+
+
+<view class="searchCol" >
+  <input placeholder="输入姓名|班级搜索"></input>
+  <image src="../../img/Search.png"></image>
+</view>
+
+<view   wx:if="{{innerRoute=='students'}}" class="studentsChooseContainer" >
+
+  <view wx:for="{{students}}" wx:key="wechatId" class="studentChooseContainer">
+        <view class="studentContainer">
+      <view class="containerLeft">
+        <image src="../../img/studentimg.png"></image>
+      </view>
+      <view class="containerRight">
+    
+        <text class="targetName">{{item.name}}</text>
+        <text class="targetWechat">微信号:{{item.wechatId}}</text>
+        <view class="signInCount">
+            <text>签到{{item.signInCount}}次</text>  
+        </view>
+      </view>
+  </view>
+  
+  <view class="checkStatus {{item.choosen==true?'choosedStatus':''}}">
+    <image src="../../img/ok.png" wx:if="{{item.choosen}}"></image>
+  </view>
+  </view>
+
+</view>
+
+<view wx:else class="classesChooseContainer">
+  <view class="classChoose">
+    <text class="className">初级一班</text>
+    <view class="checkStatus choosedStatus">
+      <image src="../../img/ok.png"></image>
+    </view>
+    </view>
+</view>
+
+
+
+
+
+
+
+

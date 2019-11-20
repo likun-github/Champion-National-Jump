@@ -1,0 +1,143 @@
+/* pages/studentsmanage/studentinfo.wxss */
+
+.topInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+.portrait{
+  height: 150rpx;
+  width: 150rpx;
+}
+
+.topInfo text{
+  font-size: 36rpx;
+  margin:20rpx 0;
+}
+
+
+
+
+#studentForm{
+  padding: 0 50rpx;
+}
+
+
+.formCol{
+  margin-bottom: 50rpx;
+  padding: 0 10rpx;
+  border-bottom: 1rpx solid #dddddd;
+  line-height: 70rpx;
+  display: flex;
+}
+
+
+
+
+
+
+
+.formCol label{
+  letter-spacing: 10rpx;
+  font-size: 40rpx;
+  color: gray;
+}
+.formCol input{
+  flex: 1;
+  width: 50rpx;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+
+.formCol image{
+  height: 40rpx;
+  width: 40rpx;
+  display: inline;
+  vertical-align: center;
+  padding: 15rpx 0;
+}
+
+
+
+.formBtnContainer{
+   margin-top: 100rpx;
+   display: flex;
+    justify-content:space-between;
+   padding: 0 10rpx;
+}
+
+.viewSignIn{
+  text-align: center;
+  letter-spacing: 14rpx;
+  font-size: 40rpx;
+  color: gray;
+}
+
+.formBtnContainer button{
+ margin: 0;
+ padding: 0;
+  color: skyblue;
+  border-radius: 10rpx;
+  width: 180rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: white;
+  border: 1rpx solid skyblue;
+}
+
+
+/* 完成课时列 */
+.finishedClassCol{
+  display: block;
+  color: gray;
+}
+
+.finishedClassCol .top{
+  display: flex;
+}
+
+.top label{
+    letter-spacing: 10rpx;
+    font-size: 40rpx;
+    color: gray;
+  
+}
+.top slider{
+  flex: 1;
+}
+
+.finishedClassCol .bottom{
+  text-align: right;
+  line-height: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+.bottom view{
+  line-height: 60rpx;
+  height: 60rpx;
+  border-bottom: 1px solid #dddddd;
+  float: right;
+  
+}
+.bottom::after{
+  content: "020";
+  height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+
+.bottom view text{
+  
+  line-height: 60rpx;
+  
+}
+
+.bottom image{
+  vertical-align: middle;
+  padding: 10rpx 0;
+  margin-left: 16rpx;
+  height: 40rpx;
+  width: 40rpx; 
+}

@@ -1,0 +1,114 @@
+/* pages/constitutionnewmessage/constitutionnewmessage.wxss */
+.topDiv{
+  height: 80rpx;
+  display: flex;
+  margin: 0 40rpx;
+  border-bottom: 1rpx solid #FCB1AB;
+}
+
+.topDiv text{
+  line-height: 80rpx;
+  
+}
+
+.topDiv input{
+  flex: 1; 
+  height: 80rpx; 
+}
+
+.topDiv image{
+  margin:20rpx 0; 
+  height: 40rpx;
+  width: 40rpx;
+}
+
+
+.messagesContainer{
+  padding: 0 40rpx;
+  
+  height: 90rpx;
+}
+
+.messageContainer{
+  display: flex;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #dddddd;
+  justify-content: space-between;
+  height: 90rpx;
+}
+
+.containerLeft{
+  width: 20%;
+}
+.containerLeft image{
+  height: 100rpx;
+  width: 100rpx;
+
+}
+
+
+.containerRight{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rightTop{
+  
+}
+
+.targetName{
+
+}
+
+.messageTime{
+  font-size: 25rpx;
+  color: gray;
+  float: right;
+}
+
+.rightBottom{
+    font-size: 25rpx;
+    color: gray;
+    text-overflow: ellipsis;
+}
+
+
+
+.addContactBtn{
+  height: 90rpx;
+  width: 90rpx;
+  position: absolute;
+  bottom: 8%;
+  right: 8%;
+}
+
+/* 信息输入框 */
+.message_editor{
+  position: fixed;
+  bottom: 0;
+  height: 150rpx;
+  background-color: rgb(228,248,250);
+  display: flex;
+  width: 100%;
+
+  align-items: center;
+}
+
+.message_editor textarea{
+  height: 100rpx;
+  margin:0 25rpx;
+  
+  background-color: white;
+}
+
+.message_editor button{
+  
+  height: 60rpx;
+  width: 130rpx;
+  color: skyblue;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  background-color: white;
+}

@@ -1,0 +1,15 @@
+<!--pages/conpetition/signup.wxml-->
+
+<view class="userForm">
+    <view class="formCol"><label class="formColLabel">真实姓名:</label> <input class="textInput"></input></view>
+    <view class="formCol"><label class="formColLabel">身份证号:</label> <input  class="textInput"></input> </view>
+    <view class="formCol"><label class="formColLabel">联系电话:</label> <input  class="textInput"></input> </view>
+    <view class="formCol"><label class="formColLabel">段位等级:</label> <input  class="textInput"></input> </view>
+    <view class="formCol"><label class="formColLabel">段位等级:</label>
+    <radio-group> <radio name="gender">男</radio> <radio name="gender">女</radio> </radio-group>
+    </view>
+
+     <view class="bottomContainer">
+    <button class="confirmBtn centerOfContainer">确认报名</button>
+  </view>
+</view>

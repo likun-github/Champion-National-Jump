@@ -1,0 +1,55 @@
+<!--pages/game/scorelist.wxml-->
+
+<view class="topNav">
+  <text data-route="user" bindtap="ChangeRoute" class="{{innerRoute=='user'?'choosed':''}}">用户榜单</text>
+  <text data-route="true" bindtap="ChangeRoute" class="{{innerRoute=='true'?'choosed':''}}">真人榜单</text>
+</view>
+
+<view class="searchCol">
+  <input placeholder="请输入用户名称进行搜索"></input>
+  <image src="../../img/Search.png"></image>
+</view>
+
+
+<view class="userList" wx:if="{{innerRoute=='user'}}">
+  <view class="userItem" wx:for="{{[1,2,3]}}">
+    <view class="left">
+      <view>67</view>
+    </view>
+    <view class="center">
+      <image src="/img/studentimg.png"></image>
+    </view>
+    <view class="right">
+        <view class="rightTop">
+          <text>这是用户</text>
+          <text class="level">等级段位</text>
+        </view>
+
+        <view class="rightBottom">
+          <text>积分: 1000</text>
+          <text>胜率: 90%</text>
+        </view>
+    </view>
+  </view>
+</view>
+
+<view class="userList" wx:else>
+  <view class="userItem" wx:for="{{[1,2,3]}}">
+    <view class="left">
+      <view>67</view>
+    </view>
+    <view class="center">
+      <image src="/img/studentimg.png"></image>
+    </view>
+    <view class="right">
+        <view class="rightTop">
+          <text>这是用户</text>
+        </view>
+
+        <view class="rightBottom">
+          <text>有效局数: 1000</text>
+          <text>等级分: 2201</text>
+        </view>
+    </view>
+  </view>
+</view>

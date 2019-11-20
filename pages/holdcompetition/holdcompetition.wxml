@@ -1,0 +1,42 @@
+<!--pages/holdcompetition/holdcompetition.wxml-->
+<!-- <text>pages/holdcompetition/holdcompetition.wxml</text> -->
+
+
+<view class="topSpace"></view>
+
+<form class="competitionForm">
+  <view class="formCol"><label>比赛名称 :</label><input></input><image src="../../img/Comment.png"></image></view>
+  <view class="formCol">
+    <label>时间限定 :</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>每步加时 :</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>开始时间 :</label><input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>比赛轮数 :</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>比赛说明 :</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+
+  <view class="info">
+    比赛默认为机构赛，仅机构内学生可报名。
+    举办公开赛请联系冠军国跳。
+  </view>
+
+  <view class="formBtnContainer" bindtap="doCreateCompetition">
+    <button>创建比赛</button>
+  </view>
+</form>

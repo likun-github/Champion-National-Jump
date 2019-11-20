@@ -1,0 +1,33 @@
+
+
+/* 信息输入框 */
+.message_editor{
+  position: fixed;
+  bottom: 0;
+  height: 150rpx;
+  background-color: rgb(228,248,250);
+  display: flex;
+  width: 100%;
+
+  align-items: center;
+}
+
+.message_editor textarea{
+  height: 100rpx;
+  margin:0 25rpx;
+  
+  background-color: white;
+}
+
+.message_editor button{
+  
+  height: 60rpx;
+  width: 130rpx;
+  color: skyblue;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  background-color: white;
+  margin-right:25rpx;
+}
+
+

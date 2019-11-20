@@ -1,0 +1,77 @@
+/* pages/game/aicompetition.wxss */
+
+
+/* pages/mycollection/practise.wxss */
+
+
+.player{
+  margin-top: 30rpx;
+  display: flex;
+  padding: 0 30rpx;
+  position: relative;
+}
+
+.player view{
+  margin-left: 20rpx;
+}
+.playerName{
+  
+  font-size: 28rpx;
+  display: block;
+}
+.score{
+  font-size: 20rpx;
+}
+
+.player image{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50% 50%;
+  vertical-align: middle;
+}
+
+.vedioContainer{
+    margin: 16rpx 0;
+    text-align: center;
+}
+
+.vedioContainer image{
+    height: 680rpx;
+    width: 680rpx;  
+}
+
+
+.gameControlBtns{
+
+  display: flex;
+  justify-content: space-around;
+  font-size: 35rpx;
+  color: gray;
+  padding: 0 100rpx;
+  margin-top: 40rpx;
+}
+
+.gameControlBtns text{
+  border: 1rpx solid gray;
+  padding: 5rpx 15rpx;
+
+}
+
+.tips{
+  color: gray;
+  padding: 0 40rpx;
+  white-space: pre-wrap;
+}
+
+.aiInfo{
+  margin-left: 30rpx;
+}
+
+.aiImg{
+  margin-left: 20rpx;
+  vertical-align: bottom;
+  width: 50rpx;
+}
+
+
+

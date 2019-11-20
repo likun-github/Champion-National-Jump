@@ -1,0 +1,22 @@
+<!--pages/studentsmanage/studentsignstatistics.wxml-->
+
+
+<view class="topInfo">
+    <view class="infoLeft">
+      <image src="../../img/studentimg.png"></image>
+    </view>
+    <view class="infoRight">
+      <text class="name">学生小青</text>
+      <text class="wechatId">微信号: 跳棋小孩</text>
+      <text class="signInCount"><text>签到2次</text></text>
+    </view>
+</view>
+
+
+<view class="signInList">
+  <view wx:for="{{[1,2,3]}}" class="signInItem">
+      <text>第一次课</text>
+      <text class="signInTime">2019年6月10日</text>
+      <text class="signInOrNot">签到</text>
+  </view>
+</view>

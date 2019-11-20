@@ -1,0 +1,108 @@
+<!--pages/conpetition/competitionindex.wxml-->
+
+
+
+<view class="topSliderContainer">
+  <image src="/img/cover.png"></image>
+</view>
+
+<view class="navigator">
+  <text data-navigation="registe" class="{{innerNavigation=='registe'?'current':''}}" bindtap="ChangeInnerNavigation">比赛报名</text>
+  <text data-navigation="great" class="{{innerNavigation=='great'?'current':''}}" bindtap="ChangeInnerNavigation">精彩比赛</text>
+  <text data-navigation="my" class="{{innerNavigation=='my'?'current':''}}" bindtap="ChangeInnerNavigation">我的赛局</text>
+</view>
+
+
+<view class="searchCol" >
+  <input placeholder="输入姓名|班级搜索"></input>
+  <image src="/img/Search.png"></image>
+</view>
+
+<view class="sortMethodChoose">
+  <text>时间排序</text>
+</view>
+
+<view class="registingCompetitionsContainer" wx:if="{{innerNavigation=='registe'}}">
+  <view wx:for="{{registingCompetitions}}" wx:key="name" class="competitionCard">
+    <view class="cardLeft">
+      <image class="competitionCover" src="/img/checkerboard.png"></image>
+    </view>
+    <view class="cardRight">
+      <view class="competitionName" data-competitionId="{{item.CompetitionId}}" bindtap="GoToCompetitionInfo">{{item.CompetitionName}}</view>
+      <view class="competitionConstitution">举办机构:{{item.ConstitutionName}}</view>
+      <view class="competitionTags">
+        <text>线上</text>
+        <text> 公开赛</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="greatCompetitionsContainer" wx:elif="{{innerNavigation=='great'}}">
+  <view wx:for="{{greatCompetitions}}" wx:key="name" class="competitionCard">
+    <view class="cardLeft">
+      <image class="competitionCover" src="/img/checkerboard.png"></image>
+    </view>
+    <view class="cardRight">
+      <view class="competitionName" bindtap="GoToEdCompetition">{{item.name}}</view>
+      <view class="competitionConstitution">举办机构: {{item.constitution}}</view>
+      <view class="competitionTags">
+        <text>线上</text>
+        <text> 公开赛</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="myCompetitionsContainer" wx:elif="{{innerNavigation=='my'}}">
+  <view wx:for="{{myCompetitions}}" wx:key="name" class="competitionCard">
+    <view class="cardLeft">
+      <image class="competitionCover" src="/img/checkerboard.png"></image>
+    </view>
+    <view class="cardRight">
+      <view class="competitionName" bindtap="GoToCompetitionInfo">{{item.name}}</view>
+      <view class="competitionConstitution">举办机构: {{item.constitution}}</view>
+      <view class="competitionTags">
+        <text>线上</text>
+        <text> 公开赛</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+
+<view class="bottomNav">
+  
+  <image class="bottomBarImage" src="/img/bottomBar.png"></image>
+
+  <view data-route="learn" bindtap="redict">
+    <image src="/img/book.png" mode="widthFix"></image>
+    <text>学习</text>
+  </view>
+
+  <view data-route="chessmanual" bindtap="redict"> 
+    <image src="/img/chessBoard.png"  mode="widthFix"></image>
+    <text>棋谱</text>
+  </view>
+  <view class="gameNav" data-route="game" bindtap="redict">
+    <image  mode="widthFix" src="/img/cup.png"></image>
+    <text>对战</text>
+  </view>
+
+    <view  class="current" data-route="competition" bindtap="redict">
+    <image  mode="widthFix" src="/img/medal1.png"></image>
+    <text>比赛</text>
+  </view>
+
+  <view data-route="me" bindtap="redict">
+    <image src="/img/me.png"></image>
+    <text>我的</text>
+  </view>
+
+
+</view>

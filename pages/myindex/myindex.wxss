@@ -1,0 +1,72 @@
+/* pages/myindex/myindex.wxss */
+
+.illustration{
+
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 1;
+}
+
+.ball1{
+  position: absolute;
+  left: 0;
+  transform: translateX(-50%);
+  top: 900rpx;
+}
+
+.ball2{
+  position: absolute;
+  right: 0;
+  transform: translateX(50%);
+  top: 20rpx;
+}
+
+.boxs{
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  top: 0;
+
+}
+
+.beginBtn{
+  background-color: #52A9FF;
+  font-size: 50rpx;
+  letter-spacing: 4rpx;
+  color: white;
+  display: inline-block;
+  border-radius: 80rpx;
+  position: absolute;
+  padding: 5rpx 40rpx;
+
+  left: 50%;
+  transform: translateX(-50%);
+  top: 85%;
+  z-index: 10;
+}
+
+.text {
+
+  color: #4492BC;
+  z-index: 11;
+  position: relative;
+  margin-left: 50rpx;
+}
+.text text{
+  display: block;
+}
+
+.text .title{
+  letter-spacing: 10rpx;
+  font-weight: lighter;
+  font-size: 120rpx;
+}
+
+.text .sub{
+  font-size: 40rpx;
+  text-align: center;
+}

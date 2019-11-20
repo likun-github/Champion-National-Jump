@@ -1,0 +1,78 @@
+/* pages/studentsmanage/studentsmanageindex.wxss */
+
+
+/* 收件人列表 */
+
+.studentsContainer{
+    padding: 0 40rpx;
+}
+
+
+.studentContainer{
+  display: flex;
+  padding: 30rpx 0;
+
+  border-bottom: 1rpx solid #dddddd;
+
+  justify-content: space-between;
+  height: 110rpx;
+  
+}
+
+.containerLeft{
+  margin-right: 70rpx;
+}
+.containerLeft image{
+  height: 120rpx;
+  width: 120rpx;
+
+}
+
+
+.containerRight{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+
+
+.targetName{
+  font-weight: bold;
+}
+
+.targetWechat{
+  font-size: 25rpx;
+  color: gray;
+}
+
+.signInCount text{
+  margin: 6rpx 0;
+  font-size: 25rpx;
+  color: gray;
+  border: 1px solid gray;
+  
+}
+
+/* 底部按钮 */
+
+.bottomBtns{
+  display: flex;
+  padding: 40rpx 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.bottomBtns button{
+    color:skyblue;
+    border: 1rpx solid skyblue;
+    background-color:  white;
+}
+
+
+
+
+

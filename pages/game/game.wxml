@@ -1,0 +1,86 @@
+<!--pages/game/game.wxml-->
+
+
+<view class="competitionRecommand">
+    <view class="left">
+    <view class="centerText">
+       <text>赛况</text>
+        <text>推荐</text>
+    </view>
+     
+    </view>
+    <view class="right">
+      <view class="name">2019全国少年儿童国际跳棋公开赛</view>
+      <view class="go">进行中>>></view>
+    </view>
+</view>
+
+<view class="gameNav">
+  <view>
+    <text class="name">人机对战</text>
+    <text class="intro">挑战智能 技高一筹</text>
+  </view>
+  <view  bindtap="toggleShowMatching">
+    <text class="name">真人对战</text>
+    <text class="intro">为您匹配等级相近的对手</text>
+  </view>
+    <view>
+    <text class="name">跳棋大厅</text>
+    <text class="intro">围观比赛 创建房间</text>
+  </view>
+</view>
+
+<view class="scoreLink">
+  <text bindtap="GoToScoreList">积分榜 >></text>
+</view>
+
+
+<view class="shelter" wx:if="{{showMatching}}">
+  <view class="matching">
+    <image bindtap="toggleShowMatching" class="cancel" src="/img/cancel.png"></image>
+    <view class="title">正在为您匹配对手...</view>
+    <view class="matchingUsers">
+      <view class="player">
+        <image src="/img/studentimg.png"></image>
+        <text>学生小甲</text>
+      </view>
+      <view class="VS">VS</view>
+      <view class="player">
+        <image src="/img/studentimg.png"></image>
+        <text>学生小以</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="bottomNav">
+  
+  <image class="bottomBarImage" src="/img/bottomBar.png"></image>
+
+  <view data-route="learn" bindtap="redict">
+    <image src="/img/book.png" mode="widthFix"></image>
+    <text>学习</text>
+  </view>
+
+  <view data-route="chessmanual" bindtap="redict"> 
+    <image src="/img/chessBoard.png"  mode="widthFix"></image>
+    <text>棋谱</text>
+  </view>
+  <view class="gameNav current" data-route="game" bindtap="redict">
+    <image  mode="widthFix" src="/img/cup1.png"></image>
+    <text>对战</text>
+  </view>
+
+    <view data-route="competition" bindtap="redict">
+    <image  mode="widthFix" src="/img/medal.png"></image>
+    <text>比赛</text>
+  </view>
+
+  <view data-route="me" bindtap="redict">
+    <image src="/img/me.png"></image>
+    <text>我的</text>
+  </view>
+
+
+</view>

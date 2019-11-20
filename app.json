@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/myindex/myindex",
+    "pages/game/game",
+    "pages/chessmanual/chessmanualindex",
+    "pages/orgmenu/orgmenu",
+    "pages/game/aicompetition",
+    "pages/game/scorelist",
+    "pages/learn/learnindex",
+    "pages/conpetition/edcompetition",
+    "pages/mycollection/practise",
+    "pages/mycollection/competitiondetail",
+    "pages/mycollection/mycollection",
+    "pages/conpetition/competitionindex",
+    "pages/conpetition/signup",
+    "pages/conpetition/competitioninfo",
+    "pages/userIdentifyForm/userIdentifyForm",
+    "pages/studentsmanage/studentsignstatistics",
+    "pages/studentsmanage/studentinfo",
+    "pages/studentsmanage/addstudent",
+    "pages/constitutionsendmessage/constitutionnewmessage",
+    "pages/constitutionsendmessage/contitutionmessage",
+    "pages/constitutionsendmessage/recipients",
+    "pages/studentsmanage/studentsmanageindex",
+    "pages/holdcompetition/holdcompetition",
+    "pages/classmanage/classmanage",
+    "pages/studentchange/studentchange",
+    "pages/register/register",
+    "pages/classinfo/classinfo",
+    "pages/coachchange/coachchange",
+    "pages/studentinfo/studentinfo",
+    "pages/studentregister/studentregister"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "冠军国跳",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}
