@@ -2,6 +2,7 @@
 <!--pages/mycollection/practise.wxml-->
 
 
+<!--
 <view class="top mediaBtns">
   <view>
     <image src="/img/competitionimages/Reporting.png" mode="widthFix"></image>
@@ -14,13 +15,27 @@
     <text>分享</text>
   </view>
 </view>
+-->
 
 <view class="aiInfo"> <image class="aiImg" src="/img/ai.png" mode="widthFix"></image> <text>AI等级: 普通</text> </view>
 
+<view class="weui-cells__title">{{message}}</view>
+<canvas canvas-id='chessboard' bindtap="TapBoard" style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:1px solid black;">
 
+</canvas>
+
+<view class="gameResult" wx:if="{{gameEnd}}">
+  <view class="matching">
+    <image bindtap="endGame" class="cancel" src="/img/cancel.png"></image>
+    <text class="gameResultText">{{gameResult}}</text>
+  </view>
+</view>
+
+<!--
 <view class="vedioContainer">
     <image src="/img/competitionimages/chessBoardCover.png"></image>
 </view>
+-->
 
 <view class="player">
       <image src="/img/competitionimages/chessBoardCover.png"></image>
@@ -32,8 +47,7 @@
 
 
 <view class="gameControlBtns">
-    <text>认输</text>
-    <text>求和</text>
+    <text bindtap="giveUp">认输</text>
     <text bindtap="showModal">悔棋</text>
 </view>
 

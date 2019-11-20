@@ -123,6 +123,7 @@
 .player text{
   display: block;
 }
+
 .VS{
   font-size: 50rpx;
   color: #F4A9A3;

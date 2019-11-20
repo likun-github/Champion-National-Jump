@@ -22,6 +22,12 @@ Page({
     });
   },
 
+  goto_ai_competition:function() {
+    wx.navigateTo({
+      url: './aicompetition',
+    })
+  },
+
   GoToScoreList: function(){
     wx.navigateTo({
       url: './scorelist',

@@ -16,7 +16,7 @@
 </view>
 
 <view class="gameNav">
-  <view>
+  <view bindtap="goto_ai_competition">
     <text class="name">人机对战</text>
     <text class="intro">挑战智能 技高一筹</text>
   </view>

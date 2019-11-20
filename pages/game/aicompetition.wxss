@@ -3,24 +3,12 @@
 
 /* pages/mycollection/practise.wxss */
 
-
+///////////////////////////////////////////////////////////////////////////////////////////
 .player{
   margin-top: 30rpx;
   display: flex;
   padding: 0 30rpx;
   position: relative;
-}
-
-.player view{
-  margin-left: 20rpx;
-}
-.playerName{
-  
-  font-size: 28rpx;
-  display: block;
-}
-.score{
-  font-size: 20rpx;
 }
 
 .player image{
@@ -30,19 +18,60 @@
   vertical-align: middle;
 }
 
-.vedioContainer{
-    margin: 16rpx 0;
-    text-align: center;
+.player view{
+  margin-left: 20rpx;
 }
 
-.vedioContainer image{
-    height: 680rpx;
-    width: 680rpx;  
+.playerName{
+  font-size: 28rpx;
+  display: block;
 }
 
+.score{
+  font-size: 20rpx;
+}
+///////////////////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////////////////
+.gameResult{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.15);
+}
+
+.matching{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 75%;
+  background-color: white;
+  padding: 40rpx  50rpx 70rpx 50rpx;
+  border-radius: 40rpx;
+}
+
+.cancel{
+  height: 70rpx;
+  width: 70rpx; 
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(-20rpx);
+}
+
+.gameResultText{
+  font-size: 50rpx;
+  color: #F4A9A3;
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
 .gameControlBtns{
-
   display: flex;
   justify-content: space-around;
   font-size: 35rpx;
@@ -62,7 +91,14 @@
   padding: 0 40rpx;
   white-space: pre-wrap;
 }
+///////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
 .aiInfo{
   margin-left: 30rpx;
 }
@@ -72,6 +108,6 @@
   vertical-align: bottom;
   width: 50rpx;
 }
-
+///////////////////////////////////////////////////////////////////////////////////////////
 
 
