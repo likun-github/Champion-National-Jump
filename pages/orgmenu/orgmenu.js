@@ -24,7 +24,7 @@ Page({
     roles: ["student","constitution","coach"],
 
     registedInfo:{
-      role: "student",
+      role: "constitution",
       authenticated: true
     }
   },
@@ -50,7 +50,17 @@ Page({
     })
   },
 
+<<<<<<< HEAD
   goToStudentsManage: function(){
+=======
+goToCoachsManage: function () {
+    wx.navigateTo({
+      url: '/pages/coachsmanage/coachsmanageindex',
+    })
+  },
+
+goToStudentsManage: function(){
+>>>>>>> c2a5b939732b95d9dd1fbab4df64bf7b6a5dd13e
   wx.navigateTo({
     url: '/pages/studentsmanage/studentsmanageindex',
   })

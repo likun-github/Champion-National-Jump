@@ -1,6 +1,7 @@
+<!--pages/coachsmanage/addcoach.wxml-->
 <view class="topInfo">
   <image class="portrait" src="../../img/studentimg.png"></image>
-  <text>微信号: 跳棋小孩</text>
+  <text>微信号: 王教练</text>
 </view>
 
 <view id="studentForm">
@@ -14,22 +15,14 @@
     <input></input>
     <image src="../../img/Comment.png"></image>
   </view>
-  <view class="formCol">
-    <label>完成课时:</label><input></input>
-    <image src="../../img/Comment.png"></image>
-  </view>
+
   <view class="formCol">
     <label>段位等级:</label>
     <input></input>
     <image src="../../img/Comment.png"></image>
   </view>
   <view class="formCol">
-    <label>所属班级:</label>
-    <input></input>
-    <image src="../../img/Comment.png"></image>
-  </view>
-  <view class="formCol">
-    <label>剩余学费:</label>
+    <label>教授班级:</label>
     <input></input>
     <image src="../../img/Comment.png"></image>
   </view>

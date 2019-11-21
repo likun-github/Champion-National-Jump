@@ -91,7 +91,7 @@
         <text>></text>
     </view>
 
-    <view class="menuItem">
+    <view class="menuItem" bindtap="goToCoachsManage">
       <image src="{{coachimg}}" mode="widthFix" ></image>
       <button plain="true">教练管理</button>
       <text>></text>
