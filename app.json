@@ -29,7 +29,9 @@
     "pages/classinfo/classinfo",
     "pages/coachchange/coachchange",
     "pages/studentinfo/studentinfo",
-    "pages/studentregister/studentregister"
+    "pages/studentregister/studentregister",
+    "pages/coachsmanage/coachsmanageindex",
+    "pages/coachsmanage/addcoach"
   ],
   "window": {
     "backgroundTextStyle": "light",
