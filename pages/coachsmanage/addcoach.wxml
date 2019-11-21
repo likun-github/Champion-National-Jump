@@ -1,0 +1,34 @@
+<!--pages/coachsmanage/addcoach.wxml-->
+<view class="topInfo">
+  <image class="portrait" src="../../img/studentimg.png"></image>
+  <text>微信号: 王教练</text>
+</view>
+
+<view id="studentForm">
+  <view class="formCol">
+    <label>真实姓名:</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>联系方式：</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+
+  <view class="formCol">
+    <label>段位等级:</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+  <view class="formCol">
+    <label>教授班级:</label>
+    <input></input>
+    <image src="../../img/Comment.png"></image>
+  </view>
+
+
+  <view class="formBtnContainer">
+    <button>确定</button>
+  </view>
+</view>
