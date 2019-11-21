@@ -95,10 +95,14 @@ Page({
     this.Inite();
 
     // 清除计时器,否则分享页面给别人时计时器会在原来的基础上跑跑跑
-    //this.setData({whiteTimer: 0});
-    //this.setData({blackTimer: 0});
+    this.setData({ whiteTimer: null });
+    this.setData({ whiteSeconds: 0 });
+    this.setData({ whiteTimerText: "00:00:00" });
+    this.setData({ blackTimer: null });
+    this.setData({ blackSeconds: 0 });
+    this.setData({ blackTimerText: "00:00:00" });
 
-    context.draw(); 
+    context.draw();
     this.startTimer();
   },
 
@@ -257,7 +261,6 @@ Page({
     var width = this.data.chessBoardWidth
     var height = this.data.chessBoardHeight
 
-    // return [Math.floor(x / (width / 10)), Math.floor(y / (height / 10))]
     return Math.floor(x / (width / 10)) + Math.floor(y / (height / 10)) * 10;
   },
 
@@ -458,18 +461,42 @@ Page({
   
     paths = this.GetAvailablePaths(this.data.currentUser);
     if (paths.length == 0) { // 当前方无子可走,弹出游戏结束对话框
-      this.setData({ gameEnd: true });
+      var that = this;
       if (this.data.currentUser == 0) {
         wx.showModal({
-          showCancel: false,
-          title: "提示",
+          title:"游戏结束",
           content: "您输啦！",
+          confirmText: "收藏本局",   // 收藏本局，然后再来一局 
+          confirmColor: "skyblue",
+          showCancel: true,
+          cancelText: "再来一局",    // 再来一局
+          cancelColor: "black",
+
+          success: function(res) {
+            if(res.cancel) {          
+            } else { 
+              that.collect();// 收藏本局
+            }
+            that.onLoad(); // 再来一局
+          }
         })
       } else {
         wx.showModal({
-          showCancel: false,
-          title: "提示",
+          title: "游戏结束",
           content: "您赢啦！",
+          confirmText: "收藏本局",   // 收藏本局，然后再来一局 
+          confirmColor: "skyblue",
+          showCancel: true,
+          cancelText: "再来一局",    // 再来一局
+          cancelColor: "black",
+
+          success: function (res) {
+            if (res.cancel) {
+            } else {
+              that.collect();// 收藏本局
+            }
+            that.onLoad(); // 再来一局
+          }
         })
       }
     }
@@ -549,6 +576,8 @@ Page({
 
         // 开启计时器
         this.startTimer();
+        // 测试保存数据TTT
+        this.collect();
       }
     } else { // 黑棋（AI）走棋
     }
@@ -618,7 +647,7 @@ Page({
   // 将本次对局数据保存到本地
   collect:function() {
     wx.setStorage({
-      key: util.formatTime(new Date()),   // key为时间
+      key: util.formatTime(Date.now()).toString(),   // key为时间
       data: {
         "type":"人机对战",
         "white": this.data.whiteWithdraw, 

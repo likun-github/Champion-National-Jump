@@ -1,54 +1,28 @@
 <!--pages/mycollection/mycollection.wxml-->
-<view class="topNav">
-  <text data-route="competition" bindtap="ChangeRoute" class="{{innerRoute=='competition'?'choosed':''}}">我的对战</text>
-  <text data-route="practise" bindtap="ChangeRoute" class="{{innerRoute=='practise'?'choosed':''}}">我的练习</text>
-   <text data-route="others" bindtap="ChangeRoute" class="{{innerRoute=='others'?'choosed':''}}">其他收藏</text>
-</view>
 
-<view class="searchCol">
-  <input placeholder="请输入搜索关键词"></input>
-  <image src="../../img/Search.png"></image>
-</view>
-
-<view class="sortMethodChoose">
-  <text>综合排序</text>
-  <text>时间排序</text>
-</view>
-
-<view class="competitionsContainer" wx:if="{{innerRoute=='competition'}}">
+<view class="competitionsContainer" wx:for="{{collections}}">
   <view class="competition"  bindtap="GoToDetail">
     <view class="left">
       <image src="/img/checkerboard.png"></image>
     </view>
 
     <view class="right">
-      <text class="competitionName">棋谱名称</text>
+      <text class="competitionName">{{item.type}}</text>
 
       <view class="players">
-        <text class="player1">选手123</text>
-        <text class="player2">选手457</text>
-      
+        <text class="player1">我方：我</text>
+        <text class="player2">敌方：AI</text>   
       </view>
 
       <view class="rightBottom">
-        <text class="time">2019-06-18</text>
-        <view class="hot">
-          <view>
-            <image></image>
-            <text>1.5W</text>
-          </view>
-          <view>
-            <image></image>
-            <text>8K</text>
-          </view>
-        </view>
-
+        <text class="time">{{item.id}} </text>
       </view>
+
     </view>
   </view>
 </view>
 
-
+<!--
 <view class="competitionsContainer" wx:elif="{{innerRoute=='practise'}}">
   <view class="competition" bindtap="GoToDetail">
     <view class="left">
@@ -81,3 +55,4 @@
     </view>
   </view>
 </view>
+-->

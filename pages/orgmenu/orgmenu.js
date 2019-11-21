@@ -19,7 +19,6 @@ Page({
     orgimg:'../../statics/orgimg.png',
     hideModal: true, //模态框的状态  true-隐藏  false-显示
 
-
     animationData: {},//
 
     roles: ["student","constitution","coach"],
@@ -40,7 +39,9 @@ Page({
   GoToCollection: function(){
     wx.navigateTo({
       url: '/pages/mycollection/mycollection',
-    })
+    });
+    
+
   },
 
   goToHoldCompetition: function(){
@@ -48,7 +49,8 @@ Page({
       url: '../holdcompetition/holdcompetition',
     })
   },
-goToStudentsManage: function(){
+
+  goToStudentsManage: function(){
   wx.navigateTo({
     url: '/pages/studentsmanage/studentsmanageindex',
   })
