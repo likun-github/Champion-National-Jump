@@ -32,42 +32,6 @@
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////////////////
-.gameResult{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.15);
-}
-
-.matching{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: 75%;
-  background-color: white;
-  padding: 40rpx  50rpx 70rpx 50rpx;
-  border-radius: 40rpx;
-}
-
-.cancel{
-  height: 70rpx;
-  width: 70rpx; 
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform: translateY(-20rpx);
-}
-
-.gameResultText{
-  font-size: 50rpx;
-  color: #F4A9A3;
-}
-///////////////////////////////////////////////////////////////////////////////////////////
-
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////

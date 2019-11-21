@@ -1,9 +1,9 @@
 // pages/game/aicompetition.js
 
 var movegen = require('../../utils/movegen.js');
+var util = require('../../utils/util.js');
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -20,11 +20,16 @@ Page({
     whiteChesses: [],
     kingChesses: [],
 
+    // 计时器
+    whiteTimer: null,
+    whiteSeconds: 0,
+    whiteTimerText: "00:00:00",
+    blackTimer: null,
+    blackSeconds: 0,
+    blackTimerText: "00:00:00",
+
     // 游戏结果
     gameResult: "",
-
-    // 游戏结束
-    gameEnd: false,
 
     //现在的目前对象
     currentTarget: null,
@@ -88,7 +93,48 @@ Page({
     this.setData({ context: context });
 
     this.Inite();
+
+    // 清除计时器,否则分享页面给别人时计时器会在原来的基础上跑跑跑
+    //this.setData({whiteTimer: 0});
+    //this.setData({blackTimer: 0});
+
     context.draw(); 
+    this.startTimer();
+  },
+
+  // 秒数 => 时：分：秒
+  formatTime(seconds) {
+    return [
+      parseInt(seconds / 60 / 60), 
+      parseInt(seconds / 60 % 60), 
+      parseInt(seconds % 60)       
+    ]
+      .join(":")
+      .replace(/\b(\d)\b/g, "0$1");
+  },
+
+  // 开启计时器
+  startTimer:function() {
+    var that = this;
+    if(this.data.currentUser == 0) { // 白棋计时器
+      if(that.data.blackTimer != null) {
+        clearInterval(that.data.blackTimer);
+      }     
+      that.data.whiteTimer = setInterval(function () {
+        let seconds = that.data.whiteSeconds + 1;
+        that.setData({whiteSeconds: seconds });   
+        that.setData({ whiteTimerText: that.formatTime(seconds)});    
+      }, 1000);
+    } else { // 黑棋计时器
+      clearInterval(that.data.whiteTimer);
+      that.data.blackTimer = setInterval(function () {
+        let seconds = that.data.blackSeconds + 1;
+        that.setData({
+          blackSeconds: seconds,
+          blackTimerText: that.formatTime(seconds)
+        });
+      }, 1000);
+    }
   },
 
   // 清空棋子
@@ -191,6 +237,8 @@ Page({
     ctx.moveTo(width / 10 / 2 + j * width / 10, height / 10 / 2 + i * height / 10);
     ctx.arc(width / 10 / 2 + j * width / 10, height / 10 / 2 + i * height / 10, width / 10 / 2 * 4 / 5, 0, 2 * Math.PI, true)
   },
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // 高亮选中的棋子
   HighlightChess: function (index, color) {
@@ -412,9 +460,17 @@ Page({
     if (paths.length == 0) { // 当前方无子可走,弹出游戏结束对话框
       this.setData({ gameEnd: true });
       if (this.data.currentUser == 0) {
-        this.setData({ gameResult: "您输了！" });
+        wx.showModal({
+          showCancel: false,
+          title: "提示",
+          content: "您输啦！",
+        })
       } else {
-        this.setData({ gameResult: "您赢了！" });
+        wx.showModal({
+          showCancel: false,
+          title: "提示",
+          content: "您赢啦！",
+        })
       }
     }
 
@@ -490,19 +546,15 @@ Page({
         // 把当前棋盘转换成bitboard棋盘，存在whiteWithdraw中
         this.data.whiteWithdraw.push(this.MiniBoard2Bitboard());
         // 把当前棋盘转换成Scan的棋盘，并上传服务器………………
+
+        // 开启计时器
+        this.startTimer();
       }
+    } else { // 黑棋（AI）走棋
     }
-    
   },
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  // 游戏结束，取消按钮
-  endGame:function() {
-    wx.navigateTo({
-      url: './game',
-    });
-  },
-
+  
   // 认输，回到上一个界面
   giveUp: function () {
     wx.navigateTo({
@@ -536,7 +588,11 @@ Page({
   // 悔棋，白方退一步棋
   withdraw:function() {
     if(this.data.whiteWithdraw.length == 1) { // 刚刚开局，不能悔棋
-      console.log("不能悔棋！");
+      wx.showModal({
+        showCancel: false,
+        title: "提示",
+        content: "你还没走棋，不能悔棋！",
+      })
     } else { // 可以悔棋
       if (this.data.whiteWithdraw.length == this.data.blackWithdraw.length) { // 白棋走后黑棋已走，先悔黑棋，再悔白棋
         this.data.blackWithdraw.pop();      
@@ -556,6 +612,19 @@ Page({
     }
     // 悔棋后走白棋
     this.setData({currentUser: 0});
+    this.startTimer();
+  },
+
+  // 将本次对局数据保存到本地
+  collect:function() {
+    wx.setStorage({
+      key: util.formatTime(new Date()),   // key为时间
+      data: {
+        "type":"人机对战",
+        "white": this.data.whiteWithdraw, 
+        "black": this.data.blackWithdraw,
+      }
+    })
   },
 
   /**

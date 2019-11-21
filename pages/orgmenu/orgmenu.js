@@ -28,10 +28,8 @@ Page({
       role: "student",
       authenticated: true
     }
-
-
-
   },
+
   redict: function(e){
     var app = getApp();
     app.redict(e);
@@ -40,7 +38,6 @@ Page({
 
   //事件处理函数
   GoToCollection: function(){
-
     wx.navigateTo({
       url: '/pages/mycollection/mycollection',
     })

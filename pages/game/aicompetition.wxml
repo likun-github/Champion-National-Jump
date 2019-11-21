@@ -19,23 +19,16 @@
 
 <view class="aiInfo"> <image class="aiImg" src="/img/ai.png" mode="widthFix"></image> <text>AI等级: 普通</text> </view>
 
-<view class="weui-cells__title">{{message}}</view>
-<canvas canvas-id='chessboard' bindtap="TapBoard" style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:1px solid black;">
+<view class="weui-cells__title">
+  <text> {{blackTimerText}}</text>
+</view>
 
+<canvas canvas-id='chessboard' bindtap="TapBoard" style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:1px solid black;">
 </canvas>
 
-<view class="gameResult" wx:if="{{gameEnd}}">
-  <view class="matching">
-    <image bindtap="endGame" class="cancel" src="/img/cancel.png"></image>
-    <text class="gameResultText">{{gameResult}}</text>
-  </view>
+<view class="weui-cells__title">
+  <text> {{whiteTimerText}}</text>
 </view>
-
-<!--
-<view class="vedioContainer">
-    <image src="/img/competitionimages/chessBoardCover.png"></image>
-</view>
--->
 
 <view class="player">
       <image src="/img/competitionimages/chessBoardCover.png"></image>
@@ -45,29 +38,7 @@
       </view>
 </view>
 
-
 <view class="gameControlBtns">
     <text bindtap="giveUp">认输</text>
     <text bindtap="withdraw">悔棋</text>
 </view>
-
-
-
-
-
- <!-- <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
-    <view class="modals-cancel" bindtap="hideModal"></view>
-      <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
- 
-        <view>
-          <view class="dialog-body-top">
-            <text class="dialog-title">试下模式</text>
-            <image></image>
-          </view>
-          <view class="rolesContainer modalUl">
-              <view wx:for="{{mode}}" class="modalLi roleContainer" bindtap="goToIdentifyForm"><text class="roleName name {{item=='棋手黑棋'?'current':''}}">{{item}}</text></view>
-
-          </view>
-        </view>
-      </view>
-    </view>  -->
