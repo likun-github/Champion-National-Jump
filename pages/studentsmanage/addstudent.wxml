@@ -10,7 +10,7 @@
     <image src="../../img/Comment.png"></image>
   </view>
   <view class="formCol">
-    <label>联系方式</label>
+    <label>联系方式：</label>
     <input></input>
     <image src="../../img/Comment.png"></image>
   </view>
