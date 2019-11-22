@@ -30,6 +30,9 @@ Page({
     // 最大走棋数
     maxMoves: 0,
 
+    // 游戏结果
+    result: null,
+
     // bitboard棋盘索引转换成小程序棋盘索引
     bit2Mini: [90, 92, 94, 96, 98,
                 81, 83, 85, 87, 89,
@@ -50,6 +53,7 @@ Page({
     // 获取上一个页面的数据
     let pages = getCurrentPages();
     let previousPage = pages[pages.length - 2];
+    this.setData({ result: previousPage.data.currentCollection["result"]});
     let collection = [];
     for (let i = 0; i < previousPage.data.currentCollection["white"].length; i++) {
       if(i == 0) { // 白棋黑棋索引0的棋局一致，只push白棋的

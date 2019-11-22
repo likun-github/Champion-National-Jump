@@ -475,7 +475,7 @@ Page({
           success: function(res) {
             if(res.cancel) {          
             } else { 
-              that.collect();// 收藏本局
+              that.collect("l");// 收藏本局
             }
             that.onLoad(); // 再来一局
           }
@@ -493,7 +493,7 @@ Page({
           success: function (res) {
             if (res.cancel) {
             } else {
-              that.collect();// 收藏本局
+              that.collect("w");// 收藏本局
             }
             that.onLoad(); // 再来一局
           }
@@ -643,13 +643,14 @@ Page({
   },
 
   // 将本次对局数据保存到本地
-  collect:function() {
+  collect:function(result) {
     wx.setStorage({
       key: util.formatTime(Date.now()).toString(),   // key为时间
       data: {
         "type":"人机对战",
         "white": this.data.whiteWithdraw, 
         "black": this.data.blackWithdraw,
+        "result": result
       }
     })
   },

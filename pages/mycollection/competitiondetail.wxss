@@ -23,7 +23,6 @@
   vertical-align: middle;
 }
 
-
 .playerRight{
   font-size: 30rpx;
   color: gray;
