@@ -20,7 +20,6 @@
   </view>
 
   <view class="playerRight">
-      <text>9'34''</text>
       <text class="win">赢</text>
   </view>
 </view>
@@ -36,9 +35,9 @@
   </view>
 
   <view class="playerRight">
-      <text>9'34''</text>
       <text class="lose">输</text>
   </view>
+
 </view>
 
 

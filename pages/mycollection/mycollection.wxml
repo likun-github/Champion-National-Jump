@@ -1,13 +1,13 @@
 <!--pages/mycollection/mycollection.wxml-->
 
-<view class="competitionsContainer" wx:for="{{collections}}">
-  <view class="competition"  bindtap="GoToDetail">
+<view class="competitionsContainer" wx:for="{{collections}}" wx:for-index="key" wx:for-item="value">
+  <view class="competition"  bindtap="GoToDetail" id="{{key}}">
     <view class="left">
       <image src="/img/checkerboard.png"></image>
     </view>
 
     <view class="right">
-      <text class="competitionName">{{item.type}}</text>
+      <text class="competitionName">{{value.type}}</text>
 
       <view class="players">
         <text class="player1">我方：我</text>
@@ -15,7 +15,7 @@
       </view>
 
       <view class="rightBottom">
-        <text class="time">{{item.id}} </text>
+        <text class="time">{{key}}</text>
       </view>
 
     </view>

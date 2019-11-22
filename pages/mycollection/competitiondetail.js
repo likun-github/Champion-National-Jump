@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    collection: null
   },
 
  
@@ -14,7 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 获取上一个页面的数据
+    let pages = getCurrentPages();
+    let previousPage = pages[pages.length - 2];
+    this.setData({ collection: previousPage.data.collections[0]});
   },
 
   /**

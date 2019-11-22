@@ -6,10 +6,19 @@ Page({
    */
   data: {
     innerRoute: "competition",
-    collections:[]
+
+    // 用户全部的对战收藏
+    collections:[],
+
+    // 当前选中的收藏
+    currentCollection: null
+
   },
 
-  GoToDetail: function () {
+  GoToDetail: function (e) {
+    let id = e.currentTarget.id;
+    
+    this.setData({});
     wx.navigateTo({
       url: './competitiondetail',
     })
@@ -50,23 +59,15 @@ Page({
             tempKeys.push(res.keys[i].toString());
           }
         }
-        let tempCollections = [];
-        
+        let tempCollections = {};       
         for (let i = 0; i < tempKeys.length; i++) {          
           wx.getStorage({
             key: tempKeys[i],          
             success: function (res) {
-              let tempCollection = {};
-              tempCollection["id"] = tempKeys[i];
-              tempCollection["type"] = res.data["type"];
-              tempCollection["white"] = res.data["white"];
-              tempCollection["black"] = res.data["black"];
-              tempCollections.push(tempCollection);
+              tempCollections[tempKeys[i]] = res.data;
               that.setData({ collections: tempCollections });
-              console.log(res.data);
             },
             fail: function (res) {
-              console.log(res);
             }
           });
         }

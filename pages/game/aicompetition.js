@@ -576,8 +576,6 @@ Page({
 
         // 开启计时器
         this.startTimer();
-        // 测试保存数据TTT
-        this.collect();
       }
     } else { // 黑棋（AI）走棋
     }
