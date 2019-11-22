@@ -1,27 +1,6 @@
 /* pages/mycollection/competitiondetail.wxss */
 
-.mediaBtns{
-
-  font-size: 30rpx;
-  display: flex;
-  justify-content: flex-end;
-  color: gray;
-  padding: 0 30rpx;
-}
-
-.mediaBtns view{
-  display: flex;
-  border: 1px solid gray;
-  padding: 4rpx 12rpx;
-  border-radius: 30rpx 30rpx;
-  margin-left: 30rpx;
-}
-
-.mediaBtns image{
-  height: 40rpx;
-  width: 40rpx;
-}
-
+///////////////////////////////////////////////////////////////////////////////////////////
 .player{
   margin-top: 30rpx;
   display: flex;
@@ -51,7 +30,9 @@
   height: 80rpx;
   line-height: 80rpx;
 }
+///////////////////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////////////////
 .win{
   font-size: 32rpx;
   padding: 0 12rpx;
@@ -69,15 +50,35 @@
 
 }
 
+.draw{
+    font-size: 32rpx;
+  padding: 0 12rpx;
+  border: 1rpx solid blue;
+  color: blue;
+  margin-left: 10rpx;
 
-.vedioContainer{
-    margin: 16rpx 0;
-    text-align: center;
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////
+.gameControlBtns{
+  display: flex;
+  justify-content: space-around;
+  font-size: 35rpx;
+  color: gray;
+  padding: 0 100rpx;
+  margin-top: 40rpx;
 }
 
-.vedioContainer image{
-    height: 680rpx;
-    width: 680rpx;  
+.gameControlBtns text{
+  border: 1rpx solid gray;
+  padding: 5rpx 15rpx;
+
 }
 
-
+.tips{
+  color: gray;
+  padding: 0 40rpx;
+  white-space: pre-wrap;
+}
+///////////////////////////////////////////////////////////////////////////////////////////

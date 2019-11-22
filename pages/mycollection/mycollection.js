@@ -18,7 +18,8 @@ Page({
   GoToDetail: function (e) {
     let id = e.currentTarget.id;
     
-    this.setData({});
+    this.setData({currentCollection: this.data.collections[id]});
+
     wx.navigateTo({
       url: './competitiondetail',
     })
@@ -70,8 +71,7 @@ Page({
             fail: function (res) {
             }
           });
-        }
-        
+        }       
       }
     });
   },

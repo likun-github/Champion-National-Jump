@@ -1,18 +1,4 @@
 <!--pages/mycollection/competitiondetail.wxml-->
-
-<view class="top mediaBtns">
-  <view>
-    <image src="/img/competitionimages/点赞.png"></image>
-    <text>点赞</text>
-  </view>
-
-  <view>
-    <image src="/img/competitionimages/Links.png"></image>
-    <text>分享</text>
-  </view>
-</view>
-
-
 <view class="player">
   <view class="playerLeft">
       <image src="/img/competitionimages/chessBoardCover.png"></image>
@@ -24,9 +10,8 @@
   </view>
 </view>
 
-<view class="vedioContainer">
-    <image src="/img/competitionimages/chessBoardCover.png"></image>
-</view>
+<canvas canvas-id='chessboard' style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:1px solid black;">
+</canvas>
 
 <view class="player">
   <view class="playerLeft">
@@ -40,9 +25,7 @@
 
 </view>
 
-
-<view class="vedioControl">
-  <view>
-      <image ></image> 
-  </view>
+<view class="gameControlBtns">
+    <text bindtap="last">上一步</text>
+    <text bindtap="next">下一步</text>
 </view>
