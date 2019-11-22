@@ -28,8 +28,8 @@
       <image class="competitionCover" src="/img/checkerboard.png"></image>
     </view>
     <view class="cardRight">
-      <view class="competitionName" data-competitionId="{{item.CompetitionId}}" bindtap="GoToCompetitionInfo">{{item.CompetitionName}}</view>
-      <view class="competitionConstitution">举办机构:{{item.ConstitutionName}}</view>
+      <view class="competitionName" data-competitionId="{{item.CompetitionId}}" bindtap="GoToCompetitionInfo">{{item.name}}</view>
+      <view class="competitionConstitution">举办机构:{{item.constitution}}</view>
       <view class="competitionTags">
         <text>线上</text>
         <text> 公开赛</text>

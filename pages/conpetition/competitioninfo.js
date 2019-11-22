@@ -36,17 +36,15 @@ Page({
       competitionId: options.id
     });
 
+    var app = getApp();
+
+    var server = app.globalData.restServiceBaseUrl;
+
 
     wx.request({
-      url: 'http://localhost:8082/StayHomeRestServer.NETCoreEnvironment/rest/GetCompetition',
-      data: JSON.stringify({competitionId: options.id}),
+      url: server+"/GetCompetitionInfo?id"+that.data.competitionId,
       success: function (res) {
-        
-        
-        console.log(res.data)
-
         that.setData({ competition: res.data });
-
       }
     })
 
