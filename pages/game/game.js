@@ -15,8 +15,6 @@ Page({
   },
 
   toggleShowMatching: function(){
-    
-
     this.setData({
       showMatching: !this.data.showMatching
     });

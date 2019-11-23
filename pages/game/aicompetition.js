@@ -7,15 +7,14 @@ Page({
   /**
    * 页面的初始数据
    */
-  borderWidth:15,
   data: {
     // 上下文
     context: null,
     
     //canvas相关变量：canvas的长宽，和画图笔
     borderWidth: 15,
-    chessBoardWidth: wx.getSystemInfoSync().windowWidth - 30,
-    chessBoardHeight: wx.getSystemInfoSync().windowWidth - 30,
+    chessBoardWidth: wx.getSystemInfoSync().windowWidth - 80,
+    chessBoardHeight: wx.getSystemInfoSync().windowWidth - 80,
 
     // 棋数据
     blackChesses: [],
@@ -175,12 +174,14 @@ Page({
     this.DrawChesses();
   },
 
-  // 画棋盘
+  // 绘制棋盘
   DrawBoard: function () {
+    // 绘制棋盘底色
     var width = this.data.chessBoardWidth
     var height = this.data.chessBoardHeight
     var context = this.data.context;
     context.setFillStyle("rgb(225, 240, 255)");
+    // 绘制棋盘方格
     context.fillRect(0, 0, width, height);
     context.setFillStyle("rgb(76, 135, 253)");    
     for (var i = 0; i < 10; i++) {
@@ -192,6 +193,7 @@ Page({
         }
       }
     }
+    // 绘制棋盘数字
     context.setFillStyle("rgb(255, 255, 255)");  
     context.setFontSize(7);
     let number = 1;
