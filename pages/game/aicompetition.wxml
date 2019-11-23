@@ -1,21 +1,4 @@
 <!--pages/game/aicompetition.wxml-->
-<!--pages/mycollection/practise.wxml-->
-
-
-<!--
-<view class="top mediaBtns">
-  <view>
-    <image src="/img/competitionimages/Reporting.png" mode="widthFix"></image>
-    <text>保存</text>
-  </view>
-
-
-  <view>
-    <image src="/img/competitionimages/Links.png" mode="widthFix"></image>
-    <text>分享</text>
-  </view>
-</view>
--->
 
 <view class="aiInfo"> <image class="aiImg" src="/img/ai.png" mode="widthFix"></image> <text>AI等级: 普通</text> </view>
 
@@ -23,7 +6,8 @@
   <text> {{blackTimerText}}</text>
 </view>
 
-<canvas canvas-id='chessboard' bindtap="TapBoard" style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:1px solid black;">
+
+<canvas canvas-id='chessboard' bindtap="TapBoard" style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:15px solid rgb(82,169,255);">
 </canvas>
 
 <view class="timer">

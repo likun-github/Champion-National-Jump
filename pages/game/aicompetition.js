@@ -7,13 +7,15 @@ Page({
   /**
    * 页面的初始数据
    */
+  borderWidth:15,
   data: {
     // 上下文
     context: null,
     
     //canvas相关变量：canvas的长宽，和画图笔
-    chessBoardWidth: wx.getSystemInfoSync().windowWidth - 2,
-    chessBoardHeight: wx.getSystemInfoSync().windowWidth - 2,
+    borderWidth: 15,
+    chessBoardWidth: wx.getSystemInfoSync().windowWidth - 30,
+    chessBoardHeight: wx.getSystemInfoSync().windowWidth - 30,
 
     // 棋数据
     blackChesses: [],
@@ -178,7 +180,9 @@ Page({
     var width = this.data.chessBoardWidth
     var height = this.data.chessBoardHeight
     var context = this.data.context;
-    context.setFillStyle("rgb(156, 214, 228)");
+    context.setFillStyle("rgb(225, 240, 255)");
+    context.fillRect(0, 0, width, height);
+    context.setFillStyle("rgb(76, 135, 253)");    
     for (var i = 0; i < 10; i++) {
       for (var j = 0; j < 5; j++) {
         if (i % 2 == 0) { // 奇数行
@@ -186,6 +190,19 @@ Page({
         } else { // 偶数行
           context.fillRect((j * 2) * width / 10, i * height / 10, width / 10, height / 10);
         }
+      }
+    }
+    context.setFillStyle("rgb(255, 255, 255)");  
+    context.setFontSize(7);
+    let number = 1;
+    for (var i = 0; i < 10; i++) {
+      for (var j = 0; j < 5; j++) {
+        if (i % 2 == 0) { // 奇数行
+          context.fillText(number.toString(), (1 + j * 2) * width / 10 + 2, i * height / 10 +9);
+        } else { // 偶数行
+          context.fillText(number.toString(), (j * 2) * width / 10 + 2, i * height / 10 + 9)
+        }
+        number ++;
       }
     }
   },
@@ -200,7 +217,10 @@ Page({
     // 画黑色棋
     for (let i = 0; i < this.data.blackChesses.length; i++) {
       if (this.data.blackChesses[i] == 1) {
-        this.DrawChess(i, context)
+        //this.DrawChess(i, context);
+        var width = this.data.chessBoardWidth / 10;
+        var center = this.GetRectCenter(Math.floor(i / 10), i % 10, this.data.chessBoardWidth, this.data.chessBoardHeight);
+        context.drawImage("/img/bm.svg", center.x - width / 2 + width / 8, center.y - width / 2 + width / 8, width * 6 / 8, width * 6 / 8);
       }
     }
     context.closePath();
@@ -211,7 +231,10 @@ Page({
     // 画白色棋
     for (let i = 0; i < this.data.whiteChesses.length; i++) {
       if (this.data.whiteChesses[i] == 1) {
-        this.DrawChess(i, context)
+        //this.DrawChess(i, context)
+        var width = this.data.chessBoardWidth / 10 ;
+        var center = this.GetRectCenter(Math.floor(i / 10), i % 10, this.data.chessBoardWidth, this.data.chessBoardHeight);
+        context.drawImage("/img/wm.svg", center.x - width / 2+width/8, center.y - width / 2 +width/8, width * 6 / 8, width * 6 / 8);
       }
     }
     context.closePath();
@@ -223,7 +246,7 @@ Page({
       if (this.data.kingChesses[i] == 1) {
         var width = this.data.chessBoardWidth / 10 / 2;
         var center = this.GetRectCenter(Math.floor(i / 10), i % 10, this.data.chessBoardWidth, this.data.chessBoardHeight);
-        context.drawImage("/images/king.png", center.x - width / 2, center.y - width / 2, width, width);
+        context.drawImage("/img/king.png", center.x - width / 2, center.y - width / 2, width, width);
       }
     }
   },
@@ -450,8 +473,8 @@ Page({
   // 点击棋盘事件
   TapBoard: function (e) {
     // 获取当前点击位置在画布上的坐标
-    var x = e.detail.x - e.currentTarget.offsetLeft;
-    var y = e.detail.y - e.currentTarget.offsetTop;
+    var x = e.detail.x - e.currentTarget.offsetLeft - this.data.borderWidth;
+    var y = e.detail.y - e.currentTarget.offsetTop - this.data.borderWidth;
 
     // 获取点击的格子的index
     var targetRect = this.GetTargetRect(x, y);
