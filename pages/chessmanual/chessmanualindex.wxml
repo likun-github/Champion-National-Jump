@@ -5,7 +5,7 @@
    <text data-route="competition" bindtap="ChangeRoute" class="{{innerRoute=='competition'?'choosed':''}}">经典对局</text>
 </view>
 
-
+ 
 
 <view wx:if="{{innerRoute=='train'}}">
 
@@ -20,16 +20,16 @@
 </view>
 <view class="trainPart" >
 
-  <view class="train" bindtap="GoToPractise" wx:for="{{[1,2,3]}}">
+  <view class="train" bindtap="GoToPractise" wx:for="{{practices}}">
     <view class="cover">
       <image src="/img/checkerboard.png"></image>
     </view>
-    <view class="name"><text>战术打击</text></view>
+    <view class="name"><text>{{item.name}}</text></view>
     <view class="trainInfo">
-        <text>上传者:孙教练</text>
+        <text>上传者:{{item.username}}</text>
         <view class="mediaInfo">
-          <view><image src="/img/competitionimages/阅读.png" mode='widthFix'></image><text>1.5k</text></view>
-          <view><image src="/img/competitionimages/点赞.png" mode="widthFix"></image><text>1.8k</text></view>
+          <view><image src="/img/competitionimages/阅读.png" mode='widthFix'></image><text>{{item.viewCount}}</text></view>
+          <view><image src="/img/competitionimages/点赞.png" mode="widthFix"></image><text>{{item.thumbCount}}</text></view>
         </view>
     </view>
   </view>
