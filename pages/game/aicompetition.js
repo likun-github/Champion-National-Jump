@@ -10,11 +10,11 @@ Page({
   data: {
     // 上下文
     context: null,
-    
+
     //canvas相关变量：canvas的长宽，和画图笔
     borderWidth: 15,
-    chessBoardWidth: wx.getSystemInfoSync().windowWidth - 80,
-    chessBoardHeight: wx.getSystemInfoSync().windowWidth - 80,
+    chessBoardWidth: wx.getSystemInfoSync().windowWidth * (750 - 30/*margin*/ * 4) / (750) - 15 * 2,
+    chessBoardHeight: wx.getSystemInfoSync().windowWidth * (750 - 30 * 4) / (750) - 15 * 2,
 
     // 棋数据
     blackChesses: [],
@@ -96,12 +96,19 @@ Page({
     this.Inite();
 
     // 清除计时器,否则分享页面给别人时计时器会在原来的基础上跑跑跑
+    if(this.data.whiteTimer != null) {
+      clearInterval(this.data.whiteTimer);
+    }
+    if (this.data.blackTimer != null) {
+      clearInterval(this.data.blackTimer);
+    }
     this.setData({ whiteTimer: null });
     this.setData({ whiteSeconds: 0 });
     this.setData({ whiteTimerText: "00:00:00" });
     this.setData({ blackTimer: null });
     this.setData({ blackSeconds: 0 });
     this.setData({ blackTimerText: "00:00:00" });
+    this.setData({currentUser: 0});
 
     context.draw();
     this.startTimer();
@@ -608,10 +615,8 @@ Page({
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   // 认输，回到上一个界面
-  giveUp: function () {
-    wx.navigateTo({
-      url: './game',
-    });
+  reStart: function () {
+    this.onLoad();
   },
 
   // 从bitboard棋盘表示法转换成小程序棋盘表示法
@@ -661,10 +666,11 @@ Page({
       this.DrawBoard();
       this.DrawChesses();
       this.data.context.draw(); 
+      // 悔棋后走白棋
+      this.setData({ currentUser: 0 });
+      this.startTimer();
     }
-    // 悔棋后走白棋
-    this.setData({currentUser: 0});
-    this.startTimer();
+    
   },
 
   // 将本次对局数据保存到本地

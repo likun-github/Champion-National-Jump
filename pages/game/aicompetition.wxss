@@ -1,9 +1,15 @@
 /* pages/game/aicompetition.wxss */
+Page {
+
+ --margin: 30rpx;
+
+}
+
 .poster{
-  padding:20rpx;
-  margin-top: 20rpx; 
-  margin-left: 20rpx;
-  margin-right: 20rpx;
+  padding:var(--margin);
+  margin-top: var(--margin); 
+  margin-left: var(--margin);
+  margin-right: var(--margin);
   display: flex;
   flex-direction: column;
   border-radius: 15rpx; 
@@ -12,7 +18,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////
 .player{
   display: flex;
-  padding: 30rpx;
+  padding: 30rpx 0rpx;
   flex-direction: row;
 }
 
@@ -54,7 +60,7 @@
   text-align: right; 
   margin-left: 60rpx;
   display: block;
-  color: rgb(76,135,253);
+  color: rgb(82,169,255);
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 
