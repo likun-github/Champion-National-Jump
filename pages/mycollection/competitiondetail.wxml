@@ -18,11 +18,10 @@
       <text class = "playerName">AI</text>
       <text class = "playerInfo">等级：普通</text>
     </view>
-    <view wx:if="{{currentUser==1}}" class="timer_running">
-      <text> {{blackTimerText}}</text>
-    </view>
-    <view wx:else class="timer_waiting">
-      <text> {{blackTimerText}}</text>
+    <view class="game_result">
+      <text class="win" wx:if="{{result == 'l'}}">胜</text>
+      <text class="draw" wx:elif="{{result == 'd'}}">和</text>
+      <text class="lose" wx:elif="{{result == 'w'}}">负</text>
     </view>
   </view>
 
@@ -31,32 +30,6 @@
   </canvas>
 
 
-  <view class="gameButtons">
-    <view class="gameButton" bindtap="reStart">
-      <view>
-        <image src="/img/lose.svg"></image>
-      </view>
-      <view >
-        <text class="gameButtonInfo" >重新开始</text>
-      </view>
-    </view>
-    <view class="gameButton" bindtap="withdraw">
-      <view>
-        <image src="/img/withdraw.svg"></image>
-      </view>
-      <view>
-        <text class="gameButtonInfo" >悔棋</text>
-      </view>
-    </view>
-    <view class="gameButton">
-      <view>
-        <image src="/img/draw.svg"></image>
-      </view>
-      <view>
-        <text class="gameButtonInfo" bindtap="draw">求和</text>
-      </view>
-    </view>
-  </view>
 
 
   <view class="player">
@@ -67,13 +40,23 @@
       <text class="playerName">Yunding</text>   
       <text class="playerInfo">段位：九段 积分: 1000</text>  
     </view>
-    <view wx:if="{{currentUser==0}}" class="timer_running">
-      <text> {{whiteTimerText}}</text>
+    <view class="game_result">
+      <text class="lose" wx:if="{{result == 'l'}}">负</text>
+      <text class="draw" wx:elif="{{result == 'd'}}">和</text>
+      <text class="win" wx:elif="{{result == 'w'}}">胜</text>
     </view>
-      <view wx:else class="timer_waiting">
-        <text> {{whiteTimerText}}</text>
-      </view>
   </view>
+
+
+
+    <view class="collectionButtons">
+    <image src="/img/快退.svg" class="collectionButton" > </image>
+    <image src="/img/上一步.svg" class="collectionButton"> </image>
+    <image src="/img/播放.svg" class="collectionButton"> </image>
+    <image src="/img/下一步.svg" class="collectionButton"> </image>
+    <image src="/img/快进.svg" class="collectionButton"> </image>
+  </view>
+
 
 
 </view>

@@ -118,6 +118,11 @@ Page({
       }
     }
   },
+  
+  // 获取中心点坐标
+  GetRectCenter(col, row, width, height) {
+    return { x: width / 10 / 2 + row * width / 10, y: height / 10 / 2 + col * height / 10 }
+  },
 
   // 画所有棋子
   DrawChesses: function () {
@@ -152,7 +157,7 @@ Page({
       if (this.data.kingChesses[i] == 1) {
         var width = this.data.chessBoardWidth / 10 / 2;
         var center = this.GetRectCenter(Math.floor(i / 10), i % 10, this.data.chessBoardWidth, this.data.chessBoardHeight);
-        context.drawImage("/images/king.png", center.x - width / 2, center.y - width / 2, width, width);
+        context.drawImage("/img/king.png", center.x - width / 2, center.y - width / 2, width, width);
       }
     }
   },

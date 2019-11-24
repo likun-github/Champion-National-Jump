@@ -1,90 +1,4 @@
 /* pages/mycollection/competitiondetail.wxss */
-
-///////////////////////////////////////////////////////////////////////////////////////////
-.player{
-  margin-top: 30rpx;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 30rpx;
-  position: relative;
-}
-
-.playerName{
-  margin-left: 10rpx;
-  font-size: 28rpx;
-  position: absolute;
-  top: 0;
-}
-
-.playerLeft image{
-  height: 80rpx;
-  width: 80rpx;
-  border-radius: 50% 50%;
-  vertical-align: middle;
-}
-
-.playerRight{
-  font-size: 30rpx;
-  color: gray;
-  height: 80rpx;
-  line-height: 80rpx;
-}
-///////////////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////////////////
-.win{
-  font-size: 32rpx;
-  padding: 0 12rpx;
-  border: 1rpx solid red;
-  color: red;
-  margin-left: 10rpx;
-}
-
-.lose{
-    font-size: 32rpx;
-  padding: 0 12rpx;
-  border: 1rpx solid green;
-  color: green;
-  margin-left: 10rpx;
-
-}
-
-.draw{
-    font-size: 32rpx;
-  padding: 0 12rpx;
-  border: 1rpx solid blue;
-  color: blue;
-  margin-left: 10rpx;
-
-}
-///////////////////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////////////////
-.gameControlBtns{
-  display: flex;
-  justify-content: space-around;
-  font-size: 35rpx;
-  color: gray;
-  padding: 0 100rpx;
-  margin-top: 40rpx;
-}
-
-.gameControlBtns text{
-  border: 1rpx solid gray;
-  padding: 5rpx 15rpx;
-
-}
-
-.tips{
-  color: gray;
-  padding: 0 40rpx;
-  white-space: pre-wrap;
-}
-///////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-/* pages/game/aicompetition.wxss */
 Page {
 
  --margin: 30rpx;
@@ -132,57 +46,53 @@ Page {
   display: block;
 }
 
-.timer_running{
+.game_result{
+  min-width: 140rpx;
   font-size: 30rpx;
   font-weight: 900;
   text-align: right; 
-  margin-left: 60rpx;
+  margin-left: 40rpx;
   display: block;
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+.win{
+  font-size: 30rpx;
+  padding: 3rpx 9rpx;
+  border: 2rpx solid rgb(253,152,144);
   color: rgb(253,152,144);
 }
-.timer_waiting{
+
+.lose{
   font-size: 30rpx;
-  font-weight: 900;
-  text-align: right; 
-  margin-left: 60rpx;
-  display: block;
+  padding: 3rpx 9rpx;
+  border: 2rpx solid rgb(82,169,255);
   color: rgb(82,169,255);
 }
+
+.draw{
+  font-size: 30rpx;
+  padding: 3rpx 9rpx;
+  border: 2rpx solid rgb(107,213,226);
+  color: rgb(107,213,226);
+}
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
-.gameButtons {
+.collectionButtons {
+  background-color:rgb(203,229,255);
+  padding:30rpx 30rpx;
+  border-radius: 30rpx;
   display: flex;
-  padding: 0rpx;
-  margin-top: 30rpx;
+  margin-top: 15rpx;
   flex-direction: row;
 }
-.gameButton {
-  display: flex;
-  padding: 15rpx 30rpx;
-  margin-right: 25rpx;
-  flex-direction: row;
-  border-radius: 30rpx; 
-  box-shadow: 1rpx 5rpx 5rpx 1rpx rgb(230,230,230); 
-}
 
-.gameButton image{
-  height: 30rpx;
-  width: 30rpx;
-  border-radius: 50% 50%;
-  vertical-align: middle;
-}
-
-.gameButtonInfo{
-  margin-top: 12.5rpx;
-  margin-left: 5rpx;
-  font-size: 20rpx;
-  color: grey;
+.collectionButton{
+  height: 40rpx;
+  width: 40rpx;
   display: block;
+  padding: 0rpx 43rpx ;
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 
