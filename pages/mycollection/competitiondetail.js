@@ -12,8 +12,8 @@ Page({
     context: null,
 
     //canvas相关变量：canvas的长宽，和画图笔
-    chessBoardWidth: wx.getSystemInfoSync().windowWidth - 2,
-    chessBoardHeight: wx.getSystemInfoSync().windowWidth - 2,
+    chessBoardWidth: wx.getSystemInfoSync().windowWidth * (750 - 30/*margin*/ * 4) / (750) - 15 * 2,
+    chessBoardHeight: wx.getSystemInfoSync().windowWidth * (750 - 30/*margin*/ * 4) / (750) - 15 * 2,
 
     // 棋数据
     blackChesses: [],

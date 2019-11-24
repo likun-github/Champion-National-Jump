@@ -47,18 +47,20 @@ Page {
 }
 
 .timer_running{
+  min-width: 140rpx;
   font-size: 30rpx;
   font-weight: 900;
   text-align: right; 
-  margin-left: 60rpx;
+  margin-left: 40rpx;
   display: block;
   color: rgb(253,152,144);
 }
 .timer_waiting{
+  min-width: 140rpx;
   font-size: 30rpx;
   font-weight: 900;
   text-align: right; 
-  margin-left: 60rpx;
+  margin-left: 40rpx;
   display: block;
   color: rgb(82,169,255);
 }
@@ -90,8 +92,9 @@ Page {
 }
 
 .gameButtonInfo{
-  margin-top: 12.5rpx;
-  margin-left: 5rpx;
+  line-height: 0rpx;
+  margin-top:15rpx;
+  margin-left: 10rpx;
   font-size: 20rpx;
   color: grey;
   display: block;

@@ -1,35 +1,79 @@
 <!--pages/mycollection/competitiondetail.wxml-->
-<view class="player">
-  <view class="playerLeft">
-      <image src="/img/competitionimages/chessBoardCover.png"></image>
-      <text class="playerName">一代棋圣李士神</text>
-  </view>
-
+<!--
   <view class="playerRight">
       <text class="win" wx:if="{{result == 'l'}}">赢</text>
       <text class="draw" wx:elif="{{result == 'd'}}">和</text>
       <text class="lose" wx:elif="{{result == 'w'}}">输</text>
   </view>
-</view>
+--> 
+<!--pages/game/aicompetition.wxml-->
+<view class = "poster">
 
-<canvas canvas-id='chessboard' style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:1px solid black;">
-</canvas>
 
-<view class="player">
-  <view class="playerLeft">
-      <image src="/img/competitionimages/chessBoardCover.png"></image>
-      <text class="playerName">一代棋圣李士神</text>
+  <view class="player"> 
+    <view>
+      <image src="/img/ai.png"></image>
+    </view> 
+    <view>
+      <text class = "playerName">AI</text>
+      <text class = "playerInfo">等级：普通</text>
+    </view>
+    <view wx:if="{{currentUser==1}}" class="timer_running">
+      <text> {{blackTimerText}}</text>
+    </view>
+    <view wx:else class="timer_waiting">
+      <text> {{blackTimerText}}</text>
+    </view>
   </view>
 
-  <view class="playerRight">
-      <text class="win" wx:if="{{result == 'w'}}">赢</text>
-      <text class="draw" wx:elif="{{result == 'd'}}">和</text>
-      <text class="lose" wx:elif="{{result == 'l'}}">输</text>
+
+  <canvas canvas-id='chessboard' bindtap="TapBoard" style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:15px solid rgb(82,169,255);">
+  </canvas>
+
+
+  <view class="gameButtons">
+    <view class="gameButton" bindtap="reStart">
+      <view>
+        <image src="/img/lose.svg"></image>
+      </view>
+      <view >
+        <text class="gameButtonInfo" >重新开始</text>
+      </view>
+    </view>
+    <view class="gameButton" bindtap="withdraw">
+      <view>
+        <image src="/img/withdraw.svg"></image>
+      </view>
+      <view>
+        <text class="gameButtonInfo" >悔棋</text>
+      </view>
+    </view>
+    <view class="gameButton">
+      <view>
+        <image src="/img/draw.svg"></image>
+      </view>
+      <view>
+        <text class="gameButtonInfo" bindtap="draw">求和</text>
+      </view>
+    </view>
   </view>
 
-</view>
 
-<view class="gameControlBtns">
-    <text bindtap="last">上一步</text>
-    <text bindtap="next">下一步</text>
+  <view class="player">
+    <view>
+      <image src="/img/user.svg"></image>
+    </view>
+    <view>
+      <text class="playerName">Yunding</text>   
+      <text class="playerInfo">段位：九段 积分: 1000</text>  
+    </view>
+    <view wx:if="{{currentUser==0}}" class="timer_running">
+      <text> {{whiteTimerText}}</text>
+    </view>
+      <view wx:else class="timer_waiting">
+        <text> {{whiteTimerText}}</text>
+      </view>
+  </view>
+
+
 </view>

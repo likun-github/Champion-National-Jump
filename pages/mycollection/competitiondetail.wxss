@@ -81,3 +81,108 @@
   white-space: pre-wrap;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/* pages/game/aicompetition.wxss */
+Page {
+
+ --margin: 30rpx;
+
+}
+
+.poster{
+  padding:var(--margin);
+  margin-top: var(--margin); 
+  margin-left: var(--margin);
+  margin-right: var(--margin);
+  display: flex;
+  flex-direction: column;
+  border-radius: 15rpx; 
+  box-shadow: 5rpx 5rpx 5rpx 5rpx rgb(230,230,230); 
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+.player{
+  display: flex;
+  padding: 30rpx 0rpx;
+  flex-direction: row;
+}
+
+.player image{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50% 50%;
+  vertical-align: middle;
+}
+
+.playerName{
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  font-weight: 900;
+  color: grey;
+  min-width: 350rpx;
+  display: block;
+}
+
+.playerInfo{
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  font-size: 23rpx;
+  color: grey;
+  display: block;
+}
+
+.timer_running{
+  font-size: 30rpx;
+  font-weight: 900;
+  text-align: right; 
+  margin-left: 60rpx;
+  display: block;
+  color: rgb(253,152,144);
+}
+.timer_waiting{
+  font-size: 30rpx;
+  font-weight: 900;
+  text-align: right; 
+  margin-left: 60rpx;
+  display: block;
+  color: rgb(82,169,255);
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+.gameButtons {
+  display: flex;
+  padding: 0rpx;
+  margin-top: 30rpx;
+  flex-direction: row;
+}
+.gameButton {
+  display: flex;
+  padding: 15rpx 30rpx;
+  margin-right: 25rpx;
+  flex-direction: row;
+  border-radius: 30rpx; 
+  box-shadow: 1rpx 5rpx 5rpx 1rpx rgb(230,230,230); 
+}
+
+.gameButton image{
+  height: 30rpx;
+  width: 30rpx;
+  border-radius: 50% 50%;
+  vertical-align: middle;
+}
+
+.gameButtonInfo{
+  margin-top: 12.5rpx;
+  margin-left: 5rpx;
+  font-size: 20rpx;
+  color: grey;
+  display: block;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
