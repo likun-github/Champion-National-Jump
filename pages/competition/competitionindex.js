@@ -40,7 +40,7 @@ Page({
 
 
     wx.navigateTo({
-      url: '/pages/conpetition/competitioninfo?id=' + e.currentTarget.dataset.competitionid,
+      url: '/pages/competition/competitioninfo?id=' + e.currentTarget.dataset.competitionid,
     });
 
   },

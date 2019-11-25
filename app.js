@@ -180,7 +180,7 @@ App({
     }
     else if (route == "competition") {
       wx.redirectTo({
-        url: '/pages/conpetition/competitionindex',
+        url: '/pages/competition/competitionindex',
       })
       that.bottomBarRoute = "competition";
     }

@@ -34,6 +34,7 @@ Page {
   font-size: 25rpx;
   display: block;
   text-align:left;
+  color:grey;
 }
 
 
@@ -106,6 +107,7 @@ Page {
   bottom: 0;
   background-color: rgba(0,0,0,0.15);
 }
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 .matching{
   position: absolute;
@@ -153,3 +155,27 @@ Page {
   top: 0;
   transform: translateY(-20rpx);
 }
+
+//////////////////////////////////////////////////////////
+.bottomNav image {
+  margin-top:10rpx;
+  width:70rpx;
+}
+.bottomBarImage {
+  width:950rpx;
+}
+
+.bottomNavNotSelected {
+  margin-top:3rpx;
+  color:rgb(176, 176, 176);
+  font-size: 28rpx;
+  font-weight: 550;
+}
+
+.bottomNavSelected{
+  margin-top:5rpx;
+  color:rgb(82,169,255);
+  font-size: 28rpx;
+  font-weight: 550;
+}
+

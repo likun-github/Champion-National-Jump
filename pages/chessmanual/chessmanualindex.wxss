@@ -1,7 +1,5 @@
-
+@import "../game/game.wxss";
  
-
-
 
 .trainPart{
   padding: 0 16rpx;

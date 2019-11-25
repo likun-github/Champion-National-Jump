@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="405" height="103" viewBox="0 0 405 103">
+  <defs>
+    <filter id="矩形_568" x="0" y="0" width="405" height="103" filterUnits="userSpaceOnUse">
+      <feOffset dy="-3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-color="#b0b0b0" flood-opacity="0.302"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#矩形_568)">
+    <rect id="矩形_568-2" data-name="矩形 568" width="375" height="73" transform="translate(15 18)" fill="#fff"/>
+  </g>
+</svg>

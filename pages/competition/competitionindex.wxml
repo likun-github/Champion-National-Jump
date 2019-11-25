@@ -1,4 +1,4 @@
-<!--pages/conpetition/competitionindex.wxml-->
+<!--pages/competition/competitionindex.wxml-->
 
 
 
@@ -81,28 +81,27 @@
   <image class="bottomBarImage" src="/img/bottomBar.png"></image>
 
   <view data-route="learn" bindtap="redict">
-    <image src="/img/book.png" mode="widthFix"></image>
-    <text>学习</text>
+    <image src="/img/学习.svg" mode="widthFix"></image>
+    <text class="bottomNavNotSelected">学 习</text>
   </view>
 
   <view data-route="chessmanual" bindtap="redict"> 
-    <image src="/img/chessBoard.png"  mode="widthFix"></image>
-    <text>棋谱</text>
+    <image src="/img/棋谱.svg"  mode="widthFix"></image>
+    <text class = "bottomNavNotSelected">棋 谱</text>
   </view>
   <view class="gameNav" data-route="game" bindtap="redict">
-    <image  mode="widthFix" src="/img/cup.png"></image>
-    <text>对战</text>
+    <image  mode="widthFix" src="/img/对战.svg"></image>
+    <text class="bottomNavNotSelected">对 战</text>
   </view>
 
-    <view  class="current" data-route="competition" bindtap="redict">
-    <image  mode="widthFix" src="/img/medal1.png"></image>
-    <text>比赛</text>
+    <view data-route="competition" bindtap="redict">
+    <image  mode="widthFix" src="/img/比赛选中.svg"></image>
+    <text class="bottomNavSelected">比 赛</text>
   </view>
 
   <view data-route="me" bindtap="redict">
-    <image src="/img/me.png"></image>
-    <text>我的</text>
+    <image mode="widthFix" src="/img/我的.svg"></image>
+    <text class="bottomNavNotSelected">我 的</text>
   </view>
-
 
 </view>

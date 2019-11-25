@@ -1,4 +1,5 @@
 /* pages/learn/learnindex.wxss */
+@import "../game/game.wxss";
 
 .rules{
   padding: 40rpx 20rpx;
