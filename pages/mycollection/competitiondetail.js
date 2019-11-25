@@ -59,14 +59,11 @@ Page({
     this.setData({ result: previousPage.data.currentCollection["result"]});
     let collection = [];
     for (let i = 0; i < previousPage.data.currentCollection["white"].length; i++) {
-      if(i == 0) { // 白棋黑棋索引0的棋局一致，只push白棋的
-        collection.push(previousPage.data.currentCollection["white"][i]);
-      } else {
         collection.push(previousPage.data.currentCollection["white"][i]);
         if (previousPage.data.currentCollection["black"][i] != undefined) {
           collection.push(previousPage.data.currentCollection["black"][i]);
         }      
-      }     
+        
     }
     this.setData({ collection: collection });
     this.setData({ maxMoves: collection.length-1});

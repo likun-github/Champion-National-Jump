@@ -172,24 +172,13 @@
       <text>></text>
     </view>
 
-
-    <view class="menuItem"  bindtap="goToMessages">
-      <image src="{{messageimg}}"  mode="widthFix"></image>
-      <button plain="true">发送信息</button>
-      <text>></text>
-    </view>
-
-    <view class="menuItem">
-    <image src="{{gameimg}}"  mode="widthFix"></image>
-  <button  plain="true">我的设置</button>
-  <text>></text>
-    </view>
-    
 </view>
 
+
+
+
+
 <view class="bottomNav">
-  
-  <image class="bottomBarImage" src="/img/bottomBar.png"></image>
 
   <view data-route="learn" bindtap="redict">
     <image src="/img/学习.svg" mode="widthFix"></image>

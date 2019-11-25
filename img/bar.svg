@@ -1,14 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="405" height="103" viewBox="0 0 405 103">
-  <defs>
-    <filter id="矩形_568" x="0" y="0" width="405" height="103" filterUnits="userSpaceOnUse">
-      <feOffset dy="-3" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="5" result="blur"/>
-      <feFlood flood-color="#b0b0b0" flood-opacity="0.302"/>
-      <feComposite operator="in" in2="blur"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
-  </defs>
-  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#矩形_568)">
-    <rect id="矩形_568-2" data-name="矩形 568" width="375" height="73" transform="translate(15 18)" fill="#fff"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="367.991" height="108.292" viewBox="0 0 367 108">
+  <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c142 79.160924, 2017/07/13-01:06:39        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""/>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?></metadata>
+<image id="图层_1" data-name="图层 1" y="7" width="367" height="102" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXAAAABmCAQAAAB46AKGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfjCxkSMwWdZgwpAAACi0lEQVR42u3XMa4URxSF4XNu1cyA9GRhO7S8Ae+ZxDvwZtgBqUEWRjCvqy4BSNjpQzCao/+LuqM+wa9StWX91//fgHvUXx/9UH/qV33Qay/qRojW0G891PLLceid/9BJb7xlSa137m/+BPCjWQ/9ueDSiz70Sg89f/dbn23966Hrl7Avt14KPMmjJMl63u916V/0vKfr5Is/+OqP/kmLsxt3zhr9jy7dfelzz/d11KWGT7a3S9LBVRx3a7a09axnj770seYx5nB9tEuWW8tnfjZxp1pXjZbUq9eeXZ57zHktlevk7WF53Xol8GRD1atPvXrvx332rHmdVaehOspeHpY2RzjuUrW02r37tLUf99XzPPY8xh6u+SXxMn3jPrV2u7vn7t1b+9xzl6dHzz1cruHl7aJw3KXd7tGr1+7t5eU1H2fNnjXG3KO8qrzdahLH3XFb1avH3j3W9q5juf/Wz7ceBnwnb+rWC4DvicARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARjcARzX89u1bV2YcPT1vS4VuPAp5qttQ6evbsa6/1CaKDqlOjJkPMAAAAAElFTkSuQmCC"/>
 </svg>

@@ -105,30 +105,28 @@
 </view>
 
 <view class="bottomNav">
-  
-  <image class="bottomBarImage" src="/img/bottomBar.png"></image>
 
   <view data-route="learn" bindtap="redict">
-    <image src="/img/学习选中.svg" mode="widthFix"></image>
+    <image src="/img/学习选中.svg" ></image>
     <text class="bottomNavSelected">学 习</text>
   </view>
 
   <view data-route="chessmanual" bindtap="redict"> 
-    <image src="/img/棋谱.svg"  mode="widthFix"></image>
+    <image src="/img/棋谱.svg"></image>
     <text class = "bottomNavNotSelected">棋 谱</text>
   </view>
   <view class="gameNav" data-route="game" bindtap="redict">
-    <image  mode="widthFix" src="/img/对战.svg"></image>
+    <image src="/img/对战.svg"></image>
     <text class="bottomNavNotSelected">对 战</text>
   </view>
 
     <view data-route="competition" bindtap="redict">
-    <image  mode="widthFix" src="/img/比赛.svg"></image>
+    <image src="/img/比赛.svg"></image>
     <text class="bottomNavNotSelected">比 赛</text>
   </view>
 
   <view data-route="me" bindtap="redict">
-    <image mode="widthFix" src="/img/我的.svg"></image>
+    <image src="/img/我的.svg"></image>
     <text class="bottomNavNotSelected">我 的</text>
   </view>
 

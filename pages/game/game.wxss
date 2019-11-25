@@ -12,7 +12,7 @@ Page {
   height: 70rpx;
   width: var(--width);
   border-radius: 20rpx; 
-  box-shadow: 3rpx 3rpx 3rpx 3rpx rgb(217, 228, 252); 
+  box-shadow: 1px 1px 10px rgb(217, 228, 252);
   display: flex;
   flex-direction: row;
 }
@@ -50,7 +50,7 @@ Page {
   width: var(--width);
   border-radius: 25rpx; 
   background-color: rgb(76,135,253);
-  box-shadow: 0rpx 3rpx 3rpx 3rpx rgb(217, 228, 252); 
+  box-shadow: 1px 1px 40px rgb(217, 228, 252);
 }
 .gameNavBtnTopic {
   margin-top:50rpx;
@@ -74,7 +74,7 @@ Page {
   height: 120rpx;
   width: var(--width);
   border-radius: 20rpx; 
-  box-shadow: 3rpx 3rpx 3rpx 3rpx rgb(217, 228, 252); 
+  box-shadow: 1px 1px 20px rgb(217, 228, 252);
   display: flex;
   flex-direction: row;
 }
@@ -157,25 +157,26 @@ Page {
 }
 
 //////////////////////////////////////////////////////////
-.bottomNav image {
-  margin-top:10rpx;
-  width:70rpx;
+.bottomNav {
+  background-color: white;
+  box-shadow: 1px 1px 20px rgb(230, 230, 230);
 }
-.bottomBarImage {
-  width:950rpx;
+
+.bottomNav image {
+  height:50rpx;
 }
 
 .bottomNavNotSelected {
-  margin-top:3rpx;
+  margin-top:10rpx;
   color:rgb(176, 176, 176);
-  font-size: 28rpx;
+  font-size: 25rpx;
   font-weight: 550;
 }
 
 .bottomNavSelected{
-  margin-top:5rpx;
+  margin-top:10rpx;
   color:rgb(82,169,255);
-  font-size: 28rpx;
+  font-size: 26rpx;
   font-weight: 550;
 }
 

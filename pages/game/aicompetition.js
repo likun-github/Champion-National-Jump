@@ -46,7 +46,7 @@ Page({
 
     // 悔棋数据
     whiteWithdraw: [{ "W":movegen.fill50(1048575), "B":movegen.fill50(1125898833100800),"K":movegen.fill50(0)}],
-    blackWithdraw: [{ "W":movegen.fill50(1048575), "B":movegen.fill50(1125898833100800),"K":movegen.fill50(0)}],
+    blackWithdraw: [],
 
     // 小程序棋盘索引转换成bitboard棋盘索引
     mini2Bit: [null, 45, null, 46, null, 47, null, 48, null, 49,
