@@ -33,6 +33,9 @@ Page({
     // 游戏结果
     result: null,
 
+    // 模式
+    mode: 0 /*手动模式*/,
+
     // bitboard棋盘索引转换成小程序棋盘索引
     bit2Mini: [90, 92, 94, 96, 98,
                 81, 83, 85, 87, 89,
@@ -104,10 +107,14 @@ Page({
 
   // 画棋盘
   DrawBoard: function () {
+    // 绘制棋盘底色
     var width = this.data.chessBoardWidth
     var height = this.data.chessBoardHeight
     var context = this.data.context;
-    context.setFillStyle("rgb(156, 214, 228)");
+    context.setFillStyle("rgb(225, 240, 255)");
+    // 绘制棋盘方格
+    context.fillRect(0, 0, width, height);
+    context.setFillStyle("rgb(76, 135, 253)"); 
     for (var i = 0; i < 10; i++) {
       for (var j = 0; j < 5; j++) {
         if (i % 2 == 0) { // 奇数行
@@ -118,7 +125,7 @@ Page({
       }
     }
   },
-  
+
   // 获取中心点坐标
   GetRectCenter(col, row, width, height) {
     return { x: width / 10 / 2 + row * width / 10, y: height / 10 / 2 + col * height / 10 }
@@ -200,8 +207,15 @@ Page({
   },
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
+  // 回到初始棋位
+  toFirstStep:function() {
+    this.setData({ currentBoardIndex: 0 });
+    this.Inite();
+    this.data.context.draw();
+  },
+
   // 上一步
-  last:function() {
+  lastStep:function() {
     if (this.data.currentBoardIndex == 0) { // 初始局面，无法进行上一步
       wx.showModal({
         title: "提示",
@@ -217,7 +231,7 @@ Page({
   },
 
   // 下一步
-  next: function () {
+  nextStep: function () {
     if (this.data.currentBoardIndex == this.data.maxMoves) { // 到达最后一步
       wx.showModal({
         title: "提示",

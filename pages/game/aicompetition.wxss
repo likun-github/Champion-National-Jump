@@ -88,7 +88,7 @@ Page {
   height: 30rpx;
   width: 30rpx;
   border-radius: 50% 50%;
-  vertical-align: middle;
+  display: block;
 }
 
 .gameButtonInfo{

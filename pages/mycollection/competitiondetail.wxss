@@ -91,7 +91,7 @@ Page {
   height: 40rpx;
   width: 40rpx;
   display: block;
-  padding: 0rpx 43rpx ;
+  padding: 0rpx 85rpx ;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 
