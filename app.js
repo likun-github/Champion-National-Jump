@@ -81,7 +81,8 @@ App({
     Id: null,
     APPID: "wx3878552fd022c398",
     APPSECRET: "9321186a5ee5f8aa1d5b59abfa785d8c",
-    gameInfo: null
+    gameInfo: null,
+    bottomBarRoute: ''
   },
 
   // 获取用户身份认证情况
@@ -168,34 +169,38 @@ App({
     })
   },
   redict: function (e) {
+    var that = this;
     var route = e.currentTarget.dataset.route;
 
     if (route == "me") {
       wx.redirectTo({
         url: '/pages/orgmenu/orgmenu',
-      })
+      });
+      that.bottomBarRoute = "me";
     }
     else if (route == "competition") {
       wx.redirectTo({
         url: '/pages/conpetition/competitionindex',
       })
-
+      that.bottomBarRoute = "competition";
     }
     else if (route == "game") {
       wx.redirectTo({
         url: '/pages/game/game',
-      })
+      });
+      that.bottomBarRoute = "game";
     }
     else if (route == "chessmanual") {
       wx.redirectTo({
         url: '/pages/chessmanual/chessmanualindex',
-      })
+      });
+      that.bottomBarRoute = "chessmanual"
     }
     else if (route = "learn") {
       wx.redirectTo({
         url: '/pages/learn/learnindex',
-      })
-
+      });
+      that.bottomBarRoute = "learn";
     }
 
   }

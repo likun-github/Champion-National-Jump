@@ -1,39 +1,123 @@
 /* pages/learn/learnindex.wxss */
 
 .rules{
-  padding: 0 20rpx;
+  padding: 40rpx 20rpx;
 }
-
+ 
 .ruleItem{
   color: gray;
-  display: flex;
   border-bottom: 1rpx solid #dddddd;
-  padding-bottom: 20rpx;
+  margin-bottom: 40rpx;
+  height: 230rpx;
+  background-color: red;
+  position: relative;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 1px 1px 10px gray;
 }
 
-.ruleLeft{
-  width: 200rpx;
-  height: 200rpx;
-  border: 1rpx solid black;
+.ruleItem .coverImage{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
-.ruleRight{
-  margin-left: 20rpx;
-  flex: 1;
+
+.coverImage image{
+  width: 120%;
+
+}
+
+.ruleItem .innerText{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
 }
-
-.ruleRight .toptop{
-   display: flex;
-   justify-content: space-between;
+.innerText .ruleTitle{
+  font-size: 55rpx;
+  font-weight: 590;
+  /* font-weight: bold; */
+  margin-bottom: 20rpx;
 }
-
-.ruleRight .bottom{
+.innerText .ruleSubTitle{
   font-size: 30rpx;
-  display: flex;
-  justify-content: space-between;
+
 }
+
+
+.videos-container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-top: 60rpx;
+}
+
+.video-item{
+  width: 310rpx;
+  border-radius: 13rpx;
+  overflow: hidden;
+  margin-bottom: 40rpx;
+  box-shadow: 1px 1px 10px gray;
+}
+
+.video-item .video-top{
+  width: 310rpx;
+  height: 310rpx;
+  border-radius: 13rpx;
+  position: relative;
+}
+.cover-image-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cover-image-container .cover-image{
+  filter: blur(5px);
+}
+
+.video-item .video-bottom{
+  text-align: center;
+  font-size: 30rpx;
+  padding: 10rpx 0 13rpx 0;
+}
+.display-btn{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50% 50%;
+  background-color: white;
+  z-index: 100;
+}
+
+.display-btn image{
+  width: 40rpx;
+  transform: translateX(-13rpx) translateY(-50%);
+}
+
+image.locked{
+  width: 70rpx;
+  z-index: 100;
+}
+
+.lock-cover{
+  opacity: 0.7;
+  filter: brightness(50%) blur(5px) !important;
+}
+
+
+
+
 
 .mediaBtns{
   padding: 0;
