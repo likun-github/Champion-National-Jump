@@ -2,13 +2,15 @@
 
 <view class="topNav">
   <text data-route="begin" bindtap="ChangeRoute" class="{{innerRoute=='begin'?'choosed':''}}">启蒙</text>
-  <text data-route="tutorial" bindtap="ChangeRoute" class="{{innerRoute=='tutorial'?'choosed':''}}">教学</text>
-   <text data-route="promote" bindtap="ChangeRoute" class="{{innerRoute=='promote'?'choosed':''}}">晋级</text>
+   <text data-route="promote" bindtap="ChangeRoute" class="{{innerRoute=='promote'?'choosed':''}}">进阶</text>
 </view>
 
 
+<view class="gray-margin"></view>
+ 
+
 <view wx:if="{{innerRoute=='begin'}}">
-  <view class="searchCol">
+  <!-- <view class="searchCol">
   <input placeholder="请输入搜索关键词"></input>
   <image src="../../img/Search.png"></image>
 </view>
@@ -16,45 +18,26 @@
 <view class="sortMethodChoose">
   <text>综合排序</text>
   <text>时间排序</text>
-</view>
+</view> -->
 
 
 <view class="rules">
-  <view class="ruleItem">
-      <view class="ruleLeft"></view>
+  <view class="ruleItem" wx:for="{{[1,2,3]}}">
+     <view class="coverImage">
+        <image class="center" src="/img/learn_images/tu_cover.png" mode="widthFix"></image>
+     </view>
 
-      <view class="ruleRight">
-        <view class="top">
-          <view class="toptop">
-            <text class="title">国际跳棋100格基本规则</text> <text class="topMost">置顶</text>
-          </view>
-           <view class="intro"></view>
-        </view>
-        
-        <view class="bottom">
-          <text>2019-06-18</text>
-
-        <view class="mediaBtns">
-          <view>
-          <image src="/img/competitionimages/阅读.png" mode="widthFix"></image>
-          <text>1.5w</text>
-          </view>
-
-          <view>
-          <image src="/img/competitionimages/点赞.png" mode="widthFix"></image>
-          <text>8k</text>
-          </view>
-        </view>
-
-        </view>
-      </view>
+     <view class="innerText">
+        <text class="ruleTitle">国际跳棋100格基本规则</text>
+        <text class="ruleSubTitle">国际跳棋100格基本规则</text>
+     </view>
   </view>
 </view>
 
 </view>
 
 
-<view wx:elif="{{innerRoute=='tutorial'}}">
+<!-- <view wx:elif="{{innerRoute=='tutorial'}}">
   <view class="searchCol">
   <input placeholder="请输入搜索关键词"></input>
   <image src="../../img/Search.png"></image>
@@ -81,25 +64,46 @@
   </view>
 
 </view>
-</view>
+</view> -->
 
 
 <view wx:else class="promotePart">
-  <view class="testIntro">
-      考试说明:
-      积分达到一定数目可以参与考级，等级将被国家认可，我们将为您发放证书。
 
-      【九级棋士】考试————1200积分
-      【八级棋士】考试————1400积分
-      【七级棋士】考试————1600积分
+  <view class="videos-container">
+    <view wx:for="{{[1,2,3]}}" class="video-item">
+        <view class="video-top">
+          <view class="display-btn center">
+              <image class="center" src="/img/learn_images/play.png" mode="widthFix"></image>
+          </view>
+          <view class="cover-image-container" >
+            <image class="cover-image  center" src="/img/learn_images/promote_cover.png" mode="widthFix"></image>
+          </view>
+        </view>
+        
+        <view class="video-bottom">
+          <text>国际跳棋视频专题</text>
+        </view>
+
+    </view>
+        <view wx:for="{{[1,2,3]}}" class="video-item">
+        <view class="video-top">
+          <image class="locked center" mode="widthFix" src="/img/learn_images/lock.png">
+          </image>
+          <view class="cover-image-container">
+            <image class="cover-image center lock-cover" src="/img/learn_images/promote_cover.png" mode="widthFix"></image>
+          </view>
+
+        </view>
+        
+        <view class="video-bottom">
+          <text>国际跳棋视频专题</text>
+        </view>
+
+    </view>
   </view>
 </view>
 
-
 <view class="bottomNav">
-  
-  <image class="bottomBarImage" src="/img/bottomBar.png"></image>
-
   <view class="current" data-route="learn" bindtap="redict">
     <image src="/img/book1.png" mode="widthFix"></image>
     <text>学习</text>

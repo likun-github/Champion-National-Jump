@@ -6,7 +6,7 @@ Page({
    */
   data: {
 
-    innerRoute: "tutorial"
+    innerRoute: "begin"
   },
   redict: function (e) {
     var app = getApp();
