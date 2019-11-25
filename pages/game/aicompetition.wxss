@@ -92,7 +92,6 @@ Page {
 }
 
 .gameButtonInfo{
-  line-height: 0rpx;
   margin-top:15rpx;
   margin-left: 10rpx;
   font-size: 20rpx;

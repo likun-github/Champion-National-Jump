@@ -2,37 +2,41 @@
 
 
 <view class="competitionRecommand">
-    <view class="left">
-    <view class="centerText">
-       <text>赛况</text>
-        <text>推荐</text>
-    </view>
-     
-    </view>
-    <view class="right">
-      <view class="name">2019全国少年儿童国际跳棋公开赛</view>
-      <view class="go">进行中>>></view>
-    </view>
+  <text class="competitionTopic">赛况推荐</text>
+  <text class="competitionInfo">2019全国少年儿童国际跳棋公开赛</text>    
 </view>
+
 
 <view class="gameNav">
-  <view bindtap="goto_ai_competition">
-    <text class="name">人机对战</text>
-    <text class="intro">挑战智能 技高一筹</text>
+  <view class="gameNavBtn" bindtap="goto_ai_competition"> 
+    <view class="gameNavBtnTopic">人机对战</view>
+    <view class="gameNavBtnInfo">挑战智能 技高一筹</view>
   </view>
-  <view  bindtap="toggleShowMatching">
-    <text class="name">真人对战</text>
-    <text class="intro">为您匹配等级相近的对手</text>
+  <view class="gameNavBtn"> 
+    <view class="gameNavBtnTopic">线上匹配</view>
+    <view class="gameNavBtnInfo">棋逢对手 针锋相对</view>
   </view>
-    <view>
-    <text class="name">跳棋大厅</text>
-    <text class="intro">围观比赛 创建房间</text>
+  <view class="gameNavBtn"> 
+    <view class="gameNavBtnTopic">好友对战</view>
+    <view class="gameNavBtnInfo">邀请好友 切磋棋艺</view>
   </view>
 </view>
 
+
+
+
+
+
 <view class="scoreLink">
+  <image class=".playerImage" src="/img/用户头像.svg"> </image>
+  <image class=".playerImage" src="/img/用户头像.svg"> </image>
+  <image class=".playerImage" src="/img/用户头像.svg"> </image>
   <text bindtap="GoToScoreList">积分榜 >></text>
 </view>
+
+
+
+
 
 
 <view class="shelter" wx:if="{{showMatching}}">
@@ -52,6 +56,9 @@
     </view>
   </view>
 </view>
+
+
+
 
 
 <view class="bottomNav">

@@ -1,87 +1,103 @@
 /* pages/game/game.wxss */
+Page {
+
+ --margin: 30rpx;
+ --width: 650rpx;
+
+}
 
 .competitionRecommand{
-  margin: 20rpx 40rpx;
+  margin-left: 50rpx;
+  margin-top: 45rpx;
+  height: 70rpx;
+  width: var(--width);
+  border-radius: 20rpx; 
+  box-shadow: 3rpx 3rpx 3rpx 3rpx rgb(217, 228, 252); 
   display: flex;
-  border: 1rpx solid skyblue;
+  flex-direction: row;
 }
-.left{
-  width: 150rpx;
-  height: 150rpx;
-  border-right: 1rpx solid skyblue;
-  position: relative; 
-}
-.left .centerText{
-  font-size: 32rpx;
-  width: 150rpx;
-  text-align: center;
-  font-weight: bold;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-.left text{
-  letter-spacing: 10rpx;
-  display: block;
-  color: #F4A9A3;
-}
-.left text:first-child{
-  margin-bottom: 20rpx;
-
-}
-
-.right{
-  position: relative;
-}
-
-.right .name{
-  margin-top: 40rpx;
+.competitionTopic{
+  padding:17.5rpx 15rpx;
+  max-width: 150rpx;
+  min-width:150rpx;
+  max-height: 30rpx;
   font-size: 30rpx;
-  margin-left: 20rpx;
-  color: gray;
-}
-.go{
-  position: absolute;
-  right: 0;
-  bottom: 10rpx;
-  color: #F4A9A3;
-  font-size: 26rpx;
-}
-
-
-.gameNav view text{
+  font-weight: 900;
+  color:rgb(107,213,226);
   display: block;
-  color: #5099DD;
+  text-align:center;
+}
+.competitionInfo{
+  padding:20rpx 0rpx;
+  max-width: 430rpx;
+  max-height: 25rpx;
+  font-size: 25rpx;
+  display: block;
+  text-align:left;
 }
 
-.gameNav view{
-  text-align: center;
-  margin: 0 70rpx;
-  padding: 40rpx 0;
-  margin-bottom: 150rpx;
-  border-radius: 15rpx; 
-  box-shadow: 0 10px 10px rgb(210,233,255); 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+.gameNav{
+  display: flex;
+  flex-direction: column;
+}
+.gameNavBtn{
+  margin-left: 50rpx;
+  margin-top: 45rpx;
+  height: 200rpx;
+  width: var(--width);
+  border-radius: 25rpx; 
+  background-color: rgb(76,135,253);
+  box-shadow: 0rpx 3rpx 3rpx 3rpx rgb(217, 228, 252); 
+}
+.gameNavBtnTopic {
+  margin-top:50rpx;
+  font-size: 50rpx;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
+  text-align:center;
+
+}
+.gameNavBtnInfo {
+  font-size: 25rpx;
+  color: rgb(255, 255, 255);
+  text-align:center;
 }
 
-.gameNav .name{
-  
-  font-size: 44rpx;
-  font-weight: bold;
-  letter-spacing: 5rpx;
-}
-
-.gameNav .intro{
-  font-size: 24rpx;
-}
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 .scoreLink{
-  color: #F4A9A3;
-  text-align: center;
-  font-size: 40rpx;
+  margin-left: 50rpx;
+  margin-top: 45rpx;
+  height: 120rpx;
+  width: var(--width);
+  border-radius: 20rpx; 
+  box-shadow: 3rpx 3rpx 3rpx 3rpx rgb(217, 228, 252); 
+  display: flex;
+  flex-direction: row;
 }
 
+.scoreLink text{
+  padding:45rpx 0rpx;
+  margin-left:20rpx;
+  font-size:30rpx;
+  font-weight: 900;
+  color:rgb(148,183,254);
+  text-align:right;
+  min-width:260rpx;
+}
 
+.playerImage{
+  padding:20rpx 0rpx;
+  margin-left: 30rpx;
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50% 50%;
+  vertical-align: middle;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 .shelter{
   position: fixed;
   top: 0;
