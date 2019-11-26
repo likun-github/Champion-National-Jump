@@ -7,7 +7,7 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}  
 
 
 .modals{position:fixed; z-index: 999; top:0; left: 0; right:0; bottom: 0;}
@@ -177,17 +177,15 @@
 
   color: gray;
   font-size: 34rpx;
-  margin: 16rpx 0;
 
+  padding:  16rpx 29rpx;
+  padding-bottom: 10rpx;
 }
 
 .topNav text.choosed{
   color: #4C87FD;
   display: inline-block;
-  padding:  0 29rpx;
-  padding-bottom: 10rpx;
-  border-bottom: 8rpx solid #4C87FD;
-
+  border-bottom: 10rpx solid #4C87FD;
 }
 
 
@@ -262,4 +260,15 @@
   position: absolute;
   transform: translateX(-50%) translateY(-50%);
 
+}
+
+.width-fix-cover{
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.relative{
+  position: relative;
 }
