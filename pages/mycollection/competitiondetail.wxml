@@ -50,9 +50,9 @@
 
 
   <view class="collectionButtons">
-    <image src="/img/上一步.svg" class="collectionButton" bindtap="lastStep"> </image>
-    <image src="/img/播放.svg" class="collectionButton" bindtap="toFirstStep"> </image>
-    <image src="/img/下一步.svg" class="collectionButton" bindtap="nextStep"> </image>
+    <image src="/img/上一步.svg" mode="widthFix" class="collectionButton" bindtap="lastStep"> </image>
+    <image src="/img/重新播放.svg" mode="widthFix"class="collectionButton" bindtap="toFirstStep"> </image>
+    <image src="/img/下一步.svg" mode="widthFix" class="collectionButton" bindtap="nextStep"> </image>
   </view>
 
 

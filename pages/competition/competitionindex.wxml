@@ -12,16 +12,6 @@
   <text data-navigation="my" class="{{innerNavigation=='my'?'current':''}}" bindtap="ChangeInnerNavigation">我的赛局</text>
 </view>
 
-
-<view class="searchCol" >
-  <input placeholder="输入姓名|班级搜索"></input>
-  <image src="/img/Search.png"></image>
-</view>
-
-<view class="sortMethodChoose">
-  <text>时间排序</text>
-</view>
-
 <view class="registingCompetitionsContainer" wx:if="{{innerNavigation=='registe'}}">
   <view wx:for="{{registingCompetitions}}" wx:key="name" class="competitionCard">
     <view class="cardLeft">
@@ -77,8 +67,6 @@
 
 
 <view class="bottomNav">
-  
-  <image class="bottomBarImage" src="/img/bottomBar.png"></image>
 
   <view data-route="learn" bindtap="redict">
     <image src="/img/学习.svg"></image>

@@ -40,14 +40,6 @@
         <text class="gameButtonInfo" >悔棋</text>
       </view>
     </view>
-    <view class="gameButton">
-      <view>
-        <image src="/img/draw.svg"></image>
-      </view>
-      <view>
-        <text class="gameButtonInfo" bindtap="draw">求和</text>
-      </view>
-    </view>
   </view>
 
 
@@ -68,4 +60,26 @@
   </view>
 
 
+</view>
+
+
+<view class="gameEndTip">
+  <view class="gameEndTipImage">
+    <view class="backgroundImage">
+      <image class="resultImage" src="/img/失败插画.svg"></image>  
+    </view>
+    <view class="gameEndTipText">
+      <text class="win">胜利!</text>
+    </view>
+  </view>
+  <text class="gameEndTipScore">积分 +20</text>
+  <view class="gameEndBtn">
+    <text>再来一局</text>  
+  </view>
+  <view class="gameEndBtn">
+    <text>返回大厅</text>  
+  </view>
+  <view class="gameEndBtn">
+    <text>收藏本局</text>  
+  </view>
 </view>

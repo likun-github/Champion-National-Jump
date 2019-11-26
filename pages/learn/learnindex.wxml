@@ -11,16 +11,7 @@
  
 
 <view wx:if="{{innerRoute=='begin'}}">
-  <!-- <view class="searchCol">
-  <input placeholder="请输入搜索关键词"></input>
-  <image src="../../img/Search.png"></image>
-</view>
-
-<view class="sortMethodChoose">
-  <text>综合排序</text>
-  <text>时间排序</text>
-</view> -->
-
+  
 
 <view class="rules">
   <view class="ruleItem" wx:for="{{[1,2,3]}}">

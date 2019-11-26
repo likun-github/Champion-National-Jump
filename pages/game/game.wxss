@@ -15,6 +15,7 @@ Page {
   box-shadow: 1px 1px 10px rgb(217, 228, 252);
   display: flex;
   flex-direction: row;
+  text-overflow: hidden;
 }
 .competitionTopic{
   padding:17.5rpx 15rpx;
@@ -35,6 +36,7 @@ Page {
   display: block;
   text-align:left;
   color:grey;
+  text-overflow: hidden;
 }
 
 
