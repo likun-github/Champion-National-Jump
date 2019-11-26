@@ -193,7 +193,7 @@
 
 .bottomNav{
 
-  height: 130rpx;
+
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -206,8 +206,8 @@
 
 
 .bottomNav image{
-  height: 50rpx;
-  width: 50rpx;
+  height: 60rpx;
+  width:60rpx;
 }
 
 .bottomNav view{

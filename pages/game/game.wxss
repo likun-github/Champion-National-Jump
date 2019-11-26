@@ -176,7 +176,6 @@ Page {
 }
 
 .bottomNav image {
-  height:50rpx;
 }
 
 .bottomNavNotSelected {
