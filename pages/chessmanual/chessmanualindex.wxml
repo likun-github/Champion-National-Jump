@@ -1,11 +1,4 @@
 <!--pages/chessmanual/chessmanualindex.wxml-->
-<view class="topNav">
-  <text data-route="train" bindtap="ChangeRoute" class="{{innerRoute=='train'?'choosed':''}}">练习</text>
-  <text data-route="tree" bindtap="ChangeRoute" class="{{innerRoute=='tree'?'choosed':''}}">爬树</text>
-   <text data-route="competition" bindtap="ChangeRoute" class="{{innerRoute=='competition'?'choosed':''}}">经典对局</text>
-</view>
-
- 
 
 <view wx:if="{{innerRoute=='train'}}">
 

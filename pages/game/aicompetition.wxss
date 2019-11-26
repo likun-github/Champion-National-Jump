@@ -1,11 +1,11 @@
 /* pages/game/aicompetition.wxss */
 Page {
-
- --margin: 30rpx;
-
+  --margin: 30rpx;
+  background-color: rgb(202, 229, 255);
 }
 
 .poster{
+  background-color: white;
   padding:var(--margin);
   margin-top: var(--margin); 
   margin-left: var(--margin);
@@ -13,7 +13,7 @@ Page {
   display: flex;
   flex-direction: column;
   border-radius: 15rpx; 
-  box-shadow: 5rpx 5rpx 5rpx 5rpx rgb(230,230,230); 
+  box-shadow: 1px 1px 10px rgb(136, 196, 252); 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 .player{
