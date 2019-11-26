@@ -7,14 +7,15 @@ Page({
   data: {
     
     innerNavigation: "registe",
-    registingCompetitions: [{ name: "比赛名称", constitution: "云顶工坊" },{ name: "比赛名称", constitution: "云顶工坊" }],
+    registingCompetitions: [{ name: "周末五分钟快棋赛100格巴西", constitution: "", image: "/img/competitionimages/cover.png" }, { name: "周末快棋赛100格俄罗斯", constitution: "云顶工坊", image: "/img/competitionimages/cover1.png" },{ name: "周末快棋赛100格俄罗斯", constitution: "云顶工坊", image: "/img/competitionimages/cover2.png" }],
     greatCompetitions: [{ name: "超级比赛", constitution: "云顶工坊" }, { name: "青年棋手", constitution: "云顶工坊" }],
     myCompetitions: [{name:"比赛名称",constitution:"云顶工坊"}],
 
 //记录目前页数
     registeIndex:1,
     greatIndex:1,
-    myIndex:1
+    myIndex:1,
+    currentBallIndex: 0
 
 
   },
@@ -22,6 +23,12 @@ Page({
     var app = getApp();
     app.redict(e);
 
+  },
+
+  ChangeBall: function(e){
+    var index = e.currentTarget.dataset.index;
+    console.log(index);
+    this.setData({currentBallIndex:index});
   },
 
   GoToEdCompetition: function(){

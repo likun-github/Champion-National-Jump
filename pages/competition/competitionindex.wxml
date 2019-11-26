@@ -1,38 +1,39 @@
 <!--pages/competition/competitionindex.wxml-->
 
 
-
-<view class="topSliderContainer">
-  <image src="/img/cover.png"></image>
+<view class="topSliderContainer relative">
+  <view class="topImagesContainer" style="{{'transform:translateX(-'+currentBallIndex*100+'%);'}}">
+      <image src="/img/competitionimages/topCover.png"   wx:for="{{[0,1,2,3,4]}}"></image>
+      
+  </view>
+  <view class="balls">
+    <view wx:for="{{[0,1,2,3,4]}}" bindtap="ChangeBall" data-index="{{item}}" class="{{item==currentBallIndex?'current':''}}"></view>
+  </view>
 </view>
 
-<view class="navigator">
-  <text data-navigation="registe" class="{{innerNavigation=='registe'?'current':''}}" bindtap="ChangeInnerNavigation">比赛报名</text>
-  <text data-navigation="great" class="{{innerNavigation=='great'?'current':''}}" bindtap="ChangeInnerNavigation">精彩比赛</text>
-  <text data-navigation="my" class="{{innerNavigation=='my'?'current':''}}" bindtap="ChangeInnerNavigation">我的赛局</text>
+<view class="topNav">
+  <text data-navigation="registe" class="{{innerNavigation=='registe'?'choosed':''}}" bindtap="ChangeInnerNavigation">比赛报名</text>
+  <text data-navigation="great" class="{{innerNavigation=='great'?'choosed':''}}" bindtap="ChangeInnerNavigation">精彩比赛</text>
+  <text data-navigation="my" class="{{innerNavigation=='my'?'choosed':''}}" bindtap="ChangeInnerNavigation">我的赛局</text>
 </view>
 
+<view class="gray-margin"></view>
 
-<view class="searchCol" >
-  <input placeholder="输入姓名|班级搜索"></input>
-  <image src="/img/Search.png"></image>
-</view>
-
-<view class="sortMethodChoose">
-  <text>时间排序</text>
-</view>
 
 <view class="registingCompetitionsContainer" wx:if="{{innerNavigation=='registe'}}">
   <view wx:for="{{registingCompetitions}}" wx:key="name" class="competitionCard">
-    <view class="cardLeft">
-      <image class="competitionCover" src="/img/checkerboard.png"></image>
+    <view class="cardLeft relative">
+      <text class="registing">报名中</text>
+      <image class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
     </view>
     <view class="cardRight">
       <view class="competitionName" data-competitionId="{{item.CompetitionId}}" bindtap="GoToCompetitionInfo">{{item.name}}</view>
-      <view class="competitionConstitution">举办机构:{{item.constitution}}</view>
+      <view><text>截止日期2019.11.30</text></view>
+      <view><text class="joinedCount">人数64/100</text> <text>主办方:云顶</text></view>
       <view class="competitionTags">
-        <text>线上</text>
-        <text> 公开赛</text>
+        <text>100格</text>
+        <text>巴西规则</text>
+        <text>报名中</text>
       </view>
     </view>
   </view>
