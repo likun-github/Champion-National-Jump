@@ -30,13 +30,13 @@ Page({
     blackTimerText: "00:00:00",
 
     // 游戏结果
-    gameResult: "",
+    gameResult: 0,  /*0：胜； 1：负； 2：和*/ 
 
     //现在的目前对象
     currentTarget: null,
 
     //代表现在出棋的一方： 0 代表白方, 1代表黑方（AI）
-    currentUser: 0,
+    currentUser: 0,           
 
     // 当前选中棋子的可走路径
     currentAvailablePaths: [],

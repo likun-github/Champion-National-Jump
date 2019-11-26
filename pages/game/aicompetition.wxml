@@ -29,7 +29,7 @@
         <image src="/img/lose.svg"></image>
       </view>
       <view >
-        <text class="gameButtonInfo" >重新开始</text>
+        <text class="gameButtonInfo">重新开始</text>
       </view>
     </view>
     <view class="gameButton" bindtap="withdraw">
@@ -57,7 +57,7 @@
       <view wx:else class="timer_waiting">
         <text> {{whiteTimerText}}</text>
       </view>
-  </view>
+    </view>
 
 
 </view>
@@ -66,13 +66,19 @@
 <view class="gameEndTip">
   <view class="gameEndTipImage">
     <view class="backgroundImage">
-      <image class="resultImage" src="/img/失败插画.svg"></image>  
+      <image wx:if="{{gameResult==0}}" class="resultImage" mode="widthFix" src="/img/胜利组件.png"></image> 
+      <image wx:elif="{{gameResult==1}}" class="resultImage" mode="widthFix" src="/img/失败组件.png"></image>
+      <image wx:else class="resultImage" mode="widthFix" src="/img/和棋组件.png"></image> 
     </view>
     <view class="gameEndTipText">
-      <text class="win">胜利!</text>
+      <text wx:if="{{gameResult==0}}" class="win">胜利!</text>
+      <text wx:elif="{{gameResult==1}}" class="lose">失败...</text>
+      <text wx:else class="lose">和棋...</text>
     </view>
   </view>
-  <text class="gameEndTipScore">积分 +20</text>
+  <text wx:if="{{gameResult==0}}" class="gameEndTipScore">积分 +20</text>
+  <text wx:elif="{{gameResult==1}}" class="gameEndTipScore">积分 -20</text>
+  <text wx:else class="gameEndTipScore">积分 不变</text>
   <view class="gameEndBtn">
     <text>再来一局</text>  
   </view>

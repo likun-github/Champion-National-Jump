@@ -114,38 +114,37 @@ Page {
 
 .gameEndTipImage{
   position: relative;
+  padding:0rpx 25rpx;
 }
 .gameEndTipImage .backgroundImage{
   position: relative;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
 }
 .backgroundImage .resultImage{
-  width: 600rpx;
+  width: 100%;
 }
 
 .gameEndTipImage .gameEndTipText{
   position:absolute;
-  top:50%;
+  top:35%;
   left: 50%;
   width: 290rpx;
-  text-align: right;
+  text-align: left;
 }
 .gameEndTipText .win{
   color:rgb(255,123,123);
-  font-size: 70rpx;
+  font-size: 90rpx;
   font-weight: 900;  
 }
 .gameEndTipText .lose{
   color:rgb(82,169,255);
-  font-size: 70rpx;
+  font-size: 90rpx;
   font-weight: 900;  
 }
 .gameEndTipText .draw{
   color:rgb(255,123,123);
-  font-size: 70rpx;
+  font-size: 90rpx;
   font-weight: 900;  
 }
 
