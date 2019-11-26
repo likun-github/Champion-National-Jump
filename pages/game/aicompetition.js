@@ -30,7 +30,7 @@ Page({
     blackTimerText: "00:00:00",
 
     // 游戏结果
-    gameResult: 0,  /*0：胜； 1：负； 2：和*/ 
+    gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/ 
 
     //现在的目前对象
     currentTarget: null,

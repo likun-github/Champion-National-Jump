@@ -3,7 +3,9 @@
 
 <view class="competitionRecommand">
   <text class="competitionTopic">赛况推荐</text>
-  <text class="competitionInfo">2019全国少年儿童国际跳棋公开赛</text>    
+  <view>
+    <text class="competitionInfo">2019全国少年儿童国际跳棋公开赛……………………………………………………</text> 
+  </view>   
 </view>
 
 

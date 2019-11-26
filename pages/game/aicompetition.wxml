@@ -63,7 +63,7 @@
 </view>
 
 
-<view class="gameEndTip">
+<view wx:if="{{gameResult>=0}}" class="gameEndTip">
   <view class="gameEndTipImage">
     <view class="backgroundImage">
       <image wx:if="{{gameResult==0}}" class="resultImage" mode="widthFix" src="/img/胜利组件.png"></image> 

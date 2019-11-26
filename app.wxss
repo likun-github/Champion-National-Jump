@@ -30,7 +30,6 @@
   border-bottom: 3rpx solid gray;
 }
 
-
 .dialog-title{
   line-height: 100rpx;
   
@@ -67,7 +66,6 @@
 }
 
 .modalLi:last-of-type{
-
   border: none;
 }
 
@@ -75,12 +73,10 @@
 .modalLi .name{
   letter-spacing: 15rpx;
   line-height: 70rpx;
-  color: gray;
- 
+  color: gray; 
 }
 
 .modalLi .current{
-
   color: black;
 }
 
@@ -92,13 +88,13 @@
   height: 50rpx;
   display: flex;
   justify-content: center;
-
 }
+
 .searchCol{
   text-align: center;
 }
-.searchCol input{
 
+.searchCol input{
   width: 40%;
   height: 50rpx;
   line-height: 50rpx;
@@ -116,7 +112,6 @@
 /* 媒体标签 */
 
 .mediaBtns{
-
   font-size: 30rpx;
   display: flex;
   justify-content: flex-end;
@@ -137,9 +132,6 @@
   vertical-align: middle;
 }
 
-
-
-
 .sortMethodChoose{
   margin: 14rpx 0;
   display: flex;
@@ -159,10 +151,8 @@
   color: white;
 }
 
-
-
 .gray-margin{
-  height: 40rpx;
+  height: 10rpx;
   background-color: rgb(232,232,232);
 }
 
@@ -174,10 +164,8 @@
 }
 
 .topNav text{
-
   color: gray;
   font-size: 34rpx;
-
   padding:  16rpx 29rpx;
   padding-bottom: 10rpx;
 }

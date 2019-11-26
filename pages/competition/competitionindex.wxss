@@ -44,12 +44,6 @@
 }
 
 
-
-.gray-margin{
-  height: 10rpx;
-}
-
-
 /* 比赛列表 */
 
 .competitionsContainer{

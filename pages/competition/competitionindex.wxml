@@ -3,7 +3,7 @@
 
 <view class="topSliderContainer relative">
   <view class="topImagesContainer" style="{{'transform:translateX(-'+currentBallIndex*100+'%);'}}">
-      <image src="/img/competitionimages/topCover.png"   wx:for="{{[0,1,2,3,4]}}"></image>
+      <image mode="widthFix" src="/img/competitionimages/topCover.png"   wx:for="{{[0,1,2,3,4]}}"></image>
       
   </view>
   <view class="balls">

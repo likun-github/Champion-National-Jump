@@ -6,6 +6,15 @@ Page {
 
 }
 
+@keyframes remindMessage {
+  0% {
+    -webkit-transform: translateX(90%);
+  }
+  100% {
+    -webkit-transform: translateX(-180%);
+  }
+}
+
 .competitionRecommand{
   margin-left: 50rpx;
   margin-top: 45rpx;
@@ -15,13 +24,17 @@ Page {
   box-shadow: 1px 1px 10px rgb(217, 228, 252);
   display: flex;
   flex-direction: row;
-  text-overflow: hidden;
 }
+.competitionRecommand view{
+  max-width: 440rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .competitionTopic{
   padding:17.5rpx 15rpx;
-  max-width: 150rpx;
   min-width:150rpx;
-  max-height: 30rpx;
   font-size: 30rpx;
   font-weight: 900;
   color:rgb(107,213,226);
@@ -30,13 +43,11 @@ Page {
 }
 .competitionInfo{
   padding:20rpx 0rpx;
-  max-width: 430rpx;
-  max-height: 25rpx;
   font-size: 25rpx;
-  display: block;
+  display: inline-block;
   text-align:left;
   color:grey;
-  text-overflow: hidden;
+  animation: remindMessage 15s linear infinite;
 }
 
 
