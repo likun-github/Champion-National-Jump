@@ -15,7 +15,7 @@ text{
 
 .userInfo{
   display: flex;
-  height: 400rpx;
+  height: 30vh;
   background: linear-gradient(white,skyblue);
   padding: 20rpx 50rpx;
 }

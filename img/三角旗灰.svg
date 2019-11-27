@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="55.508" height="80.252" viewBox="0 0 55.508 80.252">
+  <defs>
+    <filter id="椭圆_140" x="0" y="41.391" width="55.508" height="38.861" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#888" flood-opacity="0.6"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="组件_60_3" data-name="组件 60 – 3" transform="translate(9)">
+    <g transform="matrix(1, 0, 0, 1, -9, 0)" filter="url(#椭圆_140)">
+      <g id="椭圆_140-2" data-name="椭圆 140" transform="translate(9 47.39)" fill="#c8c8c8" stroke="#fff" stroke-width="3">
+        <ellipse cx="18.754" cy="10.43" rx="18.754" ry="10.43" stroke="none"/>
+        <ellipse cx="18.754" cy="10.43" rx="17.254" ry="8.93" fill="none"/>
+      </g>
+    </g>
+    <g id="旗" transform="translate(16.26)">
+      <rect id="矩形_592" data-name="矩形 592" width="3.04" height="56.135" fill="#965028"/>
+      <path id="路径_793" data-name="路径 793" d="M3.04,100.167,0,99.17v18.948l3.04-1Z" transform="translate(0 -94.964)" fill="#823214"/>
+      <path id="路径_794" data-name="路径 794" d="M0,66.113V39.73L28.885,52.922Z" transform="translate(0 -38.045)" fill="#ff4839"/>
+    </g>
+  </g>
+</svg>

@@ -5,6 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+      scroll_view_height: (wx.getSystemInfoSync().windowHeight * (750 / wx.getSystemInfoSync().windowWidth) - 120),
+      height_px: wx.getSystemInfoSync().windowHeight,
+      height_rpx: wx.getSystemInfoSync().windowHeight * (750 / wx.getSystemInfoSync().windowWidth),
+      background_height_rpx:750/1024*2668,
       innerRoute: "tree",
       sortMethod: "all",
       practices:[
