@@ -6,9 +6,18 @@ Page({
    */
   data: {
       scroll_view_height: (wx.getSystemInfoSync().windowHeight * (750 / wx.getSystemInfoSync().windowWidth) - 120),
-      height_px: wx.getSystemInfoSync().windowHeight,
-      height_rpx: wx.getSystemInfoSync().windowHeight * (750 / wx.getSystemInfoSync().windowWidth),
       background_height_rpx:750/1024*2668,
+      pass_pos_info:[
+        { height_ratio: 0.84, width_ratio:0.23, isTen: 0, state: 0},
+        { height_ratio: 0.71, width_ratio: 0.62, isTen: 0, state: 0},
+        { height_ratio: 0.64, width_ratio: 0.18, isTen: 0, state: 0},
+        { height_ratio: 0.56, width_ratio: 0.51, isTen: 0, state: 0},
+        { height_ratio: 0.55, width_ratio: 0.86, isTen: 0, state: 0},
+        { height_ratio: 0.44, width_ratio: 0.74, isTen: 0, state: 0},
+        { height_ratio: 0.34, width_ratio: 0.69, isTen: 0, state: 0},
+        { height_ratio: 0.27, width_ratio: 0.35, isTen: 0, state: 0},
+        { height_ratio: 0.11, width_ratio: 0.11, isTen: 0, state: 0},
+        { height_ratio: 0.05, width_ratio: 0.444, isTen: 1, state: 0}],
       innerRoute: "tree",
       sortMethod: "all",
       practices:[

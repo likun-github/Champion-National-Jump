@@ -1,9 +1,8 @@
 /* pages/game/game.wxss */
 Page {
-
  --margin: 30rpx;
  --width: 650rpx;
-
+  --button_height:30%;
 }
 
 @keyframes remindMessage {
@@ -17,7 +16,7 @@ Page {
 
 .competitionRecommand{
   margin-left: 50rpx;
-  margin-top: 45rpx;
+  margin-top: 3vh;
   height: 70rpx;
   width: var(--width);
   border-radius: 20rpx; 
@@ -55,35 +54,40 @@ Page {
 .gameNav{
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+.gameNavBtnShadow {
+  margin-top:7vh;
+  margin-bottom: 2.5vh;
+  width: 500rpx;
+  height: 10vh;
+  box-shadow: 0vh 3vh 5vh rgb(146, 182, 253);
 }
 .gameNavBtn{
-  margin-left: 50rpx;
-  margin-top: 3vh;
-  height: 15vh;
+  position:relative;
+  top:-2vh;
+  left:-75rpx;
+  height: 14vh;
   width: var(--width);
   border-radius: 25rpx; 
   background-color: rgb(76,135,253);
-  box-shadow: 1px 1px 40px rgb(217, 228, 252);
   align-items: center;
 }
-.gameNavBtnTopic {
+.gameNavBtnText {
   position: relative;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 50rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.gameNavBtnText .topic{
+  font-size: 3.5vh;
   font-weight: 900;
   color: rgb(255, 255, 255);
   text-align:center;
-
 }
-.gameNavBtnInfo {
-  position: relative;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 24rpx;
-  color: rgb(255, 255, 255);
+.gameNavBtnText .info{
+  margin-top:5rpx;
+  font-size: 1.7vh;
+  color: rgba(255, 255, 255, 0.5);
   text-align:center;
 }
 
@@ -91,8 +95,7 @@ Page {
 
 .scoreLink{
   margin-left: 50rpx;
-  margin-top: 45rpx;
-  height: 120rpx;
+  margin-top: 5vh;
   width: var(--width);
   border-radius: 20rpx; 
   box-shadow: 1px 1px 20px rgb(217, 228, 252);
@@ -101,22 +104,21 @@ Page {
 }
 
 .scoreLink text{
-  padding:45rpx 0rpx;
+  margin-top:3.5vh;
   margin-left:20rpx;
-  font-size:30rpx;
+  font-size:2.25vh;
   font-weight: 900;
   color:rgb(148,183,254);
   text-align:right;
-  min-width:260rpx;
+  min-width:25vw;
 }
 
 .playerImage{
-  padding:20rpx 0rpx;
+  padding:1.5vh 0rpx;
   margin-left: 30rpx;
-  height: 80rpx;
-  width: 80rpx;
+  height: 7.5vh;
+  width: 7.5vh;
   border-radius: 50% 50%;
-  vertical-align: middle;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -91,21 +91,20 @@
 </view>
 
 </view>
--->
-<scroll-view scroll-y="true" style="position:fixed; top:0;width: 750rpx;height: {{scroll_view_height}}rpx">
-  <image class="background" mode="widthFix" src="/img/棋谱-底图.png"></image>
-  <image mode="widthFix" style="position:absolute;top:{{0.84*background_height_rpx}}rpx;left:176rpx; width:10%;" src="/img/三角旗灰.svg"></image>
-  <image mode="widthFix" style="position:absolute;top:{{0.71*background_height_rpx}}rpx;left:464rpx; width:10%;" src="/img/三角旗灰.svg"></image>
-  <image mode="widthFix" style="position:absolute;top:{{0.64*background_height_rpx}}rpx;left:135rpx; width:10%;" src="/img/三角旗灰.svg"></image>
-  <image mode="widthFix" style="position:absolute;top:{{0.56*background_height_rpx}}rpx;left:379rpx; width:10%;" src="/img/三角旗灰.svg"></image>
-  <image mode="widthFix" style="position:absolute;top:{{0.55*background_height_rpx}}rpx;left:647rpx; width:10%;" src="/img/三角旗灰.svg"></image>
-  <image mode="widthFix" style="position:absolute;top:{{0.44*background_height_rpx}}rpx;left:554rpx; width:10%;" src="/img/三角旗灰.svg"></image>
-  <image mode="widthFix" style="position:absolute;top:{{0.34*background_height_rpx}}rpx;left:514rpx; width:10%;" src="/img/三角旗灰.svg"></image>
-  <image mode="widthFix" style="position:absolute;top:{{0.27*background_height_rpx}}rpx;left:259rpx; width:10%;" src="/img/三角旗灰.svg"></image>
-  <image mode="widthFix" style="position:absolute;top:{{0.11*background_height_rpx}}rpx;left:83rpx; width:10%;" src="/img/三角旗灰.svg"></image>
-  <image mode="widthFix" style="position:absolute;top:{{0.04*background_height_rpx}}rpx;left:333rpx; width:10%;" src="/img/三角旗灰.svg"></image>
-</scroll-view>
 
+-->
+
+<scroll-view scroll-y="true" style="position:fixed; top:0;width: 750rpx;height: {{scroll_view_height}}rpx" >
+  <image class="background" mode="widthFix" src="/img/棋谱-底图.png"></image>
+  <view wx:for="{{pass_pos_info}}">
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:if="{{item.isTen==1 && item.state==0}}" src="/img/最后一面旗子灰.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==1 && item.state==1}}" src="/img/最后一面旗子黄.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==1 && item.state==2}}" src="/img/最后一面旗子绿.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==0 && item.state==0}}" src="/img/三角旗灰.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==0 && item.state==1}}" src="/img/三角旗黄.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==0 && item.state==2}}" src="/img/三角旗绿.svg"></image>
+  </view>
+</scroll-view>
 
 
 

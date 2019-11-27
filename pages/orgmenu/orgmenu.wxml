@@ -1,7 +1,45 @@
+<view>
+  <image mode="widthFix" class="topBackground" src="/img/个人信息下面的蓝色底.svg"></image>
+</view>
 
+<view class="personalInfo">
+  <image mode="widthFix" src="/img/用户头像.svg"></image>
+  <view class="info">
+    <text class="name">Yun Ding</text>
+    <text class="other">认证状态：已认证-运营</text>
+    <text class="other">段位：九段 积分：8000</text>
+  </view>
+</view>
+
+<view class="gray-margin" style="margin-top:20rpx;"></view>
+
+<view class="optionBar">
+  <image mode="widthFix" src="/img/认证.svg"></image>
+  <text>身份认证</text>
+  <text class="goto">></text>
+</view>
+
+<view class="gray-margin" style="height: 5rpx;"></view>
+
+<view class="optionBar">
+  <image mode="widthFix" src="/img/收藏夹.svg"></image>
+  <text>我的收藏</text>
+  <text class="goto">></text>
+</view>
+
+<view class="gray-margin" style="height: 5rpx;"></view>
+
+<view class="optionBar">
+  <image mode="widthFix" src="/img/灰色info.svg"></image>
+  <text style="color:rgb(234,234,234);">关于冠军国跳</text>
+  <text class="goto" style="color:rgb(234,234,234);">></text>
+</view>
+
+<view class="gray-margin" style="height: 5rpx;"></view>
+<!--
 <view class="userInfo">
   <view class="infoLeft">
-        <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button> -->
+        
             <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
             <text class="authOr">{{gameInfo.authenticated?"已认证":"未认证"}}{{gameInfo.role=="student"?":学生":""}}{{gameInfo.role=="constitution"?":机构":""}}{{gameInfo.role=="coach"?":教练":""}}</text>
   </view>
@@ -54,7 +92,7 @@
 
      
 
-  <!-- <button bindtap="showModal" style="color:#686868;position:absolute;top:485rpx;left:150rpx;border:none;font-size:45rpx;" plain="true">身份认证</button> -->
+  
 
 
 
@@ -173,7 +211,7 @@
     </view>
 
 </view>
-
+-->
 
 
 

@@ -2,6 +2,70 @@
 @import"/weui.wxss";
 @import "../game/game.wxss";
 
+
+.topBackground {
+  width: 750rpx;
+}
+
+.personalInfo {
+  position: absolute;
+  top:50rpx;
+  left:50rpx;
+  width:650rpx;
+  border-radius: 25rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 1px 1px 10px rgb(136, 136, 136); 
+}
+.personalInfo image {
+  padding:50rpx;
+  display: block;
+  width:160rpx;
+}
+.personalInfo .info {
+  display: flex;
+  flex-direction: column;
+}
+.info .name {
+  margin-top:50rpx;
+  color:rgb(44, 44, 44);
+  font-size: 50rpx;
+  font-weight: 900;
+}
+.info .other {
+  color:rgb(104,104,104);
+  font-size:20rpx;
+}
+
+.optionBar {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
+.optionBar image {
+  padding:30rpx 0rpx;
+  margin-left: 75rpx;
+  width: 60rpx;
+}
+.optionBar text {
+  margin-top:35rpx;
+  margin-left:25rpx;
+  font-size:35rpx;
+  color:rgb(136,136,136);
+  min-width: 320rpx;
+}
+.optionBar .goto {
+  font-size:35rpx;
+  color:rgb(163, 163, 163);
+  text-align: right;
+  min-width: 200rpx;
+}
+
+
+
+
 view{
   padding: 0;
   margin: 0;
