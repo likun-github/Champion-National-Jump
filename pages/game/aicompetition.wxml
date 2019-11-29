@@ -4,11 +4,21 @@
 
   <view class="player"> 
     <view>
-      <image src="/img/ai.png"></image>
+      <image wx:if="{{aiLevel==-1}}" src="/img/game/问号头像.svg"></image>
+      <image wx:elif="{{aiLevel==0}}" src="/img/game/ai/女孩头像.png"></image>
+      <image wx:elif="{{aiLevel==1}}" src="/img/game/ai/大叔头像.png"></image>
+      <image wx:elif="{{aiLevel==2}}" src="/img/game/ai/老人头像.png"></image>
     </view> 
     <view>
-      <text class = "playerName">AI</text>
-      <text class = "playerInfo">等级：普通</text>
+      <text wx:if="{{aiLevel==-1}}" class = "playerName">玩家选择中...</text>
+      <text wx:elif="{{aiLevel==0}}" class = "playerName">邻家的小妹妹</text>
+      <text wx:elif="{{aiLevel==1}}" class = "playerName">爱国跳的中年大叔</text>
+      <text wx:elif="{{aiLevel==2}}" class = "playerName">沧桑的老大爷</text>
+
+      <text wx:if="{{aiLevel==-1}}" class = "playerInfo">等级：---</text>
+      <text wx:elif="{{aiLevel==0}}" class = "playerInfo">等级：入门</text>
+      <text wx:elif="{{aiLevel==1}}" class = "playerInfo">等级：普通</text>
+      <text wx:elif="{{aiLevel==2}}" class = "playerInfo">等级：大师</text>
     </view>
     <view wx:if="{{currentUser==1}}" class="timer_running">
       <text> {{blackTimerText}}</text>
@@ -26,7 +36,7 @@
   <view class="gameButtons">
     <view class="gameButton" bindtap="reStart">
       <view>
-        <image src="/img/lose.svg"></image>
+        <image src="/img/game/button/lose.svg"></image>
       </view>
       <view >
         <text class="gameButtonInfo">重新开始</text>
@@ -34,7 +44,7 @@
     </view>
     <view class="gameButton" bindtap="withdraw">
       <view>
-        <image src="/img/withdraw.svg"></image>
+        <image src="/img/game/button/withdraw.svg"></image>
       </view>
       <view>
         <text class="gameButtonInfo" >悔棋</text>
@@ -45,7 +55,7 @@
 
   <view class="player">
     <view>
-      <image src="/img/user.svg"></image>
+      <image src="/img/game/user.svg"></image>
     </view>
     <view>
       <text class="playerName">Yunding</text>   
@@ -66,19 +76,19 @@
 <view wx:if="{{gameResult>=0}}" class="gameEndTip">
   <view class="gameEndTipImage">
     <view class="backgroundImage">
-      <image wx:if="{{gameResult==0}}" class="resultImage" mode="widthFix" src="/img/胜利组件.png"></image> 
-      <image wx:elif="{{gameResult==1}}" class="resultImage" mode="widthFix" src="/img/失败组件.png"></image>
-      <image wx:else class="resultImage" mode="widthFix" src="/img/和棋组件.png"></image> 
+      <image wx:if="{{gameResult==0}}" class="resultImage" mode="widthFix" src="/img/game/胜利.png"></image> 
+      <image wx:elif="{{gameResult==1}}" class="resultImage" mode="widthFix" src="/img/game/失败.png"></image>
+      <image wx:else class="resultImage" mode="widthFix" src="/img/game/和棋.png"></image> 
     </view>
     <view class="gameEndTipText">
       <text wx:if="{{gameResult==0}}" class="win">胜利!</text>
       <text wx:elif="{{gameResult==1}}" class="lose">失败...</text>
-      <text wx:else class="lose">和棋...</text>
+      <text wx:elif="{{gameResult==2}}" class="draw">和棋!</text>
     </view>
   </view>
   <text wx:if="{{gameResult==0}}" class="gameEndTipScore">积分 +20</text>
   <text wx:elif="{{gameResult==1}}" class="gameEndTipScore">积分 -20</text>
-  <text wx:else class="gameEndTipScore">积分 不变</text>
+  <text wx:elif="{{gameResult==2}}" class="gameEndTipScore">积分 +0</text>
   <view class="gameEndBtn">
     <text>再来一局</text>  
   </view>
@@ -87,5 +97,48 @@
   </view>
   <view class="gameEndBtn">
     <text>收藏本局</text>  
+  </view>
+</view>
+
+
+<view class="gameSetting">
+  <text class="headline">对局设置</text>
+  <view class="option">
+    <view class="title">
+      <text class="blueline">———</text>
+      <image mode="widthFix"src="/img/game/ai/AI等级.svg"></image>
+      <text>AI等级</text>    
+      <text class="blueline">———</text>
+    </view>
+    <view class="buttons">
+      <view class="button" style="background-color:{{levelEasyBtnColor}}">
+        <text style="color:{{levelEasyTextColor}}">入门</text>
+      </view>
+      <view class="button" style="background-color:{{levelMediumBtnColor}}">
+        <text style="color:{{levelMediumTextColor}}">普通</text>
+      </view>
+      <view class="button" style="background-color:{{levelHardBtnColor}}">
+        <text style="color:{{levelHardTextColor}}">大师</text>
+      </view>
+    </view>
+  </view>
+  <view class="option">
+    <view class="title">
+      <text class="blueline">———</text>
+      <image mode="widthFix"src="/img/game/ai/先后顺序.svg"></image>
+      <text>先后顺序</text>    
+      <text class="blueline">———</text>
+    </view>
+    <view class="buttons">
+      <view class="button" style="background-color:{{sequenceFirstBtnColor}}" bindtouchstart="handleSequenceTouchStart">
+        <text style="color:{{sequenceFirstTextColor}}">先手</text>
+      </view>
+      <view class="button" style="background-color:{{sequenceSecondBtnColor}}" bindtouchstart="handleSequenceTouchStart">
+        <text style="color:{{sequenceSecondTextColor}}">后手</text>
+      </view>
+      <view class="button" style="background-color:{{sequenceRandomBtnColor}}" bindtouchstart="handleSequenceTouchStart">
+        <text style="color:{{sequenceRandomTextColor}}">随机</text>
+      </view>
+    </view>
   </view>
 </view>

@@ -97,6 +97,71 @@ Page {
   color: grey;
   display: block;
 }
+///////////////////////////////////////////////////////////////////////////////////////////
+.gameSetting {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width:630rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 25rpx;
+  background-color: white;
+}
+.gameSetting .headline {
+  color:rgb(203,229,255);
+  font-size: 40rpx;
+  font-weight: 900;
+  letter-spacing:7rpx;
+  padding:3vh;
+}
+.gameSetting .option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.option .title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.title .blueline {
+  color:rgb(203,229,255);
+  font-size: 30rpx;
+  letter-spacing:0rpx;
+  padding: 0rpx 30rpx;
+}
+.title image {
+  width:40rpx;
+  padding:0rpx 7.5rpx 0rpx 0rpx;
+}
+.title text {
+  color:rgb(82,169,255);
+  font-size: 30rpx;
+  font-weight: 550;
+  letter-spacing:5rpx;
+  padding:0rpx 0rpx 0rpx 7.5rpx;
+}
+.option .buttons {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3vh;
+}
+.buttons .button {
+  border-radius: 15rpx;
+  margin-top:30rpx;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  padding:12.5rpx 35rpx;
+}
+.button text {
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: 900;
+  letter-spacing:5rpx;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 .gameEndTip {
@@ -143,7 +208,7 @@ Page {
   font-weight: 900;  
 }
 .gameEndTipText .draw{
-  color:rgb(255,123,123);
+  color:rgb(217,149,114);
   font-size: 90rpx;
   font-weight: 900;  
 }
