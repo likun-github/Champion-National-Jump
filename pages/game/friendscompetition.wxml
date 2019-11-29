@@ -1,0 +1,104 @@
+<!--pages/game/friendscompetition.wxml-->
+
+<view class = "poster" style="display:{{friendID==null}}">
+
+
+  <view class="player"> 
+    <view>
+      <image wx:if="{{friendName==null}}" src="/img/game/问号头像.svg"></image>
+      <image wx:else src="/img/game/ai/女孩头像.png"></image>
+    </view> 
+    <view>
+      <text wx:if="{{friendName==null}}" class = "playerName">邀请好友中...</text>
+      <text wx:else class = "playerName">我是你的朋友</text>
+      <text wx:if="{{friendLevel!=null &&friendScore!= null}}" class = "playerInfo">段位：{{friendLevel}} 积分：{{friendScore}}</text>
+      <text wx:else class = "playerInfo">段位：-- 积分：--</text>
+    </view>
+    <view wx:if="{{currentUser==1}}" class="timer_running">
+      <text> {{blackTimerText}}</text>
+    </view>
+    <view wx:else class="timer_waiting">
+      <text> {{blackTimerText}}</text>
+    </view>
+  </view>
+
+
+  <canvas canvas-id='chessboard' bindtap="TapBoard" style="margin-top:6vh;width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:15px solid rgb(82,169,255);">
+  </canvas>
+
+
+  <view class="gameButtons">
+    <view class="gameButton" bindtap="withdraw">
+      <view>
+        <image src="/img/game/button/withdraw.svg"></image>
+      </view>
+      <view>
+        <text class="gameButtonInfo" >悔棋</text>
+      </view>
+    </view>
+    <view class="gameButton" bindtap="draw">
+      <view>
+        <image src="/img/game/button/draw.svg"></image>
+      </view>
+      <view >
+        <text class="gameButtonInfo">求和</text>
+      </view>
+    </view>
+    <view class="gameButton" bindtap="lose">
+      <view>
+        <image src="/img/game/button/lose.svg"></image>
+      </view>
+      <view >
+        <text class="gameButtonInfo">认输</text>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="player" style="margin-top:6vh;">
+    <view>
+      <image src="/img/game/user.svg"></image>
+    </view>
+    <view>
+      <text class="playerName">Yunding</text>   
+      <text class="playerInfo">段位：九段 积分: 1000</text>  
+    </view>
+    <view wx:if="{{currentUser==0}}" class="timer_running">
+      <text> {{whiteTimerText}}</text>
+    </view>
+      <view wx:else class="timer_waiting">
+        <text> {{whiteTimerText}}</text>
+      </view>
+    </view>
+</view>
+
+<view wx:if="{{friendID==null}}" class='mask-view' catchtouchmove='ture'>
+</view>
+
+<view wx:if="{{gameResult>=0}}" class="gameEndTip">
+  <view class="gameEndTipImage">
+    <view class="backgroundImage">
+      <image wx:if="{{gameResult==0}}" class="resultImage" mode="widthFix" src="/img/game/胜利.png"></image> 
+      <image wx:elif="{{gameResult==1}}" class="resultImage" mode="widthFix" src="/img/game/失败.png"></image>
+      <image wx:else class="resultImage" mode="widthFix" src="/img/game/和棋.png"></image> 
+    </view>
+    <view class="gameEndTipText">
+      <text wx:if="{{gameResult==0}}" class="win">胜利!</text>
+      <text wx:elif="{{gameResult==1}}" class="lose">失败...</text>
+      <text wx:elif="{{gameResult==2}}" class="draw">和棋!</text>
+    </view>
+  </view>
+  <text wx:if="{{gameResult==0}}" class="gameEndTipScore">积分 +20</text>
+  <text wx:elif="{{gameResult==1}}" class="gameEndTipScore">积分 -20</text>
+  <text wx:elif="{{gameResult==2}}" class="gameEndTipScore">积分 +0</text>
+  <view class="gameEndBtn">
+    <text>再来一局</text>  
+  </view>
+  <view class="gameEndBtn">
+    <text>返回大厅</text>  
+  </view>
+  <view class="gameEndBtn">
+    <text>收藏本局</text>  
+  </view>
+</view>
+

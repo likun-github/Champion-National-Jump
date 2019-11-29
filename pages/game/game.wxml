@@ -24,7 +24,7 @@
 
   <view class="gameNavBtnShadow">
     <view class="gameNavBtn"> 
-      <view class="gameNavBtnText">
+      <view class="gameNavBtnText" bindtap="goto_fast_competition">
         <view class="topic">线上匹配</view>
         <view class="info">棋逢对手 针锋相对</view>
       </view>  
@@ -32,7 +32,7 @@
   </view>
 
   <view class="gameNavBtnShadow">
-    <view class="gameNavBtn"> 
+    <view class="gameNavBtn" bindtap="goto_friends_competition"> 
       <view class="gameNavBtnText">
         <view class="topic">好友对战</view>
         <view class="info">邀请好友 切磋棋艺</view>

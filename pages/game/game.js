@@ -19,10 +19,23 @@ Page({
       showMatching: !this.data.showMatching
     });
   },
-
+  
+  // 人机对战
   goto_ai_competition:function() {
     wx.navigateTo({
-      url: './aicompetition',
+      url: './aicompetition'
+    })
+  },
+  // 线上匹配
+  goto_fast_competition: function () {
+    wx.navigateTo({
+      url: './fastcompetition'
+    })
+  },
+  // 好友对战
+  goto_friends_competition:function() {
+    wx.navigateTo({
+      url: './friendscompetition'
     })
   },
 

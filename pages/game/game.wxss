@@ -14,6 +14,7 @@ Page {
   }
 }
 
+/*顶部公告栏*/
 .competitionRecommand{
   margin-left: 50rpx;
   margin-top: 3vh;
@@ -30,7 +31,6 @@ Page {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
 .competitionTopic{
   padding:17.5rpx 15rpx;
   min-width:150rpx;
@@ -50,7 +50,7 @@ Page {
 }
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
+/*游戏跳转按钮*/
 .gameNav{
   display: flex;
   flex-direction: column;
@@ -83,6 +83,7 @@ Page {
   font-weight: 900;
   color: rgb(255, 255, 255);
   text-align:center;
+  letter-spacing:3rpx;
 }
 .gameNavBtnText .info{
   margin-top:5rpx;

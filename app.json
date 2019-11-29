@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/game/game",
     "pages/chessmanual/chessmanualindex",
     "pages/orgmenu/orgmenu",
@@ -31,7 +30,9 @@
     "pages/studentinfo/studentinfo",
     "pages/studentregister/studentregister",
     "pages/coachsmanage/coachsmanageindex",
-    "pages/coachsmanage/addcoach"
+    "pages/coachsmanage/addcoach",
+    "pages/game/friendscompetition",
+    "pages/game/fastcompetition"
   ],
   "window": {
     "backgroundTextStyle": "light",
