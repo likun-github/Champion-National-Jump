@@ -1,5 +1,5 @@
 <!--pages/game/aicompetition.wxml-->
-<view class = "poster">
+<view class = "poster" style="display:{{aiLevel== -1 || sequence == -1}}">
 
 
   <view class="player"> 
@@ -29,14 +29,14 @@
   </view>
 
 
-  <canvas canvas-id='chessboard' bindtap="TapBoard" style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:15px solid rgb(82,169,255);">
+  <canvas canvas-id='chessboard' bindtap="TapBoard" style="margin-top:6vh;width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:15px solid rgb(82,169,255);">
   </canvas>
 
 
   <view class="gameButtons">
     <view class="gameButton" bindtap="reStart">
       <view>
-        <image src="/img/game/button/lose.svg"></image>
+        <image src="/img/game/button/restart.svg"></image>
       </view>
       <view >
         <text class="gameButtonInfo">重新开始</text>
@@ -53,7 +53,7 @@
   </view>
 
 
-  <view class="player">
+  <view class="player" style="margin-top:6vh;">
     <view>
       <image src="/img/game/user.svg"></image>
     </view>
@@ -68,10 +68,10 @@
         <text> {{whiteTimerText}}</text>
       </view>
     </view>
-
-
 </view>
 
+<view wx:if="{{aiLevel == -1 || sequence == -1}}" class='mask-view' catchtouchmove='ture'>
+</view>
 
 <view wx:if="{{gameResult>=0}}" class="gameEndTip">
   <view class="gameEndTipImage">
@@ -101,7 +101,7 @@
 </view>
 
 
-<view class="gameSetting">
+<view wx:if="{{aiLevel== -1 ||sequence == -1}}" class="gameSetting">
   <text class="headline">对局设置</text>
   <view class="option">
     <view class="title">
