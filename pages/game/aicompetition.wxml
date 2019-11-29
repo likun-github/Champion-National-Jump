@@ -111,13 +111,13 @@
       <text class="blueline">———</text>
     </view>
     <view class="buttons">
-      <view class="button" style="background-color:{{levelEasyBtnColor}}">
+      <view id="easy" class="button" style="background-color:{{levelEasyBtnColor}}" bindtouchstart="handleTouchStart">
         <text style="color:{{levelEasyTextColor}}">入门</text>
       </view>
-      <view class="button" style="background-color:{{levelMediumBtnColor}}">
+      <view id="medium" class="button" style="background-color:{{levelMediumBtnColor}}" bindtouchstart="handleTouchStart">
         <text style="color:{{levelMediumTextColor}}">普通</text>
       </view>
-      <view class="button" style="background-color:{{levelHardBtnColor}}">
+      <view id="hard" class="button" style="background-color:{{levelHardBtnColor}}" bindtouchstart="handleTouchStart">
         <text style="color:{{levelHardTextColor}}">大师</text>
       </view>
     </view>
@@ -130,13 +130,13 @@
       <text class="blueline">———</text>
     </view>
     <view class="buttons">
-      <view class="button" style="background-color:{{sequenceFirstBtnColor}}" bindtouchstart="handleSequenceTouchStart">
+      <view id="first" class="button" style="background-color:{{sequenceFirstBtnColor}}" bindtouchstart="handleTouchStart">
         <text style="color:{{sequenceFirstTextColor}}">先手</text>
       </view>
-      <view class="button" style="background-color:{{sequenceSecondBtnColor}}" bindtouchstart="handleSequenceTouchStart">
+      <view id="second" class="button" style="background-color:{{sequenceSecondBtnColor}}" bindtouchstart="handleTouchStart">
         <text style="color:{{sequenceSecondTextColor}}">后手</text>
       </view>
-      <view class="button" style="background-color:{{sequenceRandomBtnColor}}" bindtouchstart="handleSequenceTouchStart">
+      <view id="random" class="button" style="background-color:{{sequenceRandomBtnColor}}" bindtouchstart="handleTouchStart">
         <text style="color:{{sequenceRandomTextColor}}">随机</text>
       </view>
     </view>

@@ -46,7 +46,7 @@ Page({
     blackTimerText: "00:00:00",
 
     // ai等级
-    aiLevel: 1,  /*-1:未选择；0：入门；1：普通；2：大师*/ 
+    aiLevel: -1,  /*-1:未选择；0：入门；1：普通；2：大师*/ 
 
     // 游戏结果
     gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/ 
@@ -133,8 +133,51 @@ Page({
     this.startTimer();
   },
   
-  handleSequenceTouchStart:function(e) {
+  handleTouchStart:function(e) {
     console.log(e.currentTarget);
+    switch (e.currentTarget.id) {
+      case "easy":
+        this.setData({
+          levelEasyBtnColor: "#FCB1AB", levelEasyTextColor:"#F95649",
+          levelMediumBtnColor: "#CBE5FF", levelMediumTextColor:"#52A9FF",
+          levelHardBtnColor: "#CBE5FF", levelHardTextColor:"#52A9FF"});
+        break;
+      case "medium":
+        this.setData({
+          levelEasyBtnColor: "#CBE5FF", levelEasyTextColor: "#52A9FF",
+          levelMediumBtnColor: "#FCB1AB", levelMediumTextColor: "#F95649",
+          levelHardBtnColor: "#CBE5FF", levelHardTextColor: "#52A9FF"
+        });
+        break;
+      case "hard":
+        this.setData({
+          levelEasyBtnColor: "#CBE5FF", levelEasyTextColor: "#52A9FF",
+          levelMediumBtnColor: "#CBE5FF", levelMediumTextColor: "#52A9FF",
+          levelHardBtnColor: "#FCB1AB", levelHardTextColor: "#F95649"
+        });
+        break;
+      case "first":
+        this.setData({
+          sequenceFirstBtnColor: "#FFF0B4", sequenceFirstTextColor:"#F3994B",
+          sequenceSecondBtnColor: "#CBE5FF", sequenceSecondTextColor:"#52A9FF",
+          sequenceRandomBtnColor: "#CBE5FF", sequenceRandomTextColor:"#52A9FF"
+        });
+        break;
+      case "second":
+        this.setData({
+          sequenceFirstBtnColor: "#CBE5FF", sequenceFirstTextColor: "#52A9FF",
+          sequenceSecondBtnColor: "#FFF0B4", sequenceSecondTextColor: "#F3994B",
+          sequenceRandomBtnColor: "#CBE5FF", sequenceRandomTextColor: "#52A9FF"
+        });
+        break;
+      case "random":
+        this.setData({
+          sequenceFirstBtnColor: "#CBE5FF", sequenceFirstTextColor: "#52A9FF",
+          sequenceSecondBtnColor: "#CBE5FF", sequenceSecondTextColor: "#52A9FF",
+          sequenceRandomBtnColor: "#FFF0B4", sequenceRandomTextColor: "#F3994B"
+        });
+        break;
+    }
   },
 
   // 秒数 => 时：分：秒
