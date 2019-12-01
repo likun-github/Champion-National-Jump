@@ -120,6 +120,19 @@ Page {
   border-radius: 25rpx;
   background-color: white;
 }
+.inviteFriend .inviteButton {
+  background-color: rgb(255,240,180);
+  border-radius: 15rpx;
+  text-align: center;
+  padding: 20rpx 150rpx;
+  margin-bottom: 50rpx;
+}
+.inviteButton text {
+  color:rgb(243,153,75);
+  font-weight: 600;
+  font-size:40rpx;
+  letter-spacing:5rpx; 
+}
 
 /*游戏结束提示*/
 .gameEndTip {
