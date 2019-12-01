@@ -124,7 +124,6 @@ Page {
   display: flex;
   flex-direction: row;
 }
-
 .playerVsPlayer .playermatching {
   display: flex;
   flex-direction: column;

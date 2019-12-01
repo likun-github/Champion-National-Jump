@@ -7,7 +7,7 @@
       <image wx:else src="/img/game/ai/女孩头像.png"></image>
     </view> 
     <view>
-      <text wx:if="{{friendName==null}}" class = "playerName">邀请好友中...</text>
+      <text wx:if="{{friendName==null}}" class = "playerName">正在匹配中...</text>
       <text wx:else class = "playerName">我是你的朋友</text>
       <text wx:if="{{friendLevel!=null &&friendScore!= null}}" class = "playerInfo">段位：{{friendLevel}} 积分：{{friendScore}}</text>
       <text wx:else class = "playerInfo">段位：-- 积分：--</text>
@@ -117,5 +117,5 @@
       <text>正在匹配中</text>
     </view>
   </view>
-  <text style="color:rgb(200,200,200);font-size:25rpx;margin-top:15rpx;margin-bottom:30rpx;">预计等待时间：5s</text>
+  <text style="color:rgb(200,200,200);font-size:25rpx;margin-top:15rpx;margin-bottom:50rpx;">预计等待时间：5s</text>
 </view>

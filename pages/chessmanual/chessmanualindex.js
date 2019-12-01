@@ -18,6 +18,9 @@ Page({
         { height_ratio: 0.27, width_ratio: 0.35, isTen: 0, state: 0},
         { height_ratio: 0.11, width_ratio: 0.11, isTen: 0, state: 0},
         { height_ratio: 0.05, width_ratio: 0.444, isTen: 1, state: 0}],
+      firstPass:"",
+      scrollTop: 2668,
+
       innerRoute: "tree",
       sortMethod: "all",
       practices:[

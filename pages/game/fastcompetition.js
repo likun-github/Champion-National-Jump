@@ -9,7 +9,7 @@ Page({
    */
   data: {
     // 对手信息
-    opponentID:1,
+    opponentID:null,
     opponentName:null,
     opponentLevel:null,
     opponentScore:null,

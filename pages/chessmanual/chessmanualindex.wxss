@@ -6,10 +6,6 @@
   top:0;
 }
 
-.pass{
-  position:absolute;
-  width:10%;
-}
 
 /*隐藏滚动条*/
 ::-webkit-scrollbar{
