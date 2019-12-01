@@ -15,10 +15,12 @@ Page({
 // gx_md5_hash: "6FB7B5591BF06268C74A03327B73F16F"
   data: {
     competitionId: null,
-    competition: null
+    competition: null,
+    signed: true
   },
 
   goToSignUp: function(){
+    
     wx.navigateTo({
       url: './signup',
     })

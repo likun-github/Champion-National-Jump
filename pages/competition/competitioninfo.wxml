@@ -8,7 +8,7 @@
 // ConstitutionName: "云顶作坊"
 // gx_md5_hash: "6FB7B5591BF06268C74A03327B73F16F" -->
 
-<view class="competitionsContainer">
+<!-- <view class="competitionsContainer">
   <view  class="competitionCard">
     <view class="cardLeft">
       <image class="competitionCover" src="/img/competition/chessBoardCover.png"></image>
@@ -22,17 +22,29 @@
       </view>
     </view>
   </view>
-</view>
+</view> -->
 
-<view class="competitionIntro">
+<!-- <view class="competitionIntro">
 
 <text class="introTitle">比赛详情:</text>
 <text class="introContent">
   {{competition.CompetitionDesc}}
 </text>
 
+</view> -->
+
+
+<view class="cover-container relative">
+  <image class="width-fix-cover"  src="/img/competitionimages/competition_cover.png" mode="widthFix"></image>
 </view>
 
+<view class="competition-name">2019少年儿童国际跳棋公开赛</view>
+
+<view class="competition-intro">
+
+</view>
 <view class="btnsContainer">
-  <button bindtap="goToSignUp">报名比赛</button>
+  <button class="{{signed==false?'to-sign-btn':'ed-sign-btn'}}" bindtap="goToSignUp">
+  {{signed==false?"立即报名":"您已报名"}}
+  </button>
 </view>
