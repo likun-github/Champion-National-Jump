@@ -36,10 +36,10 @@ Page({
     blackTimerText: "00:00:00",
 
     // 悔棋次数
-    withdrawSend:0, /*0：用户未点击 悔棋；1：用户点击 悔棋 */
+    withdrawSend:1, /*0：用户未点击 悔棋；1：用户点击 悔棋 */
     withdrawReceive:0, /*0：对手未点击 悔棋； 1：对手点击 悔棋 */
-    withdrawNum:0, /*剩余悔棋次数 */
-    withdrawResult:1, /*-1：未收到对手是否同意悔棋；0：不同意；1：同意 */
+    withdrawNum:1, /*剩余悔棋次数 */
+    withdrawResult:-1, /*-1：未收到对手是否同意悔棋；0：不同意；1：同意 */
 
 
     // 游戏结果

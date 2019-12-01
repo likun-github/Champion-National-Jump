@@ -120,6 +120,10 @@
   <text style="color:rgb(200,200,200);font-size:25rpx;margin-top:15rpx;margin-bottom:50rpx;">预计等待时间：5s</text>
 </view>
 
+
+
+
+
 <view wx:if="{{withdrawSend == 1 || withdrawReceive == 1 || withdrawResult >= 0}}" class="withdrawBackground">
 
   <view wx:if="{{withdrawSend == 1}}">
