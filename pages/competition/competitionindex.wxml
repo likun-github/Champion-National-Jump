@@ -3,7 +3,7 @@
 
 <view class="topSliderContainer relative">
   <view class="topImagesContainer" style="{{'transform:translateX(-'+currentBallIndex*100+'%);'}}">
-      <image mode="widthFix" src="/img/competitionimages/topCover.png"   wx:for="{{[0,1,2,3,4]}}"></image>
+      <image mode="widthFix" src="/img/competition/topCover.png"   wx:for="{{[0,1,2,3,4]}}"></image>
       
   </view>
   <view class="balls">
@@ -42,7 +42,7 @@
 <view class="greatCompetitionsContainer" wx:elif="{{innerNavigation=='great'}}">
   <view wx:for="{{greatCompetitions}}" wx:key="name" class="competitionCard">
     <view class="cardLeft">
-      <image class="competitionCover" src="/img/checkerboard.png"></image>
+      <image class="competitionCover" src="/img/competition/chessBoardCover.png"></image>
     </view>
     <view class="cardRight">
       <view class="competitionName" bindtap="GoToEdCompetition">{{item.name}}</view>
@@ -59,7 +59,7 @@
 <view class="myCompetitionsContainer" wx:elif="{{innerNavigation=='my'}}">
   <view wx:for="{{myCompetitions}}" wx:key="name" class="competitionCard">
     <view class="cardLeft">
-      <image class="competitionCover" src="/img/checkerboard.png"></image>
+      <image class="competitionCover" src="/img/competition/chessBoardCover.png"></image>
     </view>
     <view class="cardRight">
       <view class="competitionName" bindtap="GoToCompetitionInfo">{{item.name}}</view>

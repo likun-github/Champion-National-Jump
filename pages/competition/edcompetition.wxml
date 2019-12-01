@@ -50,15 +50,12 @@
 </view>
 
 
-
-
 <view class="rankPart" wx:if="{{innerRoute=='rank'}}">
     <view class="endTime">截止至2019年9月11日18:00</view>
     <view class="rankList">
 
       <view wx:for="{{[1,2,3,4]}}" class="rankItem">
           <view class="itemLeft">
-              <!-- <image></image> -->
               <view>
                 <text>4</text>
               </view>

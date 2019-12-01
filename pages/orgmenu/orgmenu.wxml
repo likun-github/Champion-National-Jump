@@ -1,9 +1,10 @@
 <view>
-  <image mode="widthFix" class="topBackground" src="/img/个人信息下面的蓝色底.svg"></image>
+  <image mode="widthFix" class="topBackground" src="/img/me/个人信息下面的蓝色底.svg"></image>
 </view>
 
+
 <view class="personalInfo">
-  <image mode="widthFix" src="/img/用户头像.svg"></image>
+  <image mode="widthFix" src="/img/game/user.svg"></image>
   <view class="info">
     <text class="name">Yun Ding</text>
     <text class="other">认证状态：已认证-运营</text>
@@ -11,209 +12,38 @@
   </view>
 </view>
 
+
 <view class="gray-margin" style="margin-top:20rpx;"></view>
 
-<view class="optionBar">
-  <image mode="widthFix" src="/img/认证.svg"></image>
+
+<view class="optionBar" >
+  <image mode="widthFix" src="/img/me/认证.svg"></image>
   <text>身份认证</text>
   <text class="goto">></text>
 </view>
 
+
 <view class="gray-margin" style="height: 5rpx;"></view>
 
-<view class="optionBar">
-  <image mode="widthFix" src="/img/收藏夹.svg"></image>
+
+<view class="optionBar" bindtap="goToCollection">
+  <image mode="widthFix" src="/img/me/收藏夹.svg"></image>
   <text>我的收藏</text>
   <text class="goto">></text>
 </view>
 
+
 <view class="gray-margin" style="height: 5rpx;"></view>
 
+
 <view class="optionBar">
-  <image mode="widthFix" src="/img/灰色info.svg"></image>
+  <image mode="widthFix" src="/img/me/灰色info.svg"></image>
   <text style="color:rgb(234,234,234);">关于冠军国跳</text>
   <text class="goto" style="color:rgb(234,234,234);">></text>
 </view>
 
+
 <view class="gray-margin" style="height: 5rpx;"></view>
-<!--
-<view class="userInfo">
-  <view class="infoLeft">
-        
-            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-            <text class="authOr">{{gameInfo.authenticated?"已认证":"未认证"}}{{gameInfo.role=="student"?":学生":""}}{{gameInfo.role=="constitution"?":机构":""}}{{gameInfo.role=="coach"?":教练":""}}</text>
-  </view>
-
-  <view class="infoRight">
-
-    <view class="rightCenter">
-      <view wx:if="{{registedInfo.role!='constitution'}}">
-        <text>{{userInfo.nickName}}</text>
-        <text>积分: 1000</text>
-        <text>等级: 跳棋大师</text>
-      </view>
-      <view wx:else>
-
-        机构名称
-      </view>
-
-    </view>
-
-  </view>
-</view>
-
-
-
-  <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
-    <view class="modals-cancel" bindtap="hideModal"></view>
-      <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
-
-
-        <view>
-          <view class="dialog-body-top">
-            <text wx:if="{{!registedInfo.authenticated}}" class="dialog-title">请选择您的身份</text>
-            <image></image>
-          </view>
-
-          <view class="modalUl authRole" wx:if="{{registedInfo.authenticated}}">
-              <view>已认证为:<text class="roleNameInModal">{{registedInfo.role=="student"?"学生":""}}{{registedInfo.role=="constitution"?"机构":""}}{{registedInfo.role=="coach"?"教练":""}}
-              </text></view>
-          </view>
-
-          <view class="rolesContainer modalUl"  wx:else>
-              <view wx:for="{{roles}}" data-role="{{item}}" class="modalLi roleContainer" wx:key="name" bindtap="goToIdentifyForm"><text class="roleName name {{item=='student'?'current':''}}">{{item=="student"?"学生":""}}{{item=="constitution"?"机构":""}}{{item=="coach"?"教练":""}}</text></view>
-
-          </view>
-        </view>
-      </view>
-    </view> 
-
-
-
-     
-
-  
-
-
-
-<view class="myMenu"  wx:if="{{!registedInfo.authenticated}}">
-    <view class="menuItem"  bindtap="showModal" >
-        <image src="{{identityimg}}" mode="widthFix"></image>
-        <button plain="true">身份认证</button>
-        <text>></text>
-    </view>
-    <view class="menuItem">
-        <image src="{{classimg}}"  bindtap="GoToCollection" mode="widthFix" ></image>
-        <button  plain="true">我的收藏</button>
-        <text>></text>
-    </view>
-
-    <view class="menuItem">
-      <image src="{{coachimg}}" mode="widthFix" ></image>
-      <button plain="true">我的设置</button>
-      <text>></text>
-    </view>
-</view>
-
-
-
-<view class="myMenu" wx:elif="{{registedInfo.role == 'constitution'}}">
-    <view class="menuItem"  bindtap="showModal">
-        <image src="{{identityimg}}"  mode="widthFix"></image>
-        <button plain="true">身份认证</button>
-        <text>></text>
-    </view>
-    <view class="menuItem">
-        <image src="{{classimg}}" bindtap="go2classmanage"  mode="widthFix"></image>
-        <button  plain="true" >班级管理</button>
-        <text>></text>
-    </view>
-
-    <view class="menuItem" bindtap="goToCoachsManage">
-      <image src="{{coachimg}}" mode="widthFix" ></image>
-      <button plain="true">教练管理</button>
-      <text>></text>
-    </view>
-
-    <view class="menuItem"  bindtap="goToStudentsManage" >
-        <image src="{{studentimg}}" mode="widthFix" ></image>
-        <button plain="true">学生管理</button>
-        <text>></text>
-    </view>
-
-
-    <view class="menuItem"   bindtap="goToMessages">
-      <image src="{{messageimg}}" mode="widthFix" ></image>
-      <button plain="true">发送信息</button>
-      <text>></text>
-    </view>
-
-    <view class="menuItem" bindtap="goToHoldCompetition">
-    <image src="{{gameimg}}"  mode="widthFix"></image>
-  <button  plain="true">举办比赛</button>
-  <text>></text>
-    </view>
-    
-</view>
-
-
-<view class="myMenu" wx:elif="{{registedInfo.role == 'coach'}}">
-    <view class="menuItem"  bindtap="showModal" >
-        <image src="{{identityimg}}"  mode="widthFix"></image>
-        <button plain="true">身份认证</button>
-        <text>></text>
-    </view>
-    <view class="menuItem"  bindtap="go2classmanage">
-        <image src="{{classimg}}"  mode="widthFix"></image>
-        <button  plain="true">班级管理</button>
-        <text>></text>
-    </view>
-
-    <view class="menuItem" bindtap="GoToCollection">
-      <image src="{{coachimg}}"  mode="widthFix"></image>
-      <button plain="true">我的收藏</button>
-      <text>></text>
-    </view>
-
-    <view class="menuItem"  bindtap="goToStudentsManage">
-        <image src="{{studentimg}}"  mode="widthFix"></image>
-        <button plain="true">学生管理</button>
-        <text>></text>
-    </view>
-
-
-    <view class="menuItem"  bindtap="goToMessages">
-      <image src="{{messageimg}}"  mode="widthFix"></image>
-      <button plain="true">发送信息</button>
-      <text>></text>
-    </view>
-
-    <view class="menuItem">
-    <image src="{{gameimg}}"  mode="widthFix"></image>
-  <button  plain="true">我的设置</button>
-  <text>></text>
-    </view>
-    
-</view>
-
-<view class="myMenu" wx:elif="{{registedInfo.role == 'student'}}">
-    <view class="menuItem"  bindtap="showModal" >
-        <image src="{{identityimg}}"  mode="widthFix"></image>
-        <button plain="true">身份认证</button>
-        <text>></text>
-    </view>
-
-
-    <view class="menuItem" bindtap="GoToCollection">
-      <image src="{{coachimg}}"  mode="widthFix"></image>
-      <button plain="true">我的收藏</button>
-      <text>></text>
-    </view>
-
-</view>
--->
-
-
 
 
 <view class="bottomNav">

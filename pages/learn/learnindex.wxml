@@ -3,7 +3,7 @@
 
 <view class="topNav">
   <text data-route="begin" bindtap="ChangeRoute" class="{{innerRoute=='begin'?'choosed':''}}">启蒙</text>
-   <text data-route="promote" bindtap="ChangeRoute" class="{{innerRoute=='promote'?'choosed':''}}">进阶</text>
+  <text data-route="promote" bindtap="ChangeRoute" class="{{innerRoute=='promote'?'choosed':''}}">进阶</text>
 </view>
 
 
@@ -11,82 +11,44 @@
  
 
 <view wx:if="{{innerRoute=='begin'}}">
-  
+  <view class="rules">
+    <view class="ruleItem" wx:for="{{[1,2,3]}}">
+      <view class="coverImage">
+        <image class="center" src="/img/learn/rules_cover.png" mode="widthFix"></image>
+      </view>
 
-<view class="rules">
-  <view class="ruleItem" wx:for="{{[1,2,3]}}">
-     <view class="coverImage">
-        <image class="center" src="/img/learn_images/tu_cover.png" mode="widthFix"></image>
-     </view>
-
-     <view class="innerText">
+      <view class="innerText">
         <text class="ruleTitle">国际跳棋100格基本规则</text>
         <text class="ruleSubTitle">国际跳棋100格基本规则</text>
-     </view>
-  </view>
-</view>
-
-</view>
-
-
-<!-- <view wx:elif="{{innerRoute=='tutorial'}}">
-  <view class="searchCol">
-  <input placeholder="请输入搜索关键词"></input>
-  <image src="../../img/Search.png"></image>
-</view>
-  <view class="sortMethodChoose">
-    <text>综合排序</text>
-    <text>时间排序</text>
-  </view>
-
-<view class="tutorialPart" >
-
-  <view class="tutorial" bindtap="GoToPractise" wx:for="{{[1,2,3]}}">
-    <view class="cover">
-      <image src=""></image>
-    </view>
-    <view class="time">2019-06-18</view>
-    <view class="name"><text>国际跳棋专题视频</text></view>
-    <view class="tutorialInfo">
-        <view class="mediaInfo">
-          <view><image src="/img/competitionimages/阅读.png" mode='widthFix'></image><text>1.5k</text></view>
-          <view><image src="/img/competitionimages/点赞.png" mode="widthFix"></image><text>1.8k</text></view>
-        </view>
+      </view>
     </view>
   </view>
-
 </view>
-</view> -->
 
 
 <view wx:else class="promotePart">
-
   <view class="videos-container">
     <view wx:for="{{[1,2,3]}}" class="video-item">
         <view class="video-top">
           <view class="display-btn center">
-              <image class="center" src="/img/learn_images/play.png" mode="widthFix"></image>
+              <image class="center" src="/img/learn/play.png" mode="widthFix"></image>
           </view>
           <view class="cover-image-container" >
-            <image class="cover-image  center" src="/img/learn_images/promote_cover.png" mode="widthFix"></image>
+            <image class="cover-image  center" src="/img/learn/video_cover.png" mode="widthFix"></image>
           </view>
-        </view>
-        
+        </view>       
         <view class="video-bottom">
           <text>国际跳棋视频专题</text>
         </view>
-
     </view>
         <view wx:for="{{[1,2,3]}}" class="video-item">
         <view class="video-top">
-          <image class="locked center" mode="widthFix" src="/img/learn_images/lock.png">
+          <image class="locked center" mode="widthFix" src="/img/learn/lock.png">
           </image>
           <view class="cover-image-container">
-            <image class="cover-image center lock-cover" src="/img/learn_images/promote_cover.png" mode="widthFix"></image>
+            <image class="cover-image center lock-cover" src="/img/learn/video_cover.png" mode="widthFix"></image>
           </view>
-
-        </view>
-        
+        </view>        
         <view class="video-bottom">
           <text>国际跳棋视频专题</text>
         </view>
@@ -95,8 +57,8 @@
   </view>
 </view>
 
-<view class="bottomNav">
 
+<view class="bottomNav">
   <view data-route="learn" bindtap="redict">
     <image src="/img/学习选中.svg" ></image>
     <text class="bottomNavSelected">学 习</text>
@@ -120,6 +82,4 @@
     <image src="/img/我的.svg"></image>
     <text class="bottomNavNotSelected">我 的</text>
   </view>
-
-
 </view>

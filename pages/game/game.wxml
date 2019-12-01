@@ -1,6 +1,5 @@
 <!--pages/game/game.wxml-->
 
-
 <view class="competitionRecommand">
   <text class="competitionTopic">赛况推荐</text>
   <view>
@@ -8,9 +7,8 @@
   </view>   
 </view>
 
+
 <view class="gameNav">
-
-
   <view class="gameNavBtnShadow">
     <view class="gameNavBtn" bindtap="goto_ai_competition"> 
       <view class="gameNavBtnText">
@@ -21,7 +19,6 @@
   </view>
 
   
-
   <view class="gameNavBtnShadow">
     <view class="gameNavBtn"> 
       <view class="gameNavBtnText" bindtap="goto_fast_competition">
@@ -30,6 +27,7 @@
       </view>  
     </view>
   </view>
+
 
   <view class="gameNavBtnShadow">
     <view class="gameNavBtn" bindtap="goto_friends_competition"> 
@@ -42,47 +40,15 @@
 </view>
 
 
-
-
-
-
 <view class="scoreLink">
-  <image class=".playerImage" src="/img/用户头像.svg"> </image>
-  <image class=".playerImage" src="/img/用户头像.svg"> </image>
-  <image class=".playerImage" src="/img/用户头像.svg"> </image>
+  <image class=".playerImage" src="/img/game/user.svg"> </image>
+  <image class=".playerImage" src="/img/game/user.svg"> </image>
+  <image class=".playerImage" src="/img/game/user.svg"> </image>
   <text bindtap="GoToScoreList">积分榜 >></text>
 </view>
 
 
-
-
-
-
-<view class="shelter" wx:if="{{showMatching}}">
-  <view class="matching">
-    <image bindtap="toggleShowMatching" class="cancel" src="/img/cancel.png"></image>
-    <view class="title">正在为您匹配对手...</view>
-    <view class="matchingUsers">
-      <view class="player">
-        <image src="/img/studentimg.png"></image>
-        <text>学生小甲</text>
-      </view>
-      <view class="VS">VS</view>
-      <view class="player">
-        <image src="/img/studentimg.png"></image>
-        <text>学生小以</text>
-      </view>
-    </view>
-  </view>
-</view>
-
-
-
-
-
 <view class="bottomNav">
-  <image class="bottomBarImage" src="/img/bar.svg" mode="widthFix"></image>
-
   <view data-route="learn" bindtap="redict">
     <image mode="aspectFit" src="/img/学习.svg" ></image>
     <text class="bottomNavNotSelected">学 习</text>

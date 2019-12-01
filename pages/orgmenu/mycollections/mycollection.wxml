@@ -1,0 +1,15 @@
+<!--pages/orgmenu/mycollections/mycollection.wxml-->
+
+<view class="competitionsContainer" wx:for="{{collections}}" wx:for-index="key" wx:for-item="value">
+  <view class="competition"  bindtap="GoToDetail" id="{{key}}">
+
+    <view class="collectionView">
+      <image mode="widthFix" src="/img/me/checkerboard.png"></image>
+      <view class="collectionInfo">
+        <text class="gameType">{{value.type}}</text>
+        <text class="gameTime">{{key}}</text>
+      </view>
+    </view>
+
+  </view>
+</view>

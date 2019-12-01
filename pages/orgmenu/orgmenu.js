@@ -4,105 +4,22 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    blue: '../../statics/blue.png',
-    identityimg: '../../statics/1.png',
-    classimg: '../../statics/2.png',
-    coachimg: '../../statics/3.png',
-    studentimg: '../../statics/4.png',
-    messageimg: '../../statics/5.png',
-    gameimg: '../../statics/6.png',
-    org: '../../statics/org.png',
-    orgimg:'../../statics/orgimg.png',
-    hideModal: true, //模态框的状态  true-隐藏  false-显示
-
-    animationData: {},//
-
     roles: ["student","constitution","coach"],
-
-    registedInfo:{
-      role: "student",
-      authenticated: true
-    }
   },
 
   redict: function(e){
     var app = getApp();
     app.redict(e);
-
   },
 
   //事件处理函数
-  GoToCollection: function(){
+  goToCollection: function(){
     wx.navigateTo({
-      url: '/pages/mycollection/mycollection',
+      url: '/pages/orgmenu/mycollections/mycollection',
     });
-    
-
   },
 
-  goToHoldCompetition: function(){
-    wx.navigateTo({
-      url: '../holdcompetition/holdcompetition',
-    })
-  },
-
-  goToStudentsManage: function(){
-  },
-
-goToCoachsManage: function () {
-    wx.navigateTo({
-      url: '/pages/coachsmanage/coachsmanageindex',
-    })
-  },
-
-goToStudentsManage: function(){
-  wx.navigateTo({
-    url: '/pages/studentsmanage/studentsmanageindex',
-  })
-},
-
-goToMessages: function(){
-  wx.navigateTo({
-    url: '/pages/constitutionsendmessage/contitutionmessage',
-  })
-
-},
-
-/***************到班级管理******************* */
-go2classmanage:function(){
-  wx.navigateTo({
-    url: '../classmanage/classmanage'
-  })
-
-},
-
-/***********到用户认证表单************/
-goToIdentifyForm: function(e){
-  wx.navigateTo({
-    url: '../userIdentifyForm/userIdentifyForm' + "?role="+e.currentTarget.dataset.role
-  })
-},
-
-
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-
-
-
-  /***************身份认证***************/
-
-
-  //用户点击“用户认证”弹出选择认证角色
-
-
-
+/*
   // 显示遮罩层
   showModal: function () {
     var that = this;
@@ -149,7 +66,7 @@ goToIdentifyForm: function(e){
       animationData: this.animation.export(),
     })
   },
-
+*/
 
  onLoad: function () {
    var that = this;

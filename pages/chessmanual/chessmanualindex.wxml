@@ -1,108 +1,14 @@
 <!--pages/chessmanual/chessmanualindex.wxml-->
 
-<!--
-<view wx:if="{{innerRoute=='train'}}">
-
-<view class="searchCol">
-  <input placeholder="搜索信息"></input>
-  <image src="../../img/Search.png"></image>
-</view>
-
-<view class="sortMethodChoose">
-  <text data-method="all"  bindtap="changeSortMethod" class="{{sortMethod=='all'?'chosen':''}}">综合排序</text>
-  <text data-method="time" bindtap="changeSortMethod"  class="{{sortMethod=='time'?'chosen':''}}">时间排序</text>
-</view>
-<view class="trainPart" >
-
-  <view class="train" bindtap="GoToPractise" wx:for="{{practices}}">
-    <view class="cover">
-      <image src="/img/checkerboard.png"></image>
-    </view>
-    <view class="name"><text>{{item.name}}</text></view>
-    <view class="trainInfo">
-        <text>上传者:{{item.username}}</text>
-        <view class="mediaInfo">
-          <view><image src="/img/competitionimages/阅读.png" mode='widthFix'></image><text>{{item.viewCount}}</text></view>
-          <view><image src="/img/competitionimages/点赞.png" mode="widthFix"></image><text>{{item.thumbCount}}</text></view>
-        </view>
-    </view>
-  </view>
-
-</view>
-</view>
-
-
-
-
-<view class="treePart" wx:elif="{{innerRoute=='tree'}}">
-  <image class="treeImage" src="/img/mytree.png" mode="widthFix"></image>
-
-  <view class="levelContainer">
-  
-    <text>王者宗师</text>
-    <text>仁人名师</text>
-    <text>有志之士</text>
-  </view> 
-</view>
-
-
-<view wx:if="{{innerRoute=='competition'}}">
-
-<view class="searchCol">
-  <input placeholder="搜索信息"></input>
-  <image src="../../img/Search.png"></image>
-</view>
-  <view class="sortMethodChoose">
-  <text>综合排序</text>
-  <text>时间排序</text>
-</view>
-
-<view class="competitionsContainer" >
-  <view class="competition"  bindtap="GoToDetail">
-    <view class="left">
-      <image src="/img/checkerboard.png"></image>
-    </view>
-
-    <view class="right">
-      <text class="competitionName">棋谱名称</text>
-
-      <view class="players">
-        <text class="player1">选手123</text>
-        <text class="player2">选手457</text>
-      
-      </view>
-
-      <view class="rightBottom">
-        <text class="time">2019-06-18</text>
-        <view class="hot">
-          <view>
-            <image src="/img/competitionimages/阅读.png" mode="widthFix"></image>
-            <text>1.5W</text>
-          </view>
-          <view>
-            <image src="/img/competitionimages/点赞.png" mode="widthFix"></image>
-            <text>8K</text>
-          </view>
-        </view>
-
-      </view>
-    </view>
-  </view>
-</view>
-
-</view>
-
--->
-
 <scroll-view scroll-y="true" style="position:fixed; top:0;width: 750rpx;height: {{scroll_view_height}}rpx" scroll-top="{{scrollTop}}" >
-  <image class="background" mode="widthFix" src="/img/棋谱-底图.png"></image>
+  <image class="background" mode="widthFix" src="/img/chessmanual/棋谱-底图.png"></image>
   <view wx:for="{{pass_pos_info}}">
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:if="{{item.isTen==1 && item.state==0}}" src="/img/最后一面旗子灰.svg"></image>
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==1 && item.state==1}}" src="/img/最后一面旗子黄.svg"></image>
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==1 && item.state==2}}" src="/img/最后一面旗子绿.svg"></image>
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==0 && item.state==0}}" src="/img/三角旗灰.svg"></image>
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==0 && item.state==1}}" src="/img/三角旗黄.svg"></image>
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==0 && item.state==2}}" src="/img/三角旗绿.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:if="{{item.isTen==1 && item.state==0}}" src="/img/chessmanual/最后一面旗子灰.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==1 && item.state==1}}" src="/img/chessmanual/最后一面旗子黄.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==1 && item.state==2}}" src="/img/chessmanual/最后一面旗子绿.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==0 && item.state==0}}" src="/img/chessmanual/三角旗灰.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==0 && item.state==1}}" src="/img/chessmanual/三角旗黄.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:10%;" wx:elif="{{item.isTen==0 && item.state==2}}" src="/img/chessmanual/三角旗绿.svg"></image>
   </view>
 </scroll-view>
 

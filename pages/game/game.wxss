@@ -186,9 +186,6 @@ Page {
   box-shadow: 1px 1px 20px rgb(230, 230, 230);
 }
 
-.bottomNav image {
-}
-
 .bottomNavNotSelected {
   margin-top:10rpx;
   color:rgb(176, 176, 176);

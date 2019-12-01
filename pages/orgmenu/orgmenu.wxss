@@ -2,11 +2,10 @@
 @import"/weui.wxss";
 @import "../game/game.wxss";
 
-
+/*顶部栏*/
 .topBackground {
   width: 750rpx;
 }
-
 .personalInfo {
   position: absolute;
   top:50rpx;
@@ -35,9 +34,10 @@
 }
 .info .other {
   color:rgb(104,104,104);
-  font-size:20rpx;
+  font-size:25rpx;
 }
 
+/*选项栏*/
 .optionBar {
   width: 100%;
   background-color: white;
@@ -62,196 +62,4 @@
   text-align: right;
   min-width: 200rpx;
 }
-
-
-
-
-view{
-  padding: 0;
-  margin: 0;
-}
-
-text{
-  padding: 0;
-  margin: 0;
-}
-
-
-.userInfo{
-  display: flex;
-  height: 30vh;
-  background: linear-gradient(white,skyblue);
-  padding: 20rpx 50rpx;
-}
-.authOr{
-  background-color: white;
-  color: skyblue;
-  padding: 4rpx 4rpx;
-}
-
-.userInfo .infoLeft{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.infoLeft button{
-  font-size: 30rpx;
-  display: inline-block;
-}
-
-.userInfo .infoRight{
-  position: relative;
-  width: 400rpx;
-  height: 400rpx;
-  color: white;
-  font-weight: bold;
-}
-
-.infoRight .rightCenter{
-  width: 100%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-20%) translateY(-50%);
-}
-
-.rightCenter text{
-  display: block;
-}
-
-.authRole{
-  font-size: 46rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  letter-spacing: 6rpx;
-}
-
-.roleNameInModal{
-  margin-top: 40rpx; 
-  display: block;
-  font-weight: bold;
-  letter-spacing: 10rpx;
-    border: 2rpx solid #F6BDB8;
-    color: skyblue;
-    padding: 6rpx 40rpx;
-    border-radius: 100rpx;
-    font-size: 60rpx;
-
-}
-
-
-
-
-
-/***************身份验证选择器属性******************/
-.picker{
-    padding: 13px;
-    background-color: #FFFFFF;
-}
-
-.userinfo-avatar {
-  width: 220rpx;
-  height: 220rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-
-
-
-
-
-
-.myMenu{
-
-  padding: 0 20rpx;
-}
-
-.menuItem{
-  display: flex;
-  padding: 20rpx;
-  border-bottom: 1rpx solid #eeeeee;
-  justify-content: flex-start;
-  color: gray; 
-  width: 100%;
-}
-
-.menuItem image{
-  height: 80rpx;
-  width: 80rpx;
-}
-
-.menuItem button{
-  margin: 0;
-  margin-left: 10rpx;
-  padding: none;
-  line-height: 80rpx;
-  border: 0;
-  background-color: white;
-  
-}
-
-.menuItem text{
-  line-height: 80rpx;
-  position: absolute;
-  right: 0;
-  margin-right: 40rpx;
-  font-size: 40rpx;
-}
-
-
-
-
-
-/*********选择身份部分***********/
-.rolesContainer{
-  height: 400rpx;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 40rpx 30% 0rpx;
-}
-
-.roleContainer{
-  text-align:  center;
-  width: 100%;
-  border-bottom: 2rpx solid #F6BDB8;
-  height: 70rpx; 
-}
-.roleContainer:last-of-type{
-
-  border: none;
-}
-
-
-.roleName{
-  letter-spacing: 15rpx;
-  line-height: 70rpx;
-  color: gray;
-  /* line-height: 80rpx; */
-}
-
-.currentChosenRole{
-
-  color: black;
-}
-
-
-
-/**********弹窗动画属性**********/
-
-/*动画前初始位置*/
-/* .bottom-pos{-webkit-transform:translateY(100%);transform:translateY(100%);} */
-
-/*************弹窗图片属性***********/
-
-
-.IDtext{
-  text-align: center;
-  size: 100rpx;
-}
-
-
 

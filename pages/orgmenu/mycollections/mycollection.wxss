@@ -1,0 +1,34 @@
+/* pages/orgmenu/mycollections/mycollection.wxss */
+Page {
+  background:#eeeeee;
+}
+
+.collectionView {
+  background-color: white;
+  border-radius: 25rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top:20rpx;
+  margin-left:20rpx;
+  margin-right:20rpx;
+}
+.collectionView image {
+  width: 170rpx;
+  padding:20rpx;
+}
+.collectionView .collectionInfo {
+  display: flex;
+  flex-direction: column;
+}
+.collectionInfo .gameType {
+  color:black;
+  font-size: 35rpx;
+  font-weight: 900;
+  letter-spacing: 5rpx;
+  margin-top:20rpx;
+}
+.collectionInfo .gameTime {
+  color:grey;
+  font-size: 25rpx;
+  letter-spacing: 3rpx;
+}
