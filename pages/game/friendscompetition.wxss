@@ -107,7 +107,7 @@ Page {
   display: block;
 }
 
-/*游戏设置*/
+/*邀请好友*/
 .inviteFriend {
   position: fixed;
   left: 50%;

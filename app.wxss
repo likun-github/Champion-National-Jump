@@ -177,23 +177,103 @@
 }
 
 
-.promotePart{
-
-
-
-}
-
 .testIntro{
   padding: 10rpx 36rpx;
   color: gray;
   font-size: 40rpx;
 }
 
+.withdrawBackground {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width:630rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 25rpx;
+  background-color: white; 
+  padding:20rpx 0rpx;
+}
+.withdrawBackground .withdrawTopic {
+  color:black;
+  font-weight: 900;
+  font-size: 35rpx;
+  letter-spacing: 5rpx;
+  padding: 15rpx 0rpx;
+}
+.withdrawBackground .withdrawInfo {
+  color:rgb(178,178,178);
+  font-weight: 500;
+  font-size: 20rpx;
+  letter-spacing: 3rpx;
+}
+.withdrawBackground .timesRemain {
+  color:rgb(82,169,255);
+  font-weight: 900;
+  font-size: 25rpx;
+  letter-spacing: 3rpx;
+  padding: 15rpx 0rpx 0rpx 0rpx;
+}
+.withdrawBackground .withdrawButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20rpx;
+  margin-top:20rpx;
+}
+.withdrawButton .noWithdraw {
+  border-radius:15rpx;
+  background-color: rgb(203,229,255);
+  padding: 10rpx 60rpx;
+  margin: 0rpx 20rpx;
+}
+.noWithdraw text{
+  color: rgb(82,169,255);
+  font-size:30rpx;
+  font-weight: 900;
+  letter-spacing: 3rpx; 
+}
+.withdrawButton .yesWithdraw {
+  border-radius:15rpx;
+  background-color: rgb(252,177,171);
+  padding: 10rpx 60rpx;
+  margin: 0rpx 20rpx;
+}
+.yesWithdraw text{
+  color: rgb(249,86,73);
+  font-size:30rpx;
+  font-weight: 900;
+  letter-spacing: 3rpx;
+}
+.withdrawButton .acceptContinueYellow {
+  border-radius:15rpx;
+  background-color: rgb(255,240,180);
+  padding: 15rpx 80rpx;
+}
+.acceptContinueYellow text{
+  color: rgb(243,153,75);
+  font-size:30rpx;
+  font-weight: 900;
+  letter-spacing: 3rpx;
+}
+.withdrawButton .acceptContinueGrey {
+  border-radius:15rpx;
+  background-color: rgb(234,234,234);
+  padding: 15rpx 80rpx;
+}
+.acceptContinueGrey text{
+  color: rgb(136,136,136);
+  font-size:30rpx;
+  font-weight: 900;
+  letter-spacing: 3rpx;
+}
 
 
+
+/*底部栏*/
 .bottomNav{
-
-
   position: fixed;
   bottom: 0;
   width: 100%;

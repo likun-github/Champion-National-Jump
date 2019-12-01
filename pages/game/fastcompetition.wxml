@@ -119,3 +119,64 @@
   </view>
   <text style="color:rgb(200,200,200);font-size:25rpx;margin-top:15rpx;margin-bottom:50rpx;">预计等待时间：5s</text>
 </view>
+
+<view wx:if="{{withdrawSend == 1 || withdrawReceive == 1 || withdrawResult >= 0}}" class="withdrawBackground">
+
+  <view wx:if="{{withdrawSend == 1}}">
+    <view wx:if="{{ withdrawNum > 0}}" style="display: flex; flex-direction: column;align-items: center;" >
+      <text class="withdrawTopic">是否要向对方申请悔棋？</text>
+      <text class="withdrawInfo">对方有权利拒绝您的申请，</text>
+      <text class="withdrawInfo">且本次申请与下次之间至少间隔五步。</text>
+      <text class="timesRemain">剩余次数：{{withdrawNum}}</text>
+      <view class="withdrawButton">
+        <view class="noWithdraw">
+          <text>取消</text>
+        </view>
+        <view class="yesWithdraw">
+          <text>确认</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else style="display: flex; flex-direction: column;align-items: center;">
+      <text class="withdrawTopic">您已达悔棋次数上限</text>
+      <view class="withdrawButton">
+        <view class="acceptContinueGrey">
+          <text>继续游戏</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:elif="{{withdrawReceive == 1 }}" style="display: flex; flex-direction: column;align-items: center;">
+    <text class="withdrawTopic">对方向您申请悔棋，是否同意？</text>
+    <text class="withdrawInfo">您有权拒绝对方的悔棋申请</text>
+    <view class="withdrawButton">
+      <view class="noWithdraw">
+        <text>拒绝</text>
+      </view>
+      <view class="yesWithdraw">
+        <text>同意</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:elif="{{withdrawResult >= 0 }}">
+    <view wx:if="{{withdrawResult == 0}}" style="display: flex; flex-direction: column;align-items: center;">
+      <text class="withdrawTopic">对方不同意悔棋</text>
+        <view class="withdrawButton">
+          <view class="acceptContinueYellow">
+            <text>继续游戏</text>
+          </view>
+        </view>
+    </view>
+    <view wx:elif="{{withdrawResult == 1}}" style="display: flex; flex-direction: column;align-items: center;">
+      <text class="withdrawTopic">对方同意悔棋</text>
+        <view class="withdrawButton">
+          <view class="acceptContinueYellow">
+            <text>继续游戏</text>
+          </view>
+        </view>
+    </view>
+  </view>
+  
+</view>
