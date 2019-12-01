@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showMatching: false
+    showMatching: false,
+    matchComing: false
   },
 
   redict: function (e) {

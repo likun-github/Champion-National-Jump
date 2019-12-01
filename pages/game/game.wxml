@@ -73,6 +73,21 @@
     <image mode="aspectFit" src="/img/我的.svg"></image>
     <text class="bottomNavNotSelected">我 的</text>
   </view>
+</view>
 
 
+<view wx:if="{{matchComing}}" class="myGameDirect">
+  <view class="directQuestion">
+    <image mode="widthFix" src="/img/game/感叹号.svg"></image>
+    <text>您有一场比赛即将进行，
+    是否立即跳转至比赛界面？</text>
+  </view>
+  <view class="directButtons">
+    <view class="directButtonGrey">
+      <text>不跳转</text>
+    </view>
+    <view class="directButtonBlue">
+      <text>立即跳转</text>
+    </view>
+  </view>
 </view>

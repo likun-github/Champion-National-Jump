@@ -7,7 +7,6 @@
     "pages/game/scorelist",
     "pages/learn/learnindex",
     "pages/competition/edcompetition",
-    "pages/mycollection/competitiondetail",
     "pages/competition/competitionindex",
     "pages/competition/signup",
     "pages/competition/competitioninfo",
