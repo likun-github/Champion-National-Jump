@@ -8,33 +8,18 @@ Page({
       scroll_view_height: (wx.getSystemInfoSync().windowHeight * (750 / wx.getSystemInfoSync().windowWidth) - 120),
       background_height_rpx:750/1024*2668,
       pass_pos_info:[
-        { height_ratio: 0.84, width_ratio:0.23, isTen: 0, state: 0},
-        { height_ratio: 0.71, width_ratio: 0.62, isTen: 0, state: 0},
-        { height_ratio: 0.64, width_ratio: 0.18, isTen: 0, state: 0},
-        { height_ratio: 0.56, width_ratio: 0.51, isTen: 0, state: 0},
-        { height_ratio: 0.55, width_ratio: 0.86, isTen: 0, state: 0},
-        { height_ratio: 0.44, width_ratio: 0.74, isTen: 0, state: 0},
-        { height_ratio: 0.34, width_ratio: 0.69, isTen: 0, state: 0},
-        { height_ratio: 0.27, width_ratio: 0.35, isTen: 0, state: 0},
-        { height_ratio: 0.11, width_ratio: 0.11, isTen: 0, state: 0},
-        { height_ratio: 0.05, width_ratio: 0.444, isTen: 1, state: 0}],
-      firstPass:"",
-      scrollTop: 2668,
-
-      innerRoute: "tree",
-      sortMethod: "all",
-      practices:[
-        {id:'1',name:'哈啊哈哈',coverPath:'',viewCount:100,thumbCount:100,username:"孙教练"},
-        { id: '1',name:'是的啊', coverPath: '', viewCount: 100, thumbCount: 100, username: "孙教练" },
-        { id: '1',name:'我不知', coverPath: '', viewCount: 100, thumbCount: 100, username: "孙教练" },
-        { id: '1',name:'对的', coverPath: '', viewCount: 100, thumbCount: 100, username: "孙教练" }
+        { height_ratio: 0.05, width_ratio: 0.444, isTen: 1, state: 0 },
+        { height_ratio: 0.11, width_ratio: 0.11, isTen: 0, state: 0 },
+        { height_ratio: 0.27, width_ratio: 0.35, isTen: 0, state: 0 },
+        { height_ratio: 0.34, width_ratio: 0.69, isTen: 0, state: 0 },
+        { height_ratio: 0.44, width_ratio: 0.74, isTen: 0, state: 0 },
+        { height_ratio: 0.55, width_ratio: 0.86, isTen: 0, state: 0 },
+        { height_ratio: 0.56, width_ratio: 0.51, isTen: 0, state: 0 },
+        { height_ratio: 0.64, width_ratio: 0.18, isTen: 0, state: 0 },
+        { height_ratio: 0.71, width_ratio: 0.62, isTen: 0, state: 0 },
+        { height_ratio: 0.84, width_ratio: 0.23, isTen: 0, state: 0 }
         ],
-      competitions:[
-
-
-      ],
-      practicePageIndex:1,
-      competitionPageIndex:1
+      currentPass:"pass-9",
   },
 
   redict: function (e) {
@@ -42,87 +27,16 @@ Page({
     app.redict(e);
 
   },
-  GoToDetail: function(){
 
-
-    wx.navigateTo({
-      url: '/pages/mycollection/competitiondetail',
-    })
-  },
-
-  ChangeRoute: function (e) {
-
-    this.setData({
-      innerRoute: e.currentTarget.dataset.route
-    })
-
-  },
-  GoToPractise: function(){
-    wx.navigateTo({
-      url: '/pages/mycollection/practise',
-    })
-
-  },
-
-  changeSortMethod: function(e){
-
-    var that = this;
-    that.setData({sortMethod:e.currentTarget.dataset.method})
+  goToPass:function(e) {
+    console.log(e.currentTarget);
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-  getPractices: function(){
-    var app = getApp();
-    var serverUrl = app.globalData.restServiceBaseUrl;
-    var that = this;
-
-    // 获取目前的竞赛
-    wx.request({
-      url: serverUrl + "GetPractices?pageIndex=" + that.practicePageIndex,
-      success: function (res) {
-        var practices = res.data.practices;
-
-        if(that.practices.length==0){
-          that.setData({ practices: practices });
-        }
-        else{
-          for(let i=0;i<practices.length;i++){
-            that.practices.push(practices[i]);
-          }
-          that.setData({practices: that.practices});
-        }
-      }
-    })
-
-  },
-  getCompetitions: function () {
-    var app = getApp();
-    var serverUrl = app.globalData.restServiceBaseUrl;
-    var that = this;
-
-    // 获取目前的竞赛
-    wx.request({
-      url: serverUrl + "GetClassicGame?pageIndex=" + that.competitionPageIndex,
-      success: function (res) {
-        var competitions = res.data.games;
-
-        if (that.competitions.length == 0) {
-          that.setData({ competitions: competitions });
-        }
-        else {
-          for (let i = 0; i < competitions.length; i++) {
-            that.practices.push(competitions[i]);
-          }
-          that.setData({ competitions: that.competitions });
-        }
-      }
-    })
-
+    
   },
 
   onPullDownRefresh: function () {

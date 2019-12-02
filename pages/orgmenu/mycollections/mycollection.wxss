@@ -3,6 +3,7 @@ Page {
   background:#eeeeee;
 }
 
+/*收藏列表*/
 .collectionView {
   background-color: white;
   border-radius: 25rpx;
@@ -31,4 +32,5 @@ Page {
   color:grey;
   font-size: 25rpx;
   letter-spacing: 3rpx;
+  margin-top:95rpx;
 }

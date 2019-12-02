@@ -1,5 +1,12 @@
 @import "../game/game.wxss";
 
+.scrollView {
+  display: flex;
+  flex-direction: column;
+  position:fixed; top:0;
+}
+
+/*背景图*/
 .background{
   width: 100%;
   position:absolute; 

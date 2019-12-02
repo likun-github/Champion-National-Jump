@@ -35,7 +35,7 @@
 
 
 <view class="cover-container relative">
-  <image class="width-fix-cover"  src="/img/competitionimages/competition_cover.png" mode="widthFix"></image>
+  <image class="width-fix-cover"  src="/img/competition/competition_cover.png" mode="widthFix"></image>
 </view>
 
 <view class="competition-name">2019少年儿童国际跳棋公开赛</view>
