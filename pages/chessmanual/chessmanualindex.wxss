@@ -1,16 +1,24 @@
 @import "../game/game.wxss";
-
-.scrollView {
-  display: flex;
-  flex-direction: column;
-  position:fixed; top:0;
-}
-
 /*背景图*/
 .background{
   width: 100%;
   position:absolute; 
   top:0;
+}
+
+/*关卡牌*/
+.passTag {
+  background-color: white;
+  border-radius: 15rpx;
+  box-shadow:  1px 1px 10px rgb(200, 200, 200); 
+  width:140rpx;
+  padding:4rpx 0rpx;
+  text-align: center;
+}
+.passTag text {
+  color:rgb(76,135,253);
+  font-size: 35rpx;
+  letter-spacing: 3rpx;
 }
 
 

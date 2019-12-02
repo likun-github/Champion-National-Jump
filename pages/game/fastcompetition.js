@@ -663,9 +663,9 @@ Page({
         content: "你还没走棋，不能悔棋！",
       })
     } else { // 可以悔棋
-      if (this.data.whiteWithdraw.length == this.data.blackWithdraw.length) { // 白棋走后黑棋已走，先悔黑棋，再悔白棋
+      if (this.data.whiteWithdraw.length-1 == this.data.blackWithdraw.length) { // 白棋走后黑棋已走，先悔黑棋，再悔白棋
         this.data.blackWithdraw.pop();
-      } else if (this.data.whiteWithdraw.length - 1 == this.data.blackWithdraw.length) { // 白棋走后黑棋未走，只悔白棋，但要跟服务器发请求让别再走黑棋了
+      } else if (this.data.whiteWithdraw.length - 2 == this.data.blackWithdraw.length) { // 白棋走后黑棋未走，只悔白棋，但要跟服务器发请求让别再走黑棋了
         this.data.whiteWithdraw.pop();
         // 给服务器发请求让别走黑棋………………
       } else {
