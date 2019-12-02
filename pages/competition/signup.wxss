@@ -1,40 +1,75 @@
 /* pages/conpetition/signup.wxss */
 
 
-
-.userForm{
-  padding: 0 100rpx;
-  margin-top:  200rpx;
+.top-title{
+  height: 80rpx;
+  font-size: 30rpx;
+  color: gray;
+  line-height: 80rpx;
+  padding: 0 10rpx;
 }
 
+.red{
+  color: red;
+}
+
+
+.text-indent-1{
+  text-indent: 0.5em;
+}
+
+
 .formCol{
-  margin-bottom: 40rpx;
+  font-size: 32rpx;
+  line-height: 90rpx;
+  padding: 0 10rpx;
+  border-bottom: 2px solid rgb(234,234,234);
+  vertical-align: middle;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
 }
 
 .formColLabel{
-  letter-spacing: 10rpx;
-  color: gray;
-
+  width: 200rpx;
+  display: inline-block;
 }
 
 .textInput{
-  border-bottom: 2rpx solid gray;
+  display: inline-block;
+  line-height: 90rpx;
+  vertical-align: middle;
+  flex: 1;
+  height: 90rpx;
 }
 
 
 
 .bottomContainer{
-
+  margin-top: 40rpx;
 }
 
-.centerOfContainer{
 
-  
-}
 
 .confirmBtn{
-  background-color: white;
+  background-color: #52A9FF;
+  color: white;
+  width: 500rpx;
 }
 
+.tip{
+  padding: 20rpx;
+  font-size: 30rpx;
+  color: gray;
+}
+
+.blue{
+  color:#52A9FF
+}
+
+.dangerous{
+  background-color: #E64340;
+  color: white;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 34rpx;
+}

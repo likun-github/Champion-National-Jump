@@ -11,7 +11,7 @@
 <!-- <view class="competitionsContainer">
   <view  class="competitionCard">
     <view class="cardLeft">
-      <image class="competitionCover" src="/img/competition/chessBoardCover.png"></image>
+      <image class="competitionCover" src="/img/checkerboard.png"></image>
     </view>
     <view class="cardRight">
       <view class="competitionName">{{competition.CompetitionName}}</view>
@@ -35,7 +35,7 @@
 
 
 <view class="cover-container relative">
-  <image class="width-fix-cover"  src="/img/competition/competition_cover.png" mode="widthFix"></image>
+  <image class="width-fix-cover"  src="/img/competitionimages/competition_cover.png" mode="widthFix"></image>
 </view>
 
 <view class="competition-name">2019少年儿童国际跳棋公开赛</view>

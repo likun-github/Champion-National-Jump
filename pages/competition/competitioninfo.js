@@ -16,7 +16,7 @@ Page({
   data: {
     competitionId: null,
     competition: null,
-    signed: true
+    signed: false
   },
 
   goToSignUp: function(){

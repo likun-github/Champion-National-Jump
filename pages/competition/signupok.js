@@ -1,48 +1,11 @@
-// pages/conpetition/signup.js
+// pages/competition/signupok.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    name:'',
-    phone:'',
-    anonymity: false,
-    ErrMsg: ""
-  },
 
-  ChangeAnonymity: function(e){
-    this.setData({anonymity:e.detail.value});
-  },
-
-  Confirm: function(){
-    if(this.data.name==''){
-      this.setData({ErrMsg:"未输入姓名"});
-      return
-    }
-  
-    else if (!(/^\d+$/.test(this.data.phone)&&this.data.phone.length!=11)){
-      this.setData({ErrMsg:"手机格式不正确"});
-      return
-    }
-
-    else{
-      this.setData({ErrMsg:''});
-    }
-
-    wx.navigateTo({
-      url: './signupok',
-    })
-        
-
-
-  },
-
-  InputName: function(e){
-    this.setData({name:e.detail.value});
-  },
-  InputPhone: function(e){
-    this.setData({ phone: e.detail.value });
   },
 
   /**
