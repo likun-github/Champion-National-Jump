@@ -282,6 +282,7 @@
   justify-content: space-between;
   font-size: 26rpx;
   color: #52A9FF;
+  z-index: 20000;
 }
 
 
@@ -337,6 +338,17 @@
   transform: translateY(-50%);
 }
 
+.height-fix-cover{
+  position: absolute;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .relative{
   position: relative;
+}
+
+.text-center{
+  text-align: center;
 }
