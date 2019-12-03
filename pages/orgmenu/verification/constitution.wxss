@@ -1,0 +1,11 @@
+/* pages/orgmenu/verification/constitution.wxss */
+.greyTop {
+  background-color: #eeeeee;
+  width: 100%;
+  padding:15rpx 25rpx;
+}
+.greyTop text{
+  font-size: 30rpx;
+  color:#999999;
+  letter-spacing: 3rpx;
+}

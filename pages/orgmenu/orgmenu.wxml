@@ -16,7 +16,7 @@
 <view class="gray-margin" style="margin-top:20rpx;"></view>
 
 
-<view class="optionBar" >
+<view class="optionBar" bindtap="goToVerification">
   <image mode="widthFix" src="/img/me/认证.svg"></image>
   <text>身份认证</text>
   <text class="goto">></text>

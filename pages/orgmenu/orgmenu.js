@@ -13,9 +13,15 @@ Page({
   },
 
   //事件处理函数
-  goToCollection: function(){
+  goToCollection: function() {
     wx.navigateTo({
       url: '/pages/orgmenu/mycollections/mycollection',
+    });
+  },
+
+  goToVerification:function() {
+    wx.navigateTo({
+      url: '/pages/orgmenu/verification/constitution',
     });
   },
 
