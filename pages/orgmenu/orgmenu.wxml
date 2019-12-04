@@ -16,7 +16,7 @@
 <view class="gray-margin" style="margin-top:20rpx;"></view>
 
 
-<view class="optionBar" bindtap="goToVerification">
+<view class="optionBar" bindtap="chooseIdentification">
   <image mode="widthFix" src="/img/me/认证.svg"></image>
   <text>身份认证</text>
   <text class="goto">></text>
@@ -47,7 +47,6 @@
 
 
 <view class="bottomNav">
-
   <view data-route="learn" bindtap="redict">
     <image src="/img/学习.svg" mode="aspectFit"></image>
     <text class="bottomNavNotSelected">学 习</text>
@@ -71,6 +70,62 @@
     <image mode="aspectFit" src="/img/我的选中.svg"></image>
     <text class="bottomNavSelected">我 的</text>
   </view>
+</view>
+
+<view wx:if="{{show_verification==true}}" class='mask-view' catchtouchmove='ture'>
+</view>
 
 
+
+<view class="bottomPopUp" hidden="{{hideModal}}" animation="{{animationData}}">
+  <view class="chooseTopic">
+    <image mode="widthFix" src="/img/me/×.svg" bindtap="cancelVerification"></image>
+    <text>请选择认证身份</text>
+    <image mode="widthFix" src="/img/me/叉空白.svg"></image>
+  </view>
+  <view class="identifications">
+    <view id="student" class="identification" bindtap="selectIdentification">
+      <image class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>
+      <text wx:if="{{id_selected==1}}" class="idBlack">学员</text>
+      <text wx:else class="idGrey">学员</text>
+      <image wx:if="{{id_selected==1}}" class="tick" mode="widthFix" src="/img/me/勾上下留白.svg"></image>
+      <image wx:else class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>   
+    </view> 
+    <view class="gray-margin" style="height: 3rpx;"></view>  
+  </view>
+  <view class="identifications">
+    <view id="coach" class="identification" bindtap="selectIdentification">
+      <image class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>
+      <text wx:if="{{id_selected==2}}" class="idBlack">教练</text>
+      <text wx:else class="idGrey">教练</text>
+      <image wx:if="{{id_selected==2}}" class="tick" mode="widthFix" src="/img/me/勾上下留白.svg"></image>
+      <image wx:else class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>  
+    </view> 
+    <view class="gray-margin" style="height: 3rpx;"></view>  
+  </view>
+  <view class="identifications">
+    <view id="constitution" class="identification" bindtap="selectIdentification">
+      <image class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>
+      <text wx:if="{{id_selected==3}}" class="idBlack">机构</text>
+      <text wx:else class="idGrey">机构</text>
+      <image wx:if="{{id_selected==3}}" class="tick" mode="widthFix" src="/img/me/勾上下留白.svg"></image>
+      <image wx:else class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>  
+    </view> 
+    <view class="gray-margin" style="height: 3rpx;"></view>  
+  </view>
+  <view class="identifications">
+    <view id="player" class="identification" bindtap="selectIdentification">
+      <image class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>
+      <text wx:if="{{id_selected==0}}" class="idBlack">玩家</text>
+      <text wx:else class="idGrey">玩家</text>
+      <image wx:if="{{id_selected==0}}" class="tick" mode="widthFix" src="/img/me/勾上下留白.svg"></image>
+      <image wx:else class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>  
+    </view> 
+    <view class="gray-margin" style="height: 3rpx;"></view>  
+  </view>
+  <view style="padding:50rpx;">
+    <view class="startIdentification" bindtap="goToVerification">
+      <text>开始认证</text>
+    </view>
+  </view> 
 </view>

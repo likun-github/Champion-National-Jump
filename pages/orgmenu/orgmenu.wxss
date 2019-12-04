@@ -16,6 +16,7 @@
   display: flex;
   flex-direction: row;
   box-shadow: 1px 1px 10px rgb(136, 136, 136); 
+  height:260rpx;
 }
 .personalInfo image {
   padding:50rpx;
@@ -63,3 +64,77 @@
   min-width: 200rpx;
 }
 
+
+/*底部弹出框*/
+.bottomPopUp {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height:715rpx;
+  background-color: white;
+  border-radius: 25rpx 25rpx 0rpx 0rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 20001;
+}
+.bottomPopUp .chooseTopic {
+  margin-top:45rpx;
+  margin-bottom:60rpx;
+  display: flex;
+  flex-direction: row;
+  line-height: 35rpx;
+  text-align: center;
+}
+.chooseTopic text {
+  color:black;
+  font-size:35rpx;
+  letter-spacing: 5rpx;
+  min-width: 600rpx;
+}
+.chooseTopic image {
+  width:35rpx;
+}
+.bottomPopUp .identifications {
+  display: flex;
+  flex-direction: column;
+}
+.identifications .identification {
+  display: flex;
+  flex-direction: row;
+  line-height: 35rpx;
+  text-align: center;
+  padding:35rpx 0rpx;
+  align-items: center;
+}
+.identification .idGrey {
+  color:rgb(200, 200, 200);
+  font-size: 35rpx;
+  letter-spacing: 5rpx; 
+  min-width: 600rpx;
+}
+.identification .idBlack {
+  color:black;
+  font-size: 35rpx;
+  font-weight: 900;
+  letter-spacing: 5rpx;
+  min-width: 600rpx;
+}
+.identification .tick {
+  width:35rpx;
+}
+.bottomPopUp .startIdentification {
+  background-color:#52A9FF;
+  border-radius: 20rpx;
+  text-align: center;
+  padding:10rpx 90rpx;
+}
+.startIdentification text{
+  color:white;
+  font-size: 35rpx;
+  letter-spacing: 5rpx;
+}
+
+/*模态框*/
+/*动画前初始位置*/
+.bottom-pos{-webkit-transform:translateY(100%);transform:translateY(100%);}

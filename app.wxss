@@ -9,6 +9,15 @@
   box-sizing: border-box;
 }  
 
+/*遮罩层*/
+.mask-view {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #b1afaf7e;
+  top: 0;
+  left: 0;
+}
 
 .modals{position:fixed; z-index: 999; top:0; left: 0; right:0; bottom: 0;}
 
@@ -349,9 +358,6 @@
   position: relative;
 }
 
-<<<<<<< HEAD
-
-
 /*认证部分的信息输入框*/
 .verificationInfoContainer {
   width: 100%;
@@ -386,8 +392,9 @@
   letter-spacing: 3rpx;
   color:rgb(218, 216, 216);
 }
-=======
+
 .text-center{
   text-align: center;
 }
->>>>>>> 7e0d54af820317897b9d13a54def42c73807c9d7
+
+

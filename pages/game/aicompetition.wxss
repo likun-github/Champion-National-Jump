@@ -5,15 +5,7 @@ Page {
   background-color: rgb(202, 229, 255);
 }
 
-/*遮罩层*/
-.mask-view {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background-color: #b1afaf7e;
-  top: 0;
-  left: 0;
-}
+
 
 /*底部白板*/
 .poster{
