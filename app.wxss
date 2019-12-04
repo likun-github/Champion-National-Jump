@@ -347,6 +347,13 @@
   transform: translateY(-50%);
 }
 
+
+.cover-image{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 .height-fix-cover{
   position: absolute;
   height: 100%;
