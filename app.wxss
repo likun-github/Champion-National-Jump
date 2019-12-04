@@ -405,3 +405,29 @@
 }
 
 
+.bottom-empty{
+  height: 128rpx;
+}
+
+
+.flex-between{
+ display: flex;
+ justify-content: space-between;
+}
+
+.icon{
+  width: 30rpx;
+  vertical-align: middle;
+  margin-right: 5rpx;
+}
+
+.capsule{
+  color: gray;
+  font-size: 20rpx;
+  padding: 8rpx 20rpx;
+  margin: 5rpx;
+  line-height: 18rpx;
+  border-radius: 20rpx;
+  box-shadow: 1rpx 1rpx 5rpx #d1d1d1;
+}
+
