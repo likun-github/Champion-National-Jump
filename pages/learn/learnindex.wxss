@@ -201,3 +201,27 @@ image.locked{
 
 }
 
+.video{
+  box-sizing: border-box;
+  padding: 50rpx;
+}
+
+.video video{
+  width: 100%;
+  border-radius: 20rpx;
+}
+
+.video .video-cover-container{
+  height: 500rpx;
+  width: 100%;
+}
+
+.video-bottom{
+  padding: 30rpx 0;
+}
+
+.video-title{
+  font-size: 36rpx;
+  font-weight: bold;
+}
+

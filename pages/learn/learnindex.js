@@ -6,11 +6,18 @@ Page({
    */
   data: {
 
-    innerRoute: "begin"
+    innerRoute: "begin",
+    playVideo: false
   },
   redict: function (e) {
     var app = getApp();
     app.redict(e);
+
+  },
+  RuleDetail: function(){
+    wx.redirectTo({
+      url: './learncontent',
+    })
 
   },
 
@@ -19,6 +26,10 @@ Page({
     this.setData({
       innerRoute: e.currentTarget.dataset.route
     });
+
+  },
+  SeeVideo: function(){
+    this.setData({playVideo: true});
 
   },
 

@@ -113,7 +113,7 @@ Page({
     })
   },
   fadeDown: function () {
-    this.animation.translateY(300).step();
+    this.animation.translateY("100%").step();
     this.setData({
       animationData: this.animation.export(),
     })
