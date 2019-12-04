@@ -16,7 +16,8 @@
     "pages/game/fastcompetition",
     "pages/orgmenu/mycollections/mycollection",
     "pages/orgmenu/mycollections/competitiondetail",
-    "pages/orgmenu/verification/constitution"
+    "pages/orgmenu/verification/constitution",
+    "pages/orgmenu/verification/person"
   ],
   "window": {
     "backgroundTextStyle": "light",

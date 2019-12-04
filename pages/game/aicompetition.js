@@ -8,22 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 选择按钮的颜色
-    levelEasyBtnColor: "#CBE5FF",
-    levelEasyTextColor: "#52A9FF",
-    levelMediumBtnColor: "#CBE5FF",
-    levelMediumTextColor: "#52A9FF",
-    levelHardBtnColor: "#CBE5FF",
-    levelHardTextColor: "#52A9FF",
-
-
-    sequenceFirstBtnColor: "#CBE5FF",
-    sequenceFirstTextColor: "#52A9FF",
-    sequenceSecondBtnColor: "#CBE5FF",
-    sequenceSecondTextColor: "#52A9FF",
-    sequenceRandomBtnColor: "#CBE5FF",
-    sequenceRandomTextColor: "#52A9FF",
-
     // 上下文
     context: null,
 
@@ -49,7 +33,10 @@ Page({
     aiLevel: -1,  /*-1:未选择；0：入门；1：普通；2：大师*/ 
 
     // 先后顺序
-    sequence: -1, /*-1：未选择；0：先手；1：后手*/ 
+    sequence: -1, /*-1：未选择；0：先手；1：后手；2：随机*/ 
+
+    // 用户持方
+    userColor:-1, /*-1：未确定；0：白棋；1：黑棋 */
 
     // 游戏结果
     gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/ 
@@ -136,58 +123,46 @@ Page({
     this.startTimer();
   },
   
+
+  // 用户选择游戏设置（AI等级+先手后手）
   handleTouchStart:function(e) {
     console.log(e.currentTarget);
     switch (e.currentTarget.id) {
       case "easy":
-        this.setData({
-          levelEasyBtnColor: "#FCB1AB", levelEasyTextColor:"#F95649",
-          levelMediumBtnColor: "#CBE5FF", levelMediumTextColor:"#52A9FF",
-          levelHardBtnColor: "#CBE5FF", levelHardTextColor:"#52A9FF",
+        this.setData({        
           aiLevel:0});
         break;
       case "medium":
         this.setData({
-          levelEasyBtnColor: "#CBE5FF", levelEasyTextColor: "#52A9FF",
-          levelMediumBtnColor: "#FCB1AB", levelMediumTextColor: "#F95649",
-          levelHardBtnColor: "#CBE5FF", levelHardTextColor: "#52A9FF",
           aiLevel: 1
         });
         break;
       case "hard":
         this.setData({
-          levelEasyBtnColor: "#CBE5FF", levelEasyTextColor: "#52A9FF",
-          levelMediumBtnColor: "#CBE5FF", levelMediumTextColor: "#52A9FF",
-          levelHardBtnColor: "#FCB1AB", levelHardTextColor: "#F95649",
           aiLevel: 2
         });
         break;
       case "first":
         this.setData({
-          sequenceFirstBtnColor: "#FFF0B4", sequenceFirstTextColor:"#F3994B",
-          sequenceSecondBtnColor: "#CBE5FF", sequenceSecondTextColor:"#52A9FF",
-          sequenceRandomBtnColor: "#CBE5FF", sequenceRandomTextColor:"#52A9FF",
-          sequence:0
+          sequence:0,
+          userColor: 0
         });
         break;
       case "second":
         this.setData({
-          sequenceFirstBtnColor: "#CBE5FF", sequenceFirstTextColor: "#52A9FF",
-          sequenceSecondBtnColor: "#FFF0B4", sequenceSecondTextColor: "#F3994B",
-          sequenceRandomBtnColor: "#CBE5FF", sequenceRandomTextColor: "#52A9FF",
-          sequence: 1
+          sequence: 1,
+          userColor: 1
         });
         break;
       case "random":
         this.setData({
-          sequenceFirstBtnColor: "#CBE5FF", sequenceFirstTextColor: "#52A9FF",
-          sequenceSecondBtnColor: "#CBE5FF", sequenceSecondTextColor: "#52A9FF",
-          sequenceRandomBtnColor: "#FFF0B4", sequenceRandomTextColor: "#F3994B",
-          sequence: Math.round(Math.random())
+          sequence: 2,
+          userColor: Math.round(Math.random())
         });
         break;
     }
   },
+
 
   // 秒数 => 时：分：秒
   formatTime(seconds) {
@@ -199,6 +174,7 @@ Page({
       .join(":")
       .replace(/\b(\d)\b/g, "0$1");
   },
+
 
   // 开启计时器
   startTimer:function() {
@@ -224,6 +200,7 @@ Page({
     }
   },
 
+
   // 清空棋子
   clearBoard: function() {
     this.setData({ whiteChesses: [] });
@@ -236,6 +213,7 @@ Page({
       this.data.kingChesses.push(0);
     }
   }, 
+
 
   // 初始化棋盘
   Inite: function () {
@@ -255,6 +233,7 @@ Page({
     this.DrawBoard();
     this.DrawChesses();
   },
+
 
   // 绘制棋盘
   DrawBoard: function () {
@@ -290,6 +269,7 @@ Page({
       }
     }
   },
+
 
   // 画所有棋子
   DrawChesses: function () {
@@ -335,6 +315,7 @@ Page({
     }
   },
 
+
   // 根据index画单个棋子
   DrawChess: function (index, ctx) {
     var width = this.data.chessBoardWidth
@@ -349,7 +330,6 @@ Page({
     ctx.arc(width / 10 / 2 + j * width / 10, height / 10 / 2 + i * height / 10, width / 10 / 2 * 4 / 5, 0, 2 * Math.PI, true)
   },
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // 高亮选中的棋子
   HighlightChess: function (index, color) {
@@ -363,6 +343,7 @@ Page({
     context.fillRect(j * width / 10, i * height / 10, width / 10, height / 10);
   },
 
+
   // 获取选中位置的棋盘索引
   GetTargetRect(x, y) {
     var width = this.data.chessBoardWidth
@@ -370,6 +351,7 @@ Page({
 
     return Math.floor(x / (width / 10)) + Math.floor(y / (height / 10)) * 10;
   },
+
 
   // 获取可走路径
   GetAvailablePaths(currentUser) {
@@ -410,6 +392,7 @@ Page({
     return paths;
   },
 
+
   // 判断index这个棋子是否可走
   IsMovable(index, paths) {
     for (let i = 0; i < paths.length; i++) {
@@ -419,6 +402,7 @@ Page({
     }
     return false;
   },
+
 
   // 获取当前 选中棋子的 可走路径
   GetCurrentAvailablePaths(index, paths) {
@@ -431,6 +415,7 @@ Page({
     return availablePaths;
   },
 
+
   // 获取当前 选中棋子的 可走路径的终点
   GetCurrentAvailableDst(currentAvailablePaths) {
     let availableDst = [];
@@ -439,6 +424,7 @@ Page({
     }
     return availableDst;
   },
+
 
   // 在可选路径上画绿点 
   DrawInfoPaths(index, paths) {
@@ -451,6 +437,7 @@ Page({
       this.drawAvailablePath(paths[i], context, width, height);
     }
   },
+
 
   // 画绿点
   drawAvailablePath(index, context, width, height) {
@@ -467,10 +454,12 @@ Page({
     context.fill();
   },
 
+
   // 获取中心点坐标
   GetRectCenter(col, row, width, height) {
     return { x: width / 10 / 2 + row * width / 10, y: height / 10 / 2 + col * height / 10 }
   },
+
 
   // 判断index这个棋子是否为当前 选中棋子的 终点
   IsDst(index, availableDst) {
@@ -482,6 +471,7 @@ Page({
     return false;
   },
 
+
   // 获取终点为index的路径
   GetTargetPath(index, paths) {
     for (let i = 0; i < paths.length; i++) {
@@ -490,6 +480,7 @@ Page({
       }
     }
   },
+
 
   // 把pass的路径补充完整
   FillPass(pass, dst) {
@@ -531,6 +522,7 @@ Page({
     return pass_filled;
   },
 
+
   // 从小程序棋盘表示法转换成bitboard棋盘表示法
   MiniBoard2Bitboard() {
     let W = movegen.fill50(0);
@@ -553,7 +545,7 @@ Page({
     return currentBitboard;
   },
 
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   // 点击棋盘事件
   TapBoard: function (e) {
     // 获取当前点击位置在画布上的坐标
@@ -569,7 +561,7 @@ Page({
     paths = this.GetAvailablePaths(this.data.currentUser);
     if (paths.length == 0) { // 当前方无子可走,弹出游戏结束对话框
       var that = this;
-      if (this.data.currentUser == 0) {
+      if (this.data.currentUser == this.data.userColor) {
         wx.showModal({
           title:"游戏结束",
           content: "您输啦！",
@@ -608,8 +600,8 @@ Page({
       }
     }
 
-    // 白棋（用户）走棋
-    if (this.data.currentUser == 0 ) {
+    // 用户走棋
+    if (this.data.currentUser == this.data.userColor ) {
       // 如果选中可走棋，则高亮这个棋子，并画出其可走路径
       if (this.IsMovable(targetRect, paths)) {
         this.setData({ currentTarget: { index: targetRect, king: this.data.kingChesses[targetRect] == 1 } });
@@ -644,29 +636,43 @@ Page({
           }
         }
         // 更改棋盘-更改白棋数组
-        this.data.whiteChesses[src] = 0;
-        this.data.whiteChesses[dst] = 1;
+        if (this.data.userColor == 0) { // 更改棋盘-用户执白棋，更改白棋数组
+          this.data.whiteChesses[src] = 0;
+          this.data.whiteChesses[dst] = 1;
+          // 更改棋盘-如果白棋到达顶部则变为王棋
+          if (Math.floor(dst / 10) == 0) {
+            this.data.kingChesses[dst] = 1;
+          }
+        } else { // 更改棋盘-用户执黑棋，更改黑棋数组
+          this.data.blackChesses[src] = 0;
+          this.data.blackChesses[dst] = 1;
+          // 更改棋盘-如果黑棋到达顶部则变为王棋
+          if (Math.floor(dst / 10) == 9) {
+            this.data.kingChesses[dst] = 1;
+          }
+        }
         // 更改棋盘-如果是移动的是王棋，则更改王棋数组
         if (this.data.kingChesses[src] == 1) {
           this.data.kingChesses[src] = 0;
           this.data.kingChesses[dst] = 1;
         }
-        // 更改棋盘-如果白棋到达顶部则变为王棋
-        if (Math.floor(dst / 10) == 0) {
-          this.data.kingChesses[dst] = 1;
-        }
-        // 更改棋盘-去掉被吃的黑棋，并绘制被吃的黑棋
+        
+        // 更改棋盘-去掉被吃的棋，并绘制被吃的棋
         if (kill[0] != null) {
           for (let i = 0; i < kill.length; i++) {
-            this.HighlightChess(kill[i], "blue");
-            this.data.blackChesses[kill[i]] = 0;
+            if (this.data.userColor == 0) { // 更改棋盘-用户执白棋，去掉被吃的黑棋
+              this.data.blackChesses[kill[i]] = 0;
+            } else { // 更改棋盘-用户执黑棋，去掉被吃的白棋
+              this.data.whiteChesses[kill[i]] = 0;
+            }
+            this.HighlightChess(kill[i], "blue"); // 更改棋盘-绘制被吃的棋       
             if (this.data.kingChesses[kill[i]] == 0) { // 被吃子不是王棋
             } else { // 被吃子是王棋
               this.data.kingChesses[kill[i]] = 0;
             }
           }
         }
-        // 更改棋盘-绘制白棋起点、终点
+        // 更改棋盘-绘制起点、终点
         this.HighlightChess(src, "red");
         this.HighlightChess(dst, "red");
         // 更改棋盘-绘制所有棋子

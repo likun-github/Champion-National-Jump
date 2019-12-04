@@ -9,6 +9,18 @@
   box-sizing: border-box;
 }  
 
+/*顶部栏*/
+.greyTop {
+  background-color: #eeeeee;
+  width: 100%;
+  padding:15rpx 25rpx;
+}
+.greyTop text{
+  font-size: 30rpx;
+  color:#999999;
+  letter-spacing: 3rpx;
+}
+
 /*遮罩层*/
 .mask-view {
   width: 100%;
@@ -368,7 +380,6 @@
 .verificationInfoContainer .key {
   display: flex;
   flex-direction: row;
-  line-height:35rpx;
   padding: 20rpx 0rpx 20rpx 25rpx;
 }
 .key .star {

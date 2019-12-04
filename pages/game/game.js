@@ -20,7 +20,12 @@ Page({
       showMatching: !this.data.showMatching
     });
   },
-  
+  // 比赛页
+  goto_competition:function() {
+    wx.navigateTo({
+      url: '../competition/competitionindex'
+    })
+  },
   // 人机对战
   goto_ai_competition:function() {
     wx.navigateTo({

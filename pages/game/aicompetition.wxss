@@ -164,6 +164,19 @@ Page {
   font-weight: 900;
   letter-spacing:5rpx;
 }
+.blue {
+  background-color: #CBE5FF;
+  color:#52A9FF;
+}
+.red { 
+  background-color: #FCB1AB;
+  color:#F95649;
+}
+.yellow {
+  background-color: #FFF0B4;
+  color:#F3994B;
+}
+
 
 /*游戏结束提示*/
 .gameEndTip {

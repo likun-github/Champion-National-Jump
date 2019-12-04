@@ -1,0 +1,14 @@
+<!--pages/orgmenu/verification/person.wxml-->
+<view class="greyTop">
+  <text>实名认证</text>
+</view>
+
+
+<view class="verificationInfoContainer">
+  <view class="key">
+    <text class="star">*</text>
+    <text class="infoTopic">身份证件</text>
+    <input class="inputStyle" type="text" placeholder-class="placeholderStyle" placeholder="请选择任一方式录入证件信息"/>
+  </view>
+  <view class="gray-margin" style="height: 2rpx;"></view>
+</view>

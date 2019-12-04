@@ -67,10 +67,19 @@ Page({
   goToVerification:function() {
     switch(this.data.id_selected) {
       case 0: /* 玩家 */
+        wx.navigateTo({
+          url: '/pages/orgmenu/verification/person',
+        });
         break;
       case 1: /* 学生 */
+        wx.navigateTo({
+          url: '/pages/orgmenu/verification/person',
+        });
         break;
       case 2: /* 教练 */
+        wx.navigateTo({
+          url: '/pages/orgmenu/verification/person',
+        });
         break;
       case 3: /* 机构 */
         wx.navigateTo({

@@ -111,14 +111,23 @@
       <text class="blueline">———</text>
     </view>
     <view class="buttons">
-      <view id="easy" class="button" style="background-color:{{levelEasyBtnColor}}" bindtouchstart="handleTouchStart">
-        <text style="color:{{levelEasyTextColor}}">入门</text>
+      <view wx:if="{{aiLevel==0}}" id="easy" class="button red" bindtouchstart="handleTouchStart">
+        <text>入门</text>
       </view>
-      <view id="medium" class="button" style="background-color:{{levelMediumBtnColor}}" bindtouchstart="handleTouchStart">
-        <text style="color:{{levelMediumTextColor}}">普通</text>
+      <view wx:else id="easy" class="button blue" bindtouchstart="handleTouchStart">
+        <text>入门</text>
       </view>
-      <view id="hard" class="button" style="background-color:{{levelHardBtnColor}}" bindtouchstart="handleTouchStart">
-        <text style="color:{{levelHardTextColor}}">大师</text>
+      <view wx:if="{{aiLevel==1}}" id="medium" class="button red" bindtouchstart="handleTouchStart">
+        <text>普通</text>
+      </view>
+      <view wx:else id="medium" class="button blue" bindtouchstart="handleTouchStart">
+        <text>普通</text>
+      </view>
+      <view wx:if="{{aiLevel==2}}" id="hard" class="button red" bindtouchstart="handleTouchStart">
+        <text>大师</text>
+      </view>
+      <view wx:else id="hard" class="button blue" bindtouchstart="handleTouchStart">
+        <text>大师</text>
       </view>
     </view>
   </view>
@@ -130,14 +139,23 @@
       <text class="blueline">———</text>
     </view>
     <view class="buttons">
-      <view id="first" class="button" style="background-color:{{sequenceFirstBtnColor}}" bindtouchstart="handleTouchStart">
-        <text style="color:{{sequenceFirstTextColor}}">先手</text>
+      <view wx:if="{{sequence==0}}" id="first" class="button yellow" bindtouchstart="handleTouchStart">
+        <text>先手</text>
       </view>
-      <view id="second" class="button" style="background-color:{{sequenceSecondBtnColor}}" bindtouchstart="handleTouchStart">
-        <text style="color:{{sequenceSecondTextColor}}">后手</text>
+      <view wx:else id="first" class="button blue" bindtouchstart="handleTouchStart">
+        <text>先手</text>
       </view>
-      <view id="random" class="button" style="background-color:{{sequenceRandomBtnColor}}" bindtouchstart="handleTouchStart">
-        <text style="color:{{sequenceRandomTextColor}}">随机</text>
+      <view wx:if="{{sequence==1}}" id="second" class="button yellow" bindtouchstart="handleTouchStart">
+        <text>后手</text>
+      </view>
+      <view wx:else id="second" class="button blue" bindtouchstart="handleTouchStart">
+        <text>后手</text>
+      </view>
+      <view wx:if="{{sequence==2}}" id="random" class="button yellow" bindtouchstart="handleTouchStart">
+        <text>随机</text>
+      </view>
+      <view wx:else id="random" class="button blue" bindtouchstart="handleTouchStart">
+        <text>随机</text>
       </view>
     </view>
   </view>
