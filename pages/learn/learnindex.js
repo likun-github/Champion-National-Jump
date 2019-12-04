@@ -13,6 +13,12 @@ Page({
     app.redict(e);
 
   },
+  RuleDetail: function(){
+    wx.redirectTo({
+      url: './learncontent',
+    })
+
+  },
 
   ChangeRoute: function(e){
 

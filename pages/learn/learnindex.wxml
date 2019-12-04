@@ -12,9 +12,9 @@
 
 <view wx:if="{{innerRoute=='begin'}}">
   <view class="rules">
-    <view class="ruleItem" wx:for="{{[1,2,3]}}">
+    <view class="ruleItem" bindtap="RuleDetail" wx:for="{{[1,2,3]}}">
       <view class="coverImage">
-        <image class="center" src="/img/learn/rules_cover.png" mode="widthFix"></image>
+        <image class="cover-image" src="/img/learn/rules_cover.png"></image>
       </view>
 
       <view class="innerText">
@@ -34,7 +34,7 @@
               <image class="center" src="/img/learn/play.png" mode="widthFix"></image>
           </view>
           <view class="cover-image-container" >
-            <image class="cover-image  center" src="/img/learn/video_cover.png" mode="widthFix"></image>
+            <image class="cover-image" src="/img/learn/video_cover.png"></image>
           </view>
         </view>       
         <view class="video-bottom">
@@ -46,7 +46,7 @@
           <image class="locked center" mode="widthFix" src="/img/learn/lock.png">
           </image>
           <view class="cover-image-container">
-            <image class="cover-image center lock-cover" src="/img/learn/video_cover.png" mode="widthFix"></image>
+            <image class="cover-image lock-cover" src="/img/learn/video_cover.png"></image>
           </view>
         </view>        
         <view class="video-bottom">
