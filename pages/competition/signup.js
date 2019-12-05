@@ -30,9 +30,25 @@ Page({
       this.setData({ErrMsg:''});
     }
 
-    wx.navigateTo({
-      url: './signupok',
+    wx.showModal({
+      title: '',
+      content: '请先进行实名认证',
+      confirmText: "立即实名",
+      confirmColor: "#52A9FF",
+      success(res) {
+        if (res.confirm) {
+          wx.redirectTo({
+            url: '/pages/orgmenu/orgmenu',
+          })
+        } else if (res.cancel) {
+
+        }
+      }
     })
+
+    // wx.navigateTo({
+    //   url: './signupok',
+    // })
         
 
 

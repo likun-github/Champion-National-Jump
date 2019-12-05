@@ -27,3 +27,5 @@
 <view class="bottomContainer">
   <button class="confirmBtn centerOfContainer" bindtap="Confirm">确定</button>
 </view>
+
+

@@ -124,3 +124,8 @@
   border:  1rpx solid #65D0DD;
   color: #65D0DD;
 }
+
+.competitionTags text.finished{
+  border-color: gray;
+  color: gray;
+}
