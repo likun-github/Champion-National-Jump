@@ -1,4 +1,4 @@
-// pages/holdcompetition/holdcompetition.js
+// pages/orgmenu/verification/uploadsuccess.js
 Page({
 
   /**
@@ -20,15 +20,6 @@ Page({
    */
   onReady: function () {
 
-  },
-  doCreateCompetition: function(){
-
-    wx.showModal({
-      title: '创建成功',
-      content: '可在[比赛-报名]中查看',
-      showCancel: false
-    })
-  
   },
 
   /**

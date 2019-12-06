@@ -10,14 +10,13 @@
     "pages/competition/competitionindex",
     "pages/competition/signup",
     "pages/competition/competitioninfo",
-    "pages/holdcompetition/holdcompetition",
-    "pages/register/register",
     "pages/game/friendscompetition",
     "pages/game/fastcompetition",
     "pages/orgmenu/mycollections/mycollection",
     "pages/orgmenu/mycollections/competitiondetail",
     "pages/orgmenu/verification/constitution",
-    "pages/orgmenu/verification/person"
+    "pages/orgmenu/verification/person",
+    "pages/orgmenu/verification/uploadsuccess"
   ],
   "window": {
     "backgroundTextStyle": "light",
