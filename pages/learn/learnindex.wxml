@@ -5,7 +5,7 @@
   <text data-route="begin" bindtap="ChangeRoute" class="{{innerRoute=='begin'?'choosed':''}}">启蒙</text>
   <text data-route="promote" bindtap="ChangeRoute" class="{{innerRoute=='promote'?'choosed':''}}">进阶</text>
 </view>
-
+ 
 
 <view class="gray-margin"></view>
  
@@ -14,7 +14,7 @@
   <view class="rules">
     <view class="ruleItem" bindtap="RuleDetail" wx:for="{{[1,2,3]}}">
       <view class="coverImage">
-        <image class="cover-image" src="/img/learn/rules_cover.png"></image>
+        <image class="width-fix-cover" src="/img/learn/video_cover.png"></image>
       </view>
 
       <view class="innerText">

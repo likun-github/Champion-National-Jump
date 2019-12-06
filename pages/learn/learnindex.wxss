@@ -10,25 +10,21 @@
   border-bottom: 1rpx solid #dddddd;
   margin-bottom: 40rpx;
   height: 230rpx;
-  background-color: red;
   position: relative;
   border-radius: 20rpx;
-  overflow: hidden;
   box-shadow: 1px 1px 10px gray;
+    overflow: hidden;
 }
 
 .ruleItem .coverImage{
-  position: absolute;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
 .coverImage image{
+  filter: blur(5px);
   
-
 }
 
 .ruleItem .innerText{
