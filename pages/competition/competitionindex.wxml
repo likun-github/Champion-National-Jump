@@ -20,13 +20,13 @@
 <view class="gray-margin"></view>
 
 <view class="registingCompetitionsContainer" wx:if="{{innerNavigation=='registe'}}">
-  <view wx:for="{{registingCompetitions}}" wx:key="name" class="competitionCard">
+  <view wx:for="{{registingCompetitions}}" bindtap="GoToCompetitionInfo" wx:key="name" class="competitionCard">
     <view class="cardLeft relative">
       <text class="registing">报名中</text>
       <image class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
     </view>
     <view class="cardRight">
-      <view class="competitionName" data-competitionId="{{item.CompetitionId}}" bindtap="GoToCompetitionInfo">{{item.name}}</view>
+      <view class="competitionName" data-competitionId="{{item.CompetitionId}}" >{{item.name}}</view>
       <view><text>截止日期2019.11.30</text></view>
       <view><text class="joinedCount">人数64/100</text> <text>主办方:云顶</text></view>
       <view class="competitionTags">
@@ -40,12 +40,12 @@
 
 
 <view class="greatCompetitionsContainer" wx:elif="{{innerNavigation=='great'}}">
-   <view wx:for="{{registingCompetitions}}" wx:key="name" class="competitionCard">
+   <view wx:for="{{registingCompetitions}}" bindtap="GoToCompetitionInfo" wx:key="name" class="competitionCard">
     <view class="cardLeft relative">
       <image class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
     </view>
     <view class="cardRight">
-      <view class="competitionName" data-competitionId="{{item.CompetitionId}}" bindtap="GoToCompetitionInfo">{{item.name}}</view>
+      <view class="competitionName" data-competitionId="{{item.CompetitionId}}">{{item.name}}</view>
       <view><text>截止日期2019.11.30</text></view>
       <view><text class="joinedCount">人数64/100</text> <text>主办方:云顶</text></view>
       <view class="competitionTags">
@@ -59,7 +59,7 @@
 
 
 <view class="myCompetitionsContainer" wx:elif="{{innerNavigation=='my'}}">
-   <view wx:for="{{registingCompetitions}}" wx:key="name" class="competitionCard">
+   <view wx:for="{{registingCompetitions}}" bindtap="GoToCompetitionInfo" wx:key="name" class="competitionCard">
     <view class="cardLeft relative">
       <image class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
     </view>
