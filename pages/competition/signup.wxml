@@ -1,12 +1,12 @@
 <!--pages/conpetition/signup.wxml-->
 
-<view class="gray-margin top-title">报名信息填写</view>
 
-<view wx:if="ErrMsg.length>0" class="dangerous">
+
+<view wx:if="{{ErrMsg.length>0}}" class="dangerous">
 {{ErrMsg}}
 </view>
 
-
+<view wx:else class="gray-margin top-title">报名信息填写</view>
 <view class="userForm">
     <view class="formCol"><label class="formColLabel"><text class="red">*</text>真实姓名</label> <input bindchange="InputName" class="textInput" placeholder="请输入完整姓名"></input></view>
     <view class="formCol"><label class="formColLabel"><text class="red">*</text>手机号</label> <input  bindchange="InputPhone"  class="textInput" placeholder="请输入11位手机号"></input> </view>
