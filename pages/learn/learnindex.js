@@ -15,9 +15,13 @@ Page({
 
   },
   RuleDetail: function(){
-    wx.redirectTo({
+    wx.navigateTo({
       url: './learncontent',
     })
+
+  },
+  returnToVideoList: function(){
+    this.setData({ playVideo: false });
 
   },
 

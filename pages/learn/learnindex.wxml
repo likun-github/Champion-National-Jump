@@ -9,7 +9,7 @@
 
 <view class="gray-margin"></view>
  
-
+ 
 <view wx:if="{{innerRoute=='begin'}}">
   <view class="rules">
     <view class="ruleItem" bindtap="RuleDetail" wx:for="{{[1,2,3]}}">
@@ -27,7 +27,9 @@
 
 
 <view wx:else class="promotePart">
+
   <view class="video relative" wx:if="{{playVideo}}">
+    <view><button class="blue-btn" bindtap="returnToVideoList">返回视频列表</button></view>
     <view class="relative">
       <video src="/video/test.mp4" ></video>
       <!-- <image class="cover-image" src="/img/learn/video_cover.png"></image> -->
@@ -39,6 +41,7 @@
         <text>分享</text>
       </view>
     </view>
+
   </view>
 
   <view class="videos-container" wx:else>
