@@ -126,7 +126,6 @@ Page({
 
   // 用户选择游戏设置（AI等级+先手后手）
   handleTouchStart:function(e) {
-    console.log(e.currentTarget);
     switch (e.currentTarget.id) {
       case "easy":
         this.setData({        

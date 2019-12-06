@@ -42,3 +42,4 @@
   </view>
   <view class="gray-margin" style="height: 2rpx;"></view>
 </view>
+  <button class="confirmation">确认提交</button>

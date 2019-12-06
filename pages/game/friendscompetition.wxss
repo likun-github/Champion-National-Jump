@@ -115,8 +115,8 @@ Page {
   background-color: rgb(255,240,180);
   border-radius: 15rpx;
   text-align: center;
-  padding: 20rpx 150rpx;
-  margin-bottom: 50rpx;
+  padding: 0rpx 120rpx;
+  margin-bottom: 40rpx;
 }
 .inviteButton text {
   color:rgb(243,153,75);

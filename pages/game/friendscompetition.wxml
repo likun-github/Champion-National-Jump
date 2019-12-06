@@ -85,9 +85,9 @@
       <text class="playerInfo" style="font-size:25rpx;">段位：九段 积分: 1000</text>  
     </view>
   </view>
-  <view class="inviteButton">
+  <button class="inviteButton" open-type="share" bindtap="inviteFriend">
     <text>邀请好友</text>
-  </view>
+  </button>
 </view>
 
 

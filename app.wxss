@@ -21,6 +21,28 @@
   letter-spacing: 3rpx;
 }
 
+.redTop {
+  background-color: red;
+  width: 100%;
+  padding:15rpx 0rpx;
+  text-align: center;
+}
+.redTop text{
+  font-size: 30rpx;
+  color:white;
+  letter-spacing: 3rpx;
+}
+
+/*确认提交按钮*/
+.confirmation {
+  background-color: #52A9FF;
+  color:white;
+  border-radius: 15rpx;
+  width:500rpx;
+  margin-top:35rpx;
+}
+
+
 /*遮罩层*/
 .mask-view {
   width: 100%;

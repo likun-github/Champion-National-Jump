@@ -9,7 +9,7 @@ Page({
    */
   data: {
     // 好友信息
-    friendID:1,
+    friendID:null,
     friendName: null,
     friendLevel:null,
     friendScore:null,
@@ -124,6 +124,47 @@ Page({
 
     context.draw();
     this.startTimer();
+
+    // 要求小程序返回分享目标信息
+    wx.showShareMenu({
+      withShareTicket: true
+    }); 
+  },
+
+  // 邀请好友
+  inviteFriend:function() {
+
+  },
+
+  onShareAppMessage: function (ops) {
+    console.log(ops);
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(ops.target)
+    }
+    return {
+      title: '我在冠军学棋向你发起了一场跳棋比赛，快来参加吧',
+      path: `pages/index/index`,
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+        var shareTickets = res.shareTickets;
+        // if (shareTickets.length == 0) {
+        //   return false;
+        // }
+        // //可以获取群组信息
+        // wx.getShareInfo({
+        //   shareTicket: shareTickets[0],
+        //   success: function (res) {
+        //     console.log(res)
+        //   }
+        // })
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
   },
 
   // 秒数 => 时：分：秒
@@ -379,7 +420,6 @@ Page({
 
   // 在可选路径上画绿点 
   DrawInfoPaths(index, paths) {
-    //var that = this;
     var context = this.data.context;
     var width = this.data.chessBoardWidth
     var height = this.data.chessBoardHeight
