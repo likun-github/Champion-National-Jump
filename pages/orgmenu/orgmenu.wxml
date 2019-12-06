@@ -113,16 +113,6 @@
     </view> 
     <view class="gray-margin" style="height: 3rpx;"></view>  
   </view>
-  <view class="identifications">
-    <view id="player" class="identification" bindtap="selectIdentification">
-      <image class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>
-      <text wx:if="{{id_selected==0}}" class="idBlack">玩家</text>
-      <text wx:else class="idGrey">玩家</text>
-      <image wx:if="{{id_selected==0}}" class="tick" mode="widthFix" src="/img/me/勾上下留白.svg"></image>
-      <image wx:else class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>  
-    </view> 
-    <view class="gray-margin" style="height: 3rpx;"></view>  
-  </view>
   <view style="padding:50rpx;">
     <view class="startIdentification" bindtap="goToVerification">
       <text>开始认证</text>

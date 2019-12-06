@@ -1,16 +1,23 @@
 <!--pages/orgmenu/verification/constitution.wxml-->
-<view class="greyTop">
+<view wx:if="{{error==0}}" class="greyTop">
   <text>机构认证</text>
 </view>
+<view wx:else class="redTop">
+  <text wx:if="{{error==1}}">未输入机构名称</text>
+  <text wx:elif="{{error==2}}">未输入负责人姓名</text>
+  <text wx:elif="{{error==3}}">未输入负责人手机号码</text>
+  <text wx:elif="{{error==4}}">手机号格式不正确</text>
+  <text wx:elif="{{error==5}}">未上传营业执照</text>
+</view>
+
 
 
 <view class="verificationInfoContainer">
   <view class="key">
     <text class="star">*</text>
-    <text class="infoTopic">机构名称</text>
-    <input class="inputStyle" type="text" placeholder-class="placeholderStyle" placeholder="请输入完整机构名"/>
+    <label class="infoTopic">机构名称</label>
+    <input id="name" class="inputStyle" type="text" placeholder-class="{{error==1?'placeholderStyleRed':'placeholderStyle'}}" placeholder="请输入完整机构名" bindchange="input" bindfocus="changeError"/>
   </view>
-  <view class="gray-margin" style="height: 2rpx;"></view>
 </view>
 
 
@@ -18,9 +25,8 @@
   <view class="key">
     <text class="star">*</text>
     <text class="infoTopic">负责人</text>
-    <input class="inputStyle" type="text" placeholder-class="placeholderStyle" placeholder="请输入负责人完整姓名"/>
+    <input id="personInChargeName" class="inputStyle" type="text" placeholder-class="{{error==2?'placeholderStyleRed':'placeholderStyle'}}" placeholder="请输入负责人完整姓名" bindchange="input" bindfocus="changeError"/>
   </view>
-  <view class="gray-margin" style="height: 2rpx;"></view>
 </view>
 
 
@@ -28,18 +34,23 @@
   <view class="key">
     <text class="star">*</text>
     <text class="infoTopic">手机号</text>
-    <input class="inputStyle" type="text" placeholder-class="placeholderStyle" placeholder="请输入负责人手机号码"/>
+    <input id="personInChargePhone" class="{{error==4?'inputStyleRed':'inputStyle'}}" type="text" placeholder-class="{{error==3?'placeholderStyleRed':'placeholderStyle'}}"  placeholder="请输入负责人手机号码" bindchange="input" bindfocus="changeError"/>
   </view>
-  <view class="gray-margin" style="height: 2rpx;"></view>
 </view>
 
 
 <view class="verificationInfoContainer">
-  <view class="key">
+  <view class="key" style="border:0rpx;">
     <text class="star">*</text>
     <text class="infoTopic">营业执照</text>
     <input class="inputStyle" type="text" placeholder-class="placeholderStyle" placeholder="点击下方灰色区域上传或重新上传"/>
   </view>
+  <image wx:if="{{images[0]==null}}" mode="widthFix" style="width:500rpx;padding:10rpx 125rpx 35rpx 125rpx;" src="/img/me/机构认证.svg" bindtap="chooseImage"></image>
+  <image wx:else style="width:500rpx;padding:10rpx 125rpx 35rpx 125rpx;" mode="widthFix" src="{{images[0]}}"></image>
   <view class="gray-margin" style="height: 2rpx;"></view>
 </view>
-  <button class="confirmation">确认提交</button>
+
+
+<view class="confirmation" bindtap="submit">
+  <text>确认提交</text>
+</view>

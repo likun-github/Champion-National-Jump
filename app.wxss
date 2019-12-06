@@ -22,7 +22,7 @@
 }
 
 .redTop {
-  background-color: red;
+  background-color: #E64340;
   width: 100%;
   padding:15rpx 0rpx;
   text-align: center;
@@ -37,9 +37,13 @@
 .confirmation {
   background-color: #52A9FF;
   color:white;
-  border-radius: 15rpx;
+  border-radius: 10rpx;
   width:500rpx;
   margin-top:35rpx;
+  margin-left:125rpx;
+  font-size: 30rpx;
+  text-align: center;
+  padding: 15rpx 0rpx;
 }
 
 
@@ -409,29 +413,36 @@
 .verificationInfoContainer .key {
   display: flex;
   flex-direction: row;
-  padding: 20rpx 0rpx 20rpx 25rpx;
+  vertical-align: middle;
+  font-size: 31rpx;
+  letter-spacing: 3rpx;
+  border-bottom: 2px solid rgb(234,234,234);
+  line-height: 90rpx;
 }
 .key .star {
-  font-size: 31rpx;
+  margin-left:25rpx;
   color:red;
 }
 .key .infoTopic {
   color:rgb(65, 64, 64);
-  font-size: 31rpx;
-  letter-spacing: 3rpx;
-  min-width: 160rpx;
+  width: 160rpx;
 }
 .key .inputStyle {
   color:rgb(65, 64, 64);
-  font-size: 31rpx;
-  letter-spacing: 3rpx;
-  min-width: 500rpx;
+  flex:1;
+  height: 90rpx;
+}
+.key .inputStyleRed {
+  color:#E64340;
+  flex:1;
 }
 .key .placeholderStyle {
-  font-size: 31rpx;
-  letter-spacing: 3rpx;
   color:rgb(218, 216, 216);
 }
+.key .placeholderStyleRed {
+  color:#E64340;
+}
+
 
 .text-center{
   text-align: center;

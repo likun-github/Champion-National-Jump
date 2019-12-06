@@ -23,7 +23,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#4B87FD",
     "navigationBarTitleText": "冠军国跳",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"
 }
