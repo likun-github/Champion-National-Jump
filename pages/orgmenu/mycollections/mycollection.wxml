@@ -4,7 +4,7 @@
   <view class="competition"  bindtap="GoToDetail" id="{{key}}">
 
     <view class="collectionView">
-      <image mode="widthFix" src="/img/me/checkerboard.png"></image>
+      <image mode="widthFix" src="{{getApp().ServerRoot}}/img/me/checkerboard.png"></image>
       <view class="collectionInfo">
         <text class="gameType">{{value.type}}</text>
         <text class="gameTime">{{key}}</text>

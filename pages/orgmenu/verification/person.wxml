@@ -11,4 +11,5 @@
     <input class="inputStyle" type="text" placeholder-class="placeholderStyle" placeholder="请选择任一方式录入证件信息"/>
   </view>
   <view class="gray-margin" style="height: 2rpx;"></view>
+  <button bindtap="UploadInfo"></button>
 </view>

@@ -1,14 +1,14 @@
 <!--pages/myindex/myindex.wxml-->
-<image class="illustration" src="/img/index/Illustration.png" mode="widthFix">
+<image class="illustration" src="{{getApp().ServerRoot}}/img/index/Illustration.png" mode="widthFix">
 
 </image>
 
 
-<image class="ball1" src="/img/index/ellipse1.png" mode="widthFix"></image>
+<image class="ball1" src="{{getApp().ServerRoot}}/img/index/ellipse1.png" mode="widthFix"></image>
 
-<image class="ball2" src="/img/index/ellipse2.png" mode="widthFix"></image>
+<image class="ball2" src="{{getApp().ServerRoot}}/img/index/ellipse2.png" mode="widthFix"></image>
 
-<image class="boxs" src="/img/index/boxs.png" mode="widthFix"></image>
+<image class="boxs" src="{{getApp().ServerRoot}}/img/index/boxs.png" mode="widthFix"></image>
 
 
 <button class="beginBtn" bindtap="GoToGame">开始旅程→</button>

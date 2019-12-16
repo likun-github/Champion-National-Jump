@@ -7,7 +7,7 @@
 
 <view class="searchCol">
   <input placeholder="请输入用户名称进行搜索"></input>
-  <image src="../../img/Search.png"></image>
+  <image src="../..{{getApp().ServerRoot}}/img/Search.png"></image>
 </view>
 
 
@@ -17,7 +17,7 @@
       <view>67</view>
     </view>
     <view class="center">
-      <image src="/img/studentimg.png"></image>
+      <image src="{{getApp().ServerRoot}}/img/studentimg.png"></image>
     </view>
     <view class="right">
         <view class="rightTop">
@@ -39,7 +39,7 @@
       <view>67</view>
     </view>
     <view class="center">
-      <image src="/img/studentimg.png"></image>
+      <image src="{{getApp().ServerRoot}}/img/studentimg.png"></image>
     </view>
     <view class="right">
         <view class="rightTop">

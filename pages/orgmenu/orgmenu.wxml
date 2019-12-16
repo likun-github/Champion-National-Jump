@@ -1,10 +1,10 @@
 <view>
-  <image mode="widthFix" class="topBackground" src="/img/me/个人信息下面的蓝色底.svg"></image>
+  <image mode="widthFix" class="topBackground" src="{{getApp().ServerRoot}}/img/me/个人信息下面的蓝色底.svg"></image>
 </view>
 
 
 <view class="personalInfo">
-  <image mode="widthFix" src="/img/game/user.svg"></image>
+  <image mode="widthFix" src="{{getApp().ServerRoot}}/img/game/user.svg"></image>
   <view class="info">
     <text class="name">Yun Ding</text>
     <text class="other">认证状态：已认证-运营</text>
@@ -17,7 +17,7 @@
 
 
 <view class="optionBar" bindtap="chooseIdentification">
-  <image mode="widthFix" src="/img/me/认证.svg"></image>
+  <image mode="widthFix" src="{{getApp().ServerRoot}}/img/me/认证.svg"></image>
   <text>身份认证</text>
   <text class="goto">></text>
 </view>
@@ -27,7 +27,7 @@
 
 
 <view class="optionBar" bindtap="goToCollection">
-  <image mode="widthFix" src="/img/me/收藏夹.svg"></image>
+  <image mode="widthFix" src="{{getApp().ServerRoot}}/img/me/收藏夹.svg"></image>
   <text>我的收藏</text>
   <text class="goto">></text>
 </view>
@@ -37,7 +37,7 @@
 
 
 <view class="optionBar">
-  <image mode="widthFix" src="/img/me/灰色info.svg"></image>
+  <image mode="widthFix" src="{{getApp().ServerRoot}}/img/me/灰色info.svg"></image>
   <text style="color:rgb(234,234,234);">关于冠军国跳</text>
   <text class="goto" style="color:rgb(234,234,234);">></text>
 </view>
@@ -48,26 +48,26 @@
 
 <view class="bottomNav">
   <view data-route="learn" bindtap="redict">
-    <image src="/img/学习.svg" mode="aspectFit"></image>
+    <image src="{{getApp().ServerRoot}}/img/学习.svg" mode="aspectFit"></image>
     <text class="bottomNavNotSelected">学 习</text>
   </view>
 
   <view data-route="chessmanual" bindtap="redict"> 
-    <image src="/img/棋谱.svg" mode="aspectFit"></image>
+    <image src="{{getApp().ServerRoot}}/img/棋谱.svg" mode="aspectFit"></image>
     <text class = "bottomNavNotSelected">棋 谱</text>
   </view>
   <view class="gameNav" data-route="game" bindtap="redict">
-    <image  mode="aspectFit" src="/img/对战.svg"></image>
+    <image  mode="aspectFit" src="{{getApp().ServerRoot}}/img/对战.svg"></image>
     <text class="bottomNavNotSelected">对 战</text>
   </view>
 
     <view data-route="competition" bindtap="redict">
-    <image  mode="aspectFit" src="/img/比赛.svg"></image>
+    <image  mode="aspectFit" src="{{getApp().ServerRoot}}/img/比赛.svg"></image>
     <text class="bottomNavNotSelected">比 赛</text>
   </view>
 
   <view data-route="me" bindtap="redict">
-    <image mode="aspectFit" src="/img/我的选中.svg"></image>
+    <image mode="aspectFit" src="{{getApp().ServerRoot}}/img/我的选中.svg"></image>
     <text class="bottomNavSelected">我 的</text>
   </view>
 </view>
@@ -79,37 +79,37 @@
 
 <view class="bottomPopUp" hidden="{{hideModal}}" animation="{{animationData}}">
   <view class="chooseTopic">
-    <image mode="widthFix" src="/img/me/×.svg" bindtap="cancelVerification"></image>
+    <image mode="widthFix" src="{{getApp().ServerRoot}}/img/me/×.svg" bindtap="cancelVerification"></image>
     <text>请选择认证身份</text>
-    <image mode="widthFix" src="/img/me/叉空白.svg"></image>
+    <image mode="widthFix" src="{{getApp().ServerRoot}}/img/me/叉空白.svg"></image>
   </view>
   <view class="identifications">
     <view id="student" class="identification" bindtap="selectIdentification">
-      <image class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>
+      <image class="tick" mode="widthFix" src="{{getApp().ServerRoot}}/img/me/勾空白.svg"></image>
       <text wx:if="{{id_selected==1}}" class="idBlack">学员</text>
       <text wx:else class="idGrey">学员</text>
-      <image wx:if="{{id_selected==1}}" class="tick" mode="widthFix" src="/img/me/勾上下留白.svg"></image>
-      <image wx:else class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>   
+      <image wx:if="{{id_selected==1}}" class="tick" mode="widthFix" src="{{getApp().ServerRoot}}/img/me/勾上下留白.svg"></image>
+      <image wx:else class="tick" mode="widthFix" src="{{getApp().ServerRoot}}/img/me/勾空白.svg"></image>   
     </view> 
     <view class="gray-margin" style="height: 3rpx;"></view>  
   </view>
   <view class="identifications">
     <view id="coach" class="identification" bindtap="selectIdentification">
-      <image class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>
+      <image class="tick" mode="widthFix" src="{{getApp().ServerRoot}}/img/me/勾空白.svg"></image>
       <text wx:if="{{id_selected==2}}" class="idBlack">教练</text>
       <text wx:else class="idGrey">教练</text>
-      <image wx:if="{{id_selected==2}}" class="tick" mode="widthFix" src="/img/me/勾上下留白.svg"></image>
-      <image wx:else class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>  
+      <image wx:if="{{id_selected==2}}" class="tick" mode="widthFix" src="{{getApp().ServerRoot}}/img/me/勾上下留白.svg"></image>
+      <image wx:else class="tick" mode="widthFix" src="{{getApp().ServerRoot}}/img/me/勾空白.svg"></image>  
     </view> 
     <view class="gray-margin" style="height: 3rpx;"></view>  
   </view>
   <view class="identifications">
     <view id="constitution" class="identification" bindtap="selectIdentification">
-      <image class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>
+      <image class="tick" mode="widthFix" src="{{getApp().ServerRoot}}/img/me/勾空白.svg"></image>
       <text wx:if="{{id_selected==3}}" class="idBlack">机构</text>
       <text wx:else class="idGrey">机构</text>
-      <image wx:if="{{id_selected==3}}" class="tick" mode="widthFix" src="/img/me/勾上下留白.svg"></image>
-      <image wx:else class="tick" mode="widthFix" src="/img/me/勾空白.svg"></image>  
+      <image wx:if="{{id_selected==3}}" class="tick" mode="widthFix" src="{{getApp().ServerRoot}}/img/me/勾上下留白.svg"></image>
+      <image wx:else class="tick" mode="widthFix" src="{{getApp().ServerRoot}}/img/me/勾空白.svg"></image>  
     </view> 
     <view class="gray-margin" style="height: 3rpx;"></view>  
   </view>

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    IdNumber:""
   },
 
   /**
@@ -13,6 +13,18 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  Uploadinfo(){
+    
+    
+
+    wx.request({
+      url: '',
+    })
+
+  },
+  IdNumberChange(e){
+    this.setData({IdNumber:e.detail.value});
   },
 
   /**
