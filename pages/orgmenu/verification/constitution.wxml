@@ -43,7 +43,7 @@
   <view class="key" style="border:0rpx;">
     <text class="star">*</text>
     <text class="infoTopic">营业执照</text>
-    <input class="inputStyle" type="text" placeholder-class="placeholderStyle" placeholder="点击下方灰色区域上传或重新上传"/>
+    <text class="{{error==5?'placeholderStyleRed':'placeholderStyle'}}">点击下方灰色区域上传或重新上传</text>
   </view>
   <image wx:if="{{images[0]==null}}" mode="widthFix" style="width:500rpx;padding:10rpx 125rpx 35rpx 125rpx;" src="/img/me/机构认证.svg" bindtap="chooseImage"></image>
   <image wx:else style="width:500rpx;padding:10rpx 125rpx 35rpx 125rpx;" mode="widthFix" src="{{images[0]}}"></image>

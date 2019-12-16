@@ -1,1 +1,24 @@
 /* pages/orgmenu/verification/uploadsuccess.wxss */
+.centerImage {
+  width:200rpx;
+  padding:15vh 275rpx 0 275rpx;
+}
+
+.success {
+  margin-top:30rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.success .successTopic {
+  font-size: 40rpx; 
+  letter-spacing: 5rpx;
+}
+
+.success .successTips {
+  margin-top:30rpx;
+  font-size: 25rpx;
+  color: grey;
+  letter-spacing: 3rpx;
+}
