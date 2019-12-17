@@ -34,12 +34,12 @@ Page({
   },
 
 
-  // 
+  // 开始填的时候把上面的红栏去掉啦
   changeError:function() {
     this.setData({ error: 0 });
   },
 
-
+  // 选择营业凭证
   chooseImage:function() {
     var that=this;
     wx.chooseImage({

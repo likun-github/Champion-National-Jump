@@ -455,6 +455,18 @@
   color:#E64340;
 }
 
+/*小字部分*/
+.note {
+  width:680rpx;
+  margin-left:35rpx;
+  margin-top:15rpx;
+}
+.note text {
+  color:grey;
+  font-size:24rpx;
+  line-height:40rpx;
+}
+
 
 .text-center{
   text-align: center;

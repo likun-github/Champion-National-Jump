@@ -34,7 +34,7 @@
   <view class="key">
     <text class="star">*</text>
     <text class="infoTopic">手机号</text>
-    <input id="personInChargePhone" class="{{error==4?'inputStyleRed':'inputStyle'}}" type="text" placeholder-class="{{error==3?'placeholderStyleRed':'placeholderStyle'}}"  placeholder="请输入负责人手机号码" bindchange="input" bindfocus="changeError"/>
+    <input id="personInChargePhone" type="number" class="{{error==4?'inputStyleRed':'inputStyle'}}" type="text" placeholder-class="{{error==3?'placeholderStyleRed':'placeholderStyle'}}"  placeholder="请输入负责人手机号码" bindchange="input" bindfocus="changeError"/>
   </view>
 </view>
 
@@ -42,12 +42,17 @@
 <view class="verificationInfoContainer">
   <view class="key" style="border:0rpx;">
     <text class="star">*</text>
-    <text class="infoTopic">营业执照</text>
+    <text class="infoTopic">营业凭证</text>
     <text class="{{error==5?'placeholderStyleRed':'placeholderStyle'}}">点击下方灰色区域上传或重新上传</text>
   </view>
-  <image wx:if="{{images[0]==null}}" mode="widthFix" style="width:500rpx;padding:10rpx 125rpx 35rpx 125rpx;" src="/img/me/机构认证.svg" bindtap="chooseImage"></image>
-  <image wx:else style="width:500rpx;padding:10rpx 125rpx 35rpx 125rpx;" mode="widthFix" src="{{images[0]}}"></image>
+  <image wx:if="{{images[0]==null}}" mode="widthFix" style="width:500rpx;padding:10rpx 50rpx 35rpx 200rpx;" src="/img/me/机构认证.svg" bindtap="chooseImage"></image>
+  <image wx:else style="width:500rpx;padding:10rpx 50rpx 35rpx 200rpx;" mode="widthFix" src="{{images[0]}}" bindtap="chooseImage"></image>
   <view class="gray-margin" style="height: 2rpx;"></view>
+</view>
+
+
+<view class="note">
+<text>注：营业凭证的合法上传项包括营业执照、组织机构代码证等，请选择其一上传正面照片。</text>
 </view>
 
 
