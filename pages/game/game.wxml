@@ -40,37 +40,37 @@
 </view>
 
 
-<view class="scoreLink">
-  <image class=".playerImage" src="/img/game/user.svg"> </image>
-  <image class=".playerImage" src="/img/game/user.svg"> </image>
-  <image class=".playerImage" src="/img/game/user.svg"> </image>
-  <text bindtap="GoToScoreList">积分榜 >></text>
+<view class="scoreLink" bindtap="GoToScoreList">
+  <image class=".playerImage" src="{{getApp().ServerRoot}}/img/game/user.svg"> </image>
+  <image class=".playerImage" src="{{getApp().ServerRoot}}/img/game/user.svg"> </image>
+  <image class=".playerImage" src="{{getApp().ServerRoot}}/img/game/user.svg"> </image>
+  <text >积分榜 >></text>
 </view>
 
 
 <view class="bottomNav">
   <view data-route="learn" bindtap="redict">
-    <image mode="aspectFit" src="/img/学习.svg" ></image>
+    <image mode="aspectFit" src="{{getApp().ServerRoot}}/img/学习.svg" ></image>
     <text class="bottomNavNotSelected">学 习</text>
   </view>
 
   <view data-route="chessmanual" bindtap="redict"> 
-    <image mode="aspectFit" src="/img/棋谱.svg" ></image>
+    <image mode="aspectFit" src="{{getApp().ServerRoot}}/img/棋谱.svg" ></image>
     <text class="bottomNavNotSelected">棋 谱</text>
   </view>
 
   <view  data-route="game" bindtap="redict">
-    <image mode="aspectFit" src="/img/对战选中.svg"></image>
+    <image mode="aspectFit" src="{{getApp().ServerRoot}}/img/对战选中.svg"></image>
     <text class = "bottomNavSelected">对 战</text>
   </view>
 
     <view data-route="competition" bindtap="redict">
-    <image mode="aspectFit" src="/img/比赛.svg"></image>
+    <image mode="aspectFit" src="{{getApp().ServerRoot}}/img/比赛.svg"></image>
     <text class="bottomNavNotSelected">比 赛</text>
   </view>
 
   <view data-route="me" bindtap="redict">
-    <image mode="aspectFit" src="/img/我的.svg"></image>
+    <image mode="aspectFit" src="{{getApp().ServerRoot}}/img/我的.svg"></image>
     <text class="bottomNavNotSelected">我 的</text>
   </view>
 </view>
@@ -78,7 +78,7 @@
 
 <view wx:if="{{matchComing}}" class="myGameDirect">
   <view class="directQuestion">
-    <image mode="widthFix" src="/img/game/感叹号.svg"></image>
+    <image mode="widthFix" src="{{getApp().ServerRoot}}/img/game/感叹号.svg"></image>
     <text>您有一场比赛即将进行，
     是否立即跳转至比赛界面？</text>
   </view>

@@ -4,10 +4,10 @@
 
   <view class="player"> 
     <view>
-      <image wx:if="{{aiLevel==-1}}" src="/img/game/问号头像.svg"></image>
-      <image wx:elif="{{aiLevel==0}}" src="/img/game/ai/女孩头像.png"></image>
-      <image wx:elif="{{aiLevel==1}}" src="/img/game/ai/大叔头像.png"></image>
-      <image wx:elif="{{aiLevel==2}}" src="/img/game/ai/老人头像.png"></image>
+      <image wx:if="{{aiLevel==-1}}" src="{{getApp().ServerRoot}}/img/game/问号头像.svg"></image>
+      <image wx:elif="{{aiLevel==0}}" src="{{getApp().ServerRoot}}/img/game/ai/女孩头像.png"></image>
+      <image wx:elif="{{aiLevel==1}}" src="{{getApp().ServerRoot}}/img/game/ai/大叔头像.png"></image>
+      <image wx:elif="{{aiLevel==2}}" src="{{getApp().ServerRoot}}/img/game/ai/老人头像.png"></image>
     </view> 
     <view>
       <text wx:if="{{aiLevel==-1}}" class = "playerName">玩家选择中...</text>
@@ -36,7 +36,7 @@
   <view class="gameButtons">
     <view class="gameButton" bindtap="reStart">
       <view>
-        <image src="/img/game/button/restart.svg"></image>
+        <image src="{{getApp().ServerRoot}}/img/game/button/restart.svg"></image>
       </view>
       <view >
         <text class="gameButtonInfo">重新开始</text>
@@ -44,7 +44,7 @@
     </view>
     <view class="gameButton" bindtap="withdraw">
       <view>
-        <image src="/img/game/button/withdraw.svg"></image>
+        <image src="{{getApp().ServerRoot}}/img/game/button/withdraw.svg"></image>
       </view>
       <view>
         <text class="gameButtonInfo" >悔棋</text>
@@ -55,7 +55,7 @@
 
   <view class="player" style="margin-top:6vh;">
     <view>
-      <image src="/img/game/user.svg"></image>
+      <image src="{{getApp().ServerRoot}}/img/game/user.svg"></image>
     </view>
     <view>
       <text class="playerName">Yunding</text>   
@@ -76,9 +76,9 @@
 <view wx:if="{{gameResult>=0}}" class="gameEndTip">
   <view class="gameEndTipImage">
     <view class="backgroundImage">
-      <image wx:if="{{gameResult==0}}" class="resultImage" mode="widthFix" src="/img/game/胜利.png"></image> 
-      <image wx:elif="{{gameResult==1}}" class="resultImage" mode="widthFix" src="/img/game/失败.png"></image>
-      <image wx:else class="resultImage" mode="widthFix" src="/img/game/和棋.png"></image> 
+      <image wx:if="{{gameResult==0}}" class="resultImage" mode="widthFix" src="{{getApp().ServerRoot}}/img/game/胜利.png"></image> 
+      <image wx:elif="{{gameResult==1}}" class="resultImage" mode="widthFix" src="{{getApp().ServerRoot}}/img/game/失败.png"></image>
+      <image wx:else class="resultImage" mode="widthFix" src="{{getApp().ServerRoot}}/img/game/和棋.png"></image> 
     </view>
     <view class="gameEndTipText">
       <text wx:if="{{gameResult==0}}" class="win">胜利!</text>
@@ -106,7 +106,7 @@
   <view class="option">
     <view class="title">
       <text class="blueline">———</text>
-      <image mode="widthFix"src="/img/game/ai/AI等级.svg"></image>
+      <image mode="widthFix"src="{{getApp().ServerRoot}}/img/game/ai/AI等级.svg"></image>
       <text>AI等级</text>    
       <text class="blueline">———</text>
     </view>
@@ -134,7 +134,7 @@
   <view class="option">
     <view class="title">
       <text class="blueline">———</text>
-      <image mode="widthFix"src="/img/game/ai/先后顺序.svg"></image>
+      <image mode="widthFix"src="{{getApp().ServerRoot}}/img/game/ai/先后顺序.svg"></image>
       <text>先后顺序</text>    
       <text class="blueline">———</text>
     </view>

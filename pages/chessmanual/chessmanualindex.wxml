@@ -1,17 +1,17 @@
 <!--pages/chessmanual/chessmanualindex.wxml-->
 
 <scroll-view scroll-y="true" style="position:fixed; top:0;width: 750rpx;height: {{scroll_view_height}}rpx;display: flex;flex-direction: column;" scroll-into-view="{{currentPass}}">
-  <image class="background" mode="widthFix" src="/img/chessmanual/棋谱-底图.png"></image>
-  <view wx:for="{{pass_pos_info}}" wx:for-index="key"  id="pass-{{key}}" style="height:{{background_height_rpx/10}}rpx" bindtap="goToPass">
+  <image class="background" mode="widthFix" src="{{getApp().ServerRoot}}{{getApp().ServerRoot}}/img/chessmanual/棋谱-底图.png"></image>
+  <view wx:for="{{pass_pos_info}}" wx:for-index="key"  id="pass-{{key}}" style="height:{{background_height_rpx/numPass}}rpx" bindtap="goToPass">
     <view class="passTag" style="position:absolute;top:{{item.tag_height_ratio*background_height_rpx}}rpx;left:{{item.tag_width_ratio*750}}rpx;">
-      <text>关卡{{10-key}}</text>
+      <text>关卡{{numPass-key}}</text>
     </view>
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:if="{{item.isTen==1 && item.state==0}}" src="/img/chessmanual/最后一面旗子灰.svg"></image>
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:elif="{{item.isTen==1 && item.state==1}}" src="/img/chessmanual/最后一面旗子黄.svg"></image>
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:elif="{{item.isTen==1 && item.state==2}}" src="/img/chessmanual/最后一面旗子绿.svg"></image>
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:elif="{{item.isTen==0 && item.state==0}}" src="/img/chessmanual/三角旗灰.svg"></image>
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:elif="{{item.isTen==0 && item.state==1}}" src="/img/chessmanual/三角旗黄.svg"></image>
-    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:elif="{{item.isTen==0 && item.state==2}}" src="/img/chessmanual/三角旗绿.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:if="{{item.id%10==0 && item.state==0}}" src="{{getApp().ServerRoot}}/img/chessmanual/最后一面旗子灰.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:elif="{{item.id%10==0 && item.state==1}}" src="{{getApp().ServerRoot}}/img/chessmanual/最后一面旗子黄.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:elif="{{item.id%10==0 && item.state==2}}" src="{{getApp().ServerRoot}}/img/chessmanual/最后一面旗子绿.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:elif="{{item.id%10!=0 && item.state==0}}" src="{{getApp().ServerRoot}}/img/chessmanual/三角旗灰.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:elif="{{item.id%10!=0 && item.state==1}}" src="{{getApp().ServerRoot}}/img/chessmanual/三角旗黄.svg"></image>
+    <image mode="widthFix" style="position:absolute;top:{{item.height_ratio*background_height_rpx}}rpx;left:{{item.width_ratio*750}}rpx; width:15%;" wx:elif="{{item.id%10!=0 && item.state==2}}" src="{{getApp().ServerRoot}}/img/chessmanual/三角旗绿.svg"></image>
   </view>
 </scroll-view>
 
@@ -21,26 +21,26 @@
 <view class="bottomNav" >
 
   <view data-route="learn" bindtap="redict">
-    <image src="/img/学习.svg"></image>
+    <image src="{{getApp().ServerRoot}}/img/学习.svg"></image>
     <text class="bottomNavNotSelected">学 习</text>
   </view>
 
   <view data-route="chessmanual" bindtap="redict"> 
-    <image src="/img/棋谱选中.svg"></image>
+    <image src="{{getApp().ServerRoot}}/img/棋谱选中.svg"></image>
     <text class = "bottomNavSelected">棋 谱</text>
   </view>
   <view class="gameNav" data-route="game" bindtap="redict">
-    <image src="/img/对战.svg"></image>
+    <image src="{{getApp().ServerRoot}}/img/对战.svg"></image>
     <text class="bottomNavNotSelected">对 战</text>
   </view>
 
     <view data-route="competition" bindtap="redict">
-    <image src="/img/比赛.svg"></image>
+    <image src="{{getApp().ServerRoot}}/img/比赛.svg"></image>
     <text class="bottomNavNotSelected">比 赛</text>
   </view>
 
   <view data-route="me" bindtap="redict">
-    <image src="/img/我的.svg"></image>
+    <image src="{{getApp().ServerRoot}}/img/我的.svg"></image>
     <text class="bottomNavNotSelected">我 的</text>
   </view>
 

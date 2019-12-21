@@ -230,7 +230,7 @@
   font-size: 40rpx;
 }
 
-.buttonBackground {
+.withdrawBackground {
   position: fixed;
   left: 50%;
   top: 50%;
@@ -243,85 +243,74 @@
   background-color: white; 
   padding:20rpx 0rpx;
 }
-.buttonBackground .Topic {
+.withdrawBackground .withdrawTopic {
   color:black;
   font-weight: 900;
   font-size: 35rpx;
   letter-spacing: 5rpx;
   padding: 15rpx 0rpx;
 }
-.buttonBackground .Info {
+.withdrawBackground .withdrawInfo {
   color:rgb(178,178,178);
   font-weight: 500;
   font-size: 20rpx;
   letter-spacing: 3rpx;
 }
-.buttonBackground .timesRemain {
+.withdrawBackground .timesRemain {
   color:rgb(82,169,255);
   font-weight: 900;
   font-size: 25rpx;
   letter-spacing: 3rpx;
   padding: 15rpx 0rpx 0rpx 0rpx;
 }
-.buttonBackground .Buttons {
+.withdrawBackground .withdrawButton {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 20rpx;
   margin-top:20rpx;
 }
-.Buttons .No {
+.withdrawButton .noWithdraw {
   border-radius:15rpx;
   background-color: rgb(203,229,255);
   padding: 10rpx 60rpx;
   margin: 0rpx 20rpx;
 }
-.No text{
+.noWithdraw text{
   color: rgb(82,169,255);
   font-size:30rpx;
   font-weight: 900;
   letter-spacing: 3rpx; 
 }
-.Buttons .Yes {
+.withdrawButton .yesWithdraw {
   border-radius:15rpx;
   background-color: rgb(252,177,171);
   padding: 10rpx 60rpx;
   margin: 0rpx 20rpx;
 }
-.Yes text{
+.yesWithdraw text{
   color: rgb(249,86,73);
   font-size:30rpx;
   font-weight: 900;
   letter-spacing: 3rpx;
 }
-.Buttons .Yellow {
+.withdrawButton .acceptContinueYellow {
   border-radius:15rpx;
   background-color: rgb(255,240,180);
   padding: 15rpx 80rpx;
 }
-.Yellow text{
+.acceptContinueYellow text{
   color: rgb(243,153,75);
   font-size:30rpx;
   font-weight: 900;
   letter-spacing: 3rpx;
 }
-.Buttons .Blue {
-  border-radius:15rpx;
-  background-color: rgb(203,229,255);
-  padding: 15rpx 80rpx;
-}
-.Blue text{
-  color: rgb(82,169,255);
-  font-size:30rpx;
-  font-weight: 900;
-  letter-spacing: 3rpx;
-}
-.Buttons .Grey {
+.withdrawButton .acceptContinueGrey {
   border-radius:15rpx;
   background-color: rgb(234,234,234);
   padding: 15rpx 80rpx;
 }
-.Grey text{
+.acceptContinueGrey text{
   color: rgb(136,136,136);
   font-size:30rpx;
   font-weight: 900;
@@ -445,8 +434,8 @@
 }
 .key .inputStyleRed {
   color:#E64340;
-  height: 90rpx;
   flex:1;
+  height: 90rpx;
 }
 .key .placeholderStyle {
   color:rgb(218, 216, 216);

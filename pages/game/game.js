@@ -45,6 +45,7 @@ Page({
     })
   },
 
+  // 积分榜
   GoToScoreList: function(){
     wx.navigateTo({
       url: './scorelist',

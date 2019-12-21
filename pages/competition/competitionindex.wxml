@@ -3,7 +3,7 @@
 
 <view wx:if="{{innerNavigation=='registe'}}" class="topSliderContainer relative">
   <view class="topImagesContainer" style="{{'transform:translateX(-'+currentBallIndex*100+'%);'}}">
-      <image mode="widthFix" src="/img/competition/topCover.png"   wx:for="{{[0,1,2,3,4]}}"></image>
+      <image mode="widthFix" src="{{getApp().ServerRoot}}/img/competition/topCover.png"   wx:for="{{[0,1,2,3,4]}}"></image>
       
   </view>
   <view class="balls">
@@ -83,26 +83,26 @@
 <view class="bottomNav">
 
   <view data-route="learn" bindtap="redict">
-    <image src="/img/学习.svg"></image>
+    <image src="{{getApp().ServerRoot}}/img/学习.svg"></image>
     <text class="bottomNavNotSelected">学 习</text>
   </view>
 
   <view data-route="chessmanual" bindtap="redict"> 
-    <image src="/img/棋谱.svg"></image>
+    <image src="{{getApp().ServerRoot}}/img/棋谱.svg"></image>
     <text class = "bottomNavNotSelected">棋 谱</text>
   </view>
   <view class="gameNav" data-route="game" bindtap="redict">
-    <image src="/img/对战.svg"></image>
+    <image src="{{getApp().ServerRoot}}/img/对战.svg"></image>
     <text class="bottomNavNotSelected">对 战</text>
   </view>
 
     <view data-route="competition" bindtap="redict">
-    <image src="/img/比赛选中.svg"></image>
+    <image src="{{getApp().ServerRoot}}/img/比赛选中.svg"></image>
     <text class="bottomNavSelected">比 赛</text>
   </view>
 
   <view data-route="me" bindtap="redict">
-    <image src="/img/我的.svg"></image>
+    <image src="{{getApp().ServerRoot}}/img/我的.svg"></image>
     <text class="bottomNavNotSelected">我 的</text>
   </view>
 

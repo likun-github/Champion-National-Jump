@@ -35,6 +35,7 @@ Page({
         this.setData({ id_selected: 0 });
         break;
     }
+      
   },
 
   // 前往 我的收藏
@@ -58,7 +59,8 @@ Page({
     setTimeout(function () {
       that.fadeIn();//调用显示动画
     }, 200);
-    this.setData({ show_verification:true}); 
+    this.setData({ show_verification:true});
+    
   },
 
   // 前往身份认证
@@ -87,7 +89,6 @@ Page({
         });
         break;
     }    
-    
   },
 
   cancelVerification:function() {

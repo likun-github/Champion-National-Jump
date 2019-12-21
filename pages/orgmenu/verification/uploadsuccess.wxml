@@ -1,5 +1,5 @@
 <!--pages/orgmenu/verification/uploadsuccess.wxml-->
-<image class="centerImage" mode="widthFix" src="/img/me/上传成功icon.svg"></image>
+<image class="centerImage" mode="widthFix" src="{{getApp().ServerRoot}}/img/me/上传成功icon.svg"></image>
 
 
 <view class="success">

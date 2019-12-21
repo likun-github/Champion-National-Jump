@@ -15,7 +15,7 @@ Page({
 
   },
 
-  backToOrgmenu:function() {
+  backToOrgmenu: function () {
     wx.navigateBack({
       delta: 1
     });

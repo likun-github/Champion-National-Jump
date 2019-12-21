@@ -9,7 +9,7 @@ Page({
    */
   data: {
     // 好友信息
-    friendID:1,
+    friendID:null,
     friendName: null,
     friendLevel:null,
     friendScore:null,
@@ -36,17 +36,10 @@ Page({
     blackTimerText: "00:00:00",
 
     // 悔棋相关
-    withdrawSend: 1, /*0：用户未点击 悔棋；1：用户点击 悔棋 */
+    withdrawSend: 0, /*0：用户未点击 悔棋；1：用户点击 悔棋 */
     withdrawReceive: 0, /*0：对手未点击 悔棋； 1：对手点击 悔棋 */
-    withdrawNum: 1, /*剩余悔棋次数 */
+    withdrawNum: 3, /*剩余悔棋次数 */
     withdrawResult: -1, /*-1：未收到对手是否同意悔棋；0：不同意；1：同意 */
-
-    // 和棋相关
-    drawReceive: 0, /*0：对手未点击 求和；1：对手点击 求和 */
-    mustDraw: 0, /*0：还能下；1：系统判定必须和棋 */
-
-    // 认输相关
-    loseReceive: 0, /*0：对手未点击 认输；1：对手点击 认输 */
 
     // 游戏结果
     gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/

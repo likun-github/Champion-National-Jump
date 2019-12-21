@@ -82,7 +82,8 @@ App({
     APPID: "wx3878552fd022c398",
     APPSECRET: "9321186a5ee5f8aa1d5b59abfa785d8c",
     gameInfo: null,
-    bottomBarRoute: ''
+    bottomBarRoute: '',
+    ServerRoot: "https://www.yundingu.cn/checkerserver/"
   },
 
   // 获取用户身份认证情况

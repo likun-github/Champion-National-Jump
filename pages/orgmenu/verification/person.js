@@ -18,6 +18,18 @@ Page({
   onLoad: function (options) {
 
   },
+  Uploadinfo(){
+    
+    
+
+    wx.request({
+      url: '',
+    })
+
+  },
+  IdNumberChange(e){
+    this.setData({IdNumber:e.detail.value});
+  },
 
   // 输入信息
   input: function (e) {

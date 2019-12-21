@@ -16,7 +16,8 @@
     "pages/orgmenu/mycollections/competitiondetail",
     "pages/orgmenu/verification/constitution",
     "pages/orgmenu/verification/person",
-    "pages/orgmenu/verification/uploadsuccess"
+    "pages/orgmenu/verification/uploadsuccess",
+    "pages/chessmanual/pass"
   ],
   "window": {
     "backgroundTextStyle": "light",

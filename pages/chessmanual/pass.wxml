@@ -1,0 +1,40 @@
+<!--pages/chessmanual/pass.wxml-->
+<view class = "poster">
+<view class="title">
+  <text>战术打击</text>
+</view>
+
+<text class="pass_index">关卡1</text>
+
+<canvas canvas-id='chessboard' bindtap="TapBoard" style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:15px solid rgb(82,169,255);">
+</canvas>
+
+
+<view class="gameButtons" style="padding:0rpx 0rpx 15rpx 0rpx;">
+    <view class="gameButton" bindtap="reStart">
+      <view>
+        <image src="{{getApp().ServerRoot}}/img/game/button/restart.svg"></image>
+      </view>
+      <view >
+        <text class="gameButtonInfo">重新开始</text>
+      </view>
+    </view>
+    <view class="gameButton" style="margin-right:155rpx;" bindtap="withdraw">
+      <view>
+        <image src="{{getApp().ServerRoot}}/img/game/button/withdraw.svg"></image>
+      </view>
+      <view>
+        <text class="gameButtonInfo" >悔棋</text>
+      </view>
+    </view>
+
+    <view class="gameButton" style="margin-right:0rpx;" bindtap="solution">
+      <view>
+        <image src="{{getApp().ServerRoot}}/img/chessmanual/解析.svg"></image>
+      </view>
+      <view>
+        <text class="gameButtonInfo" >解析</text>
+      </view>
+    </view>
+  </view>
+</view>

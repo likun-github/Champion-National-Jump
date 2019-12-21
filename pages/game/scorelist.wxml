@@ -1,55 +1,25 @@
 <!--pages/game/scorelist.wxml-->
-
-<view class="topNav">
-  <text data-route="user" bindtap="ChangeRoute" class="{{innerRoute=='user'?'choosed':''}}">用户榜单</text>
-  <text data-route="true" bindtap="ChangeRoute" class="{{innerRoute=='true'?'choosed':''}}">真人榜单</text>
-</view>
-
-<view class="searchCol">
-  <input placeholder="请输入用户名称进行搜索"></input>
-  <image src="../../img/Search.png"></image>
-</view>
+<image class="topBackground" mode="widthFix" src="{{getApp().ServerRoot}}/img/game/积分榜条.png"></image>
 
 
-<view class="userList" wx:if="{{innerRoute=='user'}}">
-  <view class="userItem" wx:for="{{[1,2,3]}}">
-    <view class="left">
-      <view>67</view>
+<scroll-view scroll-y="true" class="scoreList" style="height:{{scrollViewHeight}}rpx" >
+<view wx:for="{{scoreList}}" wx:for-item="player">
+
+  <view class="playerRow">
+    <view class="index">
+      <text>{{player.index}}</text>
     </view>
-    <view class="center">
-      <image src="/img/studentimg.png"></image>
+    <image mode="widthFix" style="width: 90rpx;padding:15rpx 0rpx;" src="{{getApp().ServerRoot}}/img/game/user.svg"></image>
+    <view class="name">
+      <text>{{player.name}}</text>
     </view>
-    <view class="right">
-        <view class="rightTop">
-          <text>这是用户</text>
-          <text class="level">等级段位</text>
-        </view>
-
-        <view class="rightBottom">
-          <text>积分: 1000</text>
-          <text>胜率: 90%</text>
-        </view>
+    <view class="scoreAndTitle">
+      <text class="score">积分：{{player.score}}</text>
+      <text class="title">{{player.title}}</text>
     </view>
   </view>
-</view>
 
-<view class="userList" wx:else>
-  <view class="userItem" wx:for="{{[1,2,3]}}">
-    <view class="left">
-      <view>67</view>
-    </view>
-    <view class="center">
-      <image src="/img/studentimg.png"></image>
-    </view>
-    <view class="right">
-        <view class="rightTop">
-          <text>这是用户</text>
-        </view>
 
-        <view class="rightBottom">
-          <text>有效局数: 1000</text>
-          <text>等级分: 2201</text>
-        </view>
-    </view>
-  </view>
 </view>
+  
+</scroll-view>

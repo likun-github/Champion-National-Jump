@@ -8,17 +8,19 @@ Page({
       scroll_view_height: (wx.getSystemInfoSync().windowHeight * (750 / wx.getSystemInfoSync().windowWidth) - 120),
       background_height_rpx:750/1024*2668,
       pass_pos_info:[
-        { height_ratio: 0.04, width_ratio: 0.44, isTen: 1, state: 0, tag_height_ratio:0.105 ,tag_width_ratio:0.41},
-        { height_ratio: 0.10, width_ratio: 0.11, isTen: 0, state: 0, tag_height_ratio: 0.175, tag_width_ratio: 0.09 },
-        { height_ratio: 0.25, width_ratio: 0.34, isTen: 0, state: 0, tag_height_ratio: 0.27, tag_width_ratio: 0.48 },
-        { height_ratio: 0.32, width_ratio: 0.65, isTen: 0, state: 0, tag_height_ratio: 0.35, tag_width_ratio: 0.48 },
-        { height_ratio: 0.41, width_ratio: 0.71, isTen: 0, state: 0, tag_height_ratio: 0.44, tag_width_ratio: 0.53 },
-        { height_ratio: 0.53, width_ratio: 0.84, isTen: 0, state: 0, tag_height_ratio: 0.54, tag_width_ratio: 0.70 },
-        { height_ratio: 0.54, width_ratio: 0.49, isTen: 0, state: 0, tag_height_ratio: 0.615, tag_width_ratio: 0.46 },
-        { height_ratio: 0.61, width_ratio: 0.15, isTen: 0, state: 0, tag_height_ratio: 0.685, tag_width_ratio: 0.13 },
-        { height_ratio: 0.69, width_ratio: 0.59, isTen: 0, state: 1, tag_height_ratio: 0.715, tag_width_ratio: 0.715 },
-        { height_ratio: 0.82, width_ratio: 0.20, isTen: 0, state: 2, tag_height_ratio: 0.855, tag_width_ratio: 0.35 }
+        { height_ratio: 0.04, width_ratio: 0.44, id: 10, state: 0, tag_height_ratio:0.105 ,tag_width_ratio:0.41},
+        { height_ratio: 0.10, width_ratio: 0.11, id: 9, state: 0, tag_height_ratio: 0.175, tag_width_ratio: 0.09 },
+        { height_ratio: 0.25, width_ratio: 0.34, id: 8, state: 0, tag_height_ratio: 0.27, tag_width_ratio: 0.48 },
+        { height_ratio: 0.32, width_ratio: 0.65, id: 7, state: 0, tag_height_ratio: 0.35, tag_width_ratio: 0.48 },
+        { height_ratio: 0.41, width_ratio: 0.71, id: 6, state: 0, tag_height_ratio: 0.44, tag_width_ratio: 0.53 },
+        { height_ratio: 0.53, width_ratio: 0.84, id: 5, state: 0, tag_height_ratio: 0.54, tag_width_ratio: 0.70 },
+        { height_ratio: 0.54, width_ratio: 0.49, id: 4, state: 0, tag_height_ratio: 0.615, tag_width_ratio: 0.46 },
+        { height_ratio: 0.61, width_ratio: 0.15, id: 3, state: 0, tag_height_ratio: 0.685, tag_width_ratio: 0.13 },
+        { height_ratio: 0.69, width_ratio: 0.59, id: 2, state: 1, tag_height_ratio: 0.715, tag_width_ratio: 0.715 },
+        { height_ratio: 0.82, width_ratio: 0.20, id: 1, state: 2, tag_height_ratio: 0.855, tag_width_ratio: 0.35 }
         ],
+      numPass:10,  
+      passSelected:0,
       currentPass:"pass-9",
   },
 
@@ -30,6 +32,21 @@ Page({
 
   goToPass:function(e) {
     console.log(e.currentTarget);
+    // 获取选中pass的id
+    var pass_id = parseInt(e.currentTarget.id.slice(5, e.currentTarget.id.length));
+    this.setData({ passSelected: pass_id});
+    if (this.data.pass_pos_info[pass_id].state != 0) {
+      wx.navigateTo({
+        url: './pass',
+      })
+    } else {
+      wx.showModal({
+        content: '该关卡暂未开放，敬请期待！',
+        showCancel: false,
+        confirmText: "我知道了",
+        confirmColor: 'skyblue',//确定文字的颜色
+      })
+    }
   },
 
   /**

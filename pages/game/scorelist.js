@@ -5,22 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    innerRoute: "user"
-  },
-
-  ChangeRoute: function (e) {
-
-    this.setData({
-      innerRoute: e.currentTarget.dataset.route
-    })
-
+    scoreList:[],
+    scrollViewHeight: (wx.getSystemInfoSync().windowHeight * (750 / wx.getSystemInfoSync().windowWidth) - 87),
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getScoreList();
+  },
 
+  // 获取积分榜
+  getScoreList: function () {
+    this.setData({ scoreList:
+    [
+      { "index": 1, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+      { "index": 2, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+      { "index": 3, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+      { "index": 4, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+      { "index": 5, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+      { "index": 6, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+      { "index": 7, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+      { "index": 8, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+      { "index": 9, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+      { "index": 10, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+      { "index": 0, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+    ]
+    
+    });
   },
 
   /**
