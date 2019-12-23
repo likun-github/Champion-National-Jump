@@ -2,7 +2,7 @@
 
 <view class="page-container">
   <view class="center">
-      <image src="{{getApp().ServerRoot}}/img/success_blue.png" mode="widthFix"></image>
+      <image src="{{serverRoot}}/img/success_blue.png" mode="widthFix"></image>
       <text class="big-text">报名成功</text>
       <text class="small-text">请您及时确认比赛详情，按时参加比赛！</text>
   </view>

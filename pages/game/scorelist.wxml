@@ -1,5 +1,5 @@
 <!--pages/game/scorelist.wxml-->
-<image class="topBackground" mode="widthFix" src="{{getApp().ServerRoot}}/img/game/积分榜条.png"></image>
+<image class="topBackground" mode="widthFix" src="{{serverRoot}}/img/game/积分榜条.png"></image>
 
 
 <scroll-view scroll-y="true" class="scoreList" style="height:{{scrollViewHeight}}rpx" >
@@ -9,7 +9,7 @@
     <view class="index">
       <text>{{player.index}}</text>
     </view>
-    <image mode="widthFix" style="width: 90rpx;padding:15rpx 0rpx;" src="{{getApp().ServerRoot}}/img/game/user.svg"></image>
+    <image mode="widthFix" style="width: 90rpx;padding:15rpx 0rpx;" src="{{serverRoot}}/img/game/user.svg"></image>
     <view class="name">
       <text>{{player.name}}</text>
     </view>

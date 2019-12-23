@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    serverRoot: "",
     innerRoute: "begin",
     playVideo: false
   },
@@ -26,7 +26,6 @@ Page({
   },
 
   ChangeRoute: function(e){
-
     this.setData({
       innerRoute: e.currentTarget.dataset.route
     });
@@ -34,14 +33,15 @@ Page({
   },
   SeeVideo: function(){
     this.setData({playVideo: true});
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 设置服务器路径
+    var serverRoot = getApp().globalData.ServerRoot;
+    this.setData({ serverRoot: serverRoot });
   },
 
   /**

@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    serverRoot: "",
+    
     // 上下文
     context: null,
 
@@ -53,6 +55,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 设置服务器路径
+    var serverRoot = getApp().globalData.ServerRoot;
+    this.setData({ serverRoot: serverRoot });
+
     // 获取上一个页面的数据
     let pages = getCurrentPages();
     let previousPage = pages[pages.length - 2];

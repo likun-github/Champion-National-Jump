@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+      serverRoot: "",
       scroll_view_height: (wx.getSystemInfoSync().windowHeight * (750 / wx.getSystemInfoSync().windowWidth) - 120),
       background_height_rpx:750/1024*2668,
       pass_pos_info:[
@@ -53,7 +54,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var serverRoot = getApp().globalData.ServerRoot;
+    this.setData({ serverRoot: serverRoot });
   },
 
   onPullDownRefresh: function () {

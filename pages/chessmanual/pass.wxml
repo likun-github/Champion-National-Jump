@@ -13,7 +13,7 @@
 <view class="gameButtons" style="padding:0rpx 0rpx 15rpx 0rpx;">
     <view class="gameButton" bindtap="reStart">
       <view>
-        <image src="{{getApp().ServerRoot}}/img/game/button/restart.svg"></image>
+        <image src="{{serverRoot}}/img/game/button/restart.svg"></image>
       </view>
       <view >
         <text class="gameButtonInfo">重新开始</text>
@@ -21,7 +21,7 @@
     </view>
     <view class="gameButton" style="margin-right:155rpx;" bindtap="withdraw">
       <view>
-        <image src="{{getApp().ServerRoot}}/img/game/button/withdraw.svg"></image>
+        <image src="{{serverRoot}}/img/game/button/withdraw.svg"></image>
       </view>
       <view>
         <text class="gameButtonInfo" >悔棋</text>
@@ -30,7 +30,7 @@
 
     <view class="gameButton" style="margin-right:0rpx;" bindtap="solution">
       <view>
-        <image src="{{getApp().ServerRoot}}/img/chessmanual/解析.svg"></image>
+        <image src="{{serverRoot}}/img/chessmanual/解析.svg"></image>
       </view>
       <view>
         <text class="gameButtonInfo" >解析</text>

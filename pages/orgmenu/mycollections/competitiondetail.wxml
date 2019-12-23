@@ -6,7 +6,7 @@
 
   <view class="player"> 
     <view>
-      <image src="{{getApp().ServerRoot}}/img/ai.png"></image>
+      <image src="{{serverRoot}}/img/ai.png"></image>
     </view> 
     <view>
       <text class = "playerName">AI</text>
@@ -26,7 +26,7 @@
 
   <view class="player">
     <view>
-      <image src="{{getApp().ServerRoot}}/img/game/user.svg"></image>
+      <image src="{{serverRoot}}/img/game/user.svg"></image>
     </view>
     <view>
       <text class="playerName">Yunding</text>   
@@ -41,9 +41,9 @@
 
 
   <view class="collectionButtons">
-    <image src="{{getApp().ServerRoot}}/img/me/collection/上一步.svg"  class="collectionButton" bindtap="lastStep"> </image>
-    <image src="{{getApp().ServerRoot}}/img/me/collection/重新播放.svg"  class="collectionButton" bindtap="toFirstStep"> </image>
-    <image src="{{getApp().ServerRoot}}/img/me/collection/下一步.svg"  class="collectionButton" bindtap="nextStep"> </image>
+    <image src="{{serverRoot}}/img/me/collection/上一步.svg"  class="collectionButton" bindtap="lastStep"> </image>
+    <image src="{{serverRoot}}/img/me/collection/重新播放.svg"  class="collectionButton" bindtap="toFirstStep"> </image>
+    <image src="{{serverRoot}}/img/me/collection/下一步.svg"  class="collectionButton" bindtap="nextStep"> </image>
   </view>
 
 

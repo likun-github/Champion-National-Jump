@@ -1,7 +1,7 @@
 
 
 <view class="cover-container relative">
-  <image class="cover-image"  src="{{getApp().ServerRoot}}/img/competition/topCover.png"></image>
+  <image class="cover-image"  src="{{serverRoot}}/img/competition/topCover.png"></image>
 </view>
 
 <view class="competition-name">2019少年儿童国际跳棋公开赛</view>

@@ -5,8 +5,8 @@
 
   <view class="player"> 
     <view>
-      <image wx:if="{{friendName==null}}" src="{{getApp().ServerRoot}}/img/game/问号头像.svg"></image>
-      <image wx:else src="{{getApp().ServerRoot}}/img/game/ai/女孩头像.png"></image>
+      <image wx:if="{{friendName==null}}" src="{{serverRoot}}/img/game/问号头像.svg"></image>
+      <image wx:else src="{{serverRoot}}/img/game/ai/女孩头像.png"></image>
     </view> 
     <view>
       <text wx:if="{{friendName==null}}" class = "playerName">邀请好友中...</text>
@@ -30,7 +30,7 @@
   <view class="gameButtons">
     <view class="gameButton" bindtap="withdraw">
       <view>
-        <image src="{{getApp().ServerRoot}}/img/game/button/withdraw.svg"></image>
+        <image src="{{serverRoot}}/img/game/button/withdraw.svg"></image>
       </view>
       <view>
         <text class="gameButtonInfo" >悔棋</text>
@@ -38,7 +38,7 @@
     </view>
     <view class="gameButton" bindtap="draw">
       <view>
-        <image src="{{getApp().ServerRoot}}/img/game/button/draw.svg"></image>
+        <image src="{{serverRoot}}/img/game/button/draw.svg"></image>
       </view>
       <view >
         <text class="gameButtonInfo">求和</text>
@@ -46,7 +46,7 @@
     </view>
     <view class="gameButton" bindtap="lose">
       <view>
-        <image src="{{getApp().ServerRoot}}/img/game/button/lose.svg"></image>
+        <image src="{{serverRoot}}/img/game/button/lose.svg"></image>
       </view>
       <view >
         <text class="gameButtonInfo">认输</text>
@@ -57,7 +57,7 @@
 
   <view class="player" style="margin-top:6vh;">
     <view>
-      <image src="{{getApp().ServerRoot}}/img/game/user.svg"></image>
+      <image src="{{serverRoot}}/img/game/user.svg"></image>
     </view>
     <view>
       <text class="playerName">Yunding</text>   
@@ -79,7 +79,7 @@
 
 <view wx:if="{{friendID==null}}" class="inviteFriend">
   <view class="player">
-    <image src="{{getApp().ServerRoot}}/img/game/user.svg" style="margin-left:90rpx;width:100rpx;height:100rpx;"></image>
+    <image src="{{serverRoot}}/img/game/user.svg" style="margin-left:90rpx;width:100rpx;height:100rpx;"></image>
     <view style="margin-left:20rpx;">
       <text class="playerName" style="font-size:40rpx;">Yunding</text>   
       <text class="playerInfo" style="font-size:25rpx;">段位：九段 积分: 1000</text>  
@@ -155,9 +155,9 @@
 <view wx:if="{{gameResult>=0}}" class="gameEndTip">
   <view class="gameEndTipImage">
     <view class="backgroundImage">
-      <image wx:if="{{gameResult==0}}" class="resultImage" mode="widthFix" src="{{getApp().ServerRoot}}/img/game/胜利.png"></image> 
-      <image wx:elif="{{gameResult==1}}" class="resultImage" mode="widthFix" src="{{getApp().ServerRoot}}/img/game/失败.png"></image>
-      <image wx:else class="resultImage" mode="widthFix" src="{{getApp().ServerRoot}}/img/game/和棋.png"></image> 
+      <image wx:if="{{gameResult==0}}" class="resultImage" mode="widthFix" src="{{serverRoot}}/img/game/胜利.png"></image> 
+      <image wx:elif="{{gameResult==1}}" class="resultImage" mode="widthFix" src="{{serverRoot}}/img/game/失败.png"></image>
+      <image wx:else class="resultImage" mode="widthFix" src="{{serverRoot}}/img/game/和棋.png"></image> 
     </view>
     <view class="gameEndTipText">
       <text wx:if="{{gameResult==0}}" class="win">胜利!</text>

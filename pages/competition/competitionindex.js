@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    serverRoot: "",
     innerNavigation: "registe",
     registingCompetitions: [{ name: "周末五分钟快棋赛100格巴西", constitution: "", image: "/img/competition/cover.png" }, { name: "周末快棋赛100格俄罗斯", constitution: "云顶工坊", image: "/img/competition/cover1.png" },{ name: "周末快棋赛100格俄罗斯", constitution: "云顶工坊", image: "/img/competition/cover2.png" }],
     greatCompetitions: [{ name: "超级比赛", constitution: "云顶工坊" }, { name: "青年棋手", constitution: "云顶工坊" }],
@@ -106,6 +106,10 @@ Page({
   
 
   onLoad: function (options) {
+    // 设置服务器路径
+    var serverRoot = getApp().globalData.ServerRoot;
+    this.setData({ serverRoot: serverRoot });
+
     var that = this;
     
     //等待后端接口

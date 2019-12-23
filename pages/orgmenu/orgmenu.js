@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    serverRoot: "",
     // 认证相关
     identification: 0, /*0：玩家；1：学生；2：教练；3：机构 */
     id_selected: 1, /*0：玩家；1：学生；2：教练；3：机构 */
@@ -123,6 +124,10 @@ Page({
 
 
  onLoad: function () {
+   // 设置服务器路径
+   var serverRoot = getApp().globalData.ServerRoot;
+   this.setData({ serverRoot: serverRoot });
+
    var that = this;
 
    var app = getApp();

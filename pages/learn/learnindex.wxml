@@ -14,7 +14,7 @@
   <view class="rules">
     <view class="ruleItem" bindtap="RuleDetail" wx:for="{{[1,2,3]}}">
       <view class="coverImage">
-        <image class="cover-image" src="{{getApp().ServerRoot}}/img/learn/video_cover.png"></image>
+        <image class="cover-image" src="{{serverRoot}}/img/learn/video_cover.png"></image>
       </view>
 
       <view class="innerText">
@@ -31,13 +31,13 @@
   <view class="video relative" wx:if="{{playVideo}}">
     <view><button class="blue-btn" bindtap="returnToVideoList">返回视频列表</button></view>
     <view class="relative">
-      <video src="{{getApp().ServerRoot}}/video/test.mp4" ></video>
+      <video src="{{serverRoot}}video/test.mp4" ></video>
       <!-- <image class="cover-image" src="{{getApp().ServerRoot}}/img/learn/video_cover.png"></image> -->
     </view>
     <view class="video-bottom flex-between" >
       <text class="video-title">国际跳棋专题视频</text>
       <view class="capsule">
-        <image class="share-icon icon" src="{{getApp().ServerRoot}}/img/分享.svg" mode="widthFix"></image>
+        <image class="share-icon icon" src="{{serverRoot}}/img/分享.svg" mode="widthFix"></image>
         <text>分享</text>
       </view>
     </view>
@@ -48,10 +48,10 @@
     <view wx:for="{{[1,2,3]}}" bindtap="SeeVideo" class="video-item">
         <view class="video-top">
           <view class="display-btn center">
-              <image class="center" src="{{getApp().ServerRoot}}/img/learn/play.png" mode="widthFix"></image>
+              <image class="center" src="{{serverRoot}}/img/learn/play.png" mode="widthFix"></image>
           </view>
           <view class="cover-image-container" >
-            <image class="cover-image" src="{{getApp().ServerRoot}}/img/learn/video_cover.png"></image>
+            <image class="cover-image" src="{{serverRoot}}/img/learn/video_cover.png"></image>
           </view>
         </view>       
         <view class="video-bottom">
@@ -60,10 +60,10 @@
     </view>
         <view wx:for="{{[1,2,3]}}" class="video-item">
         <view class="video-top">
-          <image class="locked center" mode="widthFix" src="{{getApp().ServerRoot}}/img/learn/lock.png">
+          <image class="locked center" mode="widthFix" src="{{serverRoot}}/img/learn/lock.png">
           </image>
           <view class="cover-image-container">
-            <image class="cover-image lock-cover" src="{{getApp().ServerRoot}}/img/learn/video_cover.png"></image>
+            <image class="cover-image lock-cover" src="{{serverRoot}}/img/learn/video_cover.png"></image>
           </view>
         </view>        
         <view class="video-bottom">
@@ -80,26 +80,26 @@
 
 <view class="bottomNav">
   <view data-route="learn" bindtap="redict">
-    <image src="{{getApp().ServerRoot}}/img/学习选中.svg" ></image>
+    <image src="{{serverRoot}}/img/学习选中.svg" ></image>
     <text class="bottomNavSelected">学 习</text>
   </view>
 
   <view data-route="chessmanual" bindtap="redict"> 
-    <image src="{{getApp().ServerRoot}}/img/棋谱.svg"></image>
+    <image src="{{serverRoot}}/img/棋谱.svg"></image>
     <text class = "bottomNavNotSelected">棋 谱</text>
   </view>
   <view class="gameNav" data-route="game" bindtap="redict">
-    <image src="{{getApp().ServerRoot}}/img/对战.svg"></image>
+    <image src="{{serverRoot}}/img/对战.svg"></image>
     <text class="bottomNavNotSelected">对 战</text>
   </view>
 
     <view data-route="competition" bindtap="redict">
-    <image src="{{getApp().ServerRoot}}/img/比赛.svg"></image>
+    <image src="{{serverRoot}}/img/比赛.svg"></image>
     <text class="bottomNavNotSelected">比 赛</text>
   </view>
 
   <view data-route="me" bindtap="redict">
-    <image src="{{getApp().ServerRoot}}/img/我的.svg"></image>
+    <image src="{{serverRoot}}/img/我的.svg"></image>
     <text class="bottomNavNotSelected">我 的</text>
   </view>
 </view>

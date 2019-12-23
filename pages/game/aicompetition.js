@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    serverRoot: "",
+
     // 上下文
     context: null,
 
@@ -99,6 +101,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 设置服务器路径
+    var serverRoot = getApp().globalData.ServerRoot;
+    this.setData({ serverRoot: serverRoot });
+
     var context = wx.createCanvasContext('chessboard');
     this.setData({ context: context });
 
@@ -283,7 +289,7 @@ Page({
         //this.DrawChess(i, context);
         var width = this.data.chessBoardWidth / 10;
         var center = this.GetRectCenter(Math.floor(i / 10), i % 10, this.data.chessBoardWidth, this.data.chessBoardHeight);
-        context.drawImage("/img/bm.svg", center.x - width / 2 + width / 8, center.y - width / 2 + width / 8, width * 6 / 8, width * 6 / 8);
+        context.drawImage(this.data.serverRoot+"/img/bm.svg", center.x - width / 2 + width / 8, center.y - width / 2 + width / 8, width * 6 / 8, width * 6 / 8);
       }
     }
     context.closePath();
@@ -297,7 +303,7 @@ Page({
         //this.DrawChess(i, context)
         var width = this.data.chessBoardWidth / 10 ;
         var center = this.GetRectCenter(Math.floor(i / 10), i % 10, this.data.chessBoardWidth, this.data.chessBoardHeight);
-        context.drawImage("/img/wm.svg", center.x - width / 2+width/8, center.y - width / 2 +width/8, width * 6 / 8, width * 6 / 8);
+        context.drawImage(this.data.serverRoot +"/img/wm.svg", center.x - width / 2+width/8, center.y - width / 2 +width/8, width * 6 / 8, width * 6 / 8);
       }
     }
     context.closePath();
@@ -309,7 +315,7 @@ Page({
       if (this.data.kingChesses[i] == 1) {
         var width = this.data.chessBoardWidth / 10 / 2;
         var center = this.GetRectCenter(Math.floor(i / 10), i % 10, this.data.chessBoardWidth, this.data.chessBoardHeight);
-        context.drawImage("/img/king.png", center.x - width / 2, center.y - width / 2, width, width);
+        context.drawImage(this.data.serverRoot +"/img/king.png", center.x - width / 2, center.y - width / 2, width, width);
       }
     }
   },

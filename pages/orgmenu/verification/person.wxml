@@ -25,7 +25,7 @@
     <text class="infoTopic">身份证件</text>
     <text class="{{error==2?'placeholderStyleRed':'placeholderStyle'}}">请上传身份证件的正面照片</text>
   </view>
-  <image wx:if="{{images[0]==null}}" mode="widthFix" style="width:500rpx;padding:10rpx 50rpx 35rpx 200rpx;" src="{{getApp().ServerRoot}}/img/me/机构认证.svg" bindtap="chooseImage"></image>
+  <image wx:if="{{images[0]==null}}" mode="widthFix" style="width:500rpx;padding:10rpx 50rpx 35rpx 200rpx;" src="{{serverRoot}}/img/me/机构认证.svg" bindtap="chooseImage"></image>
   <image wx:else style="width:500rpx;padding:10rpx 50rpx 35rpx 200rpx;" mode="widthFix" src="{{images[0]}}" bindtap="chooseImage"></image>
   <view style="width:100%;border-bottom: 15px solid #eeeeee;"></view>
 </view>

@@ -14,6 +14,7 @@ Page({
 // ConstitutionName: "云顶作坊"
 // gx_md5_hash: "6FB7B5591BF06268C74A03327B73F16F"
   data: {
+    serverRoot: "",
     competitionId: null,
     competition: null,
     signed: false
@@ -31,6 +32,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 设置服务器路径
+    var serverRoot = getApp().globalData.ServerRoot;
+    this.setData({ serverRoot: serverRoot });
 
     var that = this;
     

@@ -34,7 +34,7 @@
 <view class="matchesContainer" >
   <view wx:for="{{[1,2,3,4]}}" class="match">
       <view>
-        <image class="palyerPortrait" src="{{getApp().ServerRoot}}/img/studentimg.png"></image>
+        <image class="palyerPortrait" src="{{serverRoot}}/img/studentimg.png"></image>
         <image></image>
       </view>
       <view class="matchCenter">
@@ -43,7 +43,7 @@
       </view>
       <view>
         <image></image>
-        <image class="palyerPortrait"  src="{{getApp().ServerRoot}}/img/studentimg.png"></image>
+        <image class="palyerPortrait"  src="{{serverRoot}}/img/studentimg.png"></image>
       </view>
   </view>
 </view>
@@ -63,7 +63,7 @@
 
           <view class="itemRight">
               <view class="portrait">
-                <image src="{{getApp().ServerRoot}}/img/studentimg.png"></image>
+                <image src="{{serverRoot}}/img/studentimg.png"></image>
               </view>
               <view class="userInfo">
                 <text>跳棋小孩</text>

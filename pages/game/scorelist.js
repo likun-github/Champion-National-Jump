@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    serverRoot: "",
     scoreList:[],
     scrollViewHeight: (wx.getSystemInfoSync().windowHeight * (750 / wx.getSystemInfoSync().windowWidth) - 87),
   },
@@ -13,6 +14,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var serverRoot = getApp().globalData.ServerRoot;
+    this.setData({ serverRoot: serverRoot });
     this.getScoreList();
   },
 
