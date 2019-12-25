@@ -18,7 +18,6 @@ Page({
     wx.navigateTo({
       url: './learncontent',
     })
-
   },
   returnToVideoList: function(){
     this.setData({ playVideo: false });
@@ -29,8 +28,8 @@ Page({
     this.setData({
       innerRoute: e.currentTarget.dataset.route
     });
-
   },
+  
   SeeVideo: function(){
     this.setData({playVideo: true});
   },
