@@ -1,29 +1,65 @@
 {
   "pages": [
-    "pages/game/game",
-    "pages/chessmanual/chessmanualindex",
-    "pages/orgmenu/orgmenu",
-    "pages/game/aicompetition",
-    "pages/game/scorelist",
-    "pages/learn/learnindex",
-    "pages/competition/edcompetition",
-    "pages/competition/competitionindex",
-    "pages/competition/signup",
-    "pages/competition/competitioninfo",
-    "pages/game/friendscompetition",
-    "pages/game/fastcompetition",
-    "pages/orgmenu/mycollections/mycollection",
-    "pages/orgmenu/mycollections/competitiondetail",
-    "pages/orgmenu/verification/constitution",
-    "pages/orgmenu/verification/person",
-    "pages/orgmenu/verification/uploadsuccess",
-    "pages/chessmanual/pass"
+    "pages/game/game/game",
+    "pages/chessmanual/chessmanualindex/chessmanualindex",
+    "pages/orgmenu/orgmenu/orgmenu",
+    "pages/game/aicompetition/aicompetition",
+    "pages/game/scorelist/scorelist",
+    "pages/learn/learnindex/learnindex",
+    "pages/competition/edcompetition/edcompetition",
+    "pages/competition/competitionindex/competitionindex",
+    "pages/competition/signup/signup",
+    "pages/competition/competitioninfo/competitioninfo",
+    "pages/game/friendscompetition/friendscompetition",
+    "pages/game/fastcompetition/fastcompetition",
+    "pages/orgmenu/verification/constitution/constitution",
+    "pages/orgmenu/verification/person/person",
+    "pages/orgmenu/verification/uploadsuccess/uploadsuccess",
+    "pages/chessmanual/pass/pass",
+    "pages/orgmenu/mycollection/mycollection"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#4B87FD",
     "navigationBarTitleText": "冠军国跳",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#52a9ff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "/static/menu/cstudy.png",
+        "iconPath": "/static/menu/study.png",
+        "pagePath": "pages/learn/learnindex/learnindex",
+        "text": "学习"
+      },
+      {
+        "selectedIconPath": "/static/menu/cchess.png",
+        "iconPath": "/static/menu/chess.png",
+        "pagePath": "pages/chessmanual/chessmanualindex/chessmanualindex",
+        "text": "棋谱"
+      },
+      {
+        "selectedIconPath": "/static/menu/ccompetition.png",
+        "iconPath": "/static/menu/competition.png",
+        "pagePath": "pages/game/game/game",
+        "text": "对战"
+      },
+      {
+        "selectedIconPath": "/static/menu/cgame.png",
+        "iconPath": "/static/menu/game.png",
+        "pagePath": "pages/competition/competitionindex/competitionindex",
+        "text": "比赛"
+      },
+      {
+        "selectedIconPath": "/static/menu/cmine.png",
+        "iconPath": "/static/menu/mine.png",
+        "pagePath": "pages/orgmenu/orgmenu/orgmenu",
+        "text": "我的"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }
