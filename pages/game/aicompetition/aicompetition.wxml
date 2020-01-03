@@ -1,0 +1,162 @@
+<!--pages/game/aicompetition.wxml-->
+<view class = "poster" style="display:{{aiLevel== -1 || sequence == -1}}">
+
+
+  <view class="player"> 
+    <view>
+      <image wx:if="{{aiLevel==-1}}" src="{{serverRoot}}/img/game/问号头像.svg"></image>
+      <image wx:elif="{{aiLevel==0}}" src="{{serverRoot}}/img/game/ai/女孩头像.png"></image>
+      <image wx:elif="{{aiLevel==1}}" src="{{serverRoot}}/img/game/ai/大叔头像.png"></image>
+      <image wx:elif="{{aiLevel==2}}" src="{{serverRoot}}/img/game/ai/老人头像.png"></image>
+    </view> 
+    <view>
+      <text wx:if="{{aiLevel==-1}}" class = "playerName">玩家选择中...</text>
+      <text wx:elif="{{aiLevel==0}}" class = "playerName">邻家的小妹妹</text>
+      <text wx:elif="{{aiLevel==1}}" class = "playerName">爱国跳的中年大叔</text>
+      <text wx:elif="{{aiLevel==2}}" class = "playerName">沧桑的老大爷</text>
+
+      <text wx:if="{{aiLevel==-1}}" class = "playerInfo">等级：---</text>
+      <text wx:elif="{{aiLevel==0}}" class = "playerInfo">等级：入门</text>
+      <text wx:elif="{{aiLevel==1}}" class = "playerInfo">等级：普通</text>
+      <text wx:elif="{{aiLevel==2}}" class = "playerInfo">等级：大师</text>
+    </view>
+    <view wx:if="{{currentUser==1}}" class="timer_running">
+      <text> {{blackTimerText}}</text>
+    </view>
+    <view wx:else class="timer_waiting">
+      <text> {{blackTimerText}}</text>
+    </view>
+  </view>
+
+
+  <canvas canvas-id='chessboard' bindtap="TapBoard" style="margin-top:6vh;width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:15px solid rgb(82,169,255);">
+  </canvas>
+
+
+  <view class="gameButtons">
+    <view class="gameButton" bindtap="reStart">
+      <view>
+        <image src="{{serverRoot}}/img/game/button/restart.svg"></image>
+      </view>
+      <view >
+        <text class="gameButtonInfo">重新开始</text>
+      </view>
+    </view>
+    <view class="gameButton" bindtap="withdraw">
+      <view>
+        <image src="{{serverRoot}}/img/game/button/withdraw.svg"></image>
+      </view>
+      <view>
+        <text class="gameButtonInfo" >悔棋</text>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="player" style="margin-top:6vh;">
+    <view>
+      <image src="{{serverRoot}}/img/game/user.svg"></image>
+    </view>
+    <view>
+      <text class="playerName">Yunding</text>   
+      <text class="playerInfo">段位：九段 积分: 1000</text>  
+    </view>
+    <view wx:if="{{currentUser==0}}" class="timer_running">
+      <text> {{whiteTimerText}}</text>
+    </view>
+      <view wx:else class="timer_waiting">
+        <text> {{whiteTimerText}}</text>
+      </view>
+    </view>
+</view>
+
+<view wx:if="{{aiLevel == -1 || sequence == -1}}" class='mask-view' catchtouchmove='ture'>
+</view>
+
+<view wx:if="{{gameResult>=0}}" class="gameEndTip">
+  <view class="gameEndTipImage">
+    <view class="backgroundImage">
+      <image wx:if="{{gameResult==0}}" class="resultImage" mode="widthFix" src="{{serverRoot}}/img/game/胜利.png"></image> 
+      <image wx:elif="{{gameResult==1}}" class="resultImage" mode="widthFix" src="{{serverRoot}}/img/game/失败.png"></image>
+      <image wx:else class="resultImage" mode="widthFix" src="{{serverRoot}}/img/game/和棋.png"></image> 
+    </view>
+    <view class="gameEndTipText">
+      <text wx:if="{{gameResult==0}}" class="win">胜利!</text>
+      <text wx:elif="{{gameResult==1}}" class="lose">失败...</text>
+      <text wx:elif="{{gameResult==2}}" class="draw">和棋!</text>
+    </view>
+  </view>
+  <text wx:if="{{gameResult==0}}" class="gameEndTipScore">积分 +20</text>
+  <text wx:elif="{{gameResult==1}}" class="gameEndTipScore">积分 -20</text>
+  <text wx:elif="{{gameResult==2}}" class="gameEndTipScore">积分 +0</text>
+  <view class="gameEndBtn">
+    <text>再来一局</text>  
+  </view>
+  <view class="gameEndBtn">
+    <text>返回大厅</text>  
+  </view>
+  <view class="gameEndBtn">
+    <text>收藏本局</text>  
+  </view>
+</view>
+
+
+<view wx:if="{{aiLevel== -1 ||sequence == -1}}" class="gameSetting">
+  <text class="headline">对局设置</text>
+  <view class="option">
+    <view class="title">
+      <text class="blueline">———</text>
+      <image mode="widthFix"src="{{serverRoot}}/img/game/ai/AI等级.svg"></image>
+      <text>AI等级</text>    
+      <text class="blueline">———</text>
+    </view>
+    <view class="buttons">
+      <view wx:if="{{aiLevel==0}}" id="easy" class="button red" bindtouchstart="handleTouchStart">
+        <text>入门</text>
+      </view>
+      <view wx:else id="easy" class="button blue" bindtouchstart="handleTouchStart">
+        <text>入门</text>
+      </view>
+      <view wx:if="{{aiLevel==1}}" id="medium" class="button red" bindtouchstart="handleTouchStart">
+        <text>普通</text>
+      </view>
+      <view wx:else id="medium" class="button blue" bindtouchstart="handleTouchStart">
+        <text>普通</text>
+      </view>
+      <view wx:if="{{aiLevel==2}}" id="hard" class="button red" bindtouchstart="handleTouchStart">
+        <text>大师</text>
+      </view>
+      <view wx:else id="hard" class="button blue" bindtouchstart="handleTouchStart">
+        <text>大师</text>
+      </view>
+    </view>
+  </view>
+  <view class="option">
+    <view class="title">
+      <text class="blueline">———</text>
+      <image mode="widthFix"src="{{serverRoot}}/img/game/ai/先后顺序.svg"></image>
+      <text>先后顺序</text>    
+      <text class="blueline">———</text>
+    </view>
+    <view class="buttons">
+      <view wx:if="{{sequence==0}}" id="first" class="button yellow" bindtouchstart="handleTouchStart">
+        <text>先手</text>
+      </view>
+      <view wx:else id="first" class="button blue" bindtouchstart="handleTouchStart">
+        <text>先手</text>
+      </view>
+      <view wx:if="{{sequence==1}}" id="second" class="button yellow" bindtouchstart="handleTouchStart">
+        <text>后手</text>
+      </view>
+      <view wx:else id="second" class="button blue" bindtouchstart="handleTouchStart">
+        <text>后手</text>
+      </view>
+      <view wx:if="{{sequence==2}}" id="random" class="button yellow" bindtouchstart="handleTouchStart">
+        <text>随机</text>
+      </view>
+      <view wx:else id="random" class="button blue" bindtouchstart="handleTouchStart">
+        <text>随机</text>
+      </view>
+    </view>
+  </view>
+</view>

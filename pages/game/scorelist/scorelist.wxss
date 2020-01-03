@@ -1,0 +1,53 @@
+/* pages/game/scorelist.wxss */
+.topBackground {
+  width: 100%;
+  position: fixed;
+  top:0;
+}
+
+.scoreList {
+  position:fixed;
+  top:87rpx;
+  display: flex;
+  flex-direction: column; 
+  width: 100%;
+}
+.scoreList .playerRow {
+  border-bottom: 2px solid #eeeeee; 
+  display: flex;
+  flex-direction: row;
+  height: 120rpx;
+  line-height: 120rpx;
+  vertical-align: center;
+}
+.playerRow .index {
+  color:rgb(82, 169, 255);
+  width: 120rpx;
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: 900;
+}
+.playerRow .name {
+  margin-left: 25rpx;
+  color: grey;
+  font-size: 35rpx;
+  text-align: left;
+  width:350rpx;
+}
+.playerRow .scoreAndTitle {
+  display: flex;
+  flex-direction: column;
+  color:rgb(82, 169, 255);
+  font-size: 20rpx;
+  line-height: 30rpx;
+  text-align: center;
+  padding:20rpx 0rpx;
+}
+.scoreAndTitle .score {
+  padding: 5rpx;
+}
+.scoreAndTitle .title {
+  padding: 5rpx 0rpx;
+  border: rgb(82, 169, 255) solid 1rpx;
+  border-radius: 7rpx;
+}

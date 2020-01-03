@@ -1,0 +1,266 @@
+/* pages/game/game.wxss */
+Page {
+ --margin: 30rpx;
+ --width: 650rpx;
+  --button_height:30%;
+}
+
+@keyframes remindMessage {
+  0% {
+    -webkit-transform: translateX(90%);
+  }
+  100% {
+    -webkit-transform: translateX(-180%);
+  }
+}
+
+/*顶部公告栏*/
+.competitionRecommand{
+  margin-left: 50rpx;
+  margin-top: 3vh;
+  height: 70rpx;
+  width: var(--width);
+  border-radius: 20rpx; 
+  box-shadow: 1px 1px 10px rgb(217, 228, 252);
+  display: flex;
+  flex-direction: row;
+}
+.competitionRecommand view{
+  max-width: 440rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.competitionTopic{
+  padding:17.5rpx 15rpx;
+  min-width:150rpx;
+  font-size: 30rpx;
+  font-weight: 900;
+  color:rgb(107,213,226);
+  display: block;
+  text-align:center;
+}
+.competitionInfo{
+  padding:20rpx 0rpx;
+  font-size: 25rpx;
+  display: inline-block;
+  text-align:left;
+  color:grey;
+  animation: remindMessage 15s linear infinite;
+}
+
+
+/*游戏跳转按钮*/
+.gameNav{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gameNavBtnShadow {
+  margin-top:7vh;
+  margin-bottom: 2.5vh;
+  width: 500rpx;
+  height: 10vh;
+  box-shadow: 0vh 3vh 5vh rgb(146, 182, 253);
+}
+.gameNavBtn{
+  position:relative;
+  top:-2vh;
+  left:-75rpx;
+  height: 14vh;
+  width: var(--width);
+  border-radius: 25rpx; 
+  background-color: rgb(76,135,253);
+  align-items: center;
+}
+.gameNavBtnText {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.gameNavBtnText .topic{
+  font-size: 3.5vh;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
+  text-align:center;
+  letter-spacing:3rpx;
+}
+.gameNavBtnText .info{
+  margin-top:5rpx;
+  font-size: 1.7vh;
+  color: rgba(255, 255, 255, 0.5);
+  text-align:center;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.scoreLink{
+  margin-left: 50rpx;
+  margin-top: 5vh;
+  width: var(--width);
+  border-radius: 20rpx; 
+  box-shadow: 1px 1px 20px rgb(217, 228, 252);
+  display: flex;
+  flex-direction: row;
+}
+
+.scoreLink text{
+  margin-top:3.5vh;
+  margin-left:20rpx;
+  font-size:2.25vh;
+  font-weight: 900;
+  color:rgb(148,183,254);
+  text-align:right;
+  min-width:25vw;
+}
+
+.playerImage{
+  padding:1.5vh 0rpx;
+  margin-left: 30rpx;
+  height: 7.5vh;
+  width: 7.5vh;
+  border-radius: 50% 50%;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+.shelter{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.15);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+.matching{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 75%;
+  background-color: white;
+  padding: 40rpx  50rpx 70rpx 50rpx;
+  border-radius: 40rpx;
+}
+
+.matching .title{
+  text-align: center;
+  color: skyblue;
+  font-size: 26rpx;
+}
+
+.matchingUsers{
+  color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.matchingUsers image{
+  height: 120rpx;
+  width: 120rpx;
+}
+
+.player text{
+  display: block;
+}
+
+.VS{
+  font-size: 50rpx;
+  color: #F4A9A3;
+}
+
+.cancel{
+  height: 70rpx;
+  width: 70rpx; 
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(-20rpx);
+}
+
+//////////////////////////////////////////////////////////
+.bottomNav {
+  background-color: white;
+  box-shadow: 1px 1px 20px rgb(230, 230, 230);
+}
+
+.bottomNavNotSelected {
+  margin-top:10rpx;
+  color:rgb(176, 176, 176);
+  font-size: 25rpx;
+  font-weight: 550;
+}
+
+.bottomNavSelected{
+  margin-top:10rpx;
+  color:rgb(82,169,255);
+  font-size: 26rpx;
+  font-weight: 550;
+}
+
+
+/*立即跳转弹框*/
+.myGameDirect {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: var(--width);
+  border-radius: 25rpx;
+}
+.myGameDirect .directQuestion {
+  display: flex;
+  flex-direction: row;
+  padding: 0rpx 50rpx;
+  margin-top:50rpx;
+}
+.directQuestion image {
+  width: 80rpx;
+  padding:20rpx;
+}
+.directQuestion text {
+  margin-top:20rpx;
+  color:black;
+  font-size: 30rpx;
+  letter-spacing: 3rpx;
+  min-width: 430rpx;
+}
+.myGameDirect .directButtons {
+  margin-top:30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding:0rpx 50rpx;
+}
+.directButtons .directButtonGrey {
+  background-color:rgb(234,234,234);
+  border-radius: 15rpx;
+  width:220rpx;
+  padding:10rpx 0rpx;
+  text-align: center;
+  margin:0rpx 27.5rpx 50rpx 27.5rpx;
+}
+.directButtonGrey text {
+  color:rgb(178,178,178);
+  font-size:35rpx;
+  letter-spacing: 3rpx;
+}
+.directButtons .directButtonBlue {
+  background-color:rgb(76,135,253);
+  border-radius: 15rpx;
+  width:220rpx;
+  padding:10rpx 0rpx;
+  text-align: center;
+  margin:0rpx 27.5rpx 50rpx 27.5rpx;
+}
+.directButtonBlue text {
+  color:white;
+  font-size:35rpx;
+  letter-spacing: 3rpx;
+  
+}

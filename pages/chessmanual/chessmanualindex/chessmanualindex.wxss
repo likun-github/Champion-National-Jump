@@ -1,0 +1,196 @@
+@import "../../game/game/game.wxss";
+/*背景图*/
+.background{
+  width: 100%;
+  position:absolute; 
+  top:0;
+}
+
+/*关卡牌*/
+.passTag {
+  background-color: white;
+  border-radius: 15rpx;
+  box-shadow:  1px 1px 10px rgb(200, 200, 200); 
+  width:140rpx;
+  padding:4rpx 0rpx;
+  text-align: center;
+}
+.passTag text {
+  color:rgb(76,135,253);
+  font-size: 35rpx;
+  letter-spacing: 3rpx;
+}
+
+
+/*隐藏滚动条*/
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+
+.trainPart{
+  padding: 0 16rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+}
+.train{
+  color: gray;
+
+  border: 4rpx solid skyblue;
+  
+  padding: 4rpx 6rpx;
+
+  margin-bottom: 30rpx;
+}
+
+.train .cover{
+  height: 325rpx;
+  width: 325rpx;
+}
+.cover image{
+  height: 100%;
+  width: 100%;
+}
+.name{
+  text-align: center;
+  font-size: 30rpx;
+}
+
+
+.trainInfo{
+  
+  font-size: 24rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.trainInfo .mediaInfo{
+  display: flex;
+}
+.mediaInfo image{
+
+  width: 30rpx;
+  vertical-align: middle;
+
+}
+
+
+.treePart{
+  /* height: 400rpx;
+  width: 100%; */
+  position: relative;
+  width: 100%;
+  height:  1000rpx;
+  text-align: center;
+  
+}
+
+.treeImage{
+  margin-top: 180rpx;
+}
+/* .myTree{
+  position: absolute;
+  left: 50%;
+  top: 50%; 
+  
+} */
+
+.levelContainer text{
+
+  font-size: 28rpx;
+  font-weight: bold;
+  color: green;
+  padding: 5rpx 30rpx;
+  border: 4rpx solid green;
+  background-color: white;
+  border-radius: 100rpx;
+}
+
+.levelContainer text:first-child{
+  position: absolute;
+  top: 260rpx;
+  left: 220rpx;
+}
+
+.levelContainer text:nth-child(2){
+  position: absolute;
+  top: 390rpx;
+  left: 150rpx;
+}
+
+.levelContainer text:nth-child(3){
+  position: absolute;
+  top: 470rpx;
+  left: 440rpx;
+}
+
+
+
+
+
+.competitionsContainer{
+  padding: 0 40rpx;
+}
+
+.competition{
+  margin: 20rpx 0;
+  display: flex;
+}
+
+.left{
+  
+}
+.left image{
+  width: 250rpx;
+  height: 250rpx;
+  margin-right: 15rpx;
+}
+
+.right{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 250rpx;
+  justify-content: space-between;
+}
+.right .competitionName{
+  font-size: 45rpx;
+  font-weight: bold;
+  margin-left: 0; 
+}
+.players{
+  display: flex;
+  flex-direction: column; 
+}
+.players text{
+  padding: 5rpx 0;
+}
+
+.rightBottom{
+  color: gray;
+  display: flex;
+  font-size: 32rpx;
+  
+  vertical-align: middel;
+}
+
+.rightBottom  .time{
+  font-size: 28rpx;
+  vertical-align: middel;
+}
+
+.rightBottom .hot{
+  margin: 0 20rpx;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hot image{
+  width: 30rpx;
+}

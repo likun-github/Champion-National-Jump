@@ -1,0 +1,53 @@
+/* pages/conpetition/competitioninfo.wxss */
+@import "../competitionindex/competitionindex.wxss";
+
+
+.competitionIntro{
+  padding: 0 30rpx;
+
+  color: gray;
+  font-size: 36rpx;
+}
+
+
+.btnsContainer{
+  margin-top: 100rpx;
+  text-align: center;
+}
+
+.btnsContainer button{
+  letter-spacing: 8rpx;
+
+  font-weight: bold;
+
+  border-radius: 16rpx;
+  width: 500rpx;
+}
+
+.to-sign-btn{
+  background-color: #6BD5E2;
+  color: white;
+}
+
+.ed-sign-btn{
+  background-color: #f1f1f1;
+  color: gray;
+}
+
+
+.cover-container{
+  height: 400rpx;
+}
+
+.competition-name{
+  text-align: center;
+  font-size: 46rpx;
+  margin: 40rpx 0;
+}
+
+.competition-intro{
+  background-color: #f1f1f1;
+  margin: 20rpx;
+  height: 400rpx;
+}
+

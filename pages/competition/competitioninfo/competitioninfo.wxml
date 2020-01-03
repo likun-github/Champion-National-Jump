@@ -1,0 +1,16 @@
+
+
+<view class="cover-container relative">
+  <image class="cover-image"  src="{{serverRoot}}/img/competition/topCover.png"></image>
+</view>
+
+<view class="competition-name">2019少年儿童国际跳棋公开赛</view>
+
+<view class="competition-intro">
+
+</view>
+<view class="btnsContainer">
+  <button class="{{signed==false?'to-sign-btn':'ed-sign-btn'}}" bindtap="goToSignUp">
+  {{signed==false?"立即报名":"您已报名"}}
+  </button>
+</view>

@@ -1,0 +1,81 @@
+<!--pages/competition/competitionindex.wxml-->
+
+
+<view wx:if="{{innerNavigation=='registe'}}" class="topSliderContainer relative">
+  <view class="topImagesContainer" style="{{'transform:translateX(-'+currentBallIndex*100+'%);'}}">
+      <image mode="widthFix" src="{{serverRoot}}/img/competition/topCover.png"   wx:for="{{[0,1,2,3,4]}}"></image>
+      
+  </view>
+  <view class="balls">
+    <view wx:for="{{[0,1,2,3,4]}}" bindtap="ChangeBall" data-index="{{item}}" class="{{item==currentBallIndex?'current':''}}"></view>
+  </view>
+</view>
+
+<view class="topNav">
+  <text data-navigation="registe" class="{{innerNavigation=='registe'?'choosed':''}}" bindtap="ChangeInnerNavigation">比赛报名</text>
+  <text data-navigation="great" class="{{innerNavigation=='great'?'choosed':''}}" bindtap="ChangeInnerNavigation">精彩比赛</text>
+  <text data-navigation="my" class="{{innerNavigation=='my'?'choosed':''}}" bindtap="ChangeInnerNavigation">我的赛局</text>
+</view>
+
+<view class="gray-margin"></view>
+
+<view class="registingCompetitionsContainer" wx:if="{{innerNavigation=='registe'}}">
+  <view wx:for="{{registingCompetitions}}" bindtap="GoToCompetitionInfo" wx:key="name" class="competitionCard">
+    <view class="cardLeft relative">
+      <text class="registing">报名中</text>
+      <image class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
+    </view>
+    <view class="cardRight">
+      <view class="competitionName" data-competitionId="{{item.CompetitionId}}" >{{item.name}}</view>
+      <view><text>截止日期2019.11.30</text></view>
+      <view><text class="joinedCount">人数64/100</text> <text>主办方:云顶</text></view>
+      <view class="competitionTags">
+        <text>100格</text>
+        <text>巴西规则</text>
+        <text>报名中</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="greatCompetitionsContainer" wx:elif="{{innerNavigation=='great'}}">
+   <view wx:for="{{registingCompetitions}}" bindtap="GoToCompetitionInfo" wx:key="name" class="competitionCard">
+    <view class="cardLeft relative">
+      <image class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
+    </view>
+    <view class="cardRight">
+      <view class="competitionName" data-competitionId="{{item.CompetitionId}}">{{item.name}}</view>
+      <view><text>截止日期2019.11.30</text></view>
+      <view><text class="joinedCount">人数64/100</text> <text>主办方:云顶</text></view>
+      <view class="competitionTags">
+        <text>100格</text>
+        <text>巴西规则</text>
+        <text class="finished">已完成</text>
+      </view>
+    </view>
+  </view> 
+</view>
+
+
+<view class="myCompetitionsContainer" wx:elif="{{innerNavigation=='my'}}">
+   <view wx:for="{{registingCompetitions}}" bindtap="GoToCompetitionInfo" wx:key="name" class="competitionCard">
+    <view class="cardLeft relative">
+      <image class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
+    </view>
+    <view class="cardRight">
+      <view class="competitionName" data-competitionId="{{item.CompetitionId}}" bindtap="GoToCompetitionInfo">{{item.name}}</view>
+      <view><text>截止日期2019.11.30</text></view>
+      <view><text class="joinedCount">人数64/100</text> <text>主办方:云顶</text></view>
+      <view class="competitionTags">
+        <text>100格</text>
+        <text>巴西规则</text>
+        <text>进行中</text>
+      </view>
+    </view>
+  </view> 
+</view>
+
+
+
+
