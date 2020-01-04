@@ -31,31 +31,31 @@
     "list": [
       {
         "selectedIconPath": "/static/menu/cstudy.png",
-        "iconPath": "/static/menu/study.png",
+        "iconPath": "/static/menu/学习.png",
         "pagePath": "pages/learn/learnindex/learnindex",
         "text": "学习"
       },
       {
         "selectedIconPath": "/static/menu/cchess.png",
-        "iconPath": "/static/menu/chess.png",
+        "iconPath": "/static/menu/棋谱.png",
         "pagePath": "pages/chessmanual/chessmanualindex/chessmanualindex",
         "text": "棋谱"
       },
       {
         "selectedIconPath": "/static/menu/ccompetition.png",
-        "iconPath": "/static/menu/competition.png",
+        "iconPath": "/static/menu/对战.png",
         "pagePath": "pages/game/game/game",
         "text": "对战"
       },
       {
         "selectedIconPath": "/static/menu/cgame.png",
-        "iconPath": "/static/menu/game.png",
+        "iconPath": "/static/menu/比赛.png",
         "pagePath": "pages/competition/competitionindex/competitionindex",
         "text": "比赛"
       },
       {
         "selectedIconPath": "/static/menu/cmine.png",
-        "iconPath": "/static/menu/mine.png",
+        "iconPath": "/static/menu/我的.png",
         "pagePath": "pages/orgmenu/orgmenu/orgmenu",
         "text": "我的"
       }

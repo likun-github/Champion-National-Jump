@@ -1,6 +1,7 @@
 //app.js
 
 var mqtt = require('lab/mqtt.js');
+
 App({
   onLaunch: function () {
     var that = this;
