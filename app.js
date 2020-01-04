@@ -85,8 +85,8 @@ App({
       userName: 'xxx',
       passWord: 'xxx',
     }
-    const client = mqtt.connect('wxs://www.yundingu.cn/wss/', options)
-
+   // const client = mqtt.connect('wxs://www.yundingu.cn/wss/', options)
+    const client = mqtt.connect('wx://127.0.0.1:3654/HD_Login', options)
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
     })
@@ -99,7 +99,7 @@ App({
       console.log('成功连接服务器111')
       //订阅一个主题
       client.publish("Test/HD_AddUser", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
-      client.subscribe('phone_' + 1, { qos: 0 }, function (err) {
+      client.subscribe('phone_' + 1, { qos: 2 }, function (err) {
         if (!err) {
           //client.publish('123', 'Hello mqtt')
           console.log("订阅成功")
