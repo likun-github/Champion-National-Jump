@@ -87,7 +87,7 @@ App({
       passWord: 'xxx',
     }
    // const client = mqtt.connect('wxs://www.yundingu.cn/wss/', options)
-    const client = mqtt.connect('wx://127.0.0.1:3654/HD_Login', options)
+    const client = mqtt.connect('wx://127.0.0.1:3654', options)
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
     })
