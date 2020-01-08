@@ -3,19 +3,19 @@
 var mqtt = require('lab/mqtt.js');
 
 App({
-  onLaunch: function () {
-    var that = this;
-    wx.login({
-      complete: (res) => {
-        that.getopenid(res.code)
-      },
-    })
+  // onLaunch: function () {
+  //   var that = this;
+  //   wx.login({
+  //     complete: (res) => {
+  //       that.getopenid(res.code)
+  //     },
+  //   })
     
    
-     this.connect();
+  //    this.connect();
    
 
-  },
+  // },
   getopenid:function(code){
     wx.request({
       url: this.globalData.localhost+"/getuserid",
