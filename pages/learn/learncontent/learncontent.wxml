@@ -18,22 +18,26 @@
 
 </view>
 
-
 <view class="sections-container">
   <view class="section-container">
-    <view> <text class="section-title">关于棋子</text> </view>
+    <view class="section-title"> 
+    <view class='circle1'></view>
+    <text class='font'>棋子走法</text> 
+    <view class='circle2'></view>
+    </view>
+    
     <view class="sub-sections-container">
 
       <view class="sub-section-container">
-        <view> <text class="sub-section-title">（1）一枚普通棋子每次只能向前方斜走一格至下一排的一个空格。普通棋子移动时，只能前进，不能后退。（如下图）</text> </view>
-        <view class="sub-section-image-container">
+        <view> <text class="sub-section-title">1.一枚普通棋子每次只能向前方斜走一格至下一排的一个空格。普通棋子移动时，只能前进，不能后退。（如下图）</text> </view>
+        <view class="sub-section-image-container" style='width:100%'>
           <image class="sub-section-image" src="{{serverRoot}}/img/learn/learn_image1.png" mode="aspectFit"></image>
         </view>
       </view>
 
 
       <view class="sub-section-container">
-        <view> <text class="sub-section-title">（2）当一枚普通棋子走到并停在对方底线即升变线上的任何一个格子内时，它将升变为王棋，称做加冕。</text> </view>
+        <view> <text class="sub-section-title">2.当一枚普通棋子走到并停在对方底线即升变线上的任何一个格子内时，它将升变为王棋，称做加冕。</text> </view>
         <view class="sub-section-image-container">
           <image class="sub-section-image" src="{{serverRoot}}/img/learn/learn_image2.png" mode="aspectFit"></image>
         </view>
@@ -42,20 +46,79 @@
     </view>
 
   </view>
+
   <view class="gray-margin"></view>
+
   <view class="section-container">
-    <view> <text class="section-title">Section Name</text> </view>
+    <view class="section-title"> 
+    <view class='circle1'></view>
+    <text class='font'>关于王棋</text> 
+    <view class='circle2'></view>
+    </view>
+    
     <view class="sub-sections-container">
+
       <view class="sub-section-container">
-        <view> <text class="sub-section-title">(1) 一枚普通的棋子</text> </view>
+        <view> <text class="sub-section-title">1.王棋可以在它控制的斜线上向前方和向后方移动任意格数的距离。</text> </view>
+
+      </view>
+
+
+      <view class="sub-section-container">
+        <view> <text class="sub-section-title">2.王棋不仅可以前进还可以后退。</text> </view>
         <view class="sub-section-image-container">
-          <image class="sub-section-image"></image>
+          <image class="sub-section-image" src="{{serverRoot}}/img/learn/learn_image2.png" mode="aspectFit"></image>
         </view>
       </view>
+
     </view>
 
   </view>
-  <view class="gray-margin"></view>
+
+   <view class="gray-margin"></view>
+   <view class="section-container">
+    <view class="section-title"> 
+    <view class='circle1'></view>
+    <text class='font'>棋局结束</text> 
+    <view class='circle2'></view>
+    </view>
+    
+    <view class="sub-sections-container">
+
+      <view class="sub-section-container">
+        <view> <text class="sub-section-title">1. 所有的棋子都被对方吃掉为负棋。</text> </view>
+        
+      </view>
+
+
+      <view class="sub-section-container">
+        <view> <text class="sub-section-title">2. 残留在棋盘上的棋子，被对方封锁，无子可动为负棋。</text> </view>
+      </view>
+
+      <view class="sub-section-container">
+        <view> <text class="sub-section-title">3. 棋局进行到最后无任何可能战胜对方时为和棋。</text>            </view>
+      </view>
+
+
+     
+
+  </view>
+
+
+
+  </view>
+
+<view class='end'>
+  <text style='color: rgb(234,234,234);'>END</text>
+
+  <view  class='i' style='width:100%;height:200rpx;margin-top:100rpx;margin-left:240rpx;'>
+     <text style='margin-right:10rpx;'>分享</text>
+     <image src='/static/分享.svg' style='width:50rpx;height:50rpx;'></image>
+  </view>
+    <button open-type='share' class='share'></button>
+ 
+</view>
+
 </view>
  
 

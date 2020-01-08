@@ -10,6 +10,5 @@
         <text class="gameTime">{{key}}</text>
       </view>
     </view>
-
   </view>
 </view>
