@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/learn/learncontent/learncontent",
     "pages/game/game/game",
+    "pages/learn/learncontent/learncontent",
+    
     "pages/chessmanual/chessmanualindex/chessmanualindex",
     "pages/orgmenu/orgmenu/orgmenu",
     "pages/game/aicompetition/aicompetition",
