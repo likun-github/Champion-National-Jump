@@ -161,12 +161,10 @@ App({
           }
           else if(registeredUser.RegisteredUserRole==1){
             this.globalData.gameInfo = { role: "tutor", authenticated: registeredUser.RegisteredUserAuthenticated,info: res.data.tutor };
-
           }
           else{
             this.globalData.gameInfo = { role: "constitution", authenticated: registeredUser.RegisteredUserAuthenticated,info: res.data.constitution};
           } 
-          
 
         }
 
