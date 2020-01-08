@@ -1,0 +1,61 @@
+<!--pages/orgmenu/verification/constitution.wxml-->
+<view wx:if="{{error==0}}" class="greyTop">
+  <text>机构认证</text>
+</view>
+<view wx:else class="redTop">
+  <text wx:if="{{error==1}}">未输入机构名称</text>
+  <text wx:elif="{{error==2}}">未输入负责人姓名</text>
+  <text wx:elif="{{error==3}}">未输入负责人手机号码</text>
+  <text wx:elif="{{error==4}}">手机号格式不正确</text>
+  <text wx:elif="{{error==5}}">未上传营业执照</text>
+</view>
+
+
+
+<view class="verificationInfoContainer">
+  <view class="key">
+    <text class="star">*</text>
+    <label class="infoTopic">机构名称</label>
+    <input id="name" class="inputStyle" type="text" placeholder-class="{{error==1?'placeholderStyleRed':'placeholderStyle'}}" placeholder="请输入完整机构名" bindchange="input" bindfocus="changeError"/>
+  </view>
+</view>
+
+
+<view class="verificationInfoContainer">
+  <view class="key">
+    <text class="star">*</text>
+    <text class="infoTopic">负责人</text>
+    <input id="personInChargeName" class="inputStyle" type="text" placeholder-class="{{error==2?'placeholderStyleRed':'placeholderStyle'}}" placeholder="请输入负责人完整姓名" bindchange="input" bindfocus="changeError"/>
+  </view>
+</view>
+
+
+<view class="verificationInfoContainer">
+  <view class="key">
+    <text class="star">*</text>
+    <text class="infoTopic">手机号</text>
+    <input id="personInChargePhone" type="number" class="{{error==4?'inputStyleRed':'inputStyle'}}" type="text" placeholder-class="{{error==3?'placeholderStyleRed':'placeholderStyle'}}"  placeholder="请输入负责人手机号码" bindchange="input" bindfocus="changeError"/>
+  </view>
+</view>
+
+
+<view class="verificationInfoContainer">
+  <view class="key" style="border:0rpx;">
+    <text class="star">*</text>
+    <text class="infoTopic">营业凭证</text>
+    <text class="{{error==5?'placeholderStyleRed':'placeholderStyle'}}">点击下方灰色区域上传或重新上传</text>
+  </view>
+  <image wx:if="{{images[0]==null}}" mode="widthFix" style="width:500rpx;padding:10rpx 50rpx 35rpx 200rpx;" src="{{serverRoot}}/img/me/机构认证.svg" bindtap="chooseImage"></image>
+  <image wx:else style="width:500rpx;padding:10rpx 50rpx 35rpx 200rpx;" mode="widthFix" src="{{images[0]}}" bindtap="chooseImage"></image>
+  <view class="gray-margin" style="height: 2rpx;"></view>
+</view>
+
+
+<view class="note">
+<text>注：营业凭证的合法上传项包括营业执照、组织机构代码证等，请选择其一上传正面照片。</text>
+</view>
+
+
+<view class="confirmation" bindtap="submit">
+  <text>确认提交</text>
+</view>
