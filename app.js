@@ -73,56 +73,56 @@ App({
     // })
 
     // this.GetUserGameInfo();
-    this.connect();
+    // this.connect();
    
 
   },
 
-  connect:function(){
-    const options = {
-      connectTimeout: 4000, // 超时时间
-      // 认证信息 按自己需求填写
-      clientId: 'xxxx',
-      userName: 'xxx',
-      passWord: 'xxx',
-    }
-   // const client = mqtt.connect('wxs://www.yundingu.cn/wss/', options)
-    const client = mqtt.connect('wx://127.0.0.1:3654/HD_Login', options)
-    client.on('reconnect', (error) => {
-      console.log('正在重连:', error)
-    })
+  // connect:function(){
+  //   const options = {
+  //     connectTimeout: 4000, // 超时时间
+  //     // 认证信息 按自己需求填写
+  //     clientId: 'xxxx',
+  //     userName: 'xxx',
+  //     passWord: 'xxx',
+  //   }
+  //  // const client = mqtt.connect('wxs://www.yundingu.cn/wss/', options)
+  //   const client = mqtt.connect('wx://127.0.0.1:3654', options)
+  //   client.on('reconnect', (error) => {
+  //     console.log('正在重连:', error)
+  //   })
 
-    client.on('error', (error) => {
-      console.log('连接失败:', error)
-    })
+  //   client.on('error', (error) => {
+  //     console.log('连接失败:', error)
+  //   })
 
-    client.on('connect', (e) => {
-      console.log('成功连接服务器111')
-      //订阅一个主题
-      client.publish("Test/HD_AddUser", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
-      client.subscribe('phone_' + 1, { qos: 2 }, function (err) {
-        if (!err) {
-          //client.publish('123', 'Hello mqtt')
-          console.log("订阅成功")
-        }
+  //   client.on('connect', (e) => {
+  //     console.log('成功连接服务器111')
+  //     //订阅一个主题
+  //     client.publish("Test/HD_AddUser", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
+  //     client.subscribe('phone_' + 1, { qos: 2 }, function (err) {
+  //       if (!err) {
+  //         //client.publish('123', 'Hello mqtt')
+  //         console.log("订阅成功")
+  //       }
 
-      })
-      client.subscribe("hello/", function (err) {
-        if (!err) {
-          //client.publish('123', 'Hello mqtt')
-          console.log("订阅成功")
-        }
+  //     })
+  //     client.subscribe("hello/", function (err) {
+  //       if (!err) {
+  //         //client.publish('123', 'Hello mqtt')
+  //         console.log("订阅成功")
+  //       }
 
-      })
-    })
-    //监听mq的返回
-    client.on('message', function (topic, message, packet) {
-      // message is Buffer
-      console.log("packet", packet.payload.toString())
-      client.end()
-    })
+  //     })
+  //   })
+  //   //监听mq的返回
+  //   client.on('message', function (topic, message, packet) {
+  //     // message is Buffer
+  //     console.log("packet", packet.payload.toString())
+  //     client.end()
+  //   })
 
-  },
+  // },
 
 
 

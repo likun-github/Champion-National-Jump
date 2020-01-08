@@ -24,6 +24,8 @@
 
 .coverImage image{
   filter: blur(5px);
+   width: 100%;
+  height: 100%;
   
 }
 

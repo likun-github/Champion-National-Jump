@@ -1,5 +1,4 @@
-// pages/learn/learnindex.js
-import tool from "../../../utils/tool.js";
+// pages/orgmenu/verification/uploadsuccess.js
 Page({
 
   /**
@@ -7,38 +6,6 @@ Page({
    */
   data: {
     serverRoot: "",
-    innerRoute: "begin",
-    playVideo: false
-  },
-  redict: function (e) {
-    var app = getApp();
-    app.redict(e);
-
-  },
-  RuleDetail: function(){
-    wx.navigateTo({
-      url: '../learncontent/learncontent',
-    })
-  },
-  returnToVideoList: function(){
-    this.setData({ playVideo: false });
-
-  },
-
-  ChangeRoute: tool.throttle( function(e){
- 
-    console.log(e);
-    if (this.data.innerRoute === e[0].currentTarget.dataset.route){
-      return false
-    }else{
-    this.setData({
-      innerRoute: e[0].currentTarget.dataset.route
-    });
-    }
-  }),
-  
-  SeeVideo: function(){
-    this.setData({playVideo: true});
   },
 
   /**
@@ -48,6 +15,12 @@ Page({
     // 设置服务器路径
     var serverRoot = getApp().globalData.ServerRoot;
     this.setData({ serverRoot: serverRoot });
+  },
+
+  backToOrgmenu: function () {
+    wx.navigateBack({
+      delta: 1
+    });
   },
 
   /**
