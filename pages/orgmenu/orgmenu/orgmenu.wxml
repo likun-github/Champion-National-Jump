@@ -26,9 +26,9 @@
 
 
 <view class="personalInfo">
-  <image mode="widthFix" src="{{serverRoot}}/img/game/user.svg"></image>
+  <image mode="widthFix" src="{{userpho}}"></image>
   <view class="info">
-    <text class="name">Yun Ding</text>
+    <text class="name">{{username}}</text>
     <text class="other">认证状态：已认证-运营</text>
     <text class="other">段位：九段 积分：8000</text>
   </view>
