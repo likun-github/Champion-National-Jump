@@ -1,4 +1,5 @@
 // pages/learn/learnindex.js
+import tool from "../../../utils/tool.js";
 Page({
 
   /**
@@ -24,11 +25,17 @@ Page({
 
   },
 
-  ChangeRoute: function(e){
+  ChangeRoute: tool.throttle( function(e){
+ 
+    console.log(e);
+    if (this.data.innerRoute === e[0].currentTarget.dataset.route){
+      return false
+    }else{
     this.setData({
-      innerRoute: e.currentTarget.dataset.route
+      innerRoute: e[0].currentTarget.dataset.route
     });
-  },
+    }
+  }),
   
   SeeVideo: function(){
     this.setData({playVideo: true});
