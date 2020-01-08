@@ -3,36 +3,24 @@
 var mqtt = require('lab/mqtt.js');
 
 App({
-  onLaunch: function () {
-    var that = this;
-    wx.login({
-      complete: (res) => {
-        that.getopenid(res.code)
-      },
-    })
+  // onLaunch: function () {
+  //   var that = this;
+  //   wx.login({
+  //     complete: (res) => {
+  //       that.getopenid(res.code)
+  //     },
+  //   })
     
    
-     this.connect();
-     this.getuserinfo(1);
+  //    this.connect();
    
 
-  },
+  // },
   getopenid:function(code){
     wx.request({
       url: this.globalData.localhost+"/getuserid",
       data:{
         "code":code,
-      },
-      success(res){
-        console.log(res)
-      }
-    })
-  },
-  getuserinfo:function(userid){
-    wx.request({
-      url: this.globalData.localhost+"/getinfo",
-      data:{
-        "userid":userid,
       },
       success(res){
         console.log(res)
@@ -125,12 +113,10 @@ App({
           }
           else if(registeredUser.RegisteredUserRole==1){
             this.globalData.gameInfo = { role: "tutor", authenticated: registeredUser.RegisteredUserAuthenticated,info: res.data.tutor };
-
           }
           else{
             this.globalData.gameInfo = { role: "constitution", authenticated: registeredUser.RegisteredUserAuthenticated,info: res.data.constitution};
           } 
-          
 
         }
 

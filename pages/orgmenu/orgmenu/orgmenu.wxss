@@ -7,6 +7,7 @@
   width: 750rpx;
 }
 .personalInfo {
+  
   position: absolute;
   top:50rpx;
   left:50rpx;
@@ -22,6 +23,7 @@
   padding:50rpx;
   display: block;
   width:160rpx;
+  border-radius: 100rpx;
 }
 .personalInfo .info {
   display: flex;
