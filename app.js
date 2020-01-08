@@ -93,6 +93,7 @@ App({
   // 获取用户身份认证情况
   GetUserGameInfo: function () {
     var that = this;
+
     wx.request({
       url: that.globalData.restServiceBaseUrl + "GetUserInfo",
       data: JSON.stringify({ RegisteredUserOpenId: that.globalData.openId }),
@@ -142,6 +143,7 @@ App({
         // }
       }
     })
+
   },
 
   // 如何用户角色不为null，则获取用户信息
@@ -164,7 +166,6 @@ App({
       default:
 
     }
-
     wx.request({
       url: that.globalData.restServiceBaseUrl + procedure,
       data: { WechatId: that.globalData.WechatId },

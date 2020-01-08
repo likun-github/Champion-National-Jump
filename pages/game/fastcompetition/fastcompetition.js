@@ -2,6 +2,7 @@
 
 var movegen = require('../../../utils/movegen.js');
 var util = require('../../../utils/util.js');
+var mqtt = require('lab/mqtt.js');
 
 Page({
   /**
