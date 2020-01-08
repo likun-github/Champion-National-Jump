@@ -13,6 +13,7 @@ App({
     
    
      this.connect();
+     this.getuserinfo(1);
    
 
   },
@@ -21,6 +22,17 @@ App({
       url: this.globalData.localhost+"/getuserid",
       data:{
         "code":code,
+      },
+      success(res){
+        console.log(res)
+      }
+    })
+  },
+  getuserinfo:function(userid){
+    wx.request({
+      url: this.globalData.localhost+"/getinfo",
+      data:{
+        "userid":userid,
       },
       success(res){
         console.log(res)
