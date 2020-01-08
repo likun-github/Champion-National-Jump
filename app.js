@@ -5,13 +5,29 @@ var mqtt = require('lab/mqtt.js');
 App({
   onLaunch: function () {
     var that = this;
-
+    wx.login({
+      complete: (res) => {
+        that.getopenid(res.code)
+      },
+    })
     
    
      this.connect();
    
 
   },
+  getopenid:function(code){
+    wx.request({
+      url: this.globalData.localhost+"/getuserid",
+      data:{
+        "code":code,
+      },
+      success(res){
+        console.log(res)
+      }
+    })
+  },
+
 
   connect:function(){
     const options = {
@@ -62,6 +78,7 @@ App({
 
 
   globalData: {
+    localhost:"http://127.0.0.1:8081",
     userInfo: null,
     restServiceBaseUrl: "http://localhost:8082/StayHomeRestServer.NETCoreEnvironment/rest/",
     openId: null,
