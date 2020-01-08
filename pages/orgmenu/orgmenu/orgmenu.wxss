@@ -167,3 +167,14 @@
     margin: 70rpx 50rpx;
     font-size: 35rpx;
 }
+.userinfo{
+  width: 175rpx;
+  height:175rpx;
+  border-radius:50%;
+  display: flex;
+  overflow:hidden;
+  text-align: center;
+  margin-top: 50rpx;
+  margin-left: 30rpx;
+  margin-right: 60rpx;
+}

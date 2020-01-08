@@ -26,7 +26,7 @@
 
 
 <view class="personalInfo">
-  <image mode="widthFix" src="{{userpho}}"></image>
+  <open-data type="userAvatarUrl" class="userinfo" id="userinfo"></open-data>
   <view class="info">
     <text class="name">{{username}}</text>
     <text class="other">认证状态：已认证-运营</text>
