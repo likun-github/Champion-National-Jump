@@ -124,6 +124,9 @@
   min-width: 600rpx;
 }
 .identification .tick {
+  height: 0;
+   display:block;
+   height: auto;
   width:35rpx;
 }
 .bottomPopUp .startIdentification {

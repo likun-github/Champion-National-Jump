@@ -8,7 +8,7 @@
             <view>申请获取以下权限</view>
             <text>获得你的公开信息(昵称，头像等)</text>
         </view>
-  
+
         <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
             授权登录
         </button>
@@ -65,17 +65,10 @@
 </view>
 
 
-
-
-
 <view class="gray-margin" style="height: 5rpx;"></view>
 
-
-
-<view wx:if="{{show_verification==true}}" class='mask-view' catchtouchmove='ture'>
+<view wx:if="{{show_verification==true}}" class='mask-view' catchtouchmove='ture' bindtap="cancelVerification">
 </view>
-
-
 
 <view class="bottomPopUp" hidden="{{hideModal}}" animation="{{animationData}}">
   <view class="chooseTopic">
@@ -101,6 +94,7 @@
       <image wx:if="{{id_selected==2}}" class="tick" mode="widthFix" src="{{serverRoot}}/img/me/勾上下留白.svg"></image>
       <image wx:else class="tick" mode="widthFix" src="{{serverRoot}}/img/me/勾空白.svg"></image>  
     </view> 
+    <view class="gray-margin" style="height: 3rpx;"></view>  
     <view class="gray-margin" style="height: 3rpx;"></view>  
   </view>
   <view class="identifications">
