@@ -3,19 +3,19 @@
 var mqtt = require('lab/mqtt.js');
 
 App({
-  // onLaunch: function () {
-  //   var that = this;
-  //   wx.login({
-  //     complete: (res) => {
-  //       that.getopenid(res.code)
-  //     },
-  //   })
+  onLaunch: function () {
+    var that = this;
+    wx.login({
+      complete: (res) => {
+        that.getopenid(res.code)
+      },
+    })
     
    
-  //    this.connect();
+     this.connect();
    
 
-  // },
+  },
   getopenid:function(code){
     wx.request({
       url: this.globalData.localhost+"/getuserid",
@@ -37,8 +37,9 @@ App({
       userName: 'xxx',
       passWord: 'xxx',
     }
+    //192.168.5.19
    // const client = mqtt.connect('wxs://www.yundingu.cn/wss/', options)
-    const client = mqtt.connect('wx://127.0.0.1:3654', options)
+    const client = mqtt.connect('wx://192.168.5.19:3654', options)
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
     })
@@ -78,9 +79,9 @@ App({
 
 
   globalData: {
-    localhost:"http://127.0.0.1:8081",
+    localhost:"http://192.168.5.19:8081",
     userInfo: null,
-    restServiceBaseUrl: "http://localhost:8082/StayHomeRestServer.NETCoreEnvironment/rest/",
+    restServiceBaseUrl: "http://localhost:8081/StayHomeRestServer.NETCoreEnvironment/rest/",
     openId: null,
     Id: null,
     APPID: "wx3878552fd022c398",
