@@ -2,7 +2,7 @@
 
 var movegen = require('../../../utils/movegen.js');
 var util = require('../../../utils/util.js');
-var mqtt = require('lab/mqtt.js');
+var mqtt = require('../../../lab/mqtt.js');
 
 Page({
   /**
@@ -106,6 +106,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 连接服务器
+    const s_options = {
+      connectTimeout: 4000, // 超时时间
+      // 认证信息 按自己需求填写
+      clientId: 'xxxx',
+      userName: 'xxx',
+      passWord: 'xxx',
+    }
+    const client = mqtt.connect('wx://127.0.0.1:3654', s_options);
+    client.on('reconnect', (error) => {
+      console.log('正在重连:', error)
+    });
+    client.on('error', (error) => {
+      console.log('连接失败:', error)
+    });
+    client.on('connect', (e) => {
+      console.log('成功连接服务器!')
+      //订阅一个主题
+      client.publish("Test/HD_Match", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
+      client.subscribe('phone_' + 1, { qos: 2 }, function (err) {
+        if (!err) {
+          //client.publish('123', 'Hello mqtt')
+          console.log("订阅成功")
+        }
+
+      })
+
+    })
+
+
     // 设置服务器路径
     var serverRoot = getApp().globalData.ServerRoot;
     this.setData({ serverRoot: serverRoot });

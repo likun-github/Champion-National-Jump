@@ -1,4 +1,4 @@
-// pages/game/game.js
+// pages/game/game/game.js
 Page({
 
   /**
