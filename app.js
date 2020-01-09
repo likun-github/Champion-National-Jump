@@ -3,19 +3,16 @@
 var mqtt = require('lab/mqtt.js');
 
 App({
-  // onLaunch: function () {
-  //   var that = this;
-  //   wx.login({
-  //     complete: (res) => {
-  //       that.getopenid(res.code)
-  //     },
-  //   })
-    
-   
-  //    this.connect();
-   
+  onLaunch: function () {
+    var that = this;
+    wx.login({
+      complete: (res) => {
+        that.getopenid(res.code)
+      },
+    })
+     this.connect();
 
-  // },
+  },
   getopenid:function(code){
     wx.request({
       url: this.globalData.localhost+"/getuserid",
@@ -27,8 +24,6 @@ App({
       }
     })
   },
-
-
   connect:function(){
     const options = {
       connectTimeout: 4000, // 超时时间
@@ -37,16 +32,15 @@ App({
       userName: 'xxx',
       passWord: 'xxx',
     }
+    //192.168.5.19
    // const client = mqtt.connect('wxs://www.yundingu.cn/wss/', options)
-    const client = mqtt.connect('wx://127.0.0.1:3654', options)
+    const client = mqtt.connect('wx://192.168.5.19:3654', options)
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
     })
-
     client.on('error', (error) => {
       console.log('连接失败:', error)
     })
-
     client.on('connect', (e) => {
       console.log('成功连接服务器111')
       //订阅一个主题
@@ -56,14 +50,12 @@ App({
           //client.publish('123', 'Hello mqtt')
           console.log("订阅成功")
         }
-
       })
       client.subscribe("hello/", function (err) {
         if (!err) {
           //client.publish('123', 'Hello mqtt')
           console.log("订阅成功")
         }
-
       })
     })
     //监听mq的返回
@@ -72,15 +64,11 @@ App({
       console.log("packet", packet.payload.toString())
       client.end()
     })
-
   },
-
-
-
   globalData: {
-    localhost:"http://127.0.0.1:8081",
+    localhost:"http://192.168.5.19:8081",
     userInfo: null,
-    restServiceBaseUrl: "http://localhost:8082/StayHomeRestServer.NETCoreEnvironment/rest/",
+    restServiceBaseUrl: "http://localhost:8081/StayHomeRestServer.NETCoreEnvironment/rest/",
     openId: null,
     Id: null,
     APPID: "wx3878552fd022c398",
@@ -98,8 +86,7 @@ App({
       url: that.globalData.restServiceBaseUrl + "GetUserInfo",
       data: JSON.stringify({ RegisteredUserOpenId: that.globalData.openId }),
       success: function (res) {
-        
-
+      
         var registeredUser = res.data.RegisteredUser;
 
         //如果OpenId不存在那么用户还未注册，或提交注册
@@ -120,25 +107,6 @@ App({
           } 
 
         }
-
-        // if (res.data.Role == 'a') {
-        //   that.globalData.role = "student";
-        // }
-        // else if (res.data.Role == "b") {
-        //   that.globalData.role = "constitution";
-        // }
-        // else if (res.data.Role == "c") {
-        //   that.globalData.role = "coach";
-        // }
-        // else {
-        //   that.globalData.role = null;
-        // }
-
-
-
-        // if (that.globalData.role != null) {
-        //   that.GetRegisterInfo();
-        // }
       }
     })
 
@@ -172,42 +140,8 @@ App({
       }
     })
   },
-  redict: function (e) {
-    var that = this;
-    var route = e.currentTarget.dataset.route;
 
-    if (route == "me") {
-      wx.redirectTo({
-        url: '/pages/orgmenu/orgmenu',
-      });
-      that.bottomBarRoute = "me";
-    }
-    else if (route == "competition") {
-      wx.redirectTo({
-        url: '/pages/competition/competitionindex',
-      })
-      that.bottomBarRoute = "competition";
-    }
-    else if (route == "game") {
-      wx.redirectTo({
-        url: '/pages/game/game',
-      });
-      that.bottomBarRoute = "game";
-    }
-    else if (route == "chessmanual") {
-      wx.redirectTo({
-        url: '/pages/chessmanual/chessmanualindex',
-      });
-      that.bottomBarRoute = "chessmanual"
-    }
-    else if (route = "learn") {
-      wx.redirectTo({
-        url: '/pages/learn/learnindex',
-      });
-      that.bottomBarRoute = "learn";
-    }
 
-  }
 
 
 })

@@ -1,9 +1,10 @@
 // pages/orgmenu/orgmenu.js
 //获取应用实例
 const app = getApp()
-
+import tool from "../../../utils/tool.js";
 Page({
   data: {
+    c:true,
     userpho:"",
     username:'',
     serverRoot: "",
@@ -55,6 +56,7 @@ Page({
 
   // 选择认证身份  
   chooseIdentification:function() {
+    if(this.data.c){
     var that = this;
     that.setData({
       hideModal: false
@@ -67,14 +69,14 @@ Page({
     setTimeout(function () {
       that.fadeIn();//调用显示动画
     }, 200);
-    this.setData({ show_verification:true});
-    
+    this.setData({ show_verification:true,c:false});
+  }
   },
 
   // 前往身份认证
   goToVerification:function() {
     this.setData({ hideModal: true });
-    this.setData({ show_verification: false }); 
+    this.setData({ show_verification: false ,c:true}); 
     switch(this.data.id_selected) {
       case 0: /* 玩家 */
         wx.navigateTo({
@@ -112,6 +114,12 @@ Page({
         hideModal: true
       });
     }, 720)//先执行下滑动画，再隐藏模块
+
+    setTimeout(function () {
+      that.setData({
+        c: true
+      });
+    }, 800)//执行完毕才能按
     this.setData({ show_verification: false });
   },
 

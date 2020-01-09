@@ -113,7 +113,7 @@
 
   <view  class='i' style='width:100%;height:200rpx;margin-top:100rpx;margin-left:240rpx;'>
      <text style='margin-right:10rpx;'>分享</text>
-     <image src='/static/分享.svg' style='width:50rpx;height:50rpx;'></image>
+     <image src='{{shr}}' style='width:50rpx;height:50rpx;'></image>
   </view>
     <button open-type='share' class='share'></button>
  

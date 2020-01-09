@@ -33,7 +33,7 @@ Page({
       { "index": 8, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
       { "index": 9, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
       { "index": 10, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
-      { "index": 0, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
+      { "index": 11, "name": "Yun Ding", "score": 8000, "title": "八级棋手" },
     ]
     
     });

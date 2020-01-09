@@ -3,7 +3,7 @@
 
 <view wx:if="{{innerNavigation=='registe'}}" class="topSliderContainer relative">
   <view class="topImagesContainer" style="{{'transform:translateX(-'+currentBallIndex*100+'%);'}}">
-      <image mode="widthFix" src="{{serverRoot}}/img/competition/topCover.png"   wx:for="{{[0,1,2,3,4]}}"></image>
+      <image class="w" mode="widthFix" src="{{serverRoot}}/img/competition/topCover.png"   wx:for="{{[0,1,2,3,4]}}"></image>
       
   </view>
   <view class="balls">
@@ -23,7 +23,7 @@
   <view wx:for="{{registingCompetitions}}" bindtap="GoToCompetitionInfo" wx:key="name" class="competitionCard">
     <view class="cardLeft relative">
       <text class="registing">报名中</text>
-      <image class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
+      <image  class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
     </view>
     <view class="cardRight">
       <view class="competitionName" data-competitionId="{{item.CompetitionId}}" >{{item.name}}</view>
@@ -42,7 +42,7 @@
 <view class="greatCompetitionsContainer" wx:elif="{{innerNavigation=='great'}}">
    <view wx:for="{{registingCompetitions}}" bindtap="GoToCompetitionInfo" wx:key="name" class="competitionCard">
     <view class="cardLeft relative">
-      <image class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
+      <image  class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
     </view>
     <view class="cardRight">
       <view class="competitionName" data-competitionId="{{item.CompetitionId}}">{{item.name}}</view>
@@ -61,7 +61,7 @@
 <view class="myCompetitionsContainer" wx:elif="{{innerNavigation=='my'}}">
    <view wx:for="{{registingCompetitions}}" bindtap="GoToCompetitionInfo" wx:key="name" class="competitionCard">
     <view class="cardLeft relative">
-      <image class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
+      <image  class="width-fix-cover" mode="widthFix" src="{{item.image}}"></image>
     </view>
     <view class="cardRight">
       <view class="competitionName" data-competitionId="{{item.CompetitionId}}" bindtap="GoToCompetitionInfo">{{item.name}}</view>

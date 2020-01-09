@@ -1,13 +1,15 @@
 {
   "pages": [
     "pages/game/game/game",
+    "pages/learn/learnindex/learnindex",
     "pages/chessmanual/chessmanualindex/chessmanualindex",
+    "pages/competition/competitionindex/competitionindex",
     "pages/orgmenu/orgmenu/orgmenu",
     "pages/game/aicompetition/aicompetition",
     "pages/game/scorelist/scorelist",
-    "pages/learn/learnindex/learnindex",
+    
     "pages/competition/edcompetition/edcompetition",
-    "pages/competition/competitionindex/competitionindex",
+    
     "pages/competition/signup/signup",
     "pages/competition/competitioninfo/competitioninfo",
     "pages/game/friendscompetition/friendscompetition",
