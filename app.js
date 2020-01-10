@@ -25,6 +25,7 @@ App({
     })
   },
   connect:function(){
+    
     const options = {
       connectTimeout: 4000, // 超时时间
       // 认证信息 按自己需求填写
@@ -44,24 +45,36 @@ App({
     client.on('connect', (e) => {
       console.log('成功连接服务器111')
       //订阅一个主题
+      client.publish("Login/HD_Login", '{ "userName":"fsf","passWord":"fsfdf"}', function (err) {
+        if (!err) {
+          
+          //client.publish('123', 'Hello mqtt')
+          
+          console.log("测试")
+        }
+      })
       client.publish("Test/HD_AddUser", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
-      client.subscribe('phone_' + 1, { qos: 2 }, function (err) {
+      client.subscribe('try' , { qos: 2 }, function (err,granted) {
         if (!err) {
+          console.log(granted)
           //client.publish('123', 'Hello mqtt')
+          
           console.log("订阅成功")
         }
       })
-      client.subscribe("hello/", function (err) {
-        if (!err) {
-          //client.publish('123', 'Hello mqtt')
-          console.log("订阅成功")
-        }
-      })
+      // client.subscribe("hello/", function (err) {
+      //   if (!err) {
+      //     //client.publish('123', 'Hello mqtt')
+      //     console.log("订阅成功")
+      //   }
+      // })
     })
     //监听mq的返回
     client.on('message', function (topic, message, packet) {
       // message is Buffer
-      console.log("packet", packet.payload.toString())
+      console.log(topic)
+      console.log("packet:",packet.payload.toString())
+      //console.log("packet", packet.payload.toString())
       client.end()
     })
   },
