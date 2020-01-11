@@ -20,7 +20,7 @@ App({
         that.getopenid(res.code)
       },
     })
-    //  this.connect();
+     //this.connect();
 
   },
   getopenid:function(code){
@@ -54,23 +54,20 @@ App({
     client.on('connect', (e) => {
       console.log('成功连接服务器111')
       //订阅一个主题
+     
       client.publish("Test/HD_AddUser", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
-      client.subscribe('phone_' + 1, { qos: 2 }, function (err) {
+      client.subscribe('try', { qos: 2 }, function (err) {
         if (!err) {
           //client.publish('123', 'Hello mqtt')
           console.log("订阅成功")
         }
       })
-      client.subscribe("hello/", function (err) {
-        if (!err) {
-          //client.publish('123', 'Hello mqtt')
-          console.log("订阅成功")
-        }
-      })
+ 
     })
     //监听mq的返回
     client.on('message', function (topic, message, packet) {
-      // message is Buffer
+      // message is Buffer‘
+      console.log(topic)
       console.log("packet", packet.payload.toString())
       client.end()
     })
