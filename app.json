@@ -5,7 +5,7 @@
     "pages/learn/learnindex/learnindex",
     "pages/chessmanual/chessmanualindex/chessmanualindex",
     "pages/competition/competitionindex/competitionindex",
-    "pages/competition/competitiondetail/competitiondetail",
+    "pages/orgmenu/competitiondetail/competitiondetail",
     "pages/orgmenu/orgmenu/orgmenu",
     "pages/game/aicompetition/aicompetition",
     "pages/game/scorelist/scorelist",
