@@ -1,4 +1,5 @@
 // pages/myindex/myindex.js
+var app=getApp()
 Page({
 
   /**
@@ -9,8 +10,9 @@ Page({
   },
 
   GoToGame: function(){
-    wx.navigateTo({
-      url: '/pages/game/game',
+   
+    wx.switchTab({
+      url: "/pages/orgmenu/orgmenu/orgmenu",
     })
   },
 
@@ -19,7 +21,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData.userInfo);
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
 
+          wx.switchTab({
+            url: "/pages/game/game/game",
+          })
+        }
+      }
+    })
+    
+  if(app.globalData.userInfo){
+   wx.switchTab({
+     url: "/pages/game/game/game",
+   })
+  }
   },
 
   /**

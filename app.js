@@ -4,13 +4,23 @@ var mqtt = require('lab/mqtt.js');
 
 App({
   onLaunch: function () {
+
     var that = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success:function(res){
+        that.globalData.userInfo=res.data
+      },
+      fail:function(res){
+        console.log(res+'error');
+      }
+    })
     wx.login({
       complete: (res) => {
         that.getopenid(res.code)
       },
     })
-     this.connect();
+    //  this.connect();
 
   },
   getopenid:function(code){

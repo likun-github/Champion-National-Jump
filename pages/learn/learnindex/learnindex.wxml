@@ -6,7 +6,6 @@
   <text data-route="promote" bindtap="ChangeRoute" class="{{innerRoute=='promote'?'choosed':''}}">进阶</text>
 </view>
  
-
 <view class="gray-margin"></view>
  
  
@@ -21,7 +20,7 @@
         <text class="ruleTitle">国际跳棋100格基本规则</text>
         <text class="ruleSubTitle">国际跳棋100格基本规则</text>
       </view>
-    </view>
+    </view> 
   </view>
 </view>
 
