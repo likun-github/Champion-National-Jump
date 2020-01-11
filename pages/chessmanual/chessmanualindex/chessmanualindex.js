@@ -23,6 +23,7 @@ Page({
       numPass:10,  
       passSelected:0,
       currentPass:"pass-9",
+      pass_detail:[]
   },
 
   redict: function (e) {
@@ -35,6 +36,7 @@ Page({
     console.log(e.currentTarget);
     // 获取选中pass的id
     var pass_id = parseInt(e.currentTarget.id.slice(5, e.currentTarget.id.length));
+    
     this.setData({ passSelected: pass_id});
     if (this.data.pass_pos_info[pass_id].state != 0) {
       wx.navigateTo({
@@ -54,8 +56,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var serverRoot = getApp().globalData.ServerRoot;
+    var serverRoot = getApp().globalData.localhost;
     this.setData({ serverRoot: serverRoot });
+    var procedure = "";
+    // 
+    var that = this;
+    wx.request({
+      url: "http://127.0.0.1:8081/ChessManual",
+      data: { "passid": 1},
+      success: function (res) {
+        that.setData({pass_detail:res.data});
+        console.log(res.data);
+      }
+    });
+    
   },
 
   onPullDownRefresh: function () {
