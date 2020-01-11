@@ -21,7 +21,7 @@ Page({
     let id = e.currentTarget.id;
     this.setData({ currentCollection: this.data.collections[id] });
     wx.navigateTo({
-      url: './competitiondetail',
+      url: '../competitiondetail/competitiondetail',
     })
 
   },
