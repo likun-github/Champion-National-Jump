@@ -2,76 +2,72 @@
 
 
 <view class="topNav">
-  <text data-route="begin" bindtap="ChangeRoute" class="{{innerRoute=='begin'?'choosed':''}}">启蒙</text>
-  <text data-route="promote" bindtap="ChangeRoute" class="{{innerRoute=='promote'?'choosed':''}}">进阶</text>
+	<text data-route="begin" bindtap="ChangeRoute" class="{{innerRoute=='begin'?'choosed':''}}">启蒙</text>
+	<text data-route="promote" bindtap="ChangeRoute" class="{{innerRoute=='promote'?'choosed':''}}">进阶</text>
 </view>
- 
-<view class="gray-margin"></view>
- 
- 
-<view wx:if="{{innerRoute=='begin'}}">
-  <view class="rules">
-    <view class="ruleItem" bindtap="RuleDetail" wx:for="{{[1,2,3]}}">
-      <view class="coverImage">
-        <image class="cover-image" src="{{serverRoot}}/img/learn/video_cover.png"></image>
-      </view>
 
-      <view class="innerText">
-        <text class="ruleTitle">国际跳棋100格基本规则</text>
-        <text class="ruleSubTitle">国际跳棋100格基本规则</text>
-      </view>
-    </view> 
-  </view>
+<view class="gray-margin"></view>
+
+
+<view wx:if="{{innerRoute=='begin'}}">
+	<view class="rules">
+		<view class="ruleItem" bindtap="RuleDetail" wx:for="{{[1,2,3]}}">
+			<view class="coverImage">
+				<image class="cover-image" src="{{serverRoot}}/img/learn/video_cover.png"></image>
+			</view>
+
+			<view class="innerText">
+				<text class="ruleTitle">国际跳棋100格基本规则</text>
+				<text class="ruleSubTitle">国际跳棋100格基本规则</text>
+			</view>
+		</view>
+	</view>
 </view>
 
 
 <view wx:else class="promotePart">
 
-  <view class="video relative" wx:if="{{playVideo}}">
-    <view><button class="blue-btn" bindtap="returnToVideoList">返回视频列表</button></view>
-    <view class="relative">
-      <video src="{{serverRoot}}video/test.mp4" ></video>
-      <!-- <image class="cover-image" src="{{getApp().ServerRoot}}/img/learn/video_cover.png"></image> -->
-    </view>
-    <view class="video-bottom flex-between" >
-      <text class="video-title">国际跳棋专题视频</text>
-      <view class="capsule">
-        <image class="share-icon icon" src="{{serverRoot}}/img/分享.svg" mode="widthFix"></image>
-        <text>分享</text>
-      </view>
-    </view>
+	<view class="video relative" wx:if="{{playVideo}}">
+		<view><button class="blue-btn" bindtap="returnToVideoList">返回视频列表</button></view>
+		<view class="relative">
+			<video src="{{serverRoot}}video/test.mp4"></video>
+			<!-- <image class="cover-image" src="{{getApp().ServerRoot}}/img/learn/video_cover.png"></image> -->
+		</view>
+		<view class="video-bottom flex-between">
+			<text class="video-title">国际跳棋专题视频</text>
+			<view class="capsule">
+				<image class="share-icon icon" src="{{serverRoot}}/img/分享.svg" mode="widthFix"></image>
+				<text>分享</text>
+			</view>
+		</view>
 
-  </view>
+	</view>
 
-  <view class="videos-container" wx:else>
-    <view wx:for="{{[1,2,3]}}" bindtap="SeeVideo" class="video-item">
-        <view class="video-top">
-          <view class="display-btn center">
-              <image class="center" src="{{serverRoot}}/img/learn/play.png" mode="widthFix"></image>
-          </view>
-          <view class="cover-image-container" >
-            <image class="cover-image" src="{{serverRoot}}/img/learn/video_cover.png"></image>
-          </view>
-        </view>       
-        <view class="video-bottom">
-          <text>国际跳棋视频专题</text>
-        </view>
-    </view>
-        <view wx:for="{{[1,2,3]}}" class="video-item">
-        <view class="video-top">
-          <image class="locked center" mode="widthFix" src="{{serverRoot}}/img/learn/lock.png">
-          </image>
-          <view class="cover-image-container">
-            <image class="cover-image lock-cover" src="{{serverRoot}}/img/learn/video_cover.png"></image>
-          </view>
-        </view>        
-        <view class="video-bottom">
-          <text>国际跳棋视频专题</text>
-        </view>
-    </view>
-  </view>
+	<view class="videos-container" wx:else>
+		<view wx:for="{{[1,2,3]}}" bindtap="SeeVideo" class="video-item">
+			<view class="video-top">
+				<view class="display-btn center">
+					<image class="center" src="{{serverRoot}}/img/learn/play.png" mode="widthFix"></image>
+				</view>
+				<view class="cover-image-container">
+					<image class="cover-image" src="{{serverRoot}}/img/learn/video_cover.png"></image>
+				</view>
+			</view>
+			<view class="video-bottom">
+				<text>国际跳棋视频专题</text>
+			</view>
+		</view>
+		<view wx:for="{{[1,2,3]}}" class="video-item">
+			<view class="video-top">
+				<image class="locked center" mode="widthFix" src="{{serverRoot}}/img/learn/lock.png">
+				</image>
+				<view class="cover-image-container">
+					<image class="cover-image lock-cover" src="{{serverRoot}}/img/learn/video_cover.png"></image>
+				</view>
+			</view>
+			<view class="video-bottom">
+				<text>国际跳棋视频专题</text>
+			</view>
+		</view>
+	</view>
 </view>
-
-
-
-

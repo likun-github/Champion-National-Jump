@@ -44,7 +44,21 @@ App({
     })
   },
   connect:function(){
+<<<<<<< HEAD
    
+=======
+    
+    const options = {
+      connectTimeout: 4000, // 超时时间
+      // 认证信息 按自己需求填写
+      clientId: 'xxxx',
+      userName: 'xxx',
+      passWord: 'xxx',
+    }
+    //192.168.5.19
+   // const client = mqtt.connect('wxs://www.yundingu.cn/wss/', options)
+    const client = mqtt.connect('wx://192.168.5.19:3654', options)
+>>>>>>> d2bbd1f3d89b528bc3099805ada29daf90d39350
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
     })
@@ -56,22 +70,24 @@ App({
       //订阅一个主题
       client.publish("Test/HD_AddUser", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
       client.subscribe('try' , { qos: 2 }, function (err) {
+      if (!err) {  
+          console.log("测试")
+        }
+      })
+      client.publish("Test/HD_AddUser", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
+      client.subscribe('try' , { qos: 2 }, function (err,granted) {
         if (!err) {
-          //client.publish('123', 'Hello mqtt')
+          console.log(granted)
           console.log("订阅成功")
         }
       })
-      client.subscribe("hello/", function (err) {
-        if (!err) {
-          //client.publish('123', 'Hello mqtt')
-          console.log("订阅成功")
-        }
-      })
+    
     })
     //监听mq的返回
     client.on('message', function (topic, message, packet) {
       // message is Buffer
-      console.log("packet", packet.payload.toString())
+      console.log(topic)
+      console.log("packet:",packet.payload.toString())
       client.end()
     })
   },

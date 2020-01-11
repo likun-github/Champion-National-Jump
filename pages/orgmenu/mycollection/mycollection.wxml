@@ -2,7 +2,6 @@
 
 <view class="competitionsContainer" wx:for="{{collections}}" wx:for-index="key" wx:for-item="value">
   <view class="competition"  bindtap="GoToDetail" id="{{key}}">
-
     <view class="collectionView">
       <image mode="widthFix" src="{{serverRoot}}/img/me/checkerboard.png"></image>
       <view class="collectionInfo">
