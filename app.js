@@ -44,9 +44,6 @@ App({
     })
   },
   connect:function(){
-<<<<<<< HEAD
-   
-=======
     
     const options = {
       connectTimeout: 4000, // 超时时间
@@ -58,7 +55,6 @@ App({
     //192.168.5.19
    // const client = mqtt.connect('wxs://www.yundingu.cn/wss/', options)
     const client = mqtt.connect('wx://192.168.5.19:3654', options)
->>>>>>> d2bbd1f3d89b528bc3099805ada29daf90d39350
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
     })
