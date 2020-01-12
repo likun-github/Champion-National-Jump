@@ -33,36 +33,12 @@ App({
       },
       success(res){
         that.globalData.userId=res.data.userid;
-        console.log(that.globalData.userId);
       }
     })
   },
 
   connect:function(){
-    client.on('reconnect', (error) => {
-      console.log('正在重连:', error)
-    })
-    client.on('error', (error) => {
-      console.log('连接失败:', error)
-    })
-    client.on('connect', (e) => {
-      console.log('成功连接服务器111')
-      //订阅一个主题
-      client.publish("Test/HD_AddUser", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
-      client.subscribe('try' , { qos: 2 }, function (err) {
-      if (!err) {  
-          console.log("测试")
-        }
-      })
-      client.publish("Test/HD_AddUser", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
-      client.subscribe('try' , { qos: 2 }, function (err,granted) {
-        if (!err) {
-          console.log(granted)
-          console.log("订阅成功")
-        }
-      })
-    
-    })
+   
     //监听mq的返回
     client.on('message', function (topic, message, packet) {
       // message is Buffer

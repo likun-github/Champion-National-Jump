@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    shr:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMS4zMDEiIGhlaWdodD0iMTIuNDciIHZpZXdCb3g9IjAgMCAxMS4zMDEgMTIuNDciPg0KICA8cGF0aCBpZD0i5YiG5LqrIiBkPSJNMTE0LjgyLDc0LjAzMmExLjk0NSwxLjk0NSwwLDEsMS0uNC42NjZMMTExLDcyLjZhMi4zMzcsMi4zMzcsMCwxLDEsLjAwNi0zLjA3bDMuNDE4LTIuMDg2YTEuOTQ4LDEuOTQ4LDAsMSwxLC40MDkuNjY0TDExMS40MSw3MC4yYTIuMzQ3LDIuMzQ3LDAsMCwxLDAsMS43NDFabTAsMCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEwNi44OTkgLTY0LjgzMikiIGZpbGw9IiM4ODgiLz4NCjwvc3ZnPg0K' ,
     serverRoot: "",
     innerRoute: "begin",
     playVideo: false
@@ -95,7 +96,16 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    var that = this;
+  
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      return {
+        title: '冠军国跳',
+        path: '/pages/learn/learnindex/learnindex',
+       // imageUrl: goods_img //不设置则默认为当前页面的截图
+      }
+    }
   }
 })

@@ -2,7 +2,7 @@
 
 <view class="learn-top relative">
   <view class="learn-cover-container relative">
-    <image class="learn-cover width-fix-cover" src="{{serverRoot}}/img/learn/learn_cover.webp"></image>
+    <image style="width:100%;" src="../../../static/learn_cover.jpg"></image>
   </view>
   <view class="learn-info">
     <text class="learn-title">国际跳棋基本规则</text>
@@ -11,8 +11,6 @@
       <text>1.一个棋子既可以是一枚普通棋子，也可以是一枚王棋。</text>
       <text>2. 对局首步永远由执白棋的一方走出。双方轮流走棋，每次各走一着，白方走白色棋子，黑方走黑色棋子。</text>
     </view>
-
-    <image class="share-btn" src="{{serverRoot}}/img/share.png" mode="widthFix"></image>
   </view>
 
 
