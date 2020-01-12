@@ -9,13 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    l:0,
+    l:-1000,
     wm:'/static/wm.png',
     bm:'/static/bm.png',
     serverRoot: "",
     item:'',
     // 对手信息
-    opponentID:1,
+    opponentID:null,
     opponentName:null,
     opponentLevel:null,
     opponentScore:null,
@@ -49,7 +49,7 @@ Page({
 
 
     // 游戏结果
-    gameResult: 1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
+    gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
 
     //现在的目前对象
     currentTarget: null,
@@ -160,7 +160,16 @@ Page({
 
     // })
 
-
+    setTimeout(() => {
+      this.setData({
+        opponentID:1
+      })
+    }, 5000);
+    setTimeout(() => {
+      this.setData({
+        gameResult:1
+      })
+    }, 10000);
     // 设置服务器路径
     var serverRoot = getApp().globalData.ServerRoot;
     this.setData({ serverRoot: serverRoot });
@@ -169,11 +178,7 @@ Page({
     this.setData({ context: context });
 
     this.Inite();
-     if(this.data.opponentID==null){
-       this.setData({
-         l:-1000
-       })
-     }
+
     // 清除计时器,否则分享页面给别人时计时器会在原来的基础上跑跑跑
     if (this.data.whiteTimer != null) {
       clearInterval(this.data.whiteTimer);
