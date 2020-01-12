@@ -1,19 +1,12 @@
 //app.js
 
 var mqtt = require('lab/mqtt.js');
-const options = {
-  connectTimeout: 4000, // 超时时间
-  // 认证信息 按自己需求填写
-  clientId: 'xxxx',
-  userName: 'xxx',
-  passWord: 'xxx',
-}
-//192.168.5.19
-// const client = mqtt.connect('wxs://www.yundingu.cn/wss/', options)
-const client = mqtt.connect('wx://127.0.0.1:3654', options)
+
+
+
 App({
   onLaunch: function () {
-
+    
     var that = this;
     wx.getStorage({
       key: 'userInfo',
@@ -29,20 +22,22 @@ App({
         that.getopenid(res.code)
       },
     })
-    //  this.connect();
-
   },
+
   getopenid:function(code){
+    var that = this;
     wx.request({
-      url: this.globalData.localhost+"/getuserid",
+      url: that.globalData.localhost+"/getuserid",      
       data:{
         "code":code,
       },
       success(res){
-        console.log(res)
+        that.globalData.userId=res.data.userid;
+        console.log(that.globalData.userId);
       }
     })
   },
+
   connect:function(){
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
@@ -86,7 +81,8 @@ App({
     APPSECRET: "9321186a5ee5f8aa1d5b59abfa785d8c",
     gameInfo: null,
     bottomBarRoute: '',
-    ServerRoot: "https://www.yundingu.cn/checkerserver/"
+    ServerRoot: "https://www.yundingu.cn/checkerserver/",
+    userId:null
   },
 
   // 获取用户身份认证情况

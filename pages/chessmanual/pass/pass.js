@@ -76,21 +76,28 @@ Page({
       null, 31, null, 32, null, 33, null, 34, null, 35,
       36, null, 37, null, 38, null, 39, null, 40, null,
       null, 41, null, 42, null, 43, null, 44, null, 45,
-      46, null, 47, null, 48, null, 49, null, 50, null]
+      46, null, 47, null, 48, null, 49, null, 50, null],
+
+      initial_composition:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 加载图片
     var serverRoot = getApp().globalData.ServerRoot;
     this.setData({ serverRoot: serverRoot });
 
+    // 获取上一个页面的数据
+    let pages = getCurrentPages();
+    let previousPage = pages[pages.length - 2];
+    this.setData({ initial_composition: previousPage.data.pass_detail});
+
+    // 画图
     var context = wx.createCanvasContext('chessboard');
     this.setData({ context: context });
-
     this.Inite();
-
     context.draw();
   },
 
@@ -114,18 +121,38 @@ Page({
     // 初始化棋盘-清空棋子
     this.clearBoard();
     // 初始化棋盘-填棋
-    for (let i = 0; i < 100; i++) {
-      // 黑棋
-      if (i <= 39 && (Math.floor(i / 10) + i) % 2 == 1) {
-        this.data.blackChesses[i] = 1;
-      }
-      // 白棋
-      if (i >= 60 && (Math.floor(i / 10) + i) % 2 == 1) {
-        this.data.whiteChesses[i] = 1;
-      }
-    }
+    var initial_composition = [];
+    initial_composition["W"]=movegen.fill50(this.data.initial_composition["white"]);
+    initial_composition["B"]=movegen.fill50(this.data.initial_composition["black"]);
+    initial_composition["K"]=movegen.fill50(this.data.initial_composition["king"]);
+    this.setData({initial_composition:initial_composition});
+    this.Bitboard2Miniboard(this.data.initial_composition);
+    // 绘制棋盘
     this.DrawBoard();
     this.DrawChesses();
+  },
+
+  // 从bitboard棋盘表示法转换成小程序棋盘表示法
+  Bitboard2Miniboard(bitboard) {
+    this.clearBoard();
+    let W = bitboard["W"];
+    let B = bitboard["B"];
+    let K = bitboard["K"];
+    while (W != 0) {
+      let index = movegen.findLowBit(W);
+      W = movegen.And(W, movegen.Not(movegen.Shift(movegen.fill50(1), index, 'l')));
+      this.data.whiteChesses[this.data.bit2Mini[index]] = 1;
+    }
+    while (B != 0) {
+      let index = movegen.findLowBit(B);
+      B = movegen.And(B, movegen.Not(movegen.Shift(movegen.fill50(1), index, 'l')));
+      this.data.blackChesses[this.data.bit2Mini[index]] = 1;
+    }
+    while (K != 0) {
+      let index = movegen.findLowBit(K);
+      K = movegen.And(K, movegen.Not(movegen.Shift(movegen.fill50(1), index, 'l')));
+      this.data.kingChesses[this.data.bit2Mini[index]] = 1;
+    }
   },
 
 
