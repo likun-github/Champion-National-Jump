@@ -33,7 +33,6 @@ App({
       },
       success(res){
         that.globalData.userId=res.data.userid;
-        console.log(that.globalData.userId);
       }
     })
   },

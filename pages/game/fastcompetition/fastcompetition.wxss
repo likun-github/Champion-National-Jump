@@ -5,7 +5,6 @@ Page {
   background-color: rgb(202, 229, 255);
 }
 
-
 /*底部白板*/
 .poster{
   background-color: white;
