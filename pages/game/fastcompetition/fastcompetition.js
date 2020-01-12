@@ -106,14 +106,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const mqtt_options = {
-      connectTimeout: 4000, // 超时时间
-      // 认证信息 按自己需求填写
-      clientId: 'xxxx',
-      userName: 'xxx',
-      passWord: 'xxx',
+    const client = mqtt.connect('wx://192.168.5.19:3654');
+    var userid = getApp().globalData.userId;
+    const match_options = {
+      "userid":userid
     }
-    const client = mqtt.connect('wx://192.168.5.19:3654', mqtt_options);
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
     });
@@ -122,11 +119,9 @@ Page({
     });
     client.on('connect', (e) => {
       console.log('成功连接服务器!')
-      //订阅一个主题
-      client.publish("Jump/HD_Match", '{"userid":"test1"}', console.log)
+      client.publish("Jump/HD_Match",  JSON.stringify(match_options), console.log)
       client.subscribe('oppoInfo' + 1, { qos: 2 }, function (err) {
         if (!err) {
-          //client.publish('123', 'Hello mqtt')
           console.log("订阅成功")
         }
       })
