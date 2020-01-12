@@ -197,7 +197,7 @@ Page({
     context.draw();
     this.startTimer();
     
-  this.cutpic();
+    this.cutpic();
 
 
   },
