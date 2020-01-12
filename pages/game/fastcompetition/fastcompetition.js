@@ -138,27 +138,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 连接服务器
-    // const client = mqtt.connect('wx://127.0.0.1:3654');
-    // client.on('reconnect', (error) => {
-    //   console.log('正在重连:', error)
-    // });
-    // client.on('error', (error) => {
-    //   console.log('连接失败:', error)
-    // });
-    // client.on('connect', (e) => {
-    //   console.log('成功连接服务器!')
-    //   //订阅一个主题
-    //   client.publish("Test/HD_Match", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
-    //   client.subscribe('phone_' + 1, { qos: 2 }, function (err) {
-    //     if (!err) {
-    //       //client.publish('123', 'Hello mqtt')
-    //       console.log("订阅成功")
-    //     }
 
-    //   })
-
-    // })
+    const client = mqtt.connect('wx://192.168.5.19:3654');
+    var userid = getApp().globalData.userId;
+    const match_options = {
+      "userid":userid
+    }
+    client.on('reconnect', (error) => {
+      console.log('正在重连:', error)
+    });
+    client.on('error', (error) => {
+      console.log('连接失败:', error)
+    });
+    client.on('connect', (e) => {
+      console.log('成功连接服务器!')
+      client.publish("Jump/HD_Match",  JSON.stringify(match_options), console.log)
+      client.subscribe('oppoInfo' + 1, { qos: 2 }, function (err) {
+        if (!err) {
+          console.log("订阅成功")
+        }
+      })
+    })
 
     setTimeout(() => {
       this.setData({
