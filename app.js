@@ -2,50 +2,43 @@
 
 var mqtt = require('lab/mqtt.js');
 
+
+
 App({
   onLaunch: function () {
-
+    
     var that = this;
-    // wx.getStorage({
-    //   key: 'userInfo',
-    //   success:function(res){
-    //     that.globalData.userInfo=res.data
-    //   },
-    //   fail:function(res){
-    //     console.log(res+'error');
-    //   }
-    // })
-    // wx.login({
-    //   complete: (res) => {
-    //     that.getopenid(res.code)
-    //   },
-    // })
-    //  this.connect();
-
+    wx.getStorage({
+      key: 'userInfo',
+      success:function(res){
+        that.globalData.userInfo=res.data
+      },
+      fail:function(res){
+        console.log(res+'error');
+      }
+    })
+    wx.login({
+      complete: (res) => {
+        that.getopenid(res.code)
+      },
+    })
   },
+
   getopenid:function(code){
+    var that = this;
     wx.request({
-      url: this.globalData.localhost+"/getuserid",
+      url: that.globalData.localhost+"/getuserid",      
       data:{
         "code":code,
       },
       success(res){
-        console.log(res)
+        that.globalData.userId=res.data.userid;
+        console.log(that.globalData.userId);
       }
     })
   },
+
   connect:function(){
-    
-    const options = {
-      connectTimeout: 4000, // 超时时间
-      // 认证信息 按自己需求填写
-      clientId: 'xxxx',
-      userName: 'xxx',
-      passWord: 'xxx',
-    }
-    //192.168.5.19
-   // const client = mqtt.connect('wxs://www.yundingu.cn/wss/', options)
-    const client = mqtt.connect('wx://192.168.5.19:3654', options)
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
     })
@@ -55,11 +48,9 @@ App({
     client.on('connect', (e) => {
       console.log('成功连接服务器111')
       //订阅一个主题
-      client.publish("Login/HD_Login", '{ "userName":"fsf","passWord":"fsfdf"}', function (err) {
-        if (!err) {
-          
-          //client.publish('123', 'Hello mqtt')
-          
+      client.publish("Test/HD_AddUser", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
+      client.subscribe('try' , { qos: 2 }, function (err) {
+      if (!err) {  
           console.log("测试")
         }
       })
@@ -67,24 +58,16 @@ App({
       client.subscribe('try' , { qos: 2 }, function (err,granted) {
         if (!err) {
           console.log(granted)
-          //client.publish('123', 'Hello mqtt')
-          
           console.log("订阅成功")
         }
       })
-      // client.subscribe("hello/", function (err) {
-      //   if (!err) {
-      //     //client.publish('123', 'Hello mqtt')
-      //     console.log("订阅成功")
-      //   }
-      // })
+    
     })
     //监听mq的返回
     client.on('message', function (topic, message, packet) {
       // message is Buffer
       console.log(topic)
       console.log("packet:",packet.payload.toString())
-      //console.log("packet", packet.payload.toString())
       client.end()
     })
   },
@@ -98,7 +81,8 @@ App({
     APPSECRET: "9321186a5ee5f8aa1d5b59abfa785d8c",
     gameInfo: null,
     bottomBarRoute: '',
-    ServerRoot: "https://www.yundingu.cn/checkerserver/"
+    ServerRoot: "https://www.yundingu.cn/checkerserver/",
+    userId:null
   },
 
   // 获取用户身份认证情况
