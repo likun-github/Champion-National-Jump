@@ -1,5 +1,5 @@
 <!--pages/game/scorelist.wxml-->
-<image class="topBackground" mode="widthFix" src="{{serverRoot}}/img/game/积分榜条.png"></image>
+<image class="topBackground" mode="widthFix" src="/static/积分榜条.jpg"></image>
 
 
 <scroll-view scroll-y="true" class="scoreList" style="height:{{scrollViewHeight}}rpx" >

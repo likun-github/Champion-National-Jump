@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/game/fastcompetition/fastcompetition",
      "pages/myindex/myindex",
     "pages/game/game/game",
     "pages/learn/learnindex/learnindex",
@@ -15,7 +16,7 @@
     "pages/competition/signup/signup",
     "pages/competition/competitioninfo/competitioninfo",
     "pages/game/friendscompetition/friendscompetition",
-    "pages/game/fastcompetition/fastcompetition",
+    
     "pages/orgmenu/verification/constitution/constitution",
     "pages/orgmenu/verification/person/person",
     "pages/orgmenu/verification/uploadsuccess/uploadsuccess",

@@ -9,10 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    l:0,
+    wm:'/static/wm.png',
+    bm:'/static/bm.png',
     serverRoot: "",
-
+    item:'',
     // 对手信息
-    opponentID:null,
+    opponentID:1,
     opponentName:null,
     opponentLevel:null,
     opponentScore:null,
@@ -46,7 +49,7 @@ Page({
 
 
     // 游戏结果
-    gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
+    gameResult: 1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
 
     //现在的目前对象
     currentTarget: null,
@@ -102,31 +105,60 @@ Page({
   },
 
 
+  //截图
+ cutpic:function() {
+  const _this = this
+  return new Promise((resolve, reject) => {
+     setTimeout(() => {
+     wx.canvasToTempFilePath({//调用方法，开始截取
+      x: 0,
+      y: 0,
+      width: _this.data.chessBoardWidth,
+      height: _this.data.chessBoardHeight,
+      destWidth: 375,
+      destHeight: 375,
+      canvasId: 'chessboard',
+      success: function (res) {
+      resolve(res.tempFilePath)
+      console.info('canvas', res.tempFilePath)
+      
+      _this.setData({
+       item: res.tempFilePath
+      })
+      },
+      fail: function (err) {
+      reject(err)
+      console.info(err)
+      }
+     })
+     }, 1000) // 渲染时间
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     // 连接服务器
-    const client = mqtt.connect('wx://127.0.0.1:3654');
-    client.on('reconnect', (error) => {
-      console.log('正在重连:', error)
-    });
-    client.on('error', (error) => {
-      console.log('连接失败:', error)
-    });
-    client.on('connect', (e) => {
-      console.log('成功连接服务器!')
-      //订阅一个主题
-      client.publish("Test/HD_Match", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
-      client.subscribe('phone_' + 1, { qos: 2 }, function (err) {
-        if (!err) {
-          //client.publish('123', 'Hello mqtt')
-          console.log("订阅成功")
-        }
+    // const client = mqtt.connect('wx://127.0.0.1:3654');
+    // client.on('reconnect', (error) => {
+    //   console.log('正在重连:', error)
+    // });
+    // client.on('error', (error) => {
+    //   console.log('连接失败:', error)
+    // });
+    // client.on('connect', (e) => {
+    //   console.log('成功连接服务器!')
+    //   //订阅一个主题
+    //   client.publish("Test/HD_Match", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
+    //   client.subscribe('phone_' + 1, { qos: 2 }, function (err) {
+    //     if (!err) {
+    //       //client.publish('123', 'Hello mqtt')
+    //       console.log("订阅成功")
+    //     }
 
-      })
+    //   })
 
-    })
+    // })
 
 
     // 设置服务器路径
@@ -137,7 +169,11 @@ Page({
     this.setData({ context: context });
 
     this.Inite();
-
+     if(this.data.opponentID==null){
+       this.setData({
+         l:-1000
+       })
+     }
     // 清除计时器,否则分享页面给别人时计时器会在原来的基础上跑跑跑
     if (this.data.whiteTimer != null) {
       clearInterval(this.data.whiteTimer);
@@ -155,6 +191,10 @@ Page({
 
     context.draw();
     this.startTimer();
+    
+  this.cutpic();
+
+
   },
 
   // 秒数 => 时：分：秒
@@ -272,7 +312,7 @@ Page({
         //this.DrawChess(i, context);
         var width = this.data.chessBoardWidth / 10;
         var center = this.GetRectCenter(Math.floor(i / 10), i % 10, this.data.chessBoardWidth, this.data.chessBoardHeight);
-        context.drawImage(this.data.serverRoot +"/img/bm.svg", center.x - width / 2 + width / 8, center.y - width / 2 + width / 8, width * 6 / 8, width * 6 / 8);
+        context.drawImage(this.data.bm, center.x - width / 2 + width / 8, center.y - width / 2 + width / 8, width * 6 / 8, width * 6 / 8);
       }
     }
     context.closePath();
@@ -286,7 +326,7 @@ Page({
         //this.DrawChess(i, context)
         var width = this.data.chessBoardWidth / 10;
         var center = this.GetRectCenter(Math.floor(i / 10), i % 10, this.data.chessBoardWidth, this.data.chessBoardHeight);
-        context.drawImage(this.data.serverRoot+"/img/wm.svg", center.x - width / 2 + width / 8, center.y - width / 2 + width / 8, width * 6 / 8, width * 6 / 8);
+        context.drawImage(this.data.wm, center.x - width / 2 + width / 8, center.y - width / 2 + width / 8, width * 6 / 8, width * 6 / 8);
       }
     }
     context.closePath();

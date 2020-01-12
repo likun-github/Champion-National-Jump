@@ -20,10 +20,9 @@
     </view>
   </view>
 
-  <canvas canvas-id='chessboard' bindtap="TapBoard" style="margin-top:6vh;width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:15px solid rgb(82,169,255);">
+  <canvas canvas-id='chessboard' bindtap="TapBoard" style="margin-top:1vh;width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:15px solid rgb(82,169,255);margin-left:{{l}}px">
   </canvas>
-
-
+  <image  wx:if="{{opponentID == null}}"  src='{{item}}' mode="widthFix" style="margin-top:-{{chessBoardHeight+15}}px"></image>
   <view class="gameButtons">
     <view class="gameButton" bindtap="withdraw">
       <view>
