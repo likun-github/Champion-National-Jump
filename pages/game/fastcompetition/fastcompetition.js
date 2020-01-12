@@ -139,7 +139,7 @@ Page({
    */
   onLoad: function (options) {
 
-    const client = mqtt.connect('wx://192.168.5.19:3654');
+    const client = mqtt.connect('wx://127.0.0.1:3654');
     var userid = getApp().globalData.userId;
     const match_options = {
       "userid":userid
@@ -152,12 +152,18 @@ Page({
     });
     client.on('connect', (e) => {
       console.log('成功连接服务器!')
-      client.publish("Jump/HD_Match",  JSON.stringify(match_options), console.log)
-      client.subscribe('oppoInfo' + 1, { qos: 2 }, function (err) {
+      client.publish("XaXb/HD_Login",  JSON.stringify(match_options), console.log)
+      client.subscribe('OppoInfo', { qos: 2 }, function (err) {
         if (!err) {
           console.log("订阅成功")
         }
       })
+    })
+    client.on('message', function (topic, message, packet) {
+      // message is Buffer
+      console.log(topic)
+      console.log("packet:",packet.payload.toString())
+      client.end()
     })
 
     setTimeout(() => {
