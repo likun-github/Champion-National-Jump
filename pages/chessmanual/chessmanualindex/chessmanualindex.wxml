@@ -1,7 +1,7 @@
 <!--pages/chessmanual/chessmanualindex.wxml-->
 
 <scroll-view scroll-y="true" style="position:fixed; top:0;width: 750rpx;height: {{scroll_view_height}}rpx;display: flex;flex-direction: column;" scroll-into-view="{{currentPass}}">
-  <image class="background" mode="widthFix" src="/static/棋谱-底图[1].jpg"></image>
+  <image class="background" mode="widthFix" src="../../../static/chessmanual.jpg"></image>
   <view wx:for="{{pass_pos_info}}" wx:for-index="key"  id="pass-{{key}}" style="height:{{background_height_rpx/numPass}}rpx" bindtap="goToPass">
     <view class="passTag" style="position:absolute;top:{{item.tag_height_ratio*background_height_rpx}}rpx;left:{{item.tag_width_ratio*750}}rpx;">
       <text>关卡{{numPass-key}}</text>

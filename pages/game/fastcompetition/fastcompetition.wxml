@@ -22,7 +22,7 @@
 
   <canvas  canvas-id='chessboard' bindtap="TapBoard" style="margin-top:0vh;width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;border:15px solid rgb(82,169,255);margin-left:{{opponentID == null||gameResult>=0?l:0}}px">
   </canvas>
-  <image  wx:if="{{opponentID == null||gameResult>=0}}"  src='{{item}}' mode="widthFix" style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;margin-top:-{{chessBoardHeight+30}}px;border:15px solid rgb(82,169,255);"></image>
+  <image  wx:if="{{opponentID == null||gameResult>=0}}"  src='{{item}}' mode="widthFix" style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;margin-top:-{{chessBoardHeight+30}}px;border:15px solid rgb(82,169,255);display:block;height: auto;"></image>
   <view class="gameButtons">
     <view class="gameButton" bindtap="withdraw">
       <view>
