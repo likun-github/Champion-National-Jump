@@ -149,6 +149,7 @@ Page({
     client.on('connect', (e) => {
       console.log('成功连接服务器!')
       //订阅一个主题
+      client.publish("Login/HD_Login", '{"userid":"1"}', console.log)
       client.publish("Jump/HD_GetUsableTable", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
       client.subscribe('table', { qos: 0 }, function (err) {
         if (!err) {
@@ -157,12 +158,17 @@ Page({
         }
 
       })
+      
       client.on('message', function (topic, message, packet) {
         // message is Buffer
         if(topic=='table'){
           console.log("packet:",packet.payload.toString())
           client.publish("Jump/HD_Enter", packet.payload.toString(), console.log)
           
+        }
+        else{
+          console.log(topic)
+          console.log("packet:",packet.payload.toString())
         }
         
         
