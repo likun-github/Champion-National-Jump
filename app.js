@@ -5,8 +5,7 @@ var mqtt = require('lab/mqtt.js');
 
 
 App({
-  onLaunch: function () {
-    
+  onLaunch: function () {   
     var that = this;
     wx.getStorage({
       key: 'userInfo',
@@ -68,14 +67,11 @@ App({
     wx.request({
       url: that.globalData.restServiceBaseUrl + "GetUserInfo",
       data: JSON.stringify({ RegisteredUserOpenId: that.globalData.openId }),
-      success: function (res) {
-      
+      success: function (res) {    
         var registeredUser = res.data.RegisteredUser;
 
         //如果OpenId不存在那么用户还未注册，或提交注册
         if(registeredUser.RegisteredUserOpenId==""){
-
-
         }
         else{
           this.globalData.userInfo
@@ -100,7 +96,6 @@ App({
   GetRegisterInfo: function () {
     var that = this;
     var role = this.globalData.role;
-
     var procedure = "";
     switch (role) {
       case "student":
@@ -113,7 +108,6 @@ App({
         procedure = "GetCoachInfo";
         break;
       default:
-
     }
     wx.request({
       url: that.globalData.restServiceBaseUrl + procedure,
@@ -123,8 +117,4 @@ App({
       }
     })
   },
-
-
-
-
 })

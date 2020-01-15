@@ -64,7 +64,7 @@ Page({
     // 
     var that = this;
     wx.request({
-      url: "http://127.0.0.1:8081/ChessManual",
+      url: "http://192.168.5.19:8081/ChessManual",
       data: { "passid": 1},
       success: function (res) {
         that.setData({pass_detail:res.data});

@@ -138,8 +138,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //连接服务器
-    const client = mqtt.connect('wx://127.0.0.1:3654');
+    // 连接服务器，开始匹配
+    const client = mqtt.connect('wx://192.168.5.19:3654');
+    var userid = getApp().globalData.userId;
+    const match_options = {
+      "userid":userid
+    }
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
     });
@@ -149,34 +153,28 @@ Page({
     client.on('connect', (e) => {
       console.log('成功连接服务器!')
       //订阅一个主题
-      client.publish("Login/HD_Login", '{"userid":"1"}', console.log)
-      client.publish("Jump/HD_GetUsableTable", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
-      client.subscribe('table', { qos: 0 }, function (err) {
+      client.publish("Jump/HD_GetUsableTable",JSON.stringify(match_options), console.log)
+      client.subscribe('Table', { qos: 0 }, function (err) {
         if (!err) {
-          //client.publish('123', 'Hello mqtt')
-          console.log("订阅成功")
+          console.log("订阅成功");
         }
-
       })
+    });
+    client.on('message', function (topic, message, packet) {
+      // message is Buffer
+      if(topic=='table'){
+        console.log("packet:",JSON.parse(packet.payload.toString()));
+        client.publish("Jump/HD_Enter", packet.payload.toString(), console.log);
+      } 
+      else {
+        console.log("packet:",JSON.parse(packet.payload.toString()));
+      }
+    });
       
-      client.on('message', function (topic, message, packet) {
-        // message is Buffer
-        if(topic=='table'){
-          console.log("packet:",packet.payload.toString())
-          client.publish("Jump/HD_Enter", packet.payload.toString(), console.log)
-          
-        }
-        else{
-          console.log(topic)
-          console.log("packet:",packet.payload.toString())
-        }
-        
-        
-      })
-
-    })
+      
 
 
+   
     // 设置服务器路径
     var serverRoot = getApp().globalData.ServerRoot;
     this.setData({ serverRoot: serverRoot });
@@ -209,8 +207,6 @@ Page({
     this.startTimer();
     
   this.cutpic();
-
-
   },
 
   // 秒数 => 时：分：秒
@@ -709,87 +705,82 @@ Page({
         this.startTimer();
       }
     } else { // 黑棋（AI）走棋
+    // 如果选中可走棋，则高亮这个棋子，并画出其可走路径
+        if (this.IsMovable(targetRect, paths)) {
+          this.setData({ currentTarget: { index: targetRect, king: this.data.kingChesses[targetRect] == 1 } });
+          let currentAvailablePaths = this.GetCurrentAvailablePaths(targetRect, paths);
+          let currentAvailableDst = this.GetCurrentAvailableDst(currentAvailablePaths);
+          this.setData({ currentAvailablePaths: this.GetCurrentAvailablePaths(targetRect, paths) });
+          this.setData({ currentAvailableDst: this.GetCurrentAvailableDst(currentAvailablePaths) });
+          // 这一部分需要优化
+          this.DrawBoard();
+          this.HighlightChess(targetRect, "red");
+          this.DrawInfoPaths(targetRect, currentAvailableDst);
+          this.DrawChesses();
+          this.data.context.draw();
+        } else if (this.data.currentTarget && this.IsDst(targetRect, this.data.currentAvailableDst)) { // 如果选中 当前选中棋子的 可走路径的终点，则完成这项操作
+        // 获取所选路径并提取出pass，kill，dst等相关信息      
+            let targetPath = this.GetTargetPath(targetRect, this.data.currentAvailablePaths);
+            let src = this.data.currentTarget["index"];
+            let pass = targetPath["pass"];
+            if (pass != null) { // 把pass的路径补充完整
+              pass = this.FillPass(pass, dst);
+            }
+            let kill = targetPath["kill"];
+            let dst = targetPath["dst"];
+            let isKilledKing = [];
 
+            // 更改棋盘-绘制空棋盘
+            this.DrawBoard();
+            // 更改棋盘-绘制经过的棋位
+            if (pass != null) {
+              for (let i = 0; i < pass.length; i++) {
+                this.HighlightChess(pass[i], "purple");
+              }
+            }
+            // 更改棋盘-更改黑棋数组
+            this.data.blackChesses[src] = 0;
+            this.data.blackChesses[dst] = 1;
+            // 更改棋盘-如果是移动的是王棋，则更改王棋数组
+            if (this.data.kingChesses[src] == 1) {
+              this.data.kingChesses[src] = 0;
+              this.data.kingChesses[dst] = 1;
+            }
+            // 更改棋盘-如果黑棋到达顶部则变为王棋
+            if (Math.floor(dst / 10) == 0) {
+              this.data.kingChesses[dst] = 1;
+            }
+            // 更改棋盘-去掉被吃的白棋，并绘制被吃的白棋
+            if (kill[0] != null) {
+              for (let i = 0; i < kill.length; i++) {
+                this.HighlightChess(kill[i], "blue");
+                this.data.whiteChesses[kill[i]] = 0;
+                if (this.data.kingChesses[kill[i]] == 0) { // 被吃子不是王棋
+              } else { // 被吃子是王棋
+                this.data.kingChesses[kill[i]] = 0;
+              }
+            }
+          }
+          // 更改棋盘-绘制白棋起点、终点
+          this.HighlightChess(src, "red");
+          this.HighlightChess(dst, "red");
+          // 更改棋盘-绘制所有棋子
+          this.DrawChesses();
+          this.data.context.draw();
 
-      
-// 如果选中可走棋，则高亮这个棋子，并画出其可走路径
-if (this.IsMovable(targetRect, paths)) {
-  this.setData({ currentTarget: { index: targetRect, king: this.data.kingChesses[targetRect] == 1 } });
-  let currentAvailablePaths = this.GetCurrentAvailablePaths(targetRect, paths);
-  let currentAvailableDst = this.GetCurrentAvailableDst(currentAvailablePaths);
-  this.setData({ currentAvailablePaths: this.GetCurrentAvailablePaths(targetRect, paths) });
-  this.setData({ currentAvailableDst: this.GetCurrentAvailableDst(currentAvailablePaths) });
-  // 这一部分需要优化
-  this.DrawBoard();
-  this.HighlightChess(targetRect, "red");
-  this.DrawInfoPaths(targetRect, currentAvailableDst);
-  this.DrawChesses();
-  this.data.context.draw();
-} else if (this.data.currentTarget && this.IsDst(targetRect, this.data.currentAvailableDst)) { // 如果选中 当前选中棋子的 可走路径的终点，则完成这项操作
-  // 获取所选路径并提取出pass，kill，dst等相关信息      
-  let targetPath = this.GetTargetPath(targetRect, this.data.currentAvailablePaths);
-  let src = this.data.currentTarget["index"];
-  let pass = targetPath["pass"];
-  if (pass != null) { // 把pass的路径补充完整
-    pass = this.FillPass(pass, dst);
-  }
-  let kill = targetPath["kill"];
-  let dst = targetPath["dst"];
-  let isKilledKing = [];
+          // 更换当前走子方
+          this.setData({ currentUser: 0 });
+          // 清空当前选中棋子信息
+          this.setData({ currentTarget: null, availablePaths: null });
+          // 把当前棋盘转换成bitboard棋盘，存在whiteWithdraw中
+          this.data.whiteWithdraw.push(this.MiniBoard2Bitboard());
+          // 把当前棋盘转换成Scan的棋盘，并上传服务器………………
 
-  // 更改棋盘-绘制空棋盘
-  this.DrawBoard();
-  // 更改棋盘-绘制经过的棋位
-  if (pass != null) {
-    for (let i = 0; i < pass.length; i++) {
-      this.HighlightChess(pass[i], "purple");
-    }
-  }
-  // 更改棋盘-更改黑棋数组
-  this.data.blackChesses[src] = 0;
-  this.data.blackChesses[dst] = 1;
-  // 更改棋盘-如果是移动的是王棋，则更改王棋数组
-  if (this.data.kingChesses[src] == 1) {
-    this.data.kingChesses[src] = 0;
-    this.data.kingChesses[dst] = 1;
-  }
-  // 更改棋盘-如果黑棋到达顶部则变为王棋
-  if (Math.floor(dst / 10) == 0) {
-    this.data.kingChesses[dst] = 1;
-  }
-  // 更改棋盘-去掉被吃的白棋，并绘制被吃的白棋
-  if (kill[0] != null) {
-    for (let i = 0; i < kill.length; i++) {
-      this.HighlightChess(kill[i], "blue");
-      this.data.whiteChesses[kill[i]] = 0;
-      if (this.data.kingChesses[kill[i]] == 0) { // 被吃子不是王棋
-      } else { // 被吃子是王棋
-        this.data.kingChesses[kill[i]] = 0;
+          // 开启计时器
+          this.startTimer();
+        }
       }
-    }
-  }
-  // 更改棋盘-绘制白棋起点、终点
-  this.HighlightChess(src, "red");
-  this.HighlightChess(dst, "red");
-  // 更改棋盘-绘制所有棋子
-  this.DrawChesses();
-  this.data.context.draw();
-
-  // 更换当前走子方
-  this.setData({ currentUser: 0 });
-  // 清空当前选中棋子信息
-  this.setData({ currentTarget: null, availablePaths: null });
-  // 把当前棋盘转换成bitboard棋盘，存在whiteWithdraw中
-  this.data.whiteWithdraw.push(this.MiniBoard2Bitboard());
-  // 把当前棋盘转换成Scan的棋盘，并上传服务器………………
-
-  // 开启计时器
-  this.startTimer();
-
-
-      }
-    }
-  },
+    },
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // 认输
