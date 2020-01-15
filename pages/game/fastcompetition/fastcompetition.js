@@ -142,7 +142,7 @@ Page({
     const client = mqtt.connect('wx://192.168.5.19:3654');
     var userid = getApp().globalData.userId;
     const match_options = {
-      "userid":userid
+      "userid":"1"
     }
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
@@ -163,11 +163,12 @@ Page({
     client.on('message', function (topic, message, packet) {
       // message is Buffer
       if(topic=='table'){
-        console.log("packet:",JSON.parse(packet.payload.toString()));
+        console.log("packet:",packet.payload.toString());
         client.publish("Jump/HD_Enter", packet.payload.toString(), console.log);
+        client.publish("Jump/HD_Login",JSON.stringify(match_options), console.log)
       } 
       else {
-        console.log("packet:",JSON.parse(packet.payload.toString()));
+        console.log("packet:",packet.payload.toString());
       }
     });
       

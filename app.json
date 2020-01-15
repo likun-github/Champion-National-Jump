@@ -1,7 +1,8 @@
 {
   "pages": [  
-    "pages/game/game/game",
     "pages/game/fastcompetition/fastcompetition",
+    "pages/game/game/game",
+    
     "pages/myindex/myindex",
     "pages/learn/learnindex/learnindex",
     "pages/learn/learncontent/learncontent",
