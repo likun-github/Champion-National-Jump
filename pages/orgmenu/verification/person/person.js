@@ -88,7 +88,7 @@ Page({
     // 没有错误，提交表格，并完成页面跳转
     if (this.data.error == 0) {
       wx.redirectTo({
-        url: "pages/vertification/uploadsuccess/uploadsuccess",
+        url: "/pages/orgmenu/verification/uploadsuccess/uploadsuccess",
       });
     }
   },

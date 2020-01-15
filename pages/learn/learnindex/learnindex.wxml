@@ -7,7 +7,7 @@
 </view>
 
 <view class="gray-margin"></view>
-
+ 
 
 <view wx:if="{{innerRoute=='begin'}}">
 	<view class="rules">
@@ -35,9 +35,9 @@
 		</view>
 		<view class="video-bottom flex-between">
 			<text class="video-title">国际跳棋专题视频</text>
-			<view class="capsule">
-				<image class="share-icon icon" src="{{serverRoot}}/img/分享.svg" mode="widthFix"></image>
-				<text>分享</text>
+			<view class="capsule"style='display:flex;flex-direction:row;width:200rpx'>
+				<image class="share-icon icon" src="{{shr}}" mode="widthFix" style="width:50rpx;margin-top:20rpx"></image>
+				<button open-type='share' class='share'>分享</button>
 			</view>
 		</view>
 

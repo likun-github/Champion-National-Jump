@@ -9,13 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    l:-1000,
+    l:0,
     wm:'/static/wm.png',
     bm:'/static/bm.png',
     serverRoot: "",
     item:'',
     // 对手信息
-    opponentID:null,
+    opponentID:1,
     opponentName:null,
     opponentLevel:null,
     opponentScore:null,
@@ -49,7 +49,7 @@ Page({
 
 
     // 游戏结果
-    gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
+    gameResult: 1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
 
     //现在的目前对象
     currentTarget: null,
@@ -152,9 +152,11 @@ Page({
     });
     client.on('connect', (e) => {
       console.log('成功连接服务器!')
-      client.publish("XaXb/HD_Login",  JSON.stringify(match_options), console.log)
-      client.subscribe('OppoInfo', { qos: 2 }, function (err) {
+      //订阅一个主题
+      client.publish("Jump/HD_GetUsableTable", '{"userName":"test1","passWord":"xxx","age":26, "email":"xxxx.com", "tel":151111111}', console.log)
+      client.subscribe('table', { qos: 0 }, function (err) {
         if (!err) {
+          //client.publish('123', 'Hello mqtt')
           console.log("订阅成功")
         }
       })
@@ -166,16 +168,14 @@ Page({
       client.end()
     })
 
-    setTimeout(() => {
-      this.setData({
-        opponentID:1
+    client.on('message', function (topic, message, packet) {
+        // message is Buffer
+        if(topic=='table'){
+          console.log("packet:",packet.payload.toString())
+          client.publish("Jump/HD_Enter", packet.payload.toString(), console.log)         
+        }       
       })
-    }, 5000);
-    setTimeout(() => {
-      this.setData({
-        gameResult:1
-      })
-    }, 10000);
+
     // 设置服务器路径
     var serverRoot = getApp().globalData.ServerRoot;
     this.setData({ serverRoot: serverRoot });
@@ -184,7 +184,11 @@ Page({
     this.setData({ context: context });
 
     this.Inite();
-
+     if(this.data.opponentID==null){
+       this.setData({
+         l:-1000
+       })
+     }
     // 清除计时器,否则分享页面给别人时计时器会在原来的基础上跑跑跑
     if (this.data.whiteTimer != null) {
       clearInterval(this.data.whiteTimer);

@@ -175,10 +175,15 @@ image.locked{
   font-size: 32rpx;
   margin: 10rpx 0; 
 }
-
-
-.tutorialInfo{
-  
+button::after {
+  border: none;
+}
+.share{
+  background: rgba(0, 0, 0, 0);
+  width: 200rpx;
+  height: 100rpx;
+ 
+  right: 20rpx;
 }
 
 
