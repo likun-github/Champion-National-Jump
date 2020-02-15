@@ -70,8 +70,8 @@
     </view>
 </view>
 
-<view wx:if="{{aiLevel == -1 || sequence == -1}}" class='mask-view' catchtouchmove='ture'>
-</view>
+<cover-view wx:if="{{aiLevel == -1 || sequence == -1}}" class='mask-view' catchtouchmove='ture'>
+</cover-view>
 
 <view wx:if="{{gameResult>=0}}" class="gameEndTip">
   <view class="gameEndTipImage">
