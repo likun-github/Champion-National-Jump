@@ -107,27 +107,27 @@
     <cover-view class="title">
       <cover-view class="blueline">———</cover-view>
       <cover-image src="{{serverRoot}}/img/game/ai/AI等级.svg" style="width:26px;height:25px;"></cover-image>
-      <cover-view class="text">AI等级</cover-view>    
+      <cover-view class="text1">AI等级</cover-view>    
       <cover-view class="blueline">———</cover-view>
     </cover-view>
     <cover-view class="buttons">
       <cover-view wx:if="{{aiLevel==0}}" id="easy" class="button red" bindtouchstart="handleTouchStart">
-        <cover-view class="text">入门</cover-view>
+        <cover-view class="text2">入门</cover-view>
       </cover-view>
       <cover-view wx:else id="easy" class="button blue" bindtouchstart="handleTouchStart">
-        <cover-view class="text">入门</cover-view>
+        <cover-view class="text2">入门</cover-view>
       </cover-view>
       <cover-view wx:if="{{aiLevel==1}}" id="medium" class="button red" bindtouchstart="handleTouchStart">
-        <cover-view class="text">普通</cover-view>
+        <cover-view class="text2">普通</cover-view>
       </cover-view>
       <cover-view wx:else id="medium" class="button blue" bindtouchstart="handleTouchStart">
-        <cover-view class="text">普通</cover-view>
+        <cover-view class="text2">普通</cover-view>
       </cover-view>
       <cover-view wx:if="{{aiLevel==2}}" id="hard" class="button red" bindtouchstart="handleTouchStart">
-        <cover-view class="text">大师</cover-view>
+        <cover-view class="text2">大师</cover-view>
       </cover-view>
       <cover-view wx:else id="hard" class="button blue" bindtouchstart="handleTouchStart">
-        <cover-view class="text">大师</cover-view>
+        <cover-view class="text2">大师</cover-view>
       </cover-view>
     </cover-view>
   </cover-view>
@@ -135,27 +135,27 @@
     <cover-view class="title">
       <cover-view class="blueline">———</cover-view>
       <cover-image mode="widthFix"src="{{serverRoot}}/img/game/ai/先后顺序.svg" style="width:26px;height:25px;"></cover-image>
-      <cover-view class="text">先后顺序</cover-view>    
+      <cover-view class="text1">先后顺序</cover-view>    
       <cover-view class="blueline">———</cover-view>
     </cover-view>
     <cover-view class="buttons">
       <cover-view wx:if="{{sequence==0}}" id="first" class="button yellow" bindtouchstart="handleTouchStart">
-        <cover-view class="text">先手</cover-view>
+        <cover-view class="text2">先手</cover-view>
       </cover-view>
       <cover-view wx:else id="first" class="button blue" bindtouchstart="handleTouchStart">
-        <cover-view class="text">先手</cover-view>
+        <cover-view class="text2">先手</cover-view>
       </cover-view>
       <cover-view wx:if="{{sequence==1}}" id="second" class="button yellow" bindtouchstart="handleTouchStart">
-        <cover-view class="text">后手</cover-view>
+        <cover-view class="text2">后手</cover-view>
       </cover-view>
       <cover-view wx:else id="second" class="button blue" bindtouchstart="handleTouchStart">
-        <cover-view class="text">后手</cover-view>
+        <cover-view class="text2">后手</cover-view>
       </cover-view>
       <cover-view wx:if="{{sequence==2}}" id="random" class="button yellow" bindtouchstart="handleTouchStart">
-        <cover-view class="text">随机</cover-view>
+        <cover-view class="text2">随机</cover-view>
       </cover-view>
       <cover-view wx:else id="random" class="button blue" bindtouchstart="handleTouchStart">
-        <cover-view class="text">随机</cover-view>
+        <cover-view class="text2">随机</cover-view>
       </cover-view>
     </cover-view>
   </cover-view>

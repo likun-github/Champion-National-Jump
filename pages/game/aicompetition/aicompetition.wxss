@@ -146,7 +146,7 @@ Page {
   letter-spacing:5rpx;
   padding:0rpx 0rpx 0rpx 7.5rpx;
 }
- .text {
+ .text1 {
   color:rgb(82,169,255);
   font-size: 30rpx;
   font-weight: 550;
@@ -166,6 +166,12 @@ Page {
   padding:12.5rpx 35rpx;
 }
 .button text {
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: 900;
+  letter-spacing:5rpx;
+}
+.text2{
   text-align: center;
   font-size: 35rpx;
   font-weight: 900;
