@@ -139,10 +139,10 @@ Page({
    */
   onLoad: function (options) {
     // 连接服务器，开始匹配
-    const client = mqtt.connect('wx://192.168.5.19:3654');
+    const client = mqtt.connect('wx://127.0.0.1:3654');
     var userid = getApp().globalData.userId;
-    const match_options = {
-      "userid":"1"
+    const user_id = {
+      "userid":"2"
     }
     client.on('reconnect', (error) => {
       console.log('正在重连:', error)
@@ -150,26 +150,31 @@ Page({
     client.on('error', (error) => {
       console.log('连接失败:', error)
     });
+    client.publish("Jump/HD_GetUsableTable",JSON.stringify(user_id), console.log);
+    client.subscribe('Table', { qos: 0 }, function (err) {
+      if (!err) {
+        console.log("订阅成功");
+      } else {
+        console.log(err);
+      }
+    })
     client.on('connect', (e) => {
       console.log('成功连接服务器!')
-      //订阅一个主题
-      client.publish("Jump/HD_GetUsableTable",JSON.stringify(match_options), console.log)
+      //发-获取可用桌子
+      //client.publish("Jump/HD_GetUsableTable",JSON.stringify(user_id), console.log)
+      /*
       client.subscribe('Table', { qos: 0 }, function (err) {
         if (!err) {
           console.log("订阅成功");
+        } else {
+          console.log(err);
         }
       })
+      */
     });
     client.on('message', function (topic, message, packet) {
-      // message is Buffer
-      if(topic=='table'){
-        console.log("packet:",packet.payload.toString());
-        client.publish("Jump/HD_Enter", packet.payload.toString(), console.log);
-        client.publish("Jump/HD_Login",JSON.stringify(match_options), console.log)
-      } 
-      else {
-        console.log("packet:",packet.payload.toString());
-      }
+      console.log(topic);
+      console.log("packet:",packet.payload.toString());    
     });
       
       
