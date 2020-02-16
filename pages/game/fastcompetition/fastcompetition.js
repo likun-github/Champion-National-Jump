@@ -160,9 +160,9 @@ Page({
     })
     client.on('connect', (e) => {
       console.log('成功连接服务器!')
-      //发-获取可用桌子
-      //client.publish("Jump/HD_GetUsableTable",JSON.stringify(user_id), console.log)
-      /*
+      //订阅一个主题
+      client.publish("Jump/HD_GetUsableTable",JSON.stringify(match_options), console.log)
+      client.publish("Jump/HD_Login",JSON.stringify(match_options), console.log)
       client.subscribe('Table', { qos: 0 }, function (err) {
         if (!err) {
           console.log("订阅成功");
@@ -170,11 +170,15 @@ Page({
           console.log(err);
         }
       })
-      */
+      
     });
     client.on('message', function (topic, message, packet) {
-      console.log(topic);
-      console.log("packet:",packet.payload.toString());    
+      
+      // message is Buffer
+      
+        console.log(topic)
+        console.log("packet:",packet.payload.toString());
+      
     });
       
       
