@@ -1,12 +1,5 @@
 {
-  "pages": [  
-<<<<<<< HEAD
-=======
-    "pages/game/game/game",
-    "pages/game/fastcompetition/fastcompetition",
-    
->>>>>>> master
-    
+  "pages": [      
     "pages/game/game/game",
     "pages/game/fastcompetition/fastcompetition",
     "pages/myindex/myindex",

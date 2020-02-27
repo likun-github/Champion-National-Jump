@@ -139,7 +139,7 @@ Page({
    */
   onLoad: function (options) {
     // 连接服务器，开始匹配
-    const client = mqtt.connect('wx://127.0.0.1:3654');
+    const client = mqtt.connect('wx://192.168.6.1:3654');
     var userid = getApp().globalData.userId;
     const user_id = {
       "userid":"2"
@@ -150,27 +150,17 @@ Page({
     client.on('error', (error) => {
       console.log('连接失败:', error)
     });
-    client.publish("Jump/HD_GetUsableTable",JSON.stringify(user_id), console.log);
-    client.subscribe('Table', { qos: 0 }, function (err) {
-      if (!err) {
-        console.log("订阅成功");
-      } else {
-        console.log(err);
-      }
-    })
     client.on('connect', (e) => {
       console.log('成功连接服务器!')
       //订阅一个主题
-      client.publish("Jump/HD_GetUsableTable",JSON.stringify(match_options), console.log)
-      client.publish("Jump/HD_Login",JSON.stringify(match_options), console.log)
+      client.publish("Jump/HD_GetUsableTable",JSON.stringify(user_id), console.log)
       client.subscribe('Table', { qos: 0 }, function (err) {
         if (!err) {
           console.log("订阅成功");
         } else {
           console.log(err);
         }
-      })
-      
+      })  
     });
     client.on('message', function (topic, message, packet) {
       
