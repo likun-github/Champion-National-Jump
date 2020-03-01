@@ -49,7 +49,7 @@ Page({
 
 
     // 游戏结果
-    gameResult: 1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
+    gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
 
     //现在的目前对象
     currentTarget: null,
@@ -139,7 +139,7 @@ Page({
    */
   onLoad: function (options) {
     // 连接服务器，开始匹配
-    const client = mqtt.connect('wx://192.168.6.1:3654');
+    const client = mqtt.connect('wx://192.168.3.5:3654');
     var userid = getApp().globalData.userId;
     const user_id = {
       "userid":"2"
@@ -698,8 +698,26 @@ Page({
         // 清空当前选中棋子信息
         this.setData({ currentTarget: null, availablePaths: null });
         // 把当前棋盘转换成bitboard棋盘，存在whiteWithdraw中
-        this.data.whiteWithdraw.push(this.MiniBoard2Bitboard());
-        // 把当前棋盘转换成Scan的棋盘，并上传服务器………………
+        var current_bitboard = this.MiniBoard2Bitboard();
+        this.data.whiteWithdraw.push(current_bitboard);
+        // 把当前棋盘上传服务器………………
+        const current_bitboard_json = {
+          "W": current_bitboard["W"],
+          "B": current_bitboard["B"],
+          "K": current_bitboard["K"]
+        }
+        client.on('connect', (e) => {
+          console.log('成功连接服务器!')
+          //订阅一个主题
+          client.publish("Jump/HD_Control",JSON.stringify(current_bitboard_json), console.log)
+          client.subscribe('Table', { qos: 0 }, function (err) {
+            if (!err) {
+              console.log("订阅成功");
+            } else {
+              console.log(err);
+            }
+          })  
+        });
 
         // 开启计时器
         this.startTimer();
