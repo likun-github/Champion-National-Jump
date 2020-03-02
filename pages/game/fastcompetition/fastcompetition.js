@@ -14,8 +14,12 @@ Page({
     bm:'/static/bm.png',
     serverRoot: "",
     item:'',
+
+    // 用户信息
+    checker_color: -1, // -1：未匹配完成，不知道是黑子还是白子，0：用户执白子，1：用户执黑子
+
     // 对手信息
-    opponentID:1,
+    opponentID:null,
     opponentName:null,
     opponentLevel:null,
     opponentScore:null,
@@ -54,7 +58,7 @@ Page({
     //现在的目前对象
     currentTarget: null,
 
-    //代表现在出棋的一方： 0 代表白方, 1代表黑方（AI）
+    //代表现在出棋的一方： 0 代表白方, 1代表黑方
     currentUser: 0,
 
     // 当前选中棋子的可走路径
@@ -101,7 +105,9 @@ Page({
       null, 31, null, 32, null, 33, null, 34, null, 35,
       36, null, 37, null, 38, null, 39, null, 40, null,
       null, 41, null, 42, null, 43, null, 44, null, 45,
-      46, null, 47, null, 48, null, 49, null, 50, null]
+      46, null, 47, null, 48, null, 49, null, 50, null],
+
+      client: 0
   },
 
 
@@ -139,36 +145,44 @@ Page({
    */
   onLoad: function (options) {
     // 连接服务器，开始匹配
-    const client = mqtt.connect('wx://192.168.3.5:3654');
+    this.data.client = mqtt.connect('wx://192.168.3.5:3654');
     var userid = getApp().globalData.userId;
     const user_id = {
       "userid":"2"
     }
-    client.on('reconnect', (error) => {
+    this.data.client.on('reconnect', (error) => {
       console.log('正在重连:', error)
     });
-    client.on('error', (error) => {
+    this.data.client.on('error', (error) => {
       console.log('连接失败:', error)
     });
-    client.on('connect', (e) => {
+    this.data.client.on('connect', (e) => {
       console.log('成功连接服务器!')
       //订阅一个主题
-      client.publish("Jump/HD_GetUsableTable",JSON.stringify(user_id), console.log)
-      client.subscribe('Table', { qos: 0 }, function (err) {
-        if (!err) {
-          console.log("订阅成功");
-        } else {
-          console.log(err);
-        }
-      })  
+      this.data.client.publish("Jump/HD_GetUsableTable",JSON.stringify(user_id), console.log) 
     });
-    client.on('message', function (topic, message, packet) {
-      
+    this.data.client.on('message', function (topic, message, packet) { 
       // message is Buffer
-      
         console.log(topic)
         console.log("packet:",packet.payload.toString());
-      
+        if(topic == "MatchFinish") {
+          match_result = JSON.parse(packet.payload);
+          console.log(result);
+          if (userid == match_result["w_uid"]) { // 当前用户执白子
+            this.data.opponentID = match_result["b_uid"];
+            this.data.opponentName = match_result["b_name"];
+            this.data.opponentScore = match_result["b_score"];
+            this.data.opponentLevel = match_result["b_level"];
+            this.data.checker_color = 0;
+          } else { // 当前用户执黑子
+            this.data.opponentID = match_result["w_uid"];
+            this.data.opponentName = match_result["w_name"];
+            this.data.opponentScore = match_result["w_score"];
+            this.data.opponentLevel = match_result["w_level"];
+            this.data.checker_color = 1;
+          }
+          this.data.opponentID = match_result
+        }
     });
       
       
