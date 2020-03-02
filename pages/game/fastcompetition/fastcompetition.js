@@ -17,12 +17,16 @@ Page({
 
     // 用户信息
     checker_color: -1, // -1：未匹配完成，不知道是黑子还是白子，0：用户执白子，1：用户执黑子
+    userName: -1,
+    userAvatar: -1,
+    userLevel: -1,
+    userScore: -1,
 
     // 对手信息
-    opponentID:null,
-    opponentName:null,
-    opponentLevel:null,
-    opponentScore:null,
+    opponentID:-1,
+    opponentName:-1,
+    opponentLevel:-1,
+    opponentScore:-1,
 
     // 上下文
     context: null,
@@ -144,6 +148,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 获取用户的微信名以及微信头像
+    this.setData({
+      userName: getApp().globalData.userInfo.nickName,
+      userAvatar: getApp().globalData.userInfo.avatarUrl,
+    });
+
     // 连接服务器，开始匹配
     this.data.client = mqtt.connect('wx://192.168.3.5:3654');
     var userid = getApp().globalData.userId;
@@ -161,32 +171,36 @@ Page({
       //订阅一个主题
       this.data.client.publish("Jump/HD_GetUsableTable",JSON.stringify(user_id), console.log) 
     });
+    var that = this;
     this.data.client.on('message', function (topic, message, packet) { 
-      // message is Buffer
         console.log(topic)
-        console.log("packet:",packet.payload.toString());
+        //console.log("packet:",packet.payload.toString());
         if(topic == "MatchFinish") {
-          match_result = JSON.parse(packet.payload);
-          console.log(result);
-          if (userid == match_result["w_uid"]) { // 当前用户执白子
-            this.data.opponentID = match_result["b_uid"];
-            this.data.opponentName = match_result["b_name"];
-            this.data.opponentScore = match_result["b_score"];
-            this.data.opponentLevel = match_result["b_level"];
-            this.data.checker_color = 0;
+          var match_result = JSON.parse(packet.payload);
+          console.log(match_result);
+          if (userid == match_result.w_uid) { // 当前用户执白子
+            that.setData({
+              opponentID: match_result.b_uid,
+              opponentName: match_result.b_name,
+              opponentScore: match_result.b_score,
+              opponentLevel:match_result.b_level,
+              userScore: match_result.w_score,
+              userLevel: match_result.w_level,
+              checker_color: 0
+            });
           } else { // 当前用户执黑子
-            this.data.opponentID = match_result["w_uid"];
-            this.data.opponentName = match_result["w_name"];
-            this.data.opponentScore = match_result["w_score"];
-            this.data.opponentLevel = match_result["w_level"];
-            this.data.checker_color = 1;
+            that.setData({
+              opponentID: match_result.w_uid,
+              opponentName: match_result.w_name,
+              opponentScore: match_result.w_score,
+              opponentLevel:match_result.w_level,
+              userScore: match_result.b_score,
+              userLevel: match_result.b_level,
+              checker_color: 1
+            });
           }
-          this.data.opponentID = match_result
         }
     });
-      
-      
-
 
    
     // 设置服务器路径

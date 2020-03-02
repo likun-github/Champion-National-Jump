@@ -3,13 +3,13 @@
 <view class = "poster" style="display:{{opponentID==null}}">
   <view class="player"> 
     <view>
-      <image wx:if="{{friendName==null}}" src="{{serverRoot}}/img/game/问号头像.svg"></image>
+      <image wx:if="{{opponentID==-1}}" src="{{serverRoot}}/img/game/问号头像.svg"></image>
       <image wx:else src="{{serverRoot}}/img/game/ai/女孩头像.png"></image>
     </view> 
     <view>
-      <text wx:if="{{friendName==null}}" class = "playerName">正在匹配中...</text>
-      <text wx:else class = "playerName">我是你的朋友</text>
-      <text wx:if="{{friendLevel!=null &&friendScore!= null}}" class = "playerInfo">段位：{{friendLevel}} 积分：{{friendScore}}</text>
+      <text wx:if="{{opponentName==-1}}" class = "playerName">正在匹配中...</text>
+      <text wx:else class = "playerName">{{opponentName}}</text>
+      <text wx:if="{{opponentScore !=-1 &&opponentLevel != -1}}" class = "playerInfo">段位：{{opponentLevel}}  积分：{{opponentScore}}</text>
       <text wx:else class = "playerInfo">段位：-- 积分：--</text>
     </view>
     <view wx:if="{{currentUser==1}}" class="timer_running">
@@ -53,12 +53,13 @@
 
 
   <view class="player" style="margin-top:6vh;">
-    <view>
-      <image src="{{serverRoot}}/img/game/user.svg"></image>
+    <view>  
+      <image src="{{userAvatar}}"></image>
     </view>
     <view>
-      <text class="playerName">Yunding</text>   
-      <text class="playerInfo">段位：九段 积分: 1000</text>  
+      <text class="playerName">{{userName}}</text>   
+      <text wx:if="{{userScore !=-1 &&userLevel != -1}}" class = "playerInfo">段位：{{userLevel}}  积分：{{userScore}}</text>
+      <text wx:else class = "playerInfo">段位：-- 积分：--</text>
     </view>
     <view wx:if="{{currentUser==0}}" class="timer_running">
       <text> {{whiteTimerText}}</text>
@@ -71,7 +72,7 @@
 
 
 
-<view wx:if="{{opponentID == null}}" class='mask-view' catchtouchmove='ture'>
+<view wx:if="{{opponentID == -1}}" class='mask-view' catchtouchmove='ture'>
 </view>
 
 <view wx:if="{{gameResult>=0}}" class="gameEndTip">
@@ -101,11 +102,11 @@
   </view>
 </view>
 
-<view wx:if="{{opponentID==null}}" class="matchOpponent">
+<view wx:if="{{opponentID==-1}}" class="matchOpponent">
   <view class="playerVsPlayer">
     <view class="playermatching">
-      <image mode="widthFix" src="{{serverRoot}}/img/game/user.svg"></image>
-      <text>Yun Ding</text>
+      <image mode="widthFix" src="{{userAvatar}}" style="border-radius: 250px;overflow:hidden;"></image>
+      <text>{{userName}}</text>
     </view>
     <view class="vs">
       <image mode="widthFix" src="{{serverRoot}}/img/game/match/VS带空白.svg"></image>

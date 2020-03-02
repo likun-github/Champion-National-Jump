@@ -57,7 +57,7 @@ App({
     gameInfo: null,
     bottomBarRoute: '',
     ServerRoot: "https://www.yundingu.cn/checkerserver/",
-    userId:2
+    userId:2,
   },
 
   // 获取用户身份认证情况

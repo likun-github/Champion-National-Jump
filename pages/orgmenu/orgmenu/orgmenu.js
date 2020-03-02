@@ -205,7 +205,7 @@ Page({
        }
      }
    });
-   
+
   },
 
   bindGetUserInfo: function (e) {
