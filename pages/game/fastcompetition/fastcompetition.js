@@ -205,6 +205,25 @@ Page({
           var table_info = JSON.parse(packet.payload);
           console.log(table_info);
           that.setData({table_info: table_info.BigRoomId});
+        } else if (topic == "UpdateComposition" && that.data.currentUser != that.data.checker_color) { // 对手已完成走子，更新棋局，把新棋局加入悔棋list内，更新走子方
+          // 获取新棋局，是bitboard的形式
+          var new_composition = JSON.parse(packet.payload);
+          console.log(new_composition);
+          var new_composition_bitboard = { "W": new_composition.W, "B": new_composition.B, "K": new_composition.K }
+          // 把bitboard转换成小程序可用的形式
+          that.Bitboard2Miniboard(new_composition_bitboard);
+          // 重新绘制棋盘
+          that.DrawBoard();
+          that.DrawChesses();
+          that.data.context.draw();
+          // 把新棋局加入悔棋数据内并更新走子方
+          if(that.data.checker_color == 0) { // 用户执白子，则把新棋局加入黑子悔棋list里，改成白子行棋
+            that.data.blackWithdraw.push(new_composition_bitboard);
+            that.setData({currentUser:0});
+          } else { // 用户执黑子，则把新棋局加入白子悔棋list里，改成黑子行棋
+            that.data.whiteWithdraw.push(new_composition_bitboard);
+            that.setData({currentUser:1});
+          }   
         }
     });
 
@@ -776,36 +795,37 @@ Page({
         this.data.client.publish("Jump/HD_Control",JSON.stringify(current_bitboard_json), console.log)
 
         // 开启计时器
-        this.startTimer();
+        //this.startTimer();
       }
-    } else { // 轮到对手走棋
+    } /*else { // 轮到对手走棋
       // 接收消息
       var that = this;
       this.data.client.on('message', function (topic, message, packet) { 
         console.log(topic)
         if(topic == "UpdateComposition") { // 对手已完成走子，更新棋局，把新棋局加入悔棋list内，更新走子方
           // 获取新棋局，是bitboard的形式
-          var new_composition_bitboard = JSON.parse(packet.payload);
-          console.log(new_composition_bitboard);
+          var new_composition = JSON.parse(packet.payload);
+          console.log(new_composition);
+          var new_composition_bitboard = { "W": new_composition.W, "B": new_composition.B, "K": new_composition.K }
           // 把bitboard转换成小程序可用的形式
-          this.Bitboard2Miniboard(new_composition_bitboard);
+          that.Bitboard2Miniboard(new_composition_bitboard);
           // 重新绘制棋盘
-          this.DrawBoard();
-          this.DrawChesses();
-          this.data.context.draw();
+          that.DrawBoard();
+          that.DrawChesses();
+          that.data.context.draw();
           // 把新棋局加入悔棋数据内并更新走子方
-          if(this.data.checker_color == 0) { // 用户执白子，则把新棋局加入黑子悔棋list里，改成白子行棋
-            this.data.blackWithdraw.push(new_composition_bitboard);
-            this.setData({currentUser:0});
+          if(that.data.checker_color == 0) { // 用户执白子，则把新棋局加入黑子悔棋list里，改成白子行棋
+            that.data.blackWithdraw.push(new_composition_bitboard);
+            that.setData({currentUser:0});
           } else { // 用户执黑子，则把新棋局加入白子悔棋list里，改成黑子行棋
-            this.data.whiteWithdraw.push(new_composition_bitboard);
-            this.setData({currentUser:1});
+            that.data.whiteWithdraw.push(new_composition_bitboard);
+            that.setData({currentUser:1});
           }   
         }
       });
       // 开启计时器
-      this.startTimer();
-    }
+      //this.startTimer();
+    }*/
   },
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
