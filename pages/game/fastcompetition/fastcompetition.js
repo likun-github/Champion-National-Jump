@@ -15,6 +15,9 @@ Page({
     serverRoot: "",
     item:'',
 
+    // 桌子信息
+    table_info: null,
+
     // 用户信息
     checker_color: -1, // -1：未匹配完成，不知道是黑子还是白子，0：用户执白子，1：用户执黑子
     userName: -1,
@@ -168,14 +171,13 @@ Page({
     });
     this.data.client.on('connect', (e) => {
       console.log('成功连接服务器!')
-      //订阅一个主题
       this.data.client.publish("Jump/HD_GetUsableTable",JSON.stringify(user_id), console.log) 
     });
     var that = this;
     this.data.client.on('message', function (topic, message, packet) { 
         console.log(topic)
         //console.log("packet:",packet.payload.toString());
-        if(topic == "MatchFinish") {
+        if(topic == "MatchFinish") { // 匹配成功
           var match_result = JSON.parse(packet.payload);
           console.log(match_result);
           if (userid == match_result.w_uid) { // 当前用户执白子
@@ -199,6 +201,10 @@ Page({
               checker_color: 1
             });
           }
+        } else if (topic == "TableInfo") { // 已经找到了桌子
+          var table_info = JSON.parse(packet.payload);
+          console.log(table_info);
+          that.setData({table_info: table_info.BigRoomId});
         }
     });
 
@@ -601,6 +607,7 @@ Page({
     return currentBitboard;
   },
 
+
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 点击棋盘事件
   TapBoard: function (e) {
@@ -656,8 +663,7 @@ Page({
       }
     }
 
-    // 白棋（用户）走棋
-    if (this.data.currentUser == 0) {
+    if (this.data.currentUser == this.data.checker_color) { // 轮到用户走棋，先判断选中的是否为所走棋，再判断选中的是否为可走棋的终点，完成走棋后，把走子后的棋局转成bitboard格式，发送到服务器
       // 如果选中可走棋，则高亮这个棋子，并画出其可走路径
       if (this.IsMovable(targetRect, paths)) {
         this.setData({ currentTarget: { index: targetRect, king: this.data.kingChesses[targetRect] == 1 } });
@@ -691,142 +697,116 @@ Page({
             this.HighlightChess(pass[i], "purple");
           }
         }
-        // 更改棋盘-更改白棋数组
-        this.data.whiteChesses[src] = 0;
-        this.data.whiteChesses[dst] = 1;
+        // 更改棋盘
+        if(this.data.currentUser == 0) { // 用户执白子
+          // 更改棋盘-更改白棋数组
+          this.data.whiteChesses[src] = 0;
+          this.data.whiteChesses[dst] = 1;
+          // 更改棋盘-如果白棋到达顶部则变为王棋
+          if (Math.floor(dst / 10) == 0) {
+            this.data.kingChesses[dst] = 1;
+          }
+          // 更改棋盘-去掉被吃的黑棋，并绘制被吃的黑棋
+          if (kill[0] != null) {
+            for (let i = 0; i < kill.length; i++) {
+              this.HighlightChess(kill[i], "blue");
+              this.data.blackChesses[kill[i]] = 0;
+              if (this.data.kingChesses[kill[i]] == 0) { // 被吃子不是王棋
+              } else { // 被吃子是王棋
+                this.data.kingChesses[kill[i]] = 0;
+              }
+            }
+          }
+        } else { // 用户执黑子
+          // 更改棋盘-更改黑棋数组
+          this.data.blackChesses[src] = 0;
+          this.data.blackChesses[dst] = 1;
+          // 更改棋盘-如果黑棋到达底部则变为王棋
+          if (Math.floor(dst / 10) == 9) {
+            this.data.kingChesses[dst] = 1;
+          }
+          // 更改棋盘-去掉被吃的白棋，并绘制被吃的白棋
+          if (kill[0] != null) {
+            for (let i = 0; i < kill.length; i++) {
+              this.HighlightChess(kill[i], "blue");
+              this.data.whiteChesses[kill[i]] = 0;
+              if (this.data.kingChesses[kill[i]] == 0) { // 被吃子不是王棋
+              } else { // 被吃子是王棋
+                this.data.kingChesses[kill[i]] = 0;
+              }
+            }
+          }
+        }
+        
         // 更改棋盘-如果是移动的是王棋，则更改王棋数组
         if (this.data.kingChesses[src] == 1) {
           this.data.kingChesses[src] = 0;
           this.data.kingChesses[dst] = 1;
         }
-        // 更改棋盘-如果白棋到达顶部则变为王棋
-        if (Math.floor(dst / 10) == 0) {
-          this.data.kingChesses[dst] = 1;
-        }
-        // 更改棋盘-去掉被吃的黑棋，并绘制被吃的黑棋
-        if (kill[0] != null) {
-          for (let i = 0; i < kill.length; i++) {
-            this.HighlightChess(kill[i], "blue");
-            this.data.blackChesses[kill[i]] = 0;
-            if (this.data.kingChesses[kill[i]] == 0) { // 被吃子不是王棋
-            } else { // 被吃子是王棋
-              this.data.kingChesses[kill[i]] = 0;
-            }
-          }
-        }
-        // 更改棋盘-绘制白棋起点、终点
+        
+        
+        // 更改棋盘-绘制起点、终点
         this.HighlightChess(src, "red");
         this.HighlightChess(dst, "red");
         // 更改棋盘-绘制所有棋子
         this.DrawChesses();
         this.data.context.draw();
 
-        // 更换当前走子方
-        this.setData({ currentUser: 1 });
         // 清空当前选中棋子信息
         this.setData({ currentTarget: null, availablePaths: null });
-        // 把当前棋盘转换成bitboard棋盘，存在whiteWithdraw中
+
+        // 把当前棋盘转换成bitboard棋盘
         var current_bitboard = this.MiniBoard2Bitboard();
-        this.data.whiteWithdraw.push(current_bitboard);
-        // 把当前棋盘上传服务器………………
-        const current_bitboard_json = {
-          "W": current_bitboard["W"],
-          "B": current_bitboard["B"],
-          "K": current_bitboard["K"]
+
+        // 更换当前走子方，并将走子新棋局存在withdraw中
+        if(this.data.currentUser == 0) { // 用户执白子
+          this.setData({ currentUser: 1 });
+          this.data.whiteWithdraw.push(current_bitboard);
+        } else { // 用户执黑子
+          this.setData({ currentUser: 0 });
+          this.data.blackWithdraw.push(current_bitboard);
         }
-        client.on('connect', (e) => {
-          console.log('成功连接服务器!')
-          //订阅一个主题
-          client.publish("Jump/HD_Control",JSON.stringify(current_bitboard_json), console.log)
-          client.subscribe('Table', { qos: 0 }, function (err) {
-            if (!err) {
-              console.log("订阅成功");
-            } else {
-              console.log(err);
-            }
-          })  
-        });
+               
+        // 把当前棋局上传服务器
+        const current_bitboard_json = {
+          "W":current_bitboard["W"],
+          "B":current_bitboard["B"],
+          "K":current_bitboard["K"],
+        }
+        this.data.client.publish("Jump/HD_Control",JSON.stringify(current_bitboard_json), console.log)
 
         // 开启计时器
         this.startTimer();
       }
-    } else { // 黑棋（AI）走棋
-    // 如果选中可走棋，则高亮这个棋子，并画出其可走路径
-        if (this.IsMovable(targetRect, paths)) {
-          this.setData({ currentTarget: { index: targetRect, king: this.data.kingChesses[targetRect] == 1 } });
-          let currentAvailablePaths = this.GetCurrentAvailablePaths(targetRect, paths);
-          let currentAvailableDst = this.GetCurrentAvailableDst(currentAvailablePaths);
-          this.setData({ currentAvailablePaths: this.GetCurrentAvailablePaths(targetRect, paths) });
-          this.setData({ currentAvailableDst: this.GetCurrentAvailableDst(currentAvailablePaths) });
-          // 这一部分需要优化
+    } else { // 轮到对手走棋
+      // 接收消息
+      var that = this;
+      this.data.client.on('message', function (topic, message, packet) { 
+        console.log(topic)
+        if(topic == "UpdateComposition") { // 对手已完成走子，更新棋局，把新棋局加入悔棋list内，更新走子方
+          // 获取新棋局，是bitboard的形式
+          var new_composition_bitboard = JSON.parse(packet.payload);
+          console.log(new_composition_bitboard);
+          // 把bitboard转换成小程序可用的形式
+          this.Bitboard2Miniboard(new_composition_bitboard);
+          // 重新绘制棋盘
           this.DrawBoard();
-          this.HighlightChess(targetRect, "red");
-          this.DrawInfoPaths(targetRect, currentAvailableDst);
           this.DrawChesses();
           this.data.context.draw();
-        } else if (this.data.currentTarget && this.IsDst(targetRect, this.data.currentAvailableDst)) { // 如果选中 当前选中棋子的 可走路径的终点，则完成这项操作
-        // 获取所选路径并提取出pass，kill，dst等相关信息      
-            let targetPath = this.GetTargetPath(targetRect, this.data.currentAvailablePaths);
-            let src = this.data.currentTarget["index"];
-            let pass = targetPath["pass"];
-            if (pass != null) { // 把pass的路径补充完整
-              pass = this.FillPass(pass, dst);
-            }
-            let kill = targetPath["kill"];
-            let dst = targetPath["dst"];
-            let isKilledKing = [];
-
-            // 更改棋盘-绘制空棋盘
-            this.DrawBoard();
-            // 更改棋盘-绘制经过的棋位
-            if (pass != null) {
-              for (let i = 0; i < pass.length; i++) {
-                this.HighlightChess(pass[i], "purple");
-              }
-            }
-            // 更改棋盘-更改黑棋数组
-            this.data.blackChesses[src] = 0;
-            this.data.blackChesses[dst] = 1;
-            // 更改棋盘-如果是移动的是王棋，则更改王棋数组
-            if (this.data.kingChesses[src] == 1) {
-              this.data.kingChesses[src] = 0;
-              this.data.kingChesses[dst] = 1;
-            }
-            // 更改棋盘-如果黑棋到达顶部则变为王棋
-            if (Math.floor(dst / 10) == 0) {
-              this.data.kingChesses[dst] = 1;
-            }
-            // 更改棋盘-去掉被吃的白棋，并绘制被吃的白棋
-            if (kill[0] != null) {
-              for (let i = 0; i < kill.length; i++) {
-                this.HighlightChess(kill[i], "blue");
-                this.data.whiteChesses[kill[i]] = 0;
-                if (this.data.kingChesses[kill[i]] == 0) { // 被吃子不是王棋
-              } else { // 被吃子是王棋
-                this.data.kingChesses[kill[i]] = 0;
-              }
-            }
-          }
-          // 更改棋盘-绘制白棋起点、终点
-          this.HighlightChess(src, "red");
-          this.HighlightChess(dst, "red");
-          // 更改棋盘-绘制所有棋子
-          this.DrawChesses();
-          this.data.context.draw();
-
-          // 更换当前走子方
-          this.setData({ currentUser: 0 });
-          // 清空当前选中棋子信息
-          this.setData({ currentTarget: null, availablePaths: null });
-          // 把当前棋盘转换成bitboard棋盘，存在whiteWithdraw中
-          this.data.whiteWithdraw.push(this.MiniBoard2Bitboard());
-          // 把当前棋盘转换成Scan的棋盘，并上传服务器………………
-
-          // 开启计时器
-          this.startTimer();
+          // 把新棋局加入悔棋数据内并更新走子方
+          if(this.data.checker_color == 0) { // 用户执白子，则把新棋局加入黑子悔棋list里，改成白子行棋
+            this.data.blackWithdraw.push(new_composition_bitboard);
+            this.setData({currentUser:0});
+          } else { // 用户执黑子，则把新棋局加入白子悔棋list里，改成黑子行棋
+            this.data.whiteWithdraw.push(new_composition_bitboard);
+            this.setData({currentUser:1});
+          }   
         }
-      }
-    },
+      });
+      // 开启计时器
+      this.startTimer();
+    }
+  },
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // 认输
@@ -921,7 +901,12 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function () {  
+    const table_info = {
+      "BigRoomId":this.data.table_info
+    }
+    console.log(table_info);
+    this.data.client.publish("Jump/HD_Exit",JSON.stringify(table_info), console.log);
   },
 
   /**
