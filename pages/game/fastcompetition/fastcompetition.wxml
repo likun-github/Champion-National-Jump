@@ -3,14 +3,17 @@
 <view class = "poster" style="display:{{opponentID==null}}">
   <view class="player"> 
     <view>
-      <image wx:if="{{opponentID==-1}}" src="{{serverRoot}}/img/game/问号头像.svg"></image>
-      <image wx:else src="{{serverRoot}}/img/game/ai/女孩头像.png"></image>
+      <image wx:if="{{checker_color==-1}}" src="{{serverRoot}}/img/game/问号头像.svg"></image>
+      <image wx:elif="{{checker_color==0}}" src="{{serverRoot}}/img/game/ai/女孩头像.png"></image>
+      <image wx:elif="{{checker_color==1}}" src="{{userAvatar}}"></image>
     </view> 
     <view>
-      <text wx:if="{{opponentName==-1}}" class = "playerName">正在匹配中...</text>
-      <text wx:else class = "playerName">{{opponentName}}</text>
-      <text wx:if="{{opponentScore !=-1 &&opponentLevel != -1}}" class = "playerInfo">段位：{{opponentLevel}}  积分：{{opponentScore}}</text>
-      <text wx:else class = "playerInfo">段位：-- 积分：--</text>
+      <text wx:if="{{checker_color==-1}}" class = "playerName">正在匹配中...</text>
+      <text wx:elif="{{checker_color==0 && opponentName != -1}}" class = "playerName">{{opponentName}}</text>
+      <text wx:elif="{{checker_color==1 && userName != -1}}" class = "playerName">{{userName}}</text>
+      <text wx:if="{{checker_color==-1}}" class = "playerInfo">段位：-- 积分：--</text>
+      <text wx:elif="{{checker_color==0 && opponentScore !=-1 &&opponentLevel != -1}}" class = "playerInfo">段位：{{opponentLevel}}  积分：{{opponentScore}}</text>
+      <text wx:elif="{{checker_color==1 && userScore !=-1 && userLevel != -1}}" class = "playerInfo">段位：{{userLevel}}  积分：{{userScore}}</text>
     </view>
     <view wx:if="{{currentUser==1}}" class="timer_running">
       <text> {{blackTimerText}}</text>
@@ -24,7 +27,7 @@
   </canvas>
   <image  wx:if="{{opponentID == null||gameResult>=0}}"  src='{{item}}' mode="widthFix" style="width:{{chessBoardWidth}}px;height:{{chessBoardHeight}}px;margin-top:-{{chessBoardHeight+30}}px;border:15px solid rgb(82,169,255);display:block;height: auto;"></image>
   <view class="gameButtons">
-    <view class="gameButton" bindtap="withdraw">
+    <view wx:if="{{checker_color == currentUser}}" class="gameButton" bindtap="withdraw">
       <view>
         <image src="{{serverRoot}}/img/game/button/withdraw.svg"></image>
       </view>
@@ -53,13 +56,18 @@
 
 
   <view class="player" style="margin-top:6vh;">
-    <view>  
-      <image src="{{userAvatar}}"></image>
-    </view>
     <view>
-      <text class="playerName">{{userName}}</text>   
-      <text wx:if="{{userScore !=-1 &&userLevel != -1}}" class = "playerInfo">段位：{{userLevel}}  积分：{{userScore}}</text>
-      <text wx:else class = "playerInfo">段位：-- 积分：--</text>
+      <image wx:if="{{checker_color==-1}}" src="{{serverRoot}}/img/game/问号头像.svg"></image>
+      <image wx:elif="{{checker_color==1}}" src="{{serverRoot}}/img/game/ai/女孩头像.png"></image>
+      <image wx:elif="{{checker_color==0}}" src="{{userAvatar}}"></image>
+    </view> 
+    <view>
+      <text wx:if="{{checker_color==-1}}" class = "playerName">正在匹配中...</text>
+      <text wx:elif="{{checker_color==1 && opponentName != -1}}" class = "playerName">{{opponentName}}</text>
+      <text wx:elif="{{checker_color==0 && userName != -1}}" class = "playerName">{{userName}}</text>
+      <text wx:if="{{checker_color==-1}}" class = "playerInfo">段位：-- 积分：--</text>
+      <text wx:elif="{{checker_color==1 && opponentScore !=-1 && opponentLevel != -1}}" class = "playerInfo">段位：{{opponentLevel}}  积分：{{opponentScore}}</text>
+      <text wx:elif="{{checker_color==0 && userScore !=-1 && userLevel != -1}}" class = "playerInfo">段位：{{userLevel}}  积分：{{userScore}}</text>
     </view>
     <view wx:if="{{currentUser==0}}" class="timer_running">
       <text> {{whiteTimerText}}</text>
@@ -133,10 +141,10 @@
       <text class="withdrawInfo">且本次申请与下次之间至少间隔五步。</text>
       <text class="timesRemain">剩余次数：{{withdrawNum}}</text>
       <view class="withdrawButton">
-        <view class="noWithdraw">
+        <view bindtap="noWithdraw" class="noWithdraw">
           <text>取消</text>
         </view>
-        <view class="yesWithdraw">
+        <view bindtap="yesWithdraw" class="yesWithdraw">
           <text>确认</text>
         </view>
       </view>
@@ -144,7 +152,7 @@
     <view wx:else style="display: flex; flex-direction: column;align-items: center;">
       <text class="withdrawTopic">您已达悔棋次数上限</text>
       <view class="withdrawButton">
-        <view class="acceptContinueGrey">
+        <view bindtap="acceptContinue" class="acceptContinueGrey">
           <text>继续游戏</text>
         </view>
       </view>
@@ -155,10 +163,10 @@
     <text class="withdrawTopic">对方向您申请悔棋，是否同意？</text>
     <text class="withdrawInfo">您有权拒绝对方的悔棋申请</text>
     <view class="withdrawButton">
-      <view class="noWithdraw">
+      <view bindtap="noWithdraw" class="noWithdraw">
         <text>拒绝</text>
       </view>
-      <view class="yesWithdraw">
+      <view bindtap="yesWithdraw" class="yesWithdraw">
         <text>同意</text>
       </view>
     </view>
@@ -168,7 +176,7 @@
     <view wx:if="{{withdrawResult == 0}}" style="display: flex; flex-direction: column;align-items: center;">
       <text class="withdrawTopic">对方不同意悔棋</text>
         <view class="withdrawButton">
-          <view class="acceptContinueYellow">
+          <view bindtap="acceptContinue" class="acceptContinueYellow">
             <text>继续游戏</text>
           </view>
         </view>
@@ -176,7 +184,7 @@
     <view wx:elif="{{withdrawResult == 1}}" style="display: flex; flex-direction: column;align-items: center;">
       <text class="withdrawTopic">对方同意悔棋</text>
         <view class="withdrawButton">
-          <view class="acceptContinueYellow">
+          <view bindtap="acceptContinue" class="acceptContinueYellow">
             <text>继续游戏</text>
           </view>
         </view>

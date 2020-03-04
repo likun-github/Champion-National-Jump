@@ -224,6 +224,16 @@ Page({
             that.data.whiteWithdraw.push(new_composition_bitboard);
             that.setData({currentUser:1});
           }   
+        } else if (topic == "WithdrawRequested") { // 控制方发送悔棋请求
+          that.setData({withdrawReceive:1});
+        } else if (topic == "WithdrawDecided") { // 非控制方决定是否同意悔棋
+          var withdraw_result = JSON.parse(packet.payload)
+          if (withdraw_result.withdraw_agreed == 0) { // 非控制方拒绝控制方悔棋
+            that.setData({withdrawResult:0});
+          } else { // 非控制方同意悔棋
+            that.setData({withdrawResult:1});
+          }
+
         }
     });
 
@@ -797,35 +807,7 @@ Page({
         // 开启计时器
         //this.startTimer();
       }
-    } /*else { // 轮到对手走棋
-      // 接收消息
-      var that = this;
-      this.data.client.on('message', function (topic, message, packet) { 
-        console.log(topic)
-        if(topic == "UpdateComposition") { // 对手已完成走子，更新棋局，把新棋局加入悔棋list内，更新走子方
-          // 获取新棋局，是bitboard的形式
-          var new_composition = JSON.parse(packet.payload);
-          console.log(new_composition);
-          var new_composition_bitboard = { "W": new_composition.W, "B": new_composition.B, "K": new_composition.K }
-          // 把bitboard转换成小程序可用的形式
-          that.Bitboard2Miniboard(new_composition_bitboard);
-          // 重新绘制棋盘
-          that.DrawBoard();
-          that.DrawChesses();
-          that.data.context.draw();
-          // 把新棋局加入悔棋数据内并更新走子方
-          if(that.data.checker_color == 0) { // 用户执白子，则把新棋局加入黑子悔棋list里，改成白子行棋
-            that.data.blackWithdraw.push(new_composition_bitboard);
-            that.setData({currentUser:0});
-          } else { // 用户执黑子，则把新棋局加入白子悔棋list里，改成黑子行棋
-            that.data.whiteWithdraw.push(new_composition_bitboard);
-            that.setData({currentUser:1});
-          }   
-        }
-      });
-      // 开启计时器
-      //this.startTimer();
-    }*/
+    } 
   },
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -856,35 +838,75 @@ Page({
     }
   },
 
-  // 悔棋，白方退一步棋
+  // 悔棋
   withdraw: function () {
-    if (this.data.whiteWithdraw.length == 1) { // 刚刚开局，不能悔棋
+    if (this.data.whiteWithdraw.length >= 2 && this.data.whiteWithdraw.length >= 1) { // 双方各走了一步后，才有悔棋可能
+      this.setData({withdrawSend:1}); // 用户可以悔棋，弹出确认是否悔棋的对话框  
+    } else { // 不可以悔棋
       wx.showModal({
         showCancel: false,
         title: "提示",
         content: "你还没走棋，不能悔棋！",
       })
-    } else { // 可以悔棋
-      if (this.data.whiteWithdraw.length-1 == this.data.blackWithdraw.length) { // 白棋走后黑棋已走，先悔黑棋，再悔白棋
-        this.data.blackWithdraw.pop();
-      } else if (this.data.whiteWithdraw.length - 2 == this.data.blackWithdraw.length) { // 白棋走后黑棋未走，只悔白棋，但要跟服务器发请求让别再走黑棋了
-        this.data.whiteWithdraw.pop();
-        // 给服务器发请求让别走黑棋………………
-      } else {
-        console.log("bug!");
+    }
+  },
+
+  
+  noWithdraw: function() {
+    if(this.data.withdrawSend == 1) {  // 控制方还有悔棋机会，但点击了悔棋按钮后决定不悔棋
+      this.setData({withdrawSend:0});
+    } else if (this.data.withdrawReceive == 1) { // 非控制方决定不接受控制的悔棋
+      const withdraw_decided = {
+        "withdrawAgreed":0
       }
-      let currentBitboard = this.data.whiteWithdraw.pop();
-      this.Bitboard2Miniboard(currentBitboard);
-      this.data.whiteWithdraw.push(currentBitboard);
+      this.data.client.publish("Jump/HD_WithdrawDecided",JSON.stringify(withdraw_decided), console.log);
+      this.setData({withdrawReceive:0});
+    }
+  },
+
+  
+  yesWithdraw: function() {
+    // 控制方还有悔棋机会，点击了悔棋按钮后决定继续悔棋
+    if(this.data.withdrawSend == 1) {
+      this.data.client.publish("Jump/HD_Withdraw",null, console.log);
+      this.setData({withdrawSend:0});
+    } else if (this.data.withdrawReceive == 1) { // 非控制方决定接受控制的悔棋
+      const withdraw_decided = {
+        "withdrawAgreed":1
+      }
+      this.data.client.publish("Jump/HD_WithdrawDecided",JSON.stringify(withdraw_decided), console.log);
+      this.setData({withdrawReceive:0});
+    }
+  },
+
+  
+  acceptContinue:function() {
+    if(this.data.withdrawSend == 1) { // 用户没有悔棋机会，继续游戏
+      this.setData({withdrawSend:0});
+    } else if (this.data.withdrawResult == 0) { // 非控制方不同意悔棋
+      this.setData({withdrawResult:-1});
+    } else if (this.data.withdrawResult == 1) { // 非控制方同意悔棋
+      // 把一轮棋局清出
+      this.data.whiteWithdraw.pop();
+      this.data.blackWithdraw.pop();
+      // 获取悔棋后的棋局
+      if(this.data.currentUser == 0) { // 用户执白子
+        let currentBitboard = this.data.whiteWithdraw.pop();
+        this.Bitboard2Miniboard(currentBitboard);
+        this.data.whiteWithdraw.push(currentBitboard);
+      } else { // 用户执黑子
+        let currentBitboard = this.data.blackWithdraw.pop();
+        this.Bitboard2Miniboard(currentBitboard);
+        this.data.blackWithdraw.push(currentBitboard);
+      }
+      
       // 重新绘制棋盘
       this.DrawBoard();
       this.DrawChesses();
-      this.data.context.draw();
-      // 悔棋后走白棋
-      this.setData({ currentUser: 0 });
-      this.startTimer();
+      this.data.context.draw();   
+      this.setData({withdrawResult:-1});
     }
-
+    
   },
 
   // 将本次对局数据保存到本地
