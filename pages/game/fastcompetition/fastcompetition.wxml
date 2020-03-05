@@ -35,7 +35,7 @@
         <text class="gameButtonInfo" >悔棋</text>
       </view>
     </view>
-    <view class="gameButton" bindtap="draw">
+    <view wx:if="{{checker_color == currentUser}}" class="gameButton" bindtap="draw">
       <view>
         <image src="{{serverRoot}}/img/game/button/draw.svg"></image>
       </view>

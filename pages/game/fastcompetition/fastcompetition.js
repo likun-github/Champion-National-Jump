@@ -52,12 +52,14 @@ Page({
     blackSeconds: 0,
     blackTimerText: "00:00:00",
 
-    // 悔棋次数
+    // 悔棋相关
     withdrawSend:0, /*0：用户未点击 悔棋；1：用户点击 悔棋 */
     withdrawReceive:0, /*0：对手未点击 悔棋； 1：对手点击 悔棋 */
     withdrawNum:3, /*剩余悔棋次数 */
     withdrawResult:-1, /*-1：未收到对手是否同意悔棋；0：不同意；1：同意 */
 
+    // 和棋相关
+    drawWaiting:0, /*0：用户未点击 和棋；1：用户点击 和棋，等待和棋结果 */
 
     // 游戏结果
     gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
@@ -75,8 +77,7 @@ Page({
     currentAvailableDst: [],
 
     // 悔棋数据
-    whiteWithdraw: [{ "W": movegen.fill50(1048575), "B": movegen.fill50(1125898833100800), "K": movegen.fill50(0) }],
-    blackWithdraw: [],
+    withdraw: [{ "W": movegen.fill50(1048575), "B": movegen.fill50(1125898833100800), "K": movegen.fill50(0) }],
 
     // 小程序棋盘索引转换成bitboard棋盘索引
     mini2Bit: [null, 45, null, 46, null, 47, null, 48, null, 49,
@@ -217,11 +218,10 @@ Page({
           that.DrawChesses();
           that.data.context.draw();
           // 把新棋局加入悔棋数据内并更新走子方
-          if(that.data.checker_color == 0) { // 用户执白子，则把新棋局加入黑子悔棋list里，改成白子行棋
-            that.data.blackWithdraw.push(new_composition_bitboard);
+          that.data.withdraw.push(new_composition_bitboard);
+          if(that.data.checker_color == 0) { // 用户执白子，改成白子行棋    
             that.setData({currentUser:0});
-          } else { // 用户执黑子，则把新棋局加入白子悔棋list里，改成黑子行棋
-            that.data.whiteWithdraw.push(new_composition_bitboard);
+          } else { // 用户执黑子，改成黑子行棋
             that.setData({currentUser:1});
           }   
         } else if (topic == "WithdrawRequested") { // 控制方发送悔棋请求
@@ -233,8 +233,54 @@ Page({
           } else { // 非控制方同意悔棋
             that.setData({withdrawResult:1});
           }
+        } else if (topic == "DrawRequested") { // 控制方发送求和请求
+          wx.showModal({
+            title: "对手求和啦",
+            content: "您有15s时间做决定",
+            confirmText: "同意",   
+            confirmColor: "skyblue",
+            showCancel: true,
+            cancelText: "拒绝",
+            cancelColor: "black",
 
-        }
+            success: function (res) {
+              var drawAgreed = -1;
+              if (res.cancel) { // 拒绝和棋请求
+                drawAgreed = 0;
+              } else { // 同意和棋请求
+                drawAgreed = 1;
+              }
+              const draw_agreed = {
+                "drawagreed": drawAgreed
+              }
+              that.data.client.publish("Jump/HD_DrawDecided",JSON.stringify(draw_agreed), console.log);
+            }
+          })
+        } else if (topic == "DrawDenied") { // 非控制方不同意和棋请求
+          wx.showModal({
+            title: "对手拒绝和棋请求",
+            content: "轮到您方走子",
+            confirmText: "好的", 
+            confirmColor: "skyblue",
+            showCancel: false,
+          })
+        } else if (topic == "DrawAgreed") { // 非控制方同意和棋请求
+          wx.showModal({
+            title: "对手同意和棋请求",
+            content: "请等待服务器结算分数",
+            confirmText: "好的", 
+            confirmColor: "skyblue",
+            showCancel: false,
+          })
+        } else if (topic == "TheOtherSideLost") { // 对手认输了
+          wx.showModal({
+            title: "对手认输啦",
+            content: "请等待服务器结算分数",
+            confirmText: "好的", 
+            confirmColor: "skyblue",
+            showCancel: false,
+          })
+        } 
     });
 
    
@@ -788,12 +834,11 @@ Page({
         var current_bitboard = this.MiniBoard2Bitboard();
 
         // 更换当前走子方，并将走子新棋局存在withdraw中
+        this.data.withdraw.push(current_bitboard);
         if(this.data.currentUser == 0) { // 用户执白子
-          this.setData({ currentUser: 1 });
-          this.data.whiteWithdraw.push(current_bitboard);
+          this.setData({ currentUser: 1 });    
         } else { // 用户执黑子
           this.setData({ currentUser: 0 });
-          this.data.blackWithdraw.push(current_bitboard);
         }
                
         // 把当前棋局上传服务器
@@ -811,9 +856,16 @@ Page({
   },
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 认输
   lose: function () {
+    const checker_color = {
+      "checkercolor":this.data.checker_color
+    }
+    this.data.client.publish("Jump/HD_Lose",JSON.stringify(checker_color), console.log);
   },
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // 从bitboard棋盘表示法转换成小程序棋盘表示法
   Bitboard2Miniboard(bitboard) {
@@ -838,9 +890,25 @@ Page({
     }
   },
 
-  // 悔棋
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // 点击求和
+  draw:function () {
+    this.setData({drawSend:1}); // 控制方请求和棋
+    const draw_request = {
+      "draw_request":1
+    }
+    this.data.client.publish("Jump/HD_Draw",JSON.stringify(draw_request), console.log);
+  },
+  
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // 点击悔棋
   withdraw: function () {
-    if (this.data.whiteWithdraw.length >= 2 && this.data.blackWithdraw.length >= 1) { // 双方各走了一步后，才有悔棋可能
+    if (this.data.withdraw.length >= 3) { // 双方各走了一步后，才有悔棋可能
       this.setData({withdrawSend:1}); // 用户可以悔棋，弹出确认是否悔棋的对话框  
     } else { // 不可以悔棋
       wx.showModal({
@@ -880,18 +948,13 @@ Page({
       this.data.client.publish("Jump/HD_WithdrawDecided",JSON.stringify(withdraw_decided), console.log);
       this.setData({withdrawReceive:0});
       // 把一轮棋局清出
-      this.data.whiteWithdraw.pop();
-      this.data.blackWithdraw.pop();
+      this.data.withdraw.pop();
+      this.data.withdraw.pop();
       // 获取悔棋后的棋局
-      if(this.data.currentUser == 0) { // 控制方执白子
-        let currentBitboard = this.data.whiteWithdraw.pop();
-        this.Bitboard2Miniboard(currentBitboard);
-        this.data.whiteWithdraw.push(currentBitboard);
-      } else { // 控制方执黑子
-        let currentBitboard = this.data.blackWithdraw.pop();
-        this.Bitboard2Miniboard(currentBitboard);
-        this.data.blackWithdraw.push(currentBitboard);
-      }
+      let currentBitboard = this.data.withdraw.pop();
+      this.Bitboard2Miniboard(currentBitboard);
+      this.data.withdraw.push(currentBitboard);
+     
       // 重新绘制棋盘
       this.DrawBoard();
       this.DrawChesses();
@@ -908,19 +971,13 @@ Page({
       this.setData({withdrawResult:-1});
     } else if (this.data.withdrawResult == 1) { // 非控制方同意悔棋
       // 把一轮棋局清出
-      this.data.whiteWithdraw.pop();
-      this.data.blackWithdraw.pop();
-      this.data.withdrawNum -= 1;
+      this.data.withdraw.pop();
+      this.data.withdraw.pop();
+      this.setData({withdrawNum:this.data.withdrawNum - 1});
       // 获取悔棋后的棋局
-      if(this.data.currentUser == 0) { // 用户执白子
-        let currentBitboard = this.data.whiteWithdraw.pop();
-        this.Bitboard2Miniboard(currentBitboard);
-        this.data.whiteWithdraw.push(currentBitboard);
-      } else { // 用户执黑子
-        let currentBitboard = this.data.blackWithdraw.pop();
-        this.Bitboard2Miniboard(currentBitboard);
-        this.data.blackWithdraw.push(currentBitboard);
-      }
+      let currentBitboard = this.data.withdraw.pop();
+      this.Bitboard2Miniboard(currentBitboard);
+      this.data.withdraw.push(currentBitboard);
       
       // 重新绘制棋盘
       this.DrawBoard();
@@ -930,6 +987,10 @@ Page({
     }
     
   },
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
   // 将本次对局数据保存到本地
   collect: function (result) {
@@ -937,8 +998,7 @@ Page({
       key: util.formatTime(Date.now()).toString(),   // key为时间
       data: {
         "type": "人机对战",
-        "white": this.data.whiteWithdraw,
-        "black": this.data.blackWithdraw,
+        "withdraw": this.data.withdraw,
         "result": result
       }
     })
