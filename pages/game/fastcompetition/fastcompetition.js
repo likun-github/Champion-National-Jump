@@ -252,7 +252,7 @@ Page({
                 drawAgreed = 1;
               }
               const draw_agreed = {
-                "drawagreed": drawAgreed
+                "drawAgreed": drawAgreed
               }
               that.data.client.publish("Jump/HD_DrawDecided",JSON.stringify(draw_agreed), console.log);
             }
@@ -286,10 +286,10 @@ Page({
           console.log(game_result);
           if (userid == game_result.w_uid) { // 当前用户执白子
             that.setData({gameResult:game_result.w_result,
-                          scoreDelta:Math.abs(game_result.w_score - userScore)});
+                          scoreDelta:Math.abs(game_result.w_score - that.data.userScore)});
           } else if (userid == game_result.b_uid) { // 当前用户执黑子
             that.setData({gameResult:game_result.b_result,
-                          scoreDelta:Math.abs(game_result.b_score - userScore)});
+                          scoreDelta:Math.abs(game_result.b_score - that.data.userScore)});
           }
         }
     });
@@ -870,10 +870,25 @@ Page({
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 认输
   lose: function () {
-    const checker_color = {
-      "checkercolor":this.data.checker_color
-    }
-    this.data.client.publish("Jump/HD_Lose",JSON.stringify(checker_color), console.log);
+    var that = this;
+    wx.showModal({
+      title: "您确定要认输吗？",
+      confirmText: "是的",   // 收藏本局，然后再来一局 
+      confirmColor: "skyblue",
+      showCancel: true,
+      cancelText: "取消",    // 再来一局
+      cancelColor: "black",
+
+      success: function (res) {
+        if (res.cancel) {
+        } else {
+          const checker_color = {
+            "checkercolor":that.data.checker_color
+          }
+          that.data.client.publish("Jump/HD_Lose",JSON.stringify(checker_color), console.log);
+        }
+      }
+    })    
   },
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -904,11 +919,26 @@ Page({
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 点击求和
   draw:function () {
-    this.setData({drawSend:1}); // 控制方请求和棋
-    const draw_request = {
-      "draw_request":1
-    }
-    this.data.client.publish("Jump/HD_Draw",JSON.stringify(draw_request), console.log);
+    var that = this;
+    wx.showModal({
+      title: "您确定要求和吗？",
+      confirmText: "是的",   // 收藏本局，然后再来一局 
+      confirmColor: "skyblue",
+      showCancel: true,
+      cancelText: "取消",    // 再来一局
+      cancelColor: "black",
+
+      success: function (res) {
+        if (res.cancel) {
+        } else {
+          that.setData({drawSend:1}); // 控制方请求和棋
+          var draw_request = {
+            "draw_request":1
+          }
+          that.data.client.publish("Jump/HD_Draw",JSON.stringify(draw_request), console.log);  
+        }
+      }
+    })  
   },
   
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
