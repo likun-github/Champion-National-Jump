@@ -52,6 +52,10 @@ Page({
     blackSeconds: 0,
     blackTimerText: "00:00:00",
 
+    // 悔棋和棋都用的倒计时
+    timeoutTimer: null,
+    timeoutSeconds:15,
+
     // 悔棋相关
     withdrawSend:0, /*0：用户未点击 悔棋；1：用户点击 悔棋 */
     withdrawReceive:0, /*0：对手未点击 悔棋； 1：对手点击 悔棋 */
@@ -224,7 +228,9 @@ Page({
             that.setData({currentUser:0});
           } else { // 用户执黑子，改成黑子行棋
             that.setData({currentUser:1});
-          }   
+          } 
+          // 开启计时器
+          that.startTimer();  
         } else if (topic == "WithdrawRequested") { // 控制方发送悔棋请求
           that.setData({withdrawReceive:1});
         } else if (topic == "WithdrawDecided") { // 非控制方决定是否同意悔棋
@@ -362,6 +368,36 @@ Page({
         });
       }, 1000);
     }
+  },
+
+  // 开启倒计时
+  countDown: function () {
+    let countDownNum = this.data.timeoutSeconds;
+    var that = this;
+    this.setData({
+      timeoutTimer: setInterval(function () {
+        // 计时器归零前：修改变量，且如果用户在归零前做出了决定，则停止计时器
+        countDownNum--;
+        that.setData({
+          timeoutSeconds: countDownNum
+        })
+        if(that.data.withdrawReceive == 0) { // 用户已经做出了决定
+          clearInterval(that.data.timeoutTimer);
+          // 计时器初始化，留待下次备用
+          that.setData({
+            timeoutSeconds: 15
+          })
+        }
+        // 计时器归零后
+        if (countDownNum == 0) {
+          clearInterval(that.data.timeoutTimer);
+          // 计时器初始化，留待下次备用
+          that.setData({
+            timeoutSeconds: 15
+          })
+        }       
+      }, 1000)
+    });
   },
 
   // 清空棋子
@@ -860,8 +896,8 @@ Page({
         }
         this.data.client.publish("Jump/HD_Control",JSON.stringify(current_bitboard_json), console.log)
 
-        // 开启计时器
-        //this.startTimer();
+        // 转换计时器
+        this.startTimer();
       }
     } 
   },
