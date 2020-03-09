@@ -96,9 +96,9 @@
       <text wx:elif="{{gameResult==2}}" class="draw">和棋!</text>
     </view>
   </view>
-  <text wx:if="{{gameResult==0}}" class="gameEndTipScore">积分 +20</text>
-  <text wx:elif="{{gameResult==1}}" class="gameEndTipScore">积分 -20</text>
-  <text wx:elif="{{gameResult==2}}" class="gameEndTipScore">积分 +0</text>
+  <text wx:if="{{gameResult==0}}" class="gameEndTipScore">积分 +{{scoreDelta}}</text>
+  <text wx:elif="{{gameResult==1}}" class="gameEndTipScore">积分 -{{scoreDelta}}</text>
+  <text wx:elif="{{gameResult==2}}" class="gameEndTipScore">积分 +{{scoreDelta}}</text>
   <view class="gameEndBtn">
     <text>再来一局</text>  
   </view>

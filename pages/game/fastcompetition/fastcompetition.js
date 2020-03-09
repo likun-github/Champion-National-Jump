@@ -63,6 +63,7 @@ Page({
 
     // 游戏结果
     gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
+    scoreDelta: 0,   /*比赛结束后积分变动的绝对值 */
 
     //现在的目前对象
     currentTarget: null,
@@ -159,7 +160,7 @@ Page({
     });
 
     // 连接服务器，开始匹配
-    this.data.client = mqtt.connect('wx://192.168.3.5:3654');
+    this.data.client = mqtt.connect('wx://192.168.3.7:3654');
     var userid = getApp().globalData.userId;
     const user_id = {
       "userid":"2"
@@ -280,7 +281,17 @@ Page({
             confirmColor: "skyblue",
             showCancel: false,
           })
-        } 
+        } else if (topic == "GameEnd") {
+          var game_result = JSON.parse(packet.payload);
+          console.log(game_result);
+          if (userid == game_result.w_uid) { // 当前用户执白子
+            that.setData({gameResult:game_result.w_result,
+                          scoreDelta:Math.abs(game_result.w_score - userScore)});
+          } else if (userid == game_result.b_uid) { // 当前用户执黑子
+            that.setData({gameResult:game_result.b_result,
+                          scoreDelta:Math.abs(game_result.b_score - userScore)});
+          }
+        }
     });
 
    
