@@ -207,6 +207,7 @@ Page({
               checker_color: 1
             });
           }
+          that.startTimer();
         } else if (topic == "TableInfo") { // 已经找到了桌子
           var table_info = JSON.parse(packet.payload);
           console.log(table_info);
@@ -233,6 +234,7 @@ Page({
           that.startTimer();  
         } else if (topic == "WithdrawRequested") { // 控制方发送悔棋请求
           that.setData({withdrawReceive:1});
+          that.countDown();
         } else if (topic == "WithdrawDecided") { // 非控制方决定是否同意悔棋
           var withdraw_result = JSON.parse(packet.payload)
           if (withdraw_result.withdraw_agreed == 0) { // 非控制方拒绝控制方悔棋
@@ -330,7 +332,7 @@ Page({
     this.setData({ currentUser: 0 });
 
     context.draw();
-    this.startTimer();
+    
     
   this.cutpic();
   },
@@ -391,6 +393,23 @@ Page({
         // 计时器归零后
         if (countDownNum == 0) {
           clearInterval(that.data.timeoutTimer);
+          const withdraw_decided = {
+            "withdrawAgreed":1
+          }
+          that.data.client.publish("Jump/HD_WithdrawDecided",JSON.stringify(withdraw_decided), console.log);
+          that.setData({withdrawReceive:0});
+          // 把一轮棋局清出
+          that.data.withdraw.pop();
+          that.data.withdraw.pop();
+          // 获取悔棋后的棋局
+          let currentBitboard = that.data.withdraw.pop();
+          that.Bitboard2Miniboard(currentBitboard);
+          that.data.withdraw.push(currentBitboard);
+     
+          // 重新绘制棋盘
+          that.DrawBoard();
+          that.DrawChesses();
+          that.data.context.draw();   
           // 计时器初始化，留待下次备用
           that.setData({
             timeoutSeconds: 15
