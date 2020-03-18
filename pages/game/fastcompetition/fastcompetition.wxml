@@ -99,13 +99,13 @@
   <text wx:if="{{gameResult==0}}" class="gameEndTipScore">积分 +{{scoreDelta}}</text>
   <text wx:elif="{{gameResult==1}}" class="gameEndTipScore">积分 -{{scoreDelta}}</text>
   <text wx:elif="{{gameResult==2}}" class="gameEndTipScore">积分 +{{scoreDelta}}</text>
-  <view class="gameEndBtn">
+  <view bindtap="again" class="gameEndBtn">
     <text>再来一局</text>  
   </view>
-  <view class="gameEndBtn">
+  <view bindtap="exit" class="gameEndBtn">
     <text>返回大厅</text>  
   </view>
-  <view class="gameEndBtn">
+  <view bindtap="collect" class="gameEndBtn">
     <text>收藏本局</text>  
   </view>
 </view>

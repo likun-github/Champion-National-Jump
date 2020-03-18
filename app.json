@@ -28,7 +28,11 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#4B87FD",
     "navigationBarTitleText": "冠军国跳",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+
+    "enablePullDownRefresh":true,
+    "backgroundColor":"#aa154e",
+    "onReachBottomDistance": 15
   },
   "tabBar": {
     "color": "#a9b7b7",

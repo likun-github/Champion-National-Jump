@@ -164,7 +164,7 @@ Page({
     });
 
     // 连接服务器，开始匹配
-    this.data.client = mqtt.connect('wx://192.168.3.7:3654');
+    this.data.client = mqtt.connect('wx://47.107.157.238:3654');
     var userid = getApp().globalData.userId;
     const user_id = {
       "userid":"2"
@@ -281,7 +281,7 @@ Page({
             confirmColor: "skyblue",
             showCancel: false,
           })
-        } else if (topic == "TheOtherSideLost") { // 对手认输了
+        } else if (topic == "OpponentLost") { // 对手认输了
           wx.showModal({
             title: "对手认输啦",
             content: "请等待服务器结算分数",
@@ -1085,20 +1085,159 @@ Page({
   },
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  // 初始化数据
+  initialize:function() {
+    this.setData({
+      l: 0,
+      wm: '/static/wm.png',
+      bm: '/static/bm.png',
+      serverRoot: "",
+      item: '',
 
+      // 桌子信息
+      table_info: null,
 
+      // 用户信息
+      checker_color: -1, // -1：未匹配完成，不知道是黑子还是白子，0：用户执白子，1：用户执黑子
+      userName: -1,
+      userAvatar: -1,
+      userLevel: -1,
+      userScore: -1,
 
-  // 将本次对局数据保存到本地
-  collect: function (result) {
-    wx.setStorage({
-      key: util.formatTime(Date.now()).toString(),   // key为时间
-      data: {
-        "type": "人机对战",
-        "withdraw": this.data.withdraw,
-        "result": result
-      }
-    })
+      // 对手信息
+      opponentID: -1,
+      opponentName: -1,
+      opponentLevel: -1,
+      opponentScore: -1,
+
+      // 上下文
+      context: null,
+
+      //canvas相关变量：canvas的长宽，和画图笔
+      borderWidth: 15,
+      chessBoardWidth: wx.getSystemInfoSync().windowWidth * (750 - 30/*margin*/ * 4) / (750) - 15 * 2,
+      chessBoardHeight: wx.getSystemInfoSync().windowWidth * (750 - 30 * 4) / (750) - 15 * 2,
+
+      // 棋数据
+      blackChesses: [],
+      whiteChesses: [],
+      kingChesses: [],
+
+      // 计时器
+      whiteTimer: null,
+      whiteSeconds: 0,
+      whiteTimerText: "00:00:00",
+      blackTimer: null,
+      blackSeconds: 0,
+      blackTimerText: "00:00:00",
+
+      // 悔棋和棋都用的倒计时
+      timeoutTimer: null,
+      timeoutSeconds: 15,
+
+      // 悔棋相关
+      withdrawSend: 0, /*0：用户未点击 悔棋；1：用户点击 悔棋 */
+      withdrawReceive: 0, /*0：对手未点击 悔棋； 1：对手点击 悔棋 */
+      withdrawNum: 3, /*剩余悔棋次数 */
+      withdrawResult: -1, /*-1：未收到对手是否同意悔棋；0：不同意；1：同意 */
+
+      // 和棋相关
+      drawWaiting: 0, /*0：用户未点击 和棋；1：用户点击 和棋，等待和棋结果 */
+
+      // 游戏结果
+      gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
+      scoreDelta: 0,   /*比赛结束后积分变动的绝对值 */
+
+      //现在的目前对象
+      currentTarget: null,
+
+      //代表现在出棋的一方： 0 代表白方, 1代表黑方
+      currentUser: 0,
+
+      // 当前选中棋子的可走路径
+      currentAvailablePaths: [],
+
+      // 当前选中棋子的可能终点
+      currentAvailableDst: [],
+
+      // 悔棋数据
+      withdraw: [{ "W": movegen.fill50(1048575), "B": movegen.fill50(1125898833100800), "K": movegen.fill50(0) }],
+
+      // 小程序棋盘索引转换成bitboard棋盘索引
+      mini2Bit: [null, 45, null, 46, null, 47, null, 48, null, 49,
+        40, null, 41, null, 42, null, 43, null, 44, null,
+        null, 35, null, 36, null, 37, null, 38, null, 39,
+        30, null, 31, null, 32, null, 33, null, 34, null,
+        null, 25, null, 26, null, 27, null, 28, null, 29,
+        20, null, 21, null, 22, null, 23, null, 24, null,
+        null, 15, null, 16, null, 17, null, 18, null, 19,
+        10, null, 11, null, 12, null, 13, null, 14, null,
+        null, 5, null, 6, null, 7, null, 8, null, 9,
+        0, null, 1, null, 2, null, 3, null, 4, null],
+
+      // bitboard棋盘索引转换成小程序棋盘索引
+      bit2Mini: [90, 92, 94, 96, 98,
+        81, 83, 85, 87, 89,
+        70, 72, 74, 76, 78,
+        61, 63, 65, 67, 69,
+        50, 52, 54, 56, 58,
+        41, 43, 45, 47, 49,
+        30, 32, 34, 36, 38,
+        21, 23, 25, 27, 29,
+        10, 12, 14, 16, 18,
+        1, 3, 5, 7, 9],
+
+      // 转换成Scan的棋盘索引
+      mini2Scan: [null, 1, null, 2, null, 3, null, 4, null, 5,
+        6, null, 7, null, 8, null, 9, null, 10, null,
+        null, 11, null, 12, null, 13, null, 14, null, 15,
+        16, null, 17, null, 18, null, 19, null, 20, null,
+        null, 21, null, 22, null, 23, null, 24, null, 25,
+        26, null, 27, null, 28, null, 29, null, 30, null,
+        null, 31, null, 32, null, 33, null, 34, null, 35,
+        36, null, 37, null, 38, null, 39, null, 40, null,
+        null, 41, null, 42, null, 43, null, 44, null, 45,
+        46, null, 47, null, 48, null, 49, null, 50, null],
+
+      client: 0
+    });
   },
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // 游戏结束后，用户决定退出当前页面，返回上一级
+  exit:function() {
+    // 先告诉服务器用户退出当前桌子
+    const table_info = {
+      "BigRoomId":this.data.table_info
+    }
+    console.log(table_info);
+    this.data.client.publish("Jump/HD_Exit",JSON.stringify(table_info), console.log);
+    // 再返回上一页
+    var pages = getCurrentPages(); //当前页面
+    var beforePage = pages[pages.length - 2]; //前一页
+    wx.navigateBack({
+      success: function () {
+        beforePage.onLoad(); // 执行前一个页面的onLoad方法
+      }
+    });
+  },
+  
+  // 再来一局
+  again:function() {
+    this.initialize();
+    this.onLoad();
+  },
+
+  // 将本次对局数据保存到服务器，如成功，则本按钮灰显，如失败，则本按钮还能继续按
+  collect: function (result) {
+    // 发送checker_color至服务器
+    const checker_color = {
+      "checker_color": this.data.checker_color
+    };
+    this.data.client.publish("Jump/HD_Collect", JSON.stringify(checker_color), console.log);
+  },
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -1122,11 +1261,29 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {  
-    const table_info = {
-      "BigRoomId":this.data.table_info
-    }
-    console.log(table_info);
-    this.data.client.publish("Jump/HD_Exit",JSON.stringify(table_info), console.log);
+    /*
+    var that = this;
+    wx.showModal({
+      title: "您确定要离开吗？",
+      content: "离开房间将会导致您本局游戏判负",
+      confirmText: "确定",   
+      confirmColor: "skyblue",
+      showCancel: true,
+      cancelText: "取消",
+      cancelColor: "black",
+
+      success: function (res) {
+        if (res.cancel) { // 继续留在房间
+        } else { // 依旧离开房间
+          const table_info = {
+            "BigRoomId":that.data.table_info
+          }
+          console.log(table_info);
+          that.data.client.publish("Jump/HD_Exit",JSON.stringify(table_info), console.log);
+        }      
+      }
+    })
+    */
   },
 
   /**
