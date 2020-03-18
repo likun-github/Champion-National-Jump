@@ -1,5 +1,5 @@
 {
-  "pages": [      
+  "pages": [
     "pages/game/game/game",
     "pages/game/fastcompetition/fastcompetition",
     "pages/myindex/myindex",
@@ -11,18 +11,16 @@
     "pages/orgmenu/orgmenu/orgmenu",
     "pages/game/aicompetition/aicompetition",
     "pages/game/scorelist/scorelist",
-    
     "pages/competition/edcompetition/edcompetition",
-    
     "pages/competition/signup/signup",
     "pages/competition/competitioninfo/competitioninfo",
     "pages/game/friendscompetition/friendscompetition",
-    
     "pages/orgmenu/verification/constitution/constitution",
     "pages/orgmenu/verification/person/person",
     "pages/orgmenu/verification/uploadsuccess/uploadsuccess",
     "pages/chessmanual/pass/pass",
-    "pages/orgmenu/mycollection/mycollection"
+    "pages/orgmenu/mycollection/mycollection",
+    "sub_pages/index/rule/rule"
   ],
   "window": {
     "backgroundTextStyle": "light",

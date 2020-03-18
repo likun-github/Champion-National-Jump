@@ -17,9 +17,13 @@ Page({
 
   },
   RuleDetail: function(){
+    var url="https://b.xiumi.us/board/v5/4gIYG/180169266";
     wx.navigateTo({
-      url: '../learncontent/learncontent',
+      url: '/sub_pages/index/rule/rule?url='+url,
     })
+    // wx.navigateTo({
+    //   url: '../learncontent/learncontent',
+    // })
   },
   returnToVideoList: function(){
     this.setData({ playVideo: false });
