@@ -167,7 +167,7 @@ Page({
     this.data.client = mqtt.connect('wx://47.107.157.238:3654');
     var userid = getApp().globalData.userId;
     const user_id = {
-      "userid":"2"
+      "userid": userid.toString()
     }
     this.data.client.on('reconnect', (error) => {
       console.log('正在重连:', error)

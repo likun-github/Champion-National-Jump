@@ -32,6 +32,7 @@ App({
       },
       success(res){
         that.globalData.userId=res.data.userid;
+        console.log(that.globalData.userId);
       }
     })
   },
@@ -47,7 +48,7 @@ App({
     })
   },
   globalData: {
-    localhost:"http://192.168.5.19:8081",
+    localhost:"http://47.107.157.238:8081",
     userInfo: null,
     restServiceBaseUrl: "http://localhost:8081/StayHomeRestServer.NETCoreEnvironment/rest/",
     openId: null,
@@ -57,7 +58,7 @@ App({
     gameInfo: null,
     bottomBarRoute: '',
     ServerRoot: "https://www.yundingu.cn/checkerserver/",
-    userId:2,
+    userId:null,
   },
 
   // 获取用户身份认证情况
