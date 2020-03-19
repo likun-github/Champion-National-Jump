@@ -5,8 +5,13 @@ import tool from "../../../utils/tool.js";
 Page({
   data: {
     c:true,
-    userpho:"",
+    // 用户信息
     username:'',
+    userpho: "",
+    userScore: null,
+    userlevel:null,
+    
+    // 服务器相关
     serverRoot: "",
     // 认证相关
     identification: 0, /*0：玩家；1：学生；2：教练；3：机构 */
@@ -29,6 +34,54 @@ Page({
     hui:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyNSIgdmlld0JveD0iMCAwIDI1IDI1Ij4KICA8ZyBpZD0i54Gw6ImyaW5mbyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM2IC00MDIpIj4KICAgIDxjaXJjbGUgaWQ9IueBsOiJsueahGluZm8iIGN4PSIxMi41IiBjeT0iMTIuNSIgcj0iMTIuNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzYgNDAyKSIgZmlsbD0iI2VhZWFlYSIvPgogICAgPHRleHQgaWQ9ImkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ3IDQxOSkiIGZpbGw9IiNmZmYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtZmFtaWx5PSJTb3VyY2VIYW5TYW5zQ04tSGVhdnksIFNvdXJjZSBIYW4gU2FucyBDTiIgZm9udC13ZWlnaHQ9IjgwMCIgbGV0dGVyLXNwYWNpbmc9IjAuMDE0ZW0iPjx0c3BhbiB4PSIwIiB5PSIwIj5pPC90c3Bhbj48L3RleHQ+CiAgPC9nPgo8L3N2Zz4K',
     co:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyMi41MDQiIHZpZXdCb3g9IjAgMCAyNSAyMi41MDQiPgogIDxwYXRoIGlkPSLmlLbol4/lpLkiIGQ9Ik0xMTAuNDU1LDEzMS41NDhIMTAxLjlhMi4zNTIsMi4zNTIsMCwwLDEtMi4wNTgtMS4yMThsLS42MjYtMS4xMzJhMi4zNTIsMi4zNTIsMCwwLDAtMi4wNTgtMS4yMThoLTdhMi4zNjEsMi4zNjEsMCwwLDAtMi4zNTUsMi4zNjh2MTcuNzY5YTIuMzYxLDIuMzYxLDAsMCwwLDIuMzU1LDIuMzY4aDIwLjI5MWEyLjM2MSwyLjM2MSwwLDAsMCwyLjM1NS0yLjM2OHYtMTQuMkEyLjM2MiwyLjM2MiwwLDAsMCwxMTAuNDU1LDEzMS41NDhabS01LjM1OSw4LjU3MS0xLjg4NSwxLjg0OGEuMzU4LjM1OCwwLDAsMC0uMS4zMTVsLjQ0NSwyLjYxYS41MTYuNTE2LDAsMCwxLS4yMDUuNTA3LjUwOS41MDksMCwwLDEtLjU0My4wMzlsLTIuMzMxLTEuMjMyYS4zNTMuMzUzLDAsMCwwLS4zMjksMGwtMi4zMzEsMS4yMzJhLjUxNi41MTYsMCwwLDEtLjc0OC0uNTQ2bC40NDUtMi42MWEuMzU3LjM1NywwLDAsMC0uMS0uMzE1bC0xLjg4NS0xLjg0OGEuNTE5LjUxOSwwLDAsMSwuMjg2LS44ODRsMi42MDYtLjM4MWEuMzU0LjM1NCwwLDAsMCwuMjY3LS4xOTVsMS4xNjYtMi4zNzRhLjUxNC41MTQsMCwwLDEsLjkyNCwwbDEuMTY1LDIuMzc0YS4zNTQuMzU0LDAsMCwwLC4yNjcuMTk1bDIuNjA2LjM4MWEuNTE5LjUxOSwwLDAsMSwuMjg2Ljg4NFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04Ny44MSAtMTI3Ljk4KSIgZmlsbD0iIzUyYTlmZiIvPgo8L3N2Zz4K',
     re:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyNS4zMTEiIHZpZXdCb3g9IjAgMCAyNSAyNS4zMTEiPgogIDxnIGlkPSLorqTor4EiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC02LjM2MSAtMC4xMjkpIj4KICAgIDxwYXRoIGlkPSLot6/lvoRfNzk3IiBkYXRhLW5hbWU9Iui3r+W+hCA3OTciIGQ9Ik0yMC44NDIsMjUuMjgzQTUwLjQzNyw1MC40MzcsMCwwLDEsOS43LDI0LjljLS43NzMtLjEtMS41NDMtLjIxMy0yLjMxLS4zNDYtLjU2OS0uMDk0LTEuMDEzLS4zNjMtMS4wMTMtLjk4NEEyOS45MTcsMjkuOTE3LDAsMCwxLDYuNDM5LDIwLjJjLjEtLjk0NC45MzYtMS40LDEuNzc4LTEuNzExLDEuMDI5LS4zODYsMi4xMDktLjY1NSwzLjEzLTEuMDQ4czEuOTQxLS45NTcsMi4wOC0yLjE2NmEyLjEsMi4xLDAsMCwwLS43MzEtMi4wODksMy42ODcsMy42ODcsMCwwLDEtMS4zMTgtMS45NzMsMS4yNzMsMS4yNzMsMCwwLDAtLjQtLjU3NEEyLjEwNiwyLjEwNiwwLDAsMSwxMC4zNTcsOC4xYTEyLjQ4NywxMi40ODcsMCwwLDAsLjQwOC0yLjM5MSw2LjYsNi42LDAsMCwxLDEuNzk0LTQuMDRjMi41NjYtMi41MzIsOC40MDctMi4wNDIsOS43MiwyLjI2Mi4yNTYuODQ4LjMyOCwxLjc0My41MDksMi42MTZhMTIuNiwxMi42LDAsMCwwLC40NTUsMS43NzMsMi4yMjUsMi4yMjUsMCwwLDEtLjY0MywyLjIzNywzLjI3MSwzLjI3MSwwLDAsMC0uNTcxLjgsMTUuMjY5LDE1LjI2OSwwLDAsMC0uNzczLDEuMzgyYy0uOTEyLDEuOTc4LTIuNTc5LDMuNjYxLTIuNTY2LDUuOTkzYTYuNDg1LDYuNDg1LDAsMCwwLDMuNTQ2LDYuMDQ3Yy4xLjA1Ny4yMDcuMTE0LjQ1NS4yNS0uNzI2LjEtMS4yODQuMjE1LTEuODQ4LjI2MloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkiIGZpbGw9IiM1MmE5ZmYiLz4KICAgIDxwYXRoIGlkPSLot6/lvoRfNzk4IiBkYXRhLW5hbWU9Iui3r+W+hCA3OTgiIGQ9Ik01NjAuMzc3LDUyMy42YTUuODc0LDUuODc0LDAsMSwwLDUuODc0LDUuODcyQTUuODc3LDUuODc3LDAsMCwwLDU2MC4zNzcsNTIzLjZabTQuMTI2LDQuODkyLTQuMzE5LDMuODE2YS45MDcuOTA3LDAsMCwxLTEuMjUxLS4wNTFsLTIuMDItMi4xYS45LjksMCwxLDEsMS4zLTEuMjU0bDEuNDE4LDEuNDc3LDMuNjY5LTMuMjRhLjkuOSwwLDAsMSwxLjIsMS4zNTVaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNTM0Ljg5MSAtNTEwLjg1NikiIGZpbGw9IiM1MmE5ZmYiLz4KICA8L2c+Cjwvc3ZnPgo='
+  },
+
+  // 获取用户积分及段位
+  getUserScoreNLevel:function() {
+    var that = this;
+    wx.request({
+      url: app.globalData.localhost + "/getUserScoreNLevel",
+      data: {
+        "userid": app.globalData.userId,
+      },
+      success(res) {
+        console.log(res.data);
+        that.setData({ userScore: res.data.score,
+          userlevel: that.ChineseLevel(res.data.level)});
+      }
+    })
+  },
+
+  // 根据段位数值输出中文段位
+  ChineseLevel:function(numLevel) {
+    switch (numLevel) {
+      case 0:
+        return "9级棋手";
+      case 1:
+        return "8级棋手";
+      case 2:
+        return "7级棋手";
+      case 3:
+        return "6级棋手";
+      case 4:
+        return "5级棋手";
+      case 5:
+        return "4级棋手";
+      case 6:
+        return "3级棋手";
+      case 7:
+        return "2级棋手";
+      case 8:
+        return "1级棋手";
+      case 9:
+        return "候补大师";
+      case 10:
+        return "棋协大师";
+      case 11:
+        return "高级大师";
+      case 12:
+        return "特级大师";
+    } 
   },
 
   redict: function(e){
@@ -157,7 +210,9 @@ Page({
    var app = getApp();
 
    that.setData({ gameInfo: app.globalData.gameInfo});
+   console.log(app.globalData.userId);
 
+   this.getUserScoreNLevel();
 
    var that = this;
    // 查看是否授权
@@ -171,6 +226,19 @@ Page({
                userpho:res.userInfo.avatarUrl,
                username:res.userInfo.nickName
              })
+             // 发送服务器，补充用户微信名及头像信息
+             wx.request({
+               url: app.globalData.localhost + "/updateUserNameNAvatar",
+               data: {
+                 "userid": app.globalData.userId,
+                 "name": that.data.username,
+                 "avatar": that.data.userpho
+               },
+               success(res) {
+                 console.log("服务器更新名称及头像成功！");
+               }
+             })
+
              wx.setStorage({
                data: res.userInfo,
                key: 'userInfo',

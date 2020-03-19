@@ -30,7 +30,7 @@
   <view class="info">
     <text class="name">{{username}}</text>
     <text class="other">认证状态：已认证-运营</text>
-    <text class="other">段位：九段 积分：8000</text>
+    <text class="other">段位：{{userlevel}} 积分：{{userScore}}</text>
   </view>
 </view>
 
