@@ -48,7 +48,7 @@ App({
     })
   },
   globalData: {
-    localhost:"http://47.107.157.238:8081",
+    localhost:"http://192.168.3.11:8081",
     userInfo: null,
     restServiceBaseUrl: "http://localhost:8081/StayHomeRestServer.NETCoreEnvironment/rest/",
     openId: null,
