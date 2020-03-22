@@ -69,6 +69,9 @@ Page({
     gameResult: -1,  /*-1：未出结果；0：胜； 1：负； 2：和*/
     scoreDelta: 0,   /*比赛结束后积分变动的绝对值 */
 
+    // 收藏相关
+    collected: 0, /*0：未收藏或收藏不成功； 1：收藏成功*/
+
     //现在的目前对象
     currentTarget: null,
 
@@ -164,10 +167,12 @@ Page({
     });
 
     // 连接服务器，开始匹配
-    this.data.client = mqtt.connect('wx://47.107.157.238:3654');
+    /*this.data.client = mqtt.connect('wx://47.107.157.238:3654');*/
+    this.data.client = mqtt.connect('wxs://www.yundingu.cn:3654/checkerserver');
+    
     var userid = getApp().globalData.userId;
     const user_id = {
-      "userid": userid.toString()
+      "userid": "4"/*userid.toString()*/
     }
     this.data.client.on('reconnect', (error) => {
       console.log('正在重连:', error)
@@ -298,6 +303,23 @@ Page({
           } else if (userid == game_result.b_uid) { // 当前用户执黑子
             that.setData({gameResult:game_result.b_result,
                           scoreDelta:Math.abs(game_result.b_score - that.data.userScore)});
+          }
+        } else if (topic == "CollectionResult") {
+          var collection_result = JSON.parse(packet.payload);
+          console.log(collection_result);
+          if (collection_result == true) { // 收藏成功
+            wx.showModal({
+              showCancel: false,
+              title: "收藏成功",
+              content: "您可以选择再来一局或返回大厅",
+            })
+            this.setData({collected: 1});
+          } else { // 收藏失败
+            wx.showModal({
+              showCancel: false,
+              title: "收藏失败",
+              content: "您可以再次尝试收藏本局",
+            })
           }
         }
     });

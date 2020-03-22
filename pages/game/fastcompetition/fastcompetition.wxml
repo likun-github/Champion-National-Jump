@@ -105,7 +105,7 @@
   <view bindtap="exit" class="gameEndBtn">
     <text>返回大厅</text>  
   </view>
-  <view bindtap="collect" class="gameEndBtn">
+  <view wx:if="{{collected==0}}" bindtap="collect" class="gameEndBtn">
     <text>收藏本局</text>  
   </view>
 </view>

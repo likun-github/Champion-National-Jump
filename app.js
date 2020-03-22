@@ -48,7 +48,7 @@ App({
     })
   },
   globalData: {
-    localhost:"http://47.107.157.238:8081",
+    localhost:"https://www.yundingu.cn:8081/checkerserver",
     userInfo: null,
     restServiceBaseUrl: "http://localhost:8081/StayHomeRestServer.NETCoreEnvironment/rest/",
     openId: null,
