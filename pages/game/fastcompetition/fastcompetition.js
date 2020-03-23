@@ -321,6 +321,9 @@ Page({
               content: "您可以再次尝试收藏本局",
             })
           }
+        } else if (topic == "StartMatching") { // 玩家重新开始匹配
+          this.initialize();
+          this.onLoad();
         }
     });
 
@@ -1108,16 +1111,13 @@ Page({
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // 初始化数据
-  initialize:function() {
+  initialize:function(mode) {
     this.setData({
       l: 0,
       wm: '/static/wm.png',
       bm: '/static/bm.png',
       serverRoot: "",
       item: '',
-
-      // 桌子信息
-      table_info: null,
 
       // 用户信息
       checker_color: -1, // -1：未匹配完成，不知道是黑子还是白子，0：用户执白子，1：用户执黑子
@@ -1228,12 +1228,12 @@ Page({
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 游戏结束后，用户决定退出当前页面，返回上一级
   exit:function() {
-    // 先告诉服务器用户退出当前桌子
-    const table_info = {
-      "BigRoomId":this.data.table_info
-    }
-    console.log(table_info);
-    this.data.client.publish("Jump/HD_Exit",JSON.stringify(table_info), console.log);
+    // 发送checker_color至服务器
+    const checker_color = {
+      "BigRoomId": this.data.table_info,
+      "checker_color": this.data.checker_color
+    };
+    this.data.client.publish("Jump/HD_Exit", JSON.stringify(checker_color), console.log);
     // 再返回上一页
     var pages = getCurrentPages(); //当前页面
     var beforePage = pages[pages.length - 2]; //前一页
@@ -1246,11 +1246,16 @@ Page({
   
   // 再来一局
   again:function() {
-    this.initialize();
-    this.onLoad();
+    // 发送checker_color至服务器
+    const checker_color = {
+      "checker_color": this.data.checker_color
+    };
+    this.data.client.publish("Jump/HD_Again", JSON.stringify(checker_color), console.log);
+    //this.initialize();
+    //this.onLoad();
   },
 
-  // 将本次对局数据保存到服务器，如成功，则本按钮灰显，如失败，则本按钮还能继续按
+  // 将本次对局数据保存到服务器，如成功，则本按钮消失，如失败，则本按钮不消失，还能继续按
   collect: function (result) {
     // 发送checker_color至服务器
     const checker_color = {
