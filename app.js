@@ -48,7 +48,7 @@ App({
     })
   },
   globalData: {
-    localhost:"https://www.yundingu.cn:8081/checkerserver",
+    localhost:"https://www.yundingu.cn/",
     userInfo: null,
     restServiceBaseUrl: "http://localhost:8081/StayHomeRestServer.NETCoreEnvironment/rest/",
     openId: null,
@@ -66,7 +66,7 @@ App({
     var that = this;
 
     wx.request({
-      url: that.globalData.restServiceBaseUrl + "GetUserInfo",
+      url: that.globalData.localhost + "GetUserInfo",
       data: JSON.stringify({ RegisteredUserOpenId: that.globalData.openId }),
       success: function (res) {    
         var registeredUser = res.data.RegisteredUser;

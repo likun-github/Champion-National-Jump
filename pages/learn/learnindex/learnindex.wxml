@@ -3,7 +3,7 @@
 
 <view class="topNav">
 	<text data-route="begin" bindtap="ChangeRoute" class="{{innerRoute=='begin'?'choosed':''}}">启蒙</text>
-	<text data-route="promote" bindtap="ChangeRoute" class="{{innerRoute=='promote'?'choosed':''}}">进阶</text>
+<!--	<text data-route="promote" bindtap="ChangeRoute" class="{{innerRoute=='promote'?'choosed':''}}">进阶</text>-->
 </view>
 
 <view class="gray-margin"></view>

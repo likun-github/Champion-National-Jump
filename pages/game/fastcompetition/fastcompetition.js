@@ -168,11 +168,11 @@ Page({
 
     // 连接服务器，开始匹配
     /*this.data.client = mqtt.connect('wx://47.107.157.238:3654');*/
-    this.data.client = mqtt.connect('wxs://www.yundingu.cn:3654/checkerserver');
+    this.data.client = mqtt.connect('wxs://www.yundingu.cn/wss/');
     
     var userid = getApp().globalData.userId;
     const user_id = {
-      "userid": "4"/*userid.toString()*/
+      "userid": userid.toString()
     }
     this.data.client.on('reconnect', (error) => {
       console.log('正在重连:', error)
