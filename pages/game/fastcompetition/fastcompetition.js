@@ -28,6 +28,7 @@ Page({
     // 对手信息
     opponentID:-1,
     opponentName:-1,
+    opponentAvatar:-1,
     opponentLevel:-1,
     opponentScore:-1,
 
@@ -169,6 +170,7 @@ Page({
     // 连接服务器，开始匹配
     /*this.data.client = mqtt.connect('wx://47.107.157.238:3654');*/
     this.data.client = mqtt.connect('wxs://www.yundingu.cn/wss/');
+    //this.data.client = mqtt.connect('wx://192.168.3.7:3654');
     
     var userid = getApp().globalData.userId;
     const user_id = {
@@ -191,10 +193,12 @@ Page({
         if(topic == "MatchFinish") { // 匹配成功
           var match_result = JSON.parse(packet.payload);
           console.log(match_result);
+          that.initialize();
           if (userid == match_result.w_uid) { // 当前用户执白子
             that.setData({
               opponentID: match_result.b_uid,
               opponentName: match_result.b_name,
+              opponentAvatar:match_result.b_avatar,
               opponentScore: match_result.b_score,
               opponentLevel:match_result.b_level,
               userScore: match_result.w_score,
@@ -205,6 +209,7 @@ Page({
             that.setData({
               opponentID: match_result.w_uid,
               opponentName: match_result.w_name,
+              opponentAvatar: match_result.w_avatar,
               opponentScore: match_result.w_score,
               opponentLevel:match_result.w_level,
               userScore: match_result.b_score,
@@ -303,6 +308,12 @@ Page({
           } else if (userid == game_result.b_uid) { // 当前用户执黑子
             that.setData({gameResult:game_result.b_result,
                           scoreDelta:Math.abs(game_result.b_score - that.data.userScore)});
+          }
+          if (that.data.whiteTimer != null) {
+            clearInterval(that.data.whiteTimer);
+          }
+          if (that.data.blackTimer != null) {
+            clearInterval(that.data.blackTimer);
           }
         } else if (topic == "CollectionResult") {
           var collection_result = JSON.parse(packet.payload);
@@ -788,7 +799,7 @@ Page({
     let paths = [];
 
     paths = this.GetAvailablePaths(this.data.currentUser);
-    if (paths.length == 0) { // 当前方无子可走,弹出游戏结束对话框
+    /*if (paths.length == 0) { // 当前方无子可走,弹出游戏结束对话框
       var that = this;
       if (this.data.currentUser == 0) {
         wx.showModal({
@@ -828,7 +839,7 @@ Page({
         })
       }
     }
-
+    */
     if (this.data.currentUser == this.data.checker_color) { // 轮到用户走棋，先判断选中的是否为所走棋，再判断选中的是否为可走棋的终点，完成走棋后，把走子后的棋局转成bitboard格式，发送到服务器
       // 如果选中可走棋，则高亮这个棋子，并画出其可走路径
       if (this.IsMovable(targetRect, paths)) {
@@ -1113,16 +1124,8 @@ Page({
   // 初始化数据
   initialize:function(mode) {
     this.setData({
-      l: 0,
-      wm: '/static/wm.png',
-      bm: '/static/bm.png',
-      serverRoot: "",
-      item: '',
-
       // 用户信息
       checker_color: -1, // -1：未匹配完成，不知道是黑子还是白子，0：用户执白子，1：用户执黑子
-      userName: -1,
-      userAvatar: -1,
       userLevel: -1,
       userScore: -1,
 
@@ -1131,14 +1134,6 @@ Page({
       opponentName: -1,
       opponentLevel: -1,
       opponentScore: -1,
-
-      // 上下文
-      context: null,
-
-      //canvas相关变量：canvas的长宽，和画图笔
-      borderWidth: 15,
-      chessBoardWidth: wx.getSystemInfoSync().windowWidth * (750 - 30/*margin*/ * 4) / (750) - 15 * 2,
-      chessBoardHeight: wx.getSystemInfoSync().windowWidth * (750 - 30 * 4) / (750) - 15 * 2,
 
       // 棋数据
       blackChesses: [],
@@ -1184,45 +1179,9 @@ Page({
 
       // 悔棋数据
       withdraw: [{ "W": movegen.fill50(1048575), "B": movegen.fill50(1125898833100800), "K": movegen.fill50(0) }],
-
-      // 小程序棋盘索引转换成bitboard棋盘索引
-      mini2Bit: [null, 45, null, 46, null, 47, null, 48, null, 49,
-        40, null, 41, null, 42, null, 43, null, 44, null,
-        null, 35, null, 36, null, 37, null, 38, null, 39,
-        30, null, 31, null, 32, null, 33, null, 34, null,
-        null, 25, null, 26, null, 27, null, 28, null, 29,
-        20, null, 21, null, 22, null, 23, null, 24, null,
-        null, 15, null, 16, null, 17, null, 18, null, 19,
-        10, null, 11, null, 12, null, 13, null, 14, null,
-        null, 5, null, 6, null, 7, null, 8, null, 9,
-        0, null, 1, null, 2, null, 3, null, 4, null],
-
-      // bitboard棋盘索引转换成小程序棋盘索引
-      bit2Mini: [90, 92, 94, 96, 98,
-        81, 83, 85, 87, 89,
-        70, 72, 74, 76, 78,
-        61, 63, 65, 67, 69,
-        50, 52, 54, 56, 58,
-        41, 43, 45, 47, 49,
-        30, 32, 34, 36, 38,
-        21, 23, 25, 27, 29,
-        10, 12, 14, 16, 18,
-        1, 3, 5, 7, 9],
-
-      // 转换成Scan的棋盘索引
-      mini2Scan: [null, 1, null, 2, null, 3, null, 4, null, 5,
-        6, null, 7, null, 8, null, 9, null, 10, null,
-        null, 11, null, 12, null, 13, null, 14, null, 15,
-        16, null, 17, null, 18, null, 19, null, 20, null,
-        null, 21, null, 22, null, 23, null, 24, null, 25,
-        26, null, 27, null, 28, null, 29, null, 30, null,
-        null, 31, null, 32, null, 33, null, 34, null, 35,
-        36, null, 37, null, 38, null, 39, null, 40, null,
-        null, 41, null, 42, null, 43, null, 44, null, 45,
-        46, null, 47, null, 48, null, 49, null, 50, null],
-
-      client: 0
     });
+    this.Inite();
+    this.data.context.draw();
   },
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////

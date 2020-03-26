@@ -4,7 +4,8 @@
   <view class="player"> 
     <view>
       <image wx:if="{{checker_color==-1}}" src="{{serverRoot}}/img/game/问号头像.svg"></image>
-      <image wx:elif="{{checker_color==0}}" src="{{serverRoot}}/img/game/ai/女孩头像.png"></image>
+      <image wx:elif="{{checker_color==0 && opponentAvatar == -1}}" src="{{serverRoot}}/img/game/ai/女孩头像.png"></image>
+      <image wx:elif="{{checker_color==0 && opponentAvatar != -1}}" src="{{opponentAvatar}}"></image>
       <image wx:elif="{{checker_color==1}}" src="{{userAvatar}}"></image>
     </view> 
     <view>
@@ -58,7 +59,8 @@
   <view class="player" style="margin-top:6vh;">
     <view>
       <image wx:if="{{checker_color==-1}}" src="{{serverRoot}}/img/game/问号头像.svg"></image>
-      <image wx:elif="{{checker_color==1}}" src="{{serverRoot}}/img/game/ai/女孩头像.png"></image>
+      <image wx:elif="{{checker_color==1 && opponentAvatar == -1}}" src="{{serverRoot}}/img/game/ai/女孩头像.png"></image>
+      <image wx:elif="{{checker_color==1 && opponentAvatar != -1}}" src="{{opponentAvatar}}"></image>
       <image wx:elif="{{checker_color==0}}" src="{{userAvatar}}"></image>
     </view> 
     <view>

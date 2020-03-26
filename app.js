@@ -48,6 +48,7 @@ App({
     })
   },
   globalData: {
+    //localhost: "http://192.168.3.7:8081",
     localhost:"https://www.yundingu.cn/",
     userInfo: null,
     restServiceBaseUrl: "http://localhost:8081/StayHomeRestServer.NETCoreEnvironment/rest/",
